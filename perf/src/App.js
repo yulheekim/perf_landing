@@ -1,24 +1,20 @@
 import React, { Component } from 'react';
 import 'typeface-roboto';
-import logo from './logo.svg';
-import './App.css';
-import Button from '@material-ui/core/Button';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import ReduxThunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import Root from './Root';
+import * as reducers from './ducks';
+
+const rootReducer = combineReducers(reducers);
+const store = createStore(rootReducer, {}, applyMiddleware(ReduxThunk));
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button variant="contained" color="primary">
-          Hello World
-        </Button>
-      </div>
+      <Provider store={store}>
+        <Root />
+      </Provider>
     );
   }
 }
