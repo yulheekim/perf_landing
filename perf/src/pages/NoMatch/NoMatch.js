@@ -1,27 +1,26 @@
 import React, { Component } from 'react';
-import './styles.css';
+import logo from '../../logo.svg';
+import '../../App.css';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 
-class LandingComponent extends Component {
+class NoMatchComponent extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <h1 className="App-title">Welcome to Perf</h1>
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">No such endpoint exists</h1>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Button variant="contained" color="primary">
-          Hello World
-        </Button>
       </div>
     );
   }
 }
 
-export { LandingComponent };
+export { NoMatchComponent };
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -29,5 +28,5 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-export const Landing = connect(mapStateToProps, {
-})(LandingComponent);
+export const NoMatch = connect(mapStateToProps, {
+})(NoMatchComponent);
