@@ -5,7 +5,9 @@ class Root extends Component {
 
     render() {
         return (
-          <AppNavigator/>
+          
+        <AppNavigator/>
+          
         );
     }
     
