@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './styles.css';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import { Elements, StripeProvider } from 'react-stripe-elements';
+
+import { CheckOut } from '../../components/CheckOut';
 
 class LandingComponent extends Component {
   render() {
@@ -13,9 +16,13 @@ class LandingComponent extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Button variant="contained" color="primary">
-          Hello World
-        </Button>
+        <StripeProvider apiKey="pk_test_gP3gqSSBvypkudXyIkjx8xpB">
+          <Elements>
+            <CheckOut />
+          </Elements>
+        </StripeProvider>
+
+
       </div>
     );
   }
