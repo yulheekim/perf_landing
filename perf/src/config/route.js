@@ -1,15 +1,17 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
-  Landing
+  Landing,
+  NoMatch,
 } from '../pages';
 
 const AppNavigator = () => (
     <Router>
-      <Route exact path="/" component={Landing} />
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route component={NoMatch} />
+      </Switch>
     </Router>
 );
 
-
 export { AppNavigator };
-
