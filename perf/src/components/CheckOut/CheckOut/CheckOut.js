@@ -3,6 +3,7 @@ import './styles.css';
 import { connect } from 'react-redux';
 import { injectStripe } from 'react-stripe-elements';
 import StripeCheckout from 'react-stripe-checkout';
+import APIConfig from '../../../config/api';
 
 class CheckOutComponent extends Component {
   onToken = (token) => {
@@ -20,7 +21,7 @@ class CheckOutComponent extends Component {
       return (
           <StripeCheckout
               token={this.onToken}
-              stripeKey="pk_test_gP3gqSSBvypkudXyIkjx8xpB"
+              stripeKey={APIConfig.stripe_key}
               shippingAddress
               billingAddress={true}
               zipCode={true}

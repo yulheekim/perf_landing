@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 
 import { CheckOut } from '../../components/CheckOut';
+import APIConfig from '../../config/api';
 
 class LandingComponent extends Component {
   render() {
@@ -13,10 +14,7 @@ class LandingComponent extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to Perf</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <StripeProvider apiKey="pk_test_gP3gqSSBvypkudXyIkjx8xpB">
+        <StripeProvider apiKey={APIConfig.stripe_key}>
           <Elements>
             <CheckOut />
           </Elements>
