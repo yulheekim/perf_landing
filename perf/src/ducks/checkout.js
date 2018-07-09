@@ -1,7 +1,3 @@
-import _ from 'lodash';
-import axios from 'axios';
-
-
 //Action Types
 export const GO_CHECKOUT = 'perf/checkout/GO_CHECKOUT';
 
