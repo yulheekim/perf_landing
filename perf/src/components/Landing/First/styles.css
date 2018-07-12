@@ -1,0 +1,52 @@
+
+.getStarted {
+    margin-top: 10%;
+    margin-bottom: 9%;
+}
+.quizLink {
+    text-decoration: none;
+}
+.quizButton {
+    font-size: 1.6rem;
+    text-transform: none;
+    font-weight: 300;
+}
+.downIcon {
+    font-size: 10rem;
+}
+.section {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .getStarted {
+        margin-top: 30%;
+        margin-bottom: 35%;
+    }
+}
+@media only screen and (max-device-width: 375px) {
+    .getStarted {
+        margin-top: 20%;
+        margin-bottom: 25%;
+    }
+}
+@media only screen and (max-device-width: 360px) {
+    /*damn galaxy*/
+    .getStarted {
+        margin-top: 30%;
+        margin-bottom: 35%;
+    }
+}
+
+@media only screen and (max-device-width: 1024px) and (min-device-width: 481px){
+    .getStarted {
+        margin-top: 20%;
+        margin-bottom: 25%;
+    }
+    .quizButton {
+        width: 50%;
+        height: 40%;
+    }
+}

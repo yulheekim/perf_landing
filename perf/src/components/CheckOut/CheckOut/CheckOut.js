@@ -30,4 +30,3 @@ class CheckOutComponent extends Component {
 }
 
 export const CheckOut = injectStripe(CheckOutComponent);
-

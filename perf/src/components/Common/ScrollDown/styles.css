@@ -1,0 +1,43 @@
+.down:hover {
+  opacity: .5;
+}
+
+.down {
+  width: 140px;
+  margin-top: 5%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  font-size: 24px;
+  text-decoration: none;
+  transition: opacity .3s;
+  -webkit-animation: sdb04 2s infinite;
+  animation: sdb04 2s infinite;
+  margin: 5% auto auto auto;
+}
+
+.downIcon {
+  margin: auto;
+  width: 24px;
+  height: 24px;
+}
+
+@-webkit-keyframes sdb04 {
+    0%, 100% {
+      -webkit-transform: translate(0, 0);
+    }
+    50% {
+      -webkit-transform: translate(0, 15px);
+    }
+}
+@keyframes sdb04 {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(0, 15px);
+    }
+}

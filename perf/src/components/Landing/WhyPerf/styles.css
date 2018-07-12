@@ -1,0 +1,279 @@
+@media only screen and (max-device-width: 768px) {
+  /* iPad */
+  .mobile {
+      height: 100vh;
+      overflow: hidden;
+  }
+
+  .circleRow {
+      width: 80%;
+      flex-direction: column;
+      display: inline-block;
+  }
+
+  .circleWrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .circle {
+      border-radius: 50%;
+      background-color: lightblue;
+      position: relative;
+      width: 13.5rem;
+      height: 13rem;
+  }
+
+  .reason {
+      width: 70%;
+      float: right;
+      height: 14rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .descHide {
+    display: none;
+  }
+  .descShow {
+    display: none;
+  }
+}
+
+@media only screen and (max-device-width: 480px) {
+  /* iPhone Plus, Pixel 2 (XL) */
+  .mobile {
+      height: 100vh;
+      overflow: hidden;
+  }
+
+  .circleRow {
+      width: 80%;
+      flex-direction: column;
+      display: inline-block;
+  }
+
+  .circleWrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .circle {
+      border-radius: 50%;
+      background-color: lightblue;
+      position: relative;
+      width: 10rem;
+      height: 10rem;
+  }
+
+  .reason {
+      width: 50%;
+      float: right;
+      height: 12rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .descHide {
+    display: none;
+  }
+  .descShow {
+    display: none;
+  }
+}
+
+@media only screen and (max-device-width: 375px) {
+  /* iPhone 6/7/8, iPhone X, */
+  .mobile {
+      height: 100vh;
+      overflow: hidden;
+  }
+
+  .circleRow {
+      width: 80%;
+      flex-direction: column;
+      display: inline-block;
+  }
+
+  .circleWrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  .circle {
+      border-radius: 50%;
+      background-color: lightblue;
+      position: relative;
+      width: 9rem;
+      height: 9rem;
+  }
+
+  .reason {
+      width: 50%;
+      float: right;
+      height: 11rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .descHide {
+    display: none;
+  }
+  .descShow {
+    display: none;
+  }
+}
+
+@media only screen and (max-device-width: 360px) {
+    /*damn galaxy*/
+    .mobile {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .circleRow {
+        width: 80%;
+        flex-direction: column;
+        display: inline-block;
+    }
+
+    .circleWrapper {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .circle {
+        border-radius: 50%;
+        background-color: lightblue;
+        position: relative;
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .reason {
+        width: 50%;
+        float: right;
+        height: 10rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .descHide {
+      display: none;
+    }
+    .descShow {
+      display: none;
+    }
+}
+
+@media only screen and (max-device-width: 320px) {
+    /*iPhone 5*/
+    .mobile {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .circleRow {
+        width: 80%;
+        flex-direction: column;
+        display: inline-block;
+    }
+
+    .circleWrapper {
+      display: flex;
+      width: 100%;
+      align-items: center;
+    }
+
+    .circle {
+        border-radius: 50%;
+        background-color: lightblue;
+        position: relative;
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .reason {
+        width: 50%;
+        float: right;
+        height: 9rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .descHide {
+      display: none;
+    }
+    .descShow {
+      display: none;
+    }
+}
+
+@media only screen and (min-device-width: 769px){
+  .circle {
+      border-radius: 50%;
+      background-color: lightblue;
+      width: 13rem;
+      height: 13rem;
+      margin-left: 2rem;
+      margin-right: 2rem;
+      z-index: -1;
+  }
+
+  .circle:hover {
+      background-color: rgb(232,0,0);
+      z-index: 10;
+  }
+
+  .reason {
+      display: none;
+  }
+
+  .circleRow {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 80%;
+      margin: 0 auto 0 auto;
+  }
+
+  .section {
+      height: 100vh;
+  }
+
+  .descShow {
+      margin: 0;
+      width: 100%;
+      color: white;
+      height: 100vh;
+      margin-top: 15%;
+  }
+  .descShowSection {
+      background-color: rgba(0, 0, 0, 0.8);
+      margin: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      z-index: 5;
+  }
+
+  .descHide {
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+  }
+}
