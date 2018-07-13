@@ -24,7 +24,7 @@ const First = () => {
                 </Link>
             </div>
 
-            <ScrollDown message={"Learn More"} moveto={"whyperf"} />
+            <ScrollDown message="Learn More" moveto="whyperf" />
         </section>
     )
 }

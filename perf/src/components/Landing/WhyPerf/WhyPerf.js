@@ -7,12 +7,12 @@ import {
 } from '../../../ducks/landing';
 import {
   OneLiner,
+  ScrollDown,
 } from '../../Common';
 
 
 
 class WhyPerfComponent extends Component {
-
     toggleModal = (id) => {
         this.props.toggle_modal(id);
     }
@@ -44,11 +44,11 @@ class WhyPerfComponent extends Component {
                 <div className={this.props.show_which > 0 ? "descShow" : "descHide"}>
                     {this.props.why_descs[this.props.show_which]}
                 </div>
+                <ScrollDown message="See Reviews" moveto="reviews"/>
             </section>
         );
     }
 }
-
 const mapStateToProps = (state, ownProps) => {
   const { landing } = state;
   const { why_descs, show_which } = landing;

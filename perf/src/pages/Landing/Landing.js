@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 
-import {
+import { 
   CheckOut,
   WhyPerf,
   First,
+  Reviews,
 } from '../../components';
 
 import APIConfig from '../../config/api';
@@ -13,6 +14,7 @@ import styles from './styles';
 
 const {
   landingStyle,
+  sectionStyle,
 } = styles
 
 class LandingComponent extends Component {
@@ -22,7 +24,8 @@ class LandingComponent extends Component {
       <div style={landingStyle}>
         <First />
         <WhyPerf />
-        <section id="last_section" className="section">
+        <Reviews />
+        <section id="whyperf" style={sectionStyle}>
           <StripeProvider apiKey={APIConfig.stripe_key}>
             <Elements>
               <CheckOut />
