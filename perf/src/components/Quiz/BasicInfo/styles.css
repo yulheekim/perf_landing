@@ -1,0 +1,31 @@
+.showFor {
+
+}
+
+.hideFor {
+    display: none;
+}
+
+.smallRadio {
+    width: 1rem;
+    height: 1rem;
+}
+.bigRadio {
+    width: 2rem;
+    height: 2rem;
+}
+.sexualityPicker {
+    display: flex;
+    flex-direction: column;
+}
+.sexualityRadio {
+    display: flex;
+    flex-direction: column;
+    width: 4rem;
+    align-content: center;
+}
+
+.radios {
+    display: flex;
+    flex-direction: row;
+}
