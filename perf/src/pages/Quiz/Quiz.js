@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import {
   BasicInfo,
+  Header,
+  Question,
 } from '../../components';
 import './styles.css';
 
@@ -12,7 +14,9 @@ class QuizComponent extends Component {
   render() {
     return (
       <div className="quizStyle">
+          <Header />
           <BasicInfo />
+          <Question />
       </div>
     );
   }

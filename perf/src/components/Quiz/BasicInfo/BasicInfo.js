@@ -67,7 +67,7 @@ class BasicInfoComponent extends Component {
                 return (
                     <div className="sexualityRadio" key={index}>
                         <Radio
-                            checked={this.props.sexuality === item} 
+                            checked={this.props.sexuality === item}
                             onChange={this.handleSexualityChange}
                             value={item}
                             label={item}
@@ -75,7 +75,7 @@ class BasicInfoComponent extends Component {
                         />
                         {item}
                     </div>
-                )       
+                )
             } else {
                 return (
                     <div className="sexualityRadio" key={index}>
@@ -93,33 +93,33 @@ class BasicInfoComponent extends Component {
                     </div>
                 )
             }
-            
+
         });
     }
 
     render() {
         return (
-            <div>
+            <section>
                 <div>
                     Help us learn more about {this.recepient()}
                 </div>
                 <div>
-                    This perfume will be designed by 
-                    <TextField 
+                    This perfume will be designed by
+                    <TextField
                         label="Quiz Taker's Name"
                         value={this.props.taker_name}
                         onChange={this.handleTakerNameChange}
                         margin="normal"
-                    /> 
+                    />
                 </div>
                 <div className={(this.props.recepient_relations > 0) ? "showFor" :"hideFor"}>
-                    for 
-                    <TextField 
+                    for
+                    <TextField
                         label="Recepient's Name"
                         value={this.props.recepient_name}
                         onChange={this.handleRecepientNameChange}
                         margin="normal"
-                    /> 
+                    />
                 </div>
                 <div className="sexualityPicker">
                     Which way do you want this scent lean to?
@@ -129,8 +129,8 @@ class BasicInfoComponent extends Component {
                     </div>
                 </div>
 
-                
-            </div>
+
+            </section>
         );
     }
 }

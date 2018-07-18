@@ -1,1 +1,1 @@
-export * from './WhyPerf'
+export * from './WhyPerf';

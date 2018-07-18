@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 
-import { 
+import {
   CheckOut,
   WhyPerf,
   First,
@@ -14,7 +14,7 @@ import styles from './styles';
 
 const {
   landingStyle,
-  sectionStyle,
+  sectionStyle
 } = styles
 
 class LandingComponent extends Component {

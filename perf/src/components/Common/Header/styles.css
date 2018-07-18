@@ -1,3 +1,13 @@
+.header {
+  background-color: #36384c;
+  z-index: 50;
+  width: 100%;
+  height: 13%;
+  position: fixed;
+  display: flex;
+  top: 0px;
+}
+
 .perf-logo {
   height: 80px;
   display: inline-block;

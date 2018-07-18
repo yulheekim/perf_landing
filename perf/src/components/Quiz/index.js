@@ -1,2 +1,2 @@
-export * from './Question';
 export * from './BasicInfo';
+export * from './Question';

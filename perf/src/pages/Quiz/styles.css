@@ -1,3 +1,10 @@
 .quizStyle {
-    
+    text-align: center;
+    justify-content: center;
+}
+section {
+  position: relative;
+  width: 100%;
+  height: 87vh;
+  margin-top: 13%;
 }

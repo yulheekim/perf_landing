@@ -5,10 +5,11 @@ export default {
             width: '36px',
             height: '30px',
             left: '36px',
-            top: '36px'
+            top: '36px',
+            color: 'white'
         },
         bmBurgerBars: {
-            background: '#373a47'
+            background: '#bdd2f9'
         },
         bmCrossButton: {
             height: '24px',
@@ -18,7 +19,7 @@ export default {
             background: '#bdc3c7'
         },
         bmMenu: {
-            background: '#373a47',
+            background: '#36384c',
             padding: '2.5em 1.5em 0',
             fontSize: '1.15em'
         },
