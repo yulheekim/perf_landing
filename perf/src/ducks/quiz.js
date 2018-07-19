@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import APIConfig from '../config/api';
 
 const quizAPIRoot = `${APIConfig.apiroot}/quiz`;
@@ -12,6 +13,7 @@ export const HANDLE_NEXT= 'perf/quiz/HANDLE_NEXT';
 export const LOAD_QUIZ = "perf/quiz/LOAD_QUIZ";
 export const LOAD_QUIZ_FAILURE = "perf/quiz/LOAD_QUIZ_FAILURE";
 export const LOAD_QUIZ_SUCCESS = "perf/quiz/LOAD_QUIZ_SUCCESS";
+export const REVEAL_CARD = "perf/quiz/REVEAL_CARD";
 export const START_OVER= 'perf/quiz/START_OVER';
 
 // The options are hardcoded for now but will be from the server as soon as server supports it,
@@ -27,14 +29,9 @@ const INITIAL_STATE = {
     recepient_name: "",
     sexuality: "",
     sexuality_options: ["Masculine", "Somewhat Masculine", "Unisex", "Somewhat Feminine", "Feminine"],
-    questions: ['question1', 'question2','question3','question4','question5','question6','question7'],
-    options: [['opt1-1','opt1-2','opt1-3','opt1-4'],
-              ['opt2-1','opt2-2','opt2-3','opt2-4'],
-              ['opt3-1','opt3-2','opt3-3','opt3-4'],
-              ['opt4-1','opt4-2','opt4-3','opt4-4'],
-              ['opt5-1','opt5-2','opt5-3','opt5-4'],
-              ['opt6-1','opt6-2','opt6-3','opt6-4'],
-              ['opt7-1','opt7-2','opt7-3','opt7-4']]
+    questions: [],
+    result_cards: ["What is up bois", "This is Mark", "JUNG"],
+    reveal_cards: [false, false, false],
 };
 
 //Reducers
@@ -54,13 +51,20 @@ export default function reducer(state = INITIAL_STATE, action) {
             }
         case LOAD_QUIZ:
         case LOAD_QUIZ_SUCCESS:
-            /*
-            need to load the questions from the server
-            */
+            if(action.payload) {
+                return {
+                    ...state,
+                    error_message: "",
+                    quiz_name: action.payload.quiz_name,
+                    questions: action.payload.questions,
+                }
+            }
             return {
                 ...state,
                 error_message: ""
             }
+
+            
         case LOAD_QUIZ_FAILURE:
             /*
             if the quiz load fails, need to lead them to a 500 page.
@@ -88,6 +92,13 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 sexuality: action.payload
+            }
+        case REVEAL_CARD:
+            var new_reveal_cards = state.reveal_cards.slice()
+            new_reveal_cards[action.payload] = true;
+            return {
+                ...state,
+                reveal_cards: new_reveal_cards,
             }
 
         default:
@@ -128,7 +139,7 @@ export const load_quiz = (whereto) => {
 export const load_quiz_success = (dispatch, response) => {
     dispatch({
         type: LOAD_QUIZ_SUCCESS,
-        payload: response.data.response
+        payload: response.data.response,
     });
 }
 
@@ -173,3 +184,12 @@ export const change_sexuality = (value) => {
         })
     }
 }
+
+export const reveal_card = (index) => {
+    return (dispatch) => {
+        dispatch({
+            type: REVEAL_CARD,
+            payload: index
+        })
+    }
+} 

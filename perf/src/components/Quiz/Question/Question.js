@@ -19,11 +19,10 @@ class QuestionComponent extends Component {
     }
 
     populateOptions = () => {
-        return _.map(this.props.options[this.props.activeStep], (item, index)=> {
+        return _.map(this.props.questions[this.props.activeStep].cards, (item, index)=> {
             return (
                 <div className="option" onClick={() => this.props.handle_next(index)} key={index}>
-                    <img alt={item} />
-                    {item}
+                    {item.description}
                 </div>
             )
         });
@@ -38,9 +37,9 @@ class QuestionComponent extends Component {
 
         return (
             <section id="questions">
-                <div className="question">{this.props.questions[this.props.activeStep]}</div>
+                <div className="question">{this.props.questions[this.props.activeStep].question_text}</div>
                 <div className="optionsContainer">
-                  {this.populateOptions()}
+                    {this.populateOptions()}
                 </div>
                 <div className="progressBarContainer">
                     <MobileStepper
@@ -63,13 +62,12 @@ class QuestionComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { quiz } = state;
-  const { activeStep, answers, questions, options } = quiz;
+  const { activeStep, answers, questions } = quiz;
   return {
     ...ownProps,
     activeStep,
     answers,
     questions,
-    options
   };
 }
 

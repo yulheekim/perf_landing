@@ -4,7 +4,6 @@
 
 .down {
   width: 140px;
-  margin-top: 5%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -16,7 +15,7 @@
   transition: opacity .3s;
   -webkit-animation: sdb04 2s infinite;
   animation: sdb04 2s infinite;
-  margin: 5% auto auto auto;
+  margin: 3% auto auto auto;
 }
 
 .downIcon {

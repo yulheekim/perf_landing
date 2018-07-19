@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import {
   BasicInfo,
@@ -11,7 +12,13 @@ import './styles.css';
 
 class QuizComponent extends Component {
 
+
   render() {
+    if (this.props.quiz_name === "") {
+      return (
+        <Redirect to="choose" />
+      )
+    }
     return (
       <div className="quizStyle">
           <Header />
@@ -25,8 +32,11 @@ class QuizComponent extends Component {
 export { QuizComponent };
 
 const mapStateToProps = (state, ownProps) => {
+    const { quiz } = state;
+    const { quiz_name } = quiz;
     return {
       ...ownProps,
+      quiz_name,
     };
 };
 

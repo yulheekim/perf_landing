@@ -98,6 +98,7 @@ class BasicInfoComponent extends Component {
     }
 
     render() {
+        
         return (
             <section>
                 <div>
@@ -128,8 +129,6 @@ class BasicInfoComponent extends Component {
                         {this.sexualityPicker()}
                     </div>
                 </div>
-
-
             </section>
         );
     }
@@ -148,7 +147,7 @@ const mapStateToProps = (state, ownProps) => {
       taker_name,
       recepient_name,
       sexuality,
-      sexuality_options
+      sexuality_options,
     };
 };
 

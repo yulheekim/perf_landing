@@ -33,7 +33,7 @@ class ChooseQuizComponent extends Component {
     
     return (
       <div className="choosequizStyle">
-        <div onClick={()=>this.gotoQuiz("main")}>
+        <div onClick={()=>this.gotoQuiz("dinner")}>
           To Main
         </div>
         <div onClick={()=>this.gotoQuiz("event")}>
