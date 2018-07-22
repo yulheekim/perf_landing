@@ -9,7 +9,7 @@ import './styles.css';
 import {
     change_relations,
     change_taker_name,
-    change_recepient_name,
+    change_recipient_name,
     change_sexuality,
 } from '../../../ducks/quiz';
 
@@ -24,11 +24,11 @@ class BasicInfoComponent extends Component {
         */
     }
 
-    recepient = () => {
+    recipient = () => {
         return (
             <Select
                 onChange={this.handleRelationChange}
-                value={this.props.recepient_relations}
+                value={this.props.recipient_relations}
             >
                 {this.menuItems()}
             </Select>
@@ -36,7 +36,7 @@ class BasicInfoComponent extends Component {
     };
 
     menuItems = () => {
-        return _.map(this.props.recepient_options, (item, index) => {
+        return _.map(this.props.recipient_options, (item, index) => {
             return (
                 <MenuItem value={index} key={index}> {item} </MenuItem>
             )
@@ -49,8 +49,8 @@ class BasicInfoComponent extends Component {
     handleTakerNameChange = (event) => {
         this.props.change_taker_name(event.target.value);
     };
-    handleRecepientNameChange = (event) => {
-        this.props.change_recepient_name(event.target.value);
+    handleRecipientNameChange = (event) => {
+        this.props.change_recipient_name(event.target.value);
     };
     handleSexualityChange = (event) => {
         this.props.change_sexuality(event.target.value);
@@ -98,11 +98,11 @@ class BasicInfoComponent extends Component {
     }
 
     render() {
-        
+
         return (
             <section>
                 <div>
-                    Help us learn more about {this.recepient()}
+                    Help us learn more about {this.recipient()}
                 </div>
                 <div>
                     This perfume will be designed by
@@ -113,12 +113,12 @@ class BasicInfoComponent extends Component {
                         margin="normal"
                     />
                 </div>
-                <div className={(this.props.recepient_relations > 0) ? "showFor" :"hideFor"}>
+                <div className={(this.props.recipient_relations > 0) ? "showFor" :"hideFor"}>
                     for
                     <TextField
-                        label="Recepient's Name"
-                        value={this.props.recepient_name}
-                        onChange={this.handleRecepientNameChange}
+                        label="Recipient's Name"
+                        value={this.props.recipient_name}
+                        onChange={this.handleRecipientNameChange}
                         margin="normal"
                     />
                 </div>
@@ -138,14 +138,14 @@ export { BasicInfoComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz } = state;
-    const { recepient_options, recepient_relations, taker_name, recepient_name, sexuality, sexuality_options } = quiz;
+    const { recipient_options, recipient_relations, taker_name, recipient_name, sexuality, sexuality_options } = quiz;
 
     return {
       ...ownProps,
-      recepient_options,
-      recepient_relations,
+      recipient_options,
+      recipient_relations,
       taker_name,
-      recepient_name,
+      recipient_name,
       sexuality,
       sexuality_options,
     };
@@ -154,6 +154,6 @@ const mapStateToProps = (state, ownProps) => {
 export const BasicInfo = connect(mapStateToProps, {
     change_relations,
     change_taker_name,
-    change_recepient_name,
+    change_recipient_name,
     change_sexuality,
 })(BasicInfoComponent);

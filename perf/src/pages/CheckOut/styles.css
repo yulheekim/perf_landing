@@ -1,0 +1,75 @@
+section {
+  width: 100%;
+}
+.leftBox {
+    width: 50%;
+    height: 100%;
+    float: left;
+}
+.rightBox {
+    width: 50%;
+    height: 100%;
+    float: right;
+    display: flex;
+    flex-direction: column;
+}
+.imgContainer {
+    margin: auto 1rem auto 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.imgContainer img{
+    width: 20rem;
+    height: 20rem;
+    border: solid grey;
+    margin-right: 1rem;
+}
+
+.otherImgs {
+    display: flex;
+    flex-direction: column;
+}
+.otherImgs img{
+    width: 7rem;
+    height: 7rem;
+    border: solid grey;
+    margin-bottom: 0.5rem;
+}
+.perfumeInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title {
+    width: 80%;
+    font-size: 32px;
+    line-height: 4rem;
+}
+.description {
+    width: 80%;
+    font-size: 20px;
+    line-height: 2rem;
+}
+.showMessage {
+    margin-top: 4rem;
+    width: 80%;
+}
+.hideMessage {
+    display: none;
+}
+.wordCountBad {
+    display: inline-flex;
+    justify-content: flex-end;
+    color: red;
+}
+.wordCountGood {
+    display: inline-flex;
+    justify-content: flex-end;
+}
+.checkOutButton {
+    display: inline-flex;
+    justify-content: flex-end;
+    margin-top: 3rem;
+}

@@ -1,3 +1,45 @@
 section {
-    height: 100vh;
+    height: 87vh;
+    margin-top: 13vh;
+    overflow: hidden;
+}
+.textContainer {
+    width: auto;
+    font-size: 32px;
+    text-align: center;
+    padding: 5vh;
+}
+#distilling {
+    margin: 0%;
+}
+
+.wait {
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    margin: 4rem auto;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.distillGif {
+    position: absolute;
+    top: 127%;
+}
+
+.showDown {
+    margin: 0% auto;
+}
+.hideDown {
+    display: none;
+}
+.hideVis {
+    visibility: hidden;
+}
+.linkToCheckout {
+    width: 100%;
+    text-align: center;
 }

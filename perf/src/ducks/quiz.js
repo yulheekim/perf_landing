@@ -5,7 +5,10 @@ import APIConfig from '../config/api';
 const quizAPIRoot = `${APIConfig.apiroot}/quiz`;
 
 //Action Types
-export const CHANGE_RECEPIENT_NAME = "perf/quiz/CHANGE_RECEPIENT_NAME";
+export const CHANGE_BOTTLE = "perf/checkout/CHANGE_BOTTLE";
+export const CHANGE_IMAGE = "perf/checkout/CHANGE_IMAGE";
+export const CHANGE_MESSAGE = "perf/checkout/CHANGE_MESSAGE";
+export const CHANGE_RECIPIENT_NAME = "perf/quiz/CHANGE_RECIPIENT_NAME";
 export const CHANGE_RELATIONS = "perf/quiz/CHANGE_RELATIONS";
 export const CHANGE_SEXUALITY = "perf/quiz/CHANGE_SEXUALITY";
 export const CHANGE_TAKER_NAME = "perf/quiz/CHANGE_TAKER_NAME";
@@ -14,24 +17,36 @@ export const LOAD_QUIZ = "perf/quiz/LOAD_QUIZ";
 export const LOAD_QUIZ_FAILURE = "perf/quiz/LOAD_QUIZ_FAILURE";
 export const LOAD_QUIZ_SUCCESS = "perf/quiz/LOAD_QUIZ_SUCCESS";
 export const REVEAL_CARD = "perf/quiz/REVEAL_CARD";
+export const START_DISTILLING = 'perf/quiz/START_DISTILLING';
 export const START_OVER= 'perf/quiz/START_OVER';
 
-// The options are hardcoded for now but will be from the server as soon as server supports it,
-// projected tobe wednesday
+
+// The options and results are hardcoded for now but will be from the server as soon as server supports them
 const INITIAL_STATE = {
     activeStep: 0,
     answers: [-1, -1, -1, -1, -1, -1, -1],
     error_message: "",
     quiz_name: "",
-    recepient_options: ["you", "your friend", "your parent", "your sibling", "significant other"],
-    recepient_relations: 0,
+    recipient_options: ["you", "your friend", "your parent", "your sibling", "significant other"],
+    recipient_relations: 0,
     taker_name: "",
-    recepient_name: "",
+    recipient_name: "",
     sexuality: "",
     sexuality_options: ["Masculine", "Somewhat Masculine", "Unisex", "Somewhat Feminine", "Feminine"],
     questions: [],
-    result_cards: ["What is up bois", "This is Mark", "JUNG"],
+    result_cards: [["Navigator", "this is a short description for Naviagator", "http://www.bandt.com.au/information/uploads/2018/01/Compass-1260x840.png"],
+                  ["Innovator", "this is a short description for Innovator", "https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/publications/pharmaceutical-science/in-pharmatechnologist.com/article/2018/05/16/experts-warn-if-europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries/8201005-1-eng-GB/Experts-warn-If-Europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries_wrbm_large.jpg"],
+                  ["Mediator", "this is a short description for Mediator", "https://i.amz.mshcdn.com/anNMhqPi83FtPO7tiOCrSrm1__4=/1200x627/2015%2F07%2F08%2F48%2Fthreedogsth.8e48d.jpg"]],
     reveal_cards: [false, false, false],
+    result_title: "#22 Bergamot",
+    bottle_imgs: [['sample_card_img0', 'sample_card_img1', 'sample_card_img2'],
+                  ['10mL_roll_on_img0', '10mL_roll_on_img1', '10mL_roll_on_img2'],
+                  ['15mL_spray_img0', '15mL_spray_img1', '15mL_spray_img2']],
+    bottle_opt: 0,
+    img_opt: 0,
+    bottle_types: ['Sample Card', '10mL Roll On', '15mL Spray'],
+    message: "",
+    isDistilling: false,
 };
 
 //Reducers
@@ -64,7 +79,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                 error_message: ""
             }
 
-            
+
         case LOAD_QUIZ_FAILURE:
             /*
             if the quiz load fails, need to lead them to a 500 page.
@@ -76,12 +91,12 @@ export default function reducer(state = INITIAL_STATE, action) {
         case CHANGE_RELATIONS:
             return {
                 ...state,
-                recepient_relations: action.payload
+                recipient_relations: action.payload
             }
-        case CHANGE_RECEPIENT_NAME:
+        case CHANGE_RECIPIENT_NAME:
             return {
                 ...state,
-                recepient_name: action.payload
+                recipient_name: action.payload
             }
         case CHANGE_TAKER_NAME:
             return {
@@ -93,6 +108,22 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 sexuality: action.payload
             }
+        case CHANGE_MESSAGE:
+            return {
+                ...state,
+                message: action.payload,
+            }
+        case CHANGE_BOTTLE:
+            return {
+                ...state,
+                bottle_opt: action.payload,
+                img_opt: 0,
+            }
+        case CHANGE_IMAGE:
+            return {
+                ...state,
+                img_opt: action.payload,
+            }
         case REVEAL_CARD:
             var new_reveal_cards = state.reveal_cards.slice()
             new_reveal_cards[action.payload] = true;
@@ -100,13 +131,18 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 reveal_cards: new_reveal_cards,
             }
-
+        case START_DISTILLING:
+            return {
+                ...state,
+                isDistilling: !state.isDistilling,
+            }
         default:
             return {
                 ...state
             }
     }
 }
+
 
 //Action Creators
 export const handle_next = (opt_selected) => {
@@ -167,10 +203,10 @@ export const change_taker_name = (name) => {
     }
 }
 
-export const change_recepient_name = (name) => {
+export const change_recipient_name = (name) => {
     return (dispatch) => {
         dispatch({
-            type: CHANGE_RECEPIENT_NAME,
+            type: CHANGE_RECIPIENT_NAME,
             payload: name
         })
     }
@@ -185,6 +221,32 @@ export const change_sexuality = (value) => {
     }
 }
 
+export const change_message = (message) => {
+
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_MESSAGE,
+            payload: message,
+        })
+    };
+}
+export const change_bottle = (id) => {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_BOTTLE,
+            payload: id,
+        })
+    };
+}
+export const change_image = (id) => {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_IMAGE,
+            payload: id,
+        })
+    };
+}
+
 export const reveal_card = (index) => {
     return (dispatch) => {
         dispatch({
@@ -192,4 +254,12 @@ export const reveal_card = (index) => {
             payload: index
         })
     }
-} 
+}
+
+export const start_distilling = () => {
+    return (dispatch) => {
+        dispatch({
+            type: START_DISTILLING,
+        })
+    }
+}

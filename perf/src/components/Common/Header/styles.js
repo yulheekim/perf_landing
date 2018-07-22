@@ -3,9 +3,9 @@ export default {
         bmBurgerButton: {
             position: 'fixed',
             width: '36px',
-            height: '30px',
+            height: '4%',
             left: '36px',
-            top: '36px',
+            top: '5%',
             color: 'white'
         },
         bmBurgerBars: {

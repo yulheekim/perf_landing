@@ -15,7 +15,7 @@
   transition: opacity .3s;
   -webkit-animation: sdb04 2s infinite;
   animation: sdb04 2s infinite;
-  margin: 3% auto auto auto;
+  margin: 4vh auto auto auto;
 }
 
 .downIcon {

@@ -5,6 +5,7 @@ import {
   ChooseQuiz,
   NoMatch,
   Quiz,
+  CheckOut,
   QuizResult,
 } from '../pages';
 
@@ -14,6 +15,7 @@ const AppNavigator = () => (
         <Route exact path="/" component={Landing} />
         <Route exact path="/choose" component={ChooseQuiz} />
         <Route exact path="/quiz" component={Quiz} />
+        <Route exact path="/checkout" component={CheckOut} />
         <Route exact path="/result" component={QuizResult} />
         <Route component={NoMatch} />
       </Switch>

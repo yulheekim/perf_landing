@@ -4,7 +4,7 @@ import { injectStripe } from 'react-stripe-elements';
 import StripeCheckout from 'react-stripe-checkout';
 import APIConfig from '../../../config/api';
 
-class CheckOutComponent extends Component {
+class CheckOutButtonComponent extends Component {
   onToken = (token) => {
     fetch('/save-stripe-token', {
       method: 'POST',
@@ -24,9 +24,10 @@ class CheckOutComponent extends Component {
               shippingAddress
               billingAddress={true}
               zipCode={true}
+              className="stripeButton"
           />
       );
   }
 }
 
-export const CheckOut = injectStripe(CheckOutComponent);
+export const CheckOutButton = injectStripe(CheckOutButtonComponent);
