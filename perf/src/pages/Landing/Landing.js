@@ -5,6 +5,7 @@ import {
   WhyPerf,
   First,
   Reviews,
+  Header,
 } from '../../components';
 
 import styles from './styles';
@@ -18,6 +19,7 @@ class LandingComponent extends Component {
   render() {
     return (
       <div style={landingStyle}>
+        <Header />
         <First />
         <WhyPerf />
         <Reviews />

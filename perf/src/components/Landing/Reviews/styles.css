@@ -1,3 +1,9 @@
-.section {
+.reviewSection {
     height: 100vh;
+    margin-top: 13vh;
+    padding-top: 8vh;
+}
+
+.description {
+    margin: auto;
 }

@@ -1,7 +1,7 @@
 
 .getStarted {
     margin-top: 10%;
-    margin-bottom: 9%;
+    margin-bottom: 13%;
 }
 .quizLink {
     text-decoration: none;
@@ -14,10 +14,10 @@
 .downIcon {
     font-size: 10rem;
 }
-.section {
+.firstSection {
     width: 100%;
-    height: 100vh;
-    margin: 0;
+    height: 87vh;
+    margin-top: 8vh;
 }
 
 @media only screen and (max-device-width: 480px) {

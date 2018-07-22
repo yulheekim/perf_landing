@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-    Header,
     ScrollDown,
     OneLiner,
 } from '../../Common';
@@ -12,8 +11,7 @@ import './styles.css';
 
 const First = () => {
     return (
-        <section className="section" id="first">
-            <Header />
+        <section className="firstSection" id="first">
             <OneLiner message="Personalized Fragrance Designed by You" />
 
             <div className="getStarted">

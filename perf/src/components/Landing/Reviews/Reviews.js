@@ -44,7 +44,7 @@ class ReviewsComponent extends Component {
     
     render() {
         return (
-            <section id="reviews" className="section">
+            <section id="reviews" className="reviewSection">
                 <OneLiner message="Proudly made by Perf" />
                 {this.slider()}
                 <div className="description">

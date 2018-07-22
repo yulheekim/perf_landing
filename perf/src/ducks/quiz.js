@@ -47,6 +47,7 @@ const INITIAL_STATE = {
     bottle_types: ['Sample Card', '10mL Roll On', '15mL Spray'],
     message: "",
     isDistilling: false,
+    amount: 10,
 };
 
 //Reducers
