@@ -21,7 +21,8 @@ export default {
         bmMenu: {
             background: '#36384c',
             padding: '2.5em 1.5em 0',
-            fontSize: '1.15em'
+            fontSize: '1.15em',
+            overflow: 'hidden',
         },
         bmMorphShape: {
             fill: '#373a47'

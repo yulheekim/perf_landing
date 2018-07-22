@@ -1,7 +1,7 @@
 .oneliner {
     width: 70%;
     font-size: 4.5rem;
-    margin: 3rem auto 3rem auto;
+    margin: 6rem auto 3rem auto;
 }
 @media only screen and (max-device-width: 480px) {
     .oneliner {
