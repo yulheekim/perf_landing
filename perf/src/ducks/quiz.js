@@ -33,7 +33,60 @@ const INITIAL_STATE = {
     recipient_name: "",
     sexuality: "",
     sexuality_options: ["Masculine", "Somewhat Masculine", "Unisex", "Somewhat Feminine", "Feminine"],
-    questions: [],
+    questions: [{
+        "id": 0,
+        "question_text": "",
+        "cards": [
+            {
+                "id": 29,
+                "description": "window",
+                "img_lnk": "",
+                "sexuality": 0,
+                "personality": 0,
+                "occasion": 2,
+                "strength": 0,
+                "primary": "",
+                "secondary": "",
+                "tertiary": ""
+            },
+            {
+                "id": 30,
+                "description": "middle",
+                "img_lnk": "",
+                "sexuality": 0,
+                "personality": 2,
+                "occasion": 0,
+                "strength": 0,
+                "primary": "",
+                "secondary": "",
+                "tertiary": ""
+            },
+            {
+                "id": 31,
+                "description": "corner",
+                "img_lnk": "",
+                "sexuality": 0,
+                "personality": -2,
+                "occasion": 0,
+                "strength": 0,
+                "primary": "",
+                "secondary": "",
+                "tertiary": ""
+            },
+            {
+                "id": 32,
+                "description": "terrace",
+                "img_lnk": "",
+                "sexuality": 0,
+                "personality": 1,
+                "occasion": -2,
+                "strength": 0,
+                "primary": "",
+                "secondary": "",
+                "tertiary": ""
+            }
+        ]
+    },],
     result_cards: [["Navigator", "this is a short description for Naviagator", "http://www.bandt.com.au/information/uploads/2018/01/Compass-1260x840.png"],
                   ["Innovator", "this is a short description for Innovator", "https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/publications/pharmaceutical-science/in-pharmatechnologist.com/article/2018/05/16/experts-warn-if-europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries/8201005-1-eng-GB/Experts-warn-If-Europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries_wrbm_large.jpg"],
                   ["Mediator", "this is a short description for Mediator", "https://i.amz.mshcdn.com/anNMhqPi83FtPO7tiOCrSrm1__4=/1200x627/2015%2F07%2F08%2F48%2Fthreedogsth.8e48d.jpg"]],
@@ -174,6 +227,7 @@ export const load_quiz = (whereto) => {
 }
 
 export const load_quiz_success = (dispatch, response) => {
+    console.log(response.data.response);
     dispatch({
         type: LOAD_QUIZ_SUCCESS,
         payload: response.data.response,

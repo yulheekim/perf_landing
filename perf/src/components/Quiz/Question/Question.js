@@ -62,12 +62,11 @@ class QuestionComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { quiz } = state;
-  const { activeStep, answers, questions } = quiz;
+  const { activeStep, answers } = quiz;
   return {
     ...ownProps,
     activeStep,
     answers,
-    questions,
   };
 }
 

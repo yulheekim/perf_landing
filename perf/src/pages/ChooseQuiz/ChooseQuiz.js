@@ -1,14 +1,11 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import {
-} from '../../components';
-import './styles.css';
-import { 
   load_quiz
 } from '../../ducks/quiz';
-
+import './styles.css';
 
 class ChooseQuizComponent extends Component {
   gotoQuiz = (whereto) => {
@@ -30,7 +27,7 @@ class ChooseQuizComponent extends Component {
       )
     }
 
-    
+
     return (
       <div className="choosequizStyle">
         <div onClick={()=>this.gotoQuiz("dinner")}>

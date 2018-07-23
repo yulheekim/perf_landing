@@ -1,12 +1,12 @@
-import React from 'react';
-import {
-    ScrollDown,
-    OneLiner,
-} from '../../Common';
-import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import './styles.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
+import {
+    OneLiner,
+    ScrollDown,
+} from '../../Common';
+import './styles.css';
 
 
 const First = () => {
@@ -15,7 +15,7 @@ const First = () => {
             <OneLiner message="Personalized Fragrance Designed by You" />
 
             <div className="getStarted">
-                <Link className="quizLink" to="choose" >
+                <Link to="quiz" className="quizLink" >
                     <Button className="quizButton" variant="contained" size="large">
                         Get Started!
                     </Button>
@@ -24,7 +24,7 @@ const First = () => {
 
             <ScrollDown message="Learn More" moveto="whyperf" />
         </section>
-    )
+    ) 
 }
 
-export { First }
+export { First };

@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import CoverFlow from 'coverflow-react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
 
-import './styles.css';
 import {
-  OneLiner
-} from '../../Common';
-import { 
-    update_slider_desc 
+    update_slider_desc
 } from '../../../ducks/landing';
+import {
+    OneLiner
+} from '../../Common';
+import './styles.css';
 
 var cats = [
     'https://i.kym-cdn.com/entries/icons/square/000/002/232/bullet_cat.jpg',
@@ -22,22 +22,17 @@ var cats = [
 
 
 class ReviewsComponent extends Component {
-    componentWillMount = () => {
-        /*
-        Need to call for the reviews information
-        */
-    };
     handleSelect = (index) => {
         this.props.update_slider_desc(index);
     }
 
     slider = () => {
         return (
-                <CoverFlow 
-                    imagesArr={cats} 
+                <CoverFlow
+                    imagesArr={cats}
                     handleSelect={(index)=>this.handleSelect(index)}
                     background="white"
-                    
+
                 />
         )
     };
@@ -51,7 +46,7 @@ class ReviewsComponent extends Component {
                     {this.props.currentSlider}
                 </div>
                 <div className="getStarted">
-                    <Link className="quizLink" to="choose" >
+                    <Link to="quiz" className="quizLink">
                         <Button className="quizButton" variant="contained" size="large">
                             Get Started!
                         </Button>
@@ -64,13 +59,13 @@ class ReviewsComponent extends Component {
 const mapStateToProps = (state, ownProps) => {
     const { landing } = state;
     const { reviews, currentSlider } = landing;
-  return {
-    ...ownProps,
-    reviews,
-    currentSlider,
-  };
+    return {
+      ...ownProps,
+      reviews,
+      currentSlider,
+    };
 }
 
 export const Reviews = connect(mapStateToProps, {
-    update_slider_desc
+    update_slider_desc,
 })(ReviewsComponent);

@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import React, { Component } from 'react';
 
 import {
-  WhyPerf,
   First,
-  Reviews,
   Header,
+  Reviews,
+  WhyPerf,
 } from '../../components';
-
 import styles from './styles';
 
 const {
@@ -15,6 +14,9 @@ const {
 } = styles
 
 class LandingComponent extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   render() {
     return (

@@ -1,7 +1,7 @@
 
 .getStarted {
-    margin-top: 10%;
-    margin-bottom: 13%;
+    margin-top: 10vh;
+    margin-bottom: 13vh;
 }
 .quizLink {
     text-decoration: none;
@@ -17,7 +17,7 @@
 .firstSection {
     width: 100%;
     height: 87vh;
-    margin-top: 8vh;
+    margin-top: 13vh;
 }
 
 @media only screen and (max-device-width: 480px) {

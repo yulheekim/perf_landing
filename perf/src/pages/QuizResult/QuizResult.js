@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TrackVisibility from 'react-on-screen';
 
@@ -20,7 +20,9 @@ import './styles.css';
 
 
 class QuizResultComponent extends Component {
-
+    componentDidMount() {
+          window.scrollTo(0, 0);
+    }
     disableScrolling = () => {
         var x=window.scrollX;
         var y=window.scrollY;
