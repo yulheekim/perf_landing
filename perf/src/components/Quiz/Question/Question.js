@@ -14,7 +14,7 @@ import './styles.css';
 
 class QuestionComponent extends Component {
 
-    componentWillUnmount() {
+    componentWillMount() {
         this.props.start_over();
     }
 

@@ -25,9 +25,6 @@ class QuizResultComponent extends Component {
          window.scrollTo(0, 0);
     }
 
-    shown = () => {
-        this.props.start_distilling();
-    }
     render() {
         if (this.props.isDistilling) {
             return(

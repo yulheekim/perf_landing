@@ -19,14 +19,6 @@ import {
 
 class BasicInfoComponent extends Component {
 
-    componentDidMount () {
-        /*
-        load needed infos
-        1. gift options
-        2. sexuality options
-        */
-    }
-
     recipient = () => {
         return (
             <Select
