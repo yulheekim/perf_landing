@@ -258,7 +258,7 @@
   .descShow {
       width: 100%;
       color: white;
-      height: 27vh;
+      height: 17vh;
       margin-top: 13vh;
   }
   .descShowSection {
@@ -269,14 +269,17 @@
       z-index: 5;
       height: 100vh;
       margin-top: 13vh;
+      padding-top: 13vh;
   }
 
   .descHideSection {
+      margin-top: 13vh;
+      padding-top: 8vh;
       height: 100vh;
       display: flex;
       flex-direction: column;
   }
   .descHide {
-    height: 40vh;
+    height: 30vh;
   }
 }

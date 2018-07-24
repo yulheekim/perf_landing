@@ -6,6 +6,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './styles.css';
+import {  
+    ScrollDown
+} from '../../../components';
 import {
     change_relations,
     change_taker_name,
@@ -98,6 +101,13 @@ class BasicInfoComponent extends Component {
     }
 
     render() {
+        var done = false;
+        if ((this.props.taker_name !== "") && 
+        ((this.props.recipient_relations > 0 && this.props.recipient_name !== "") || (this.props.recipient_relations === 0)) && 
+        (this.props.sexuality !== "") && 
+        (this.props.questions[0].question_text !== "") ){
+            done = true;
+        }
 
         return (
             <section>
@@ -129,6 +139,9 @@ class BasicInfoComponent extends Component {
                         {this.sexualityPicker()}
                     </div>
                 </div>
+                <div className={done ? "showDown" : "hideDown"} >
+                    <ScrollDown message="Proceed on to the quiz!" moveto="questions"/>
+                </div>
             </section>
         );
     }
@@ -138,7 +151,7 @@ export { BasicInfoComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz } = state;
-    const { recipient_options, recipient_relations, taker_name, recipient_name, sexuality, sexuality_options } = quiz;
+    const { recipient_options, recipient_relations, taker_name, recipient_name, sexuality, sexuality_options, questions } = quiz;
 
     return {
       ...ownProps,
@@ -148,6 +161,7 @@ const mapStateToProps = (state, ownProps) => {
       recipient_name,
       sexuality,
       sexuality_options,
+      questions
     };
 };
 

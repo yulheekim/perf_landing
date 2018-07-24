@@ -227,7 +227,6 @@ export const load_quiz = (whereto) => {
 }
 
 export const load_quiz_success = (dispatch, response) => {
-    console.log(response.data.response);
     dispatch({
         type: LOAD_QUIZ_SUCCESS,
         payload: response.data.response,

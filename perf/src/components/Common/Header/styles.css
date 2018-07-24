@@ -11,7 +11,14 @@
 .perf-logo {
   height: 70%;
   display: inline-block;
-  margin:0 auto;
-  margin-top: 1%;
-  margin-bottom: 1%;
+  margin: 2vh auto;
+}
+
+.perf-link {
+  margin: 2vh auto;
+
+}
+
+.menuItemText {
+  margin-left: 4vh;
 }
