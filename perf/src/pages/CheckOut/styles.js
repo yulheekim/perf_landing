@@ -1,7 +1,10 @@
 export default {
-    bottleButton: {
+    sampleButton: {
         textTransform: 'none',
         margin: '0.5rem',
-        width: '80%',
+        width: '12rem',
+    },
+    stateDropdown: {
+        width: '15%'
     }
 }

@@ -55,3 +55,10 @@
     align-content: center;
     flex-direction: row;
 }
+
+.showDown {
+    margin: 0% auto;
+}
+.hideDown {
+    display: none;
+}

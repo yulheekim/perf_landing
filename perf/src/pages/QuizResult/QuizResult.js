@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import ScrollLock from 'react-scroll-lock-component';
 import TrackVisibility from 'react-on-screen';
 
 import  distill  from '../../assets/result/distill.gif'
@@ -21,24 +22,10 @@ import './styles.css';
 
 class QuizResultComponent extends Component {
     componentDidMount() {
-          window.scrollTo(0, 0);
-    }
-    disableScrolling = () => {
-        var x=window.scrollX;
-        var y=window.scrollY;
-        window.onscroll=function(){window.scrollTo(x, y);};
+         window.scrollTo(0, 0);
     }
 
-    enableScrolling = () => {
-        window.onscroll=function(){};
-    }
-
-    shown = () => {
-        console.log("yoyo wassup")
-        this.props.start_distilling();
-    }
     render() {
-        (this.props.reveal_cards.every((x) => x===true)) ? this.enableScrolling() : this.disableScrolling();
         if (this.props.isDistilling) {
             return(
                 <Redirect to="checkout" />
@@ -47,7 +34,9 @@ class QuizResultComponent extends Component {
         return (
             <div>
                 <Header />
+                <ScrollLock>
                 <section>
+
                     <div className="textContainer">
                         We have found your three scent profiles!
                     </div>
@@ -60,7 +49,8 @@ class QuizResultComponent extends Component {
                         <ScrollDown message="Meet your fragrance" moveto="distilling"/>
                     </div>
                 </section>
-
+                </ScrollLock>
+                <ScrollLock>
                 <section id="distilling">
                     <div className="textContainer">
                         Distilling a perf fragrance for you...
@@ -76,8 +66,8 @@ class QuizResultComponent extends Component {
                             <br/>Click here if the page does not automatically redirect in 3 seconds
                         </Link>
                     </div>
-
-              </section>
+                </section>
+                </ScrollLock>
             </div>
         );
     }

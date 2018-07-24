@@ -5,9 +5,6 @@ import APIConfig from '../config/api';
 const quizAPIRoot = `${APIConfig.apiroot}/quiz`;
 
 //Action Types
-export const CHANGE_BOTTLE = "perf/checkout/CHANGE_BOTTLE";
-export const CHANGE_IMAGE = "perf/checkout/CHANGE_IMAGE";
-export const CHANGE_MESSAGE = "perf/checkout/CHANGE_MESSAGE";
 export const CHANGE_RECIPIENT_NAME = "perf/quiz/CHANGE_RECIPIENT_NAME";
 export const CHANGE_RELATIONS = "perf/quiz/CHANGE_RELATIONS";
 export const CHANGE_SEXUALITY = "perf/quiz/CHANGE_SEXUALITY";
@@ -57,13 +54,6 @@ const INITIAL_STATE = {
                   ["Mediator", "this is a short description for Mediator", "https://i.amz.mshcdn.com/anNMhqPi83FtPO7tiOCrSrm1__4=/1200x627/2015%2F07%2F08%2F48%2Fthreedogsth.8e48d.jpg"]],
     reveal_cards: [false, false, false],
     result_title: "#22 Bergamot",
-    bottle_imgs: [['sample_card_img0', 'sample_card_img1', 'sample_card_img2'],
-                  ['10mL_roll_on_img0', '10mL_roll_on_img1', '10mL_roll_on_img2'],
-                  ['15mL_spray_img0', '15mL_spray_img1', '15mL_spray_img2']],
-    bottle_opt: 0,
-    img_opt: 0,
-    bottle_types: ['Sample Card', '10mL Roll On', '15mL Spray'],
-    message: "",
     isDistilling: false,
     amount: 10,
 };
@@ -127,22 +117,6 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 sexuality: action.payload
             }
-        case CHANGE_MESSAGE:
-            return {
-                ...state,
-                message: action.payload,
-            }
-        case CHANGE_BOTTLE:
-            return {
-                ...state,
-                bottle_opt: action.payload,
-                img_opt: 0,
-            }
-        case CHANGE_IMAGE:
-            return {
-                ...state,
-                img_opt: action.payload,
-            }
         case REVEAL_CARD:
             var new_reveal_cards = state.reveal_cards.slice()
             new_reveal_cards[action.payload] = true;
@@ -192,7 +166,6 @@ export const load_quiz = (whereto) => {
 }
 
 export const load_quiz_success = (dispatch, response) => {
-    console.log(response.data.response);
     dispatch({
         type: LOAD_QUIZ_SUCCESS,
         payload: response.data.response,
@@ -241,31 +214,7 @@ export const change_sexuality = (value) => {
     }
 }
 
-export const change_message = (message) => {
 
-    return (dispatch) => {
-        dispatch({
-            type: CHANGE_MESSAGE,
-            payload: message,
-        })
-    };
-}
-export const change_bottle = (id) => {
-    return (dispatch) => {
-        dispatch({
-            type: CHANGE_BOTTLE,
-            payload: id,
-        })
-    };
-}
-export const change_image = (id) => {
-    return (dispatch) => {
-        dispatch({
-            type: CHANGE_IMAGE,
-            payload: id,
-        })
-    };
-}
 
 export const reveal_card = (index) => {
     return (dispatch) => {

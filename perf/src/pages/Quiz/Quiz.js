@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import ScrollLock from 'react-scroll-lock-component';
 
 import {
   BasicInfo,
@@ -30,7 +30,9 @@ class QuizComponent extends Component {
       return (
           <div className="quizStyle">
               <Header />
-              <BasicInfo />
+              <ScrollLock>
+                <BasicInfo />
+              </ScrollLock>
               <Question questions={this.props.questions}/>
           </div>
       );
