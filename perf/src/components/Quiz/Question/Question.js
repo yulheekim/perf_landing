@@ -14,7 +14,7 @@ import './styles.css';
 
 class QuestionComponent extends Component {
 
-    componentWillUnmount() {
+    componentWillMount() {
         this.props.start_over();
     }
 
@@ -22,6 +22,7 @@ class QuestionComponent extends Component {
         return _.map(this.props.questions[this.props.activeStep].cards, (item, index)=> {
             return (
                 <div className="option" onClick={() => this.props.handle_next(index)} key={index}>
+                    <img className="optionImages" src={item.img_lnk} />
                     {item.description}
                 </div>
             )

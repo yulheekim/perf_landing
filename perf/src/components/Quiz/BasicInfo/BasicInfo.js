@@ -98,20 +98,32 @@ class BasicInfoComponent extends Component {
     }
 
     render() {
-
+        const style = {
+            userTextbox: {
+                textAlign: 'center',
+                color: 'red'
+            }, 
+            inputBox: {
+                marginLeft: '10px'
+            }
+        }
         return (
-            <section>
-                <div>
-                    Help us learn more about {this.recipient()}
+            <section className="basicinfo">
+                <div className="inputWrapper">
+                    Help us learn more about
+                    <div className="inputBox">
+                        {this.recipient()}
+                    </div>
                 </div>
-                <div>
-                    This perfume will be designed by
-                    <TextField
-                        label="Quiz Taker's Name"
-                        value={this.props.taker_name}
-                        onChange={this.handleTakerNameChange}
-                        margin="normal"
-                    />
+                <div> 
+                        This perfume will be designed by
+                        <TextField
+                            label="Quiz Taker's Name"
+                            value={this.props.taker_name}
+                            onChange={this.handleTakerNameChange}
+                            margin="normal"
+                            className="inputBox"
+                        />
                 </div>
                 <div className={(this.props.recipient_relations > 0) ? "showFor" :"hideFor"}>
                     for
@@ -120,11 +132,14 @@ class BasicInfoComponent extends Component {
                         value={this.props.recipient_name}
                         onChange={this.handleRecipientNameChange}
                         margin="normal"
+                        className="inputBox"
                     />
                 </div>
                 <div className="sexualityPicker">
                     Which way do you want this scent lean to?
-                    {this.props.sexuality}
+                    <div className="sexualityItem">
+                        {this.props.sexuality}
+                    </div>
                     <div className="radios">
                         {this.sexualityPicker()}
                     </div>

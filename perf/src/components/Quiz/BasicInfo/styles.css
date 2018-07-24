@@ -1,5 +1,4 @@
 .showFor {
-
 }
 
 .hideFor {
@@ -17,6 +16,8 @@
 .sexualityPicker {
     display: flex;
     flex-direction: column;
+    line-height: 3vh;
+    margin-top: 3vh;
 }
 .sexualityRadio {
     display: flex;
@@ -27,5 +28,30 @@
 
 .radios {
     display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.basicinfo {
+    margin-top: 38vh !important;
+    line-height: 5vh;
+}
+
+.sexualityItem {
+    color: red;
+    font-size: 30
+}
+
+/* .basicinfo TextField {
+    margin-left: 5px;
+} */
+
+.inputBox {
+    margin-left: 10px !important;
+} 
+.inputWrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
     flex-direction: row;
 }
