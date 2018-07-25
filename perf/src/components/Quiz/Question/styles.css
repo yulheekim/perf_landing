@@ -1,3 +1,7 @@
+#questions {
+  padding-top: 22vh !important;
+}
+
 .question {
   font-size: 32px;
 }
@@ -5,6 +9,7 @@
 .optionsContainer {
   display: flex;
   justify-content: center;
+  margin: auto;
 }
 
 .option {
@@ -16,19 +21,71 @@
 }
 
 .option img {
-  width: 15rem;
-  height: 15rem;
-
+  width: 15vw;
+  height: 15vw;
 }
 
 .progressBarContainer {
   justify-content: center;
   background-color: #fafafa;
-  width: 90vh;
-  margin: 5rem auto auto auto;
-
+  width: 80vw;
+  margin: auto;
 }
 
 .progressBar {
   justify-content: center !important;
+  margin: 0 7vw;
+  width: 80vw;
+  margin: 0 0;
+}
+
+@media only screen and (max-width: 900px) {
+  #questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 4vh !important;
+  }
+
+  .optionsContainer {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    margin: 1vh auto;
+    flex-wrap: wrap;
+  }
+
+  .option img {
+    width: 35vw;
+    height: 35vw;
+  }
+
+  .option {
+    word-wrap: break-word;
+    width: 35vw;
+  }
+
+}
+
+@media only screen and (max-width: 400px) {
+  #questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 4vh !important;
+  }
+
+  .optionsContainer {
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    margin: 1vh auto;
+    flex-wrap: wrap;
+  }
+
+  .option img {
+    width: 30vw;
+    height: 30vw;
+  }
+
 }
