@@ -1,9 +1,22 @@
 .reviewSection {
     height: 87vh;
-    margin-top: 13vh;
-    padding-top: 8vh;
+    padding-top: 13vh;
 }
 
 .description {
     margin: auto;
+}
+
+.getStarted2 {
+    margin-top: 10vh;
+    margin-bottom: 13vh;
+}
+.coverflowConatiner {
+    margin-top: 5vh;
+}
+@media only screen and (max-device-width: 480px) {
+    /*iPhone 5*/
+    .coverflowConatiner {
+        margin-top: 0vh;
+    }
 }
