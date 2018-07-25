@@ -6,6 +6,11 @@ section {
   width: 100%;
 }
 
+.basicInfo {
+  width: 90vw !important;
+  margin: 0 auto !important;
+}
+
 .optionImages {
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
