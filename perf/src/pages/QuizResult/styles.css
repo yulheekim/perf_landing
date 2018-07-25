@@ -1,6 +1,6 @@
 section {
     height: 87vh;
-    margin-top: 13vh;
+    padding-top: 13vh;
     overflow: hidden;
 }
 .textContainer {
@@ -14,7 +14,7 @@ section {
 }
 
 .wait {
-    width: 50%;
+    width: 60%;
     height: 50%;
     align-items: center;
     vertical-align: middle;
@@ -27,7 +27,7 @@ section {
 }
 .distillGif {
     position: absolute;
-    top: 127%;
+    top: 142%;
 }
 
 .showDown {
