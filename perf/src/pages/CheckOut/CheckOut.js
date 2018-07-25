@@ -72,7 +72,7 @@ class CheckOutComponent extends Component {
     populateDescriptions = () => {
         return _.map(this.props.result_cards, (item, index)=> {
             return (
-                <div className="description" key={index}>- {item[0]} : {item[1]}</div>
+                <div className="description" key={index}>- {item['name']} : {item['description']}</div>
             )
         })
     };
@@ -125,7 +125,7 @@ class CheckOutComponent extends Component {
     }
 
     render() {
-        if (this.props.answers.every((x)=>x === -1)) {
+        if (this.props.result_cards[0].name === "") {
             return (<Redirect to="quiz"/>)
         }
         return (
@@ -146,19 +146,39 @@ class CheckOutComponent extends Component {
                         </div>
                     </div>
 
-                    <div className="perfumeInfo">
-                        <div className="title">{this.props.result_title}</div>
-                        {this.populateDescriptions()}
-                    </div>
+                    {(window.innerWidth < 768) ?
+                        <div className="selectContainer">
+                            <Select
+                                onChange={this.handleBottleChange}
+                                value={this.props.current_bottle_index}
+                                fullWidth={true}
+                            >
+                            {this.bottleMenuItems()}
+                            </Select>
+                        </div>:
+                        <div className="perfumeInfo">
+                            <div className="title">{this.props.result_title}</div>
+                            {this.populateDescriptions()}
+                        </div>
+                    }
                 </div>
 
                 <div className="rightBox">
-                    <Select
-                        onChange={this.handleBottleChange}
-                        value={this.props.current_bottle_index}
-                    >
-                        {this.bottleMenuItems()}
-                    </Select>
+                    {(window.innerWidth < 768) ?
+                        <div className="perfumeInfo">
+                            <div className="title">{this.props.result_title}</div>
+                            {this.populateDescriptions()}
+                        </div>:
+                        <div className="selectContainer">
+                            <Select
+                                onChange={this.handleBottleChange}
+                                value={this.props.current_bottle_index}
+                                fullWidth={true}
+                            >
+                            {this.bottleMenuItems()}
+                            </Select>
+                        </div>
+                    }
                     {this.writeMessage()}
                     <div className="priceContainer">
                         <b>Order Summary</b><br/>
@@ -170,15 +190,16 @@ class CheckOutComponent extends Component {
                         </tbody></table>
                     </div>
                     {(this.props.current_bottle_index === 0) ?
-                        <div>
-                            <Button variant="contained" style={sampleButton} onClick={()=>this.props.toggle_modal()}>Get your sample now!</Button>
+                        <div className="checkOutButton">
+                            <Button variant="contained" color="primary" style={sampleButton} onClick={()=>this.props.toggle_modal()}>Get your sample now!</Button>
                             <Modal
                                 open={this.props.isOpen}
                                 onClose={this.props.toggle_modal}
                                 center
                                 classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}
                             >
-                                Email Address: <TextField required
+                                <h2>Contact and Shipping Information:</h2>
+                                Your Email Address: <TextField required
                                     label="Email Address"
                                     value={this.props.email}
                                     onChange={this.handleEmailChange}
@@ -214,8 +235,8 @@ class CheckOutComponent extends Component {
                                     value={this.props.zipcode}
                                     onChange={this.handleZipcodeChange}
                                     margin="normal"
-                                />
-                                <Link to="approve">
+                                /><br/>
+                                <Link to="approve" className="submitButton">
                                     <Button variant="contained" color="primary" >Submit</Button>
                                 </Link>
                             </Modal>

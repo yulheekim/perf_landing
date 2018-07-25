@@ -1,80 +1,19 @@
-section {
-  width: 100%;
-}
-.leftBox {
-    width: 50%;
-    height: 100%;
-    float: left;
-}
-.rightBox {
-    width: 50%;
-    height: 100%;
-    float: right;
-    display: flex;
-    flex-direction: column;
-}
 .imgContainer {
-    margin: 1rem;
+    margin: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.swiper{
-    width: 20rem;
-    height: 20rem;
-    border: solid grey;
-    margin-bottom: 1rem;
-}
-
 .otherImgs {
     display: flex;
     flex-direction: row;
 }
-.otherImgs img{
-    width: 7rem;
-    height: 7rem;
-    border: solid grey;
-    margin: 0 0.25rem 0 0.25rem;
-}
 .perfumeInfo {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
-.title {
-    width: 80%;
-    font-size: 32px;
-    line-height: 4rem;
-}
-.description {
-    width: 80%;
-    font-size: 20px;
-    line-height: 2rem;
-}
-.showMessage {
-    margin-top: 4rem;
-    width: 80%;
-}
-.hideMessage {
-    display: none;
-}
-.wordCountBad {
-    display: inline-flex;
-    justify-content: flex-end;
-    color: red;
-}
-.wordCountGood {
-    display: inline-flex;
-    justify-content: flex-end;
-}
-.priceContainer {
-    width: 60%;
-    padding: 1rem;
-    margin: 1rem auto 0rem auto;
-    background-color: lightgrey;
-    border-radius: 1rem;
-}
+
 .priceContainer td {
     padding-right: 2rem;
 }
@@ -87,13 +26,253 @@ table {
 .total {
     line-height: 2rem;
 }
-.checkOutButton {
+.wordCountBad {
     display: inline-flex;
     justify-content: flex-end;
-    margin-top: 3rem;
+    color: red;
+}
+.wordCountGood {
+    display: inline-flex;
+    justify-content: flex-end;
 }
 
 .custom-modal {
   max-width: 70%;
   width: 100%;
+}
+.submitButton {
+    width: 100%;
+    text-decoration: none;
+    display: inline-flex;
+    justify-content: flex-end;
+    margin-top: 3rem;
+    margin-right: 3rem;
+}
+
+@media only screen and (max-device-width: 768px) and (min-device-width: 481px) {
+  /* iPad */
+    #checkout {
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+    .leftBox {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+    .rightBox {
+        width: 50%;
+        height: 100%;
+        float: right;
+        display: flex;
+        flex-direction: column;
+    }
+    .swiper{
+        width: 20rem;
+        height: 20rem;
+        border: solid grey;
+        margin-bottom: 1rem;
+    }
+
+    .otherImgs img{
+        width: 7rem;
+        height: 7rem;
+        border: solid grey;
+        margin: 0 0.25rem 0 0.25rem;
+    }
+    .title {
+        font-size: 32px;
+        line-height: 4rem;
+        margin-left: 10%;
+    }
+    .description {
+        margin-left: 10%;
+        font-size: 20px;
+        line-height: 2rem;
+    }
+    .showMessage {
+        margin: 3rem auto 0rem auto;
+        width: 80%;
+    }
+    .hideMessage {
+        display: none;
+    }
+    .priceContainer {
+        width: 60%;
+        padding: 1rem;
+        margin: 1rem auto 0rem auto;
+        background-color: lightgrey;
+        border-radius: 1rem;
+    }
+    .checkOutButton {
+        width: 100%;
+        display: inline-flex;
+        justify-content: flex-end;
+        margin-top: 2rem;
+    }
+    .selectContainer {
+        width: 80%;
+        margin: 1rem auto 1rem auto;
+    }
+}
+@media only screen and (max-device-width: 480px) {
+    /* iPhone Plus, Pixel 2 (XL) */
+    #checkout {
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+    .swiper{
+        width: 20rem;
+        height: 20rem;
+        border: solid grey;
+        margin-bottom: 1rem;
+    }
+
+    .otherImgs img{
+        width: 7rem;
+        height: 7rem;
+        border: solid grey;
+        margin: 0 0.25rem 0 0.25rem;
+    }
+    .title {
+        width: 80%;
+        font-size: 26px;
+        line-height: 3rem;
+        margin-left: 7%;
+    }
+    .description {
+        width: 88%;
+        font-size: 18px;
+        line-height: 2rem;
+    }
+    .showMessage {
+        margin: 2rem auto 2rem auto;
+        width: 80%;
+    }
+    .hideMessage {
+        display: none;
+    }
+    .priceContainer {
+        width: 70%;
+        padding: 1rem;
+        margin: 1rem auto 0rem auto;
+        background-color: lightgrey;
+        border-radius: 1rem;
+    }
+    .checkOutButton {
+        width: 100%;
+        display: inline-flex;
+        justify-content: flex-end;
+        margin-top: 2rem;
+    }
+    .selectContainer {
+        width: 80%;
+        margin: 1rem auto 1rem auto;
+    }
+}
+@media only screen and (max-device-width: 375px) {
+    /* iPhone 6/7/8, iPhone X, */
+    .swiper{
+        width: 17rem;
+        height: 17rem;
+        border: solid grey;
+        margin-bottom: 1rem;
+    }
+    .otherImgs img{
+        width: 6rem;
+        height: 6rem;
+        border: solid grey;
+        margin: 0 0.25rem 0 0.25rem;
+    }
+}
+@media only screen and (max-device-width: 320px) {
+    /*iPhone 5*/
+    .swiper{
+        width: 16rem;
+        height: 16rem;
+        border: solid grey;
+        margin-bottom: 1rem;
+    }
+    .otherImgs img{
+        width: 4.8rem;
+        height: 4.8rem;
+        border: solid grey;
+        margin: 0 0.25rem 0 0.25rem;
+    }
+    .title {
+        width: 80%;
+        font-size: 24px;
+        line-height: 2rem;
+        margin-left: 8%;
+    }
+    .description {
+        width: 88%;
+        font-size: 16px;
+        line-height: 1.7rem;
+    }
+}
+@media only screen and (min-device-width: 769px){
+    #checkout {
+        overflow: scroll;
+    }
+    .leftBox {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+    .rightBox {
+        margin-right: 10%;
+        width: 40%;
+        height: 100%;
+        float: right;
+        display: flex;
+        flex-direction: column;
+    }
+    .swiper{
+        width: 20rem;
+        height: 20rem;
+        border: solid grey;
+        margin-bottom: 1rem;
+    }
+
+    .otherImgs img{
+        width: 7rem;
+        height: 7rem;
+        border: solid grey;
+        margin: 0 0.25rem 0 0.25rem;
+    }
+    .title {
+        font-size: 32px;
+        line-height: 4rem;
+        margin-left: 15%;
+    }
+    .description {
+        margin-left: 15%;
+        font-size: 20px;
+        line-height: 2rem;
+    }
+    .showMessage {
+        margin: 3rem auto 0rem 0rem;
+        width: 80%;
+    }
+    .hideMessage {
+        display: none;
+    }
+    .priceContainer {
+        width: 60%;
+        padding: 1rem;
+        margin: 1rem auto 0rem 0rem;
+        background-color: lightgrey;
+        border-radius: 1rem;
+    }
+    .checkOutButton {
+        width: 80%;
+        display: inline-flex;
+        justify-content: flex-end;
+        margin-top: 2rem;
+    }
+    .selectContainer {
+        width: 80%;
+        margin: 1rem auto 1rem 0rem;
+    }
 }
