@@ -70,7 +70,6 @@
 
   .option {
     width: 30vw;
-    word-break: break-all; 
     word-wrap: break-word;
   }
 
