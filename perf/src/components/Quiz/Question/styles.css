@@ -18,6 +18,7 @@
   border: solid grey;
   margin: 2rem;
   border-radius: 2rem;
+  width: 15vw;
 }
 
 .option img {
@@ -47,6 +48,13 @@
     padding-top: 4vh !important;
   }
 
+  .question {
+    font-size: 5vw;
+    width: 80vw;
+    word-wrap: break-word;
+    margin: 0 auto;
+  }
+
   .optionsContainer {
     display: flex;
     flex-direction: row;
@@ -56,13 +64,18 @@
   }
 
   .option img {
-    width: 35vw;
-    height: 35vw;
+    width: 30vw;
+    height: 30vw;
   }
 
   .option {
+    width: 30vw;
+    word-break: break-all; 
     word-wrap: break-word;
-    width: 35vw;
+  }
+
+  .progressBarContainer {
+    margin-top: 0;
   }
 
 }
