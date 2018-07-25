@@ -35,7 +35,7 @@ class QuizResultComponent extends Component {
             )
         }
         return (
-            <div>
+            <div className="quizResultStyle">
                 <Header />
                 <ScrollLock>
                 <section>
