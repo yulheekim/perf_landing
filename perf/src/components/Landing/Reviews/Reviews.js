@@ -28,15 +28,17 @@ class ReviewsComponent extends Component {
 
     slider = () => {
         return (
-                <CoverFlow
-                    imagesArr={cats}
-                    handleSelect={(index)=>this.handleSelect(index)}
-                    background="white"
-
-                />
+                <div className="coverflowConatiner">
+                    <CoverFlow
+                        imagesArr={cats}
+                        handleSelect={(index)=>this.handleSelect(index)}
+                        background="white"
+                        height={(window.innerWidth <= 320) ? 200:250}
+                    />
+                </div>
         )
     };
-    
+
     render() {
         return (
             <section id="reviews" className="reviewSection">
@@ -45,7 +47,7 @@ class ReviewsComponent extends Component {
                 <div className="description">
                     {this.props.currentSlider}
                 </div>
-                <div className="getStarted">
+                <div className="getStarted2">
                     <Link to="quiz" className="quizLink">
                         <Button className="quizButton" variant="contained" size="large">
                             Get Started!

@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './styles.css';
-import {  
+import {
     ScrollDown
 } from '../../../components';
 import {
@@ -94,9 +94,9 @@ class BasicInfoComponent extends Component {
 
     render() {
         var done = false;
-        if ((this.props.taker_name !== "") && 
-        ((this.props.recipient_relations > 0 && this.props.recipient_name !== "") || (this.props.recipient_relations === 0)) && 
-        (this.props.sexuality !== "") && 
+        if ((this.props.taker_name !== "") &&
+        ((this.props.recipient_relations > 0 && this.props.recipient_name !== "") || (this.props.recipient_relations === 0)) &&
+        (this.props.sexuality !== "") &&
         (this.props.questions[0].question_text !== "") ){
             done = true;
         }
@@ -108,7 +108,7 @@ class BasicInfoComponent extends Component {
                 </div>
                 <div>
                     This perfume will be designed by
-                    <TextField
+                    <TextField required
                         label="Quiz Taker's Name"
                         value={this.props.taker_name}
                         onChange={this.handleTakerNameChange}
@@ -117,7 +117,7 @@ class BasicInfoComponent extends Component {
                 </div>
                 <div className={(this.props.recipient_relations > 0) ? "showFor" :"hideFor"}>
                     for
-                    <TextField
+                    <TextField required
                         label="Recipient's Name"
                         value={this.props.recipient_name}
                         onChange={this.handleRecipientNameChange}

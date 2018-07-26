@@ -13,6 +13,7 @@ import {
     ScrollDown,
 } from '../../components';
 import {
+    hide_cards,
     reveal_card,
     start_distilling,
 } from '../../ducks/quiz';
@@ -22,9 +23,11 @@ import './styles.css';
 
 class QuizResultComponent extends Component {
     componentDidMount() {
-         window.scrollTo(0, 0);
+        window.scrollTo(0, 0);
     }
-
+    componentWillUnmount() {
+        this.props.hide_cards();
+    }
     render() {
         if (this.props.isDistilling) {
             return(
@@ -32,7 +35,7 @@ class QuizResultComponent extends Component {
             )
         }
         return (
-            <div>
+            <div className="quizResultStyle">
                 <Header />
                 <ScrollLock>
                 <section>
@@ -87,6 +90,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export const QuizResult = connect(mapStateToProps, {
+    hide_cards,
     reveal_card,
     start_distilling
 })(QuizResultComponent);

@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import './styles.css';
 import { connect } from 'react-redux';
+
+import {
+  Header,
+} from '../../components';
+import './styles.css';
 
 class NoMatchComponent extends Component {
   render() {
     return (
       <div className="App">
+        <Header />
         <header className="App-header">
           <h1 className="App-title">404. No such endpoint exists.</h1>
         </header>
