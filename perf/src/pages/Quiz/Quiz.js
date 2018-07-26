@@ -14,7 +14,7 @@ import './styles.css';
 
 
 class QuizComponent extends Component {
-    componentDidMount() {
+    componentWillMount() {
         this.props.load_quiz("dinner");
         window.scrollTo(0, 0);
     }
@@ -31,7 +31,9 @@ class QuizComponent extends Component {
           <div className="quizStyle">
               <Header />
               <ScrollLock>
-                <BasicInfo />
+                <div className="basicInfo">
+                    <BasicInfo/>
+                </div>
               </ScrollLock>
               <Question questions={this.props.questions}/>
           </div>

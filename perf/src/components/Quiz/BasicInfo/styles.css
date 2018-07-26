@@ -1,5 +1,4 @@
 .showFor {
-
 }
 
 .hideFor {
@@ -10,6 +9,7 @@
     width: 1rem;
     height: 1rem;
 }
+
 .bigRadio {
     width: 2rem;
     height: 2rem;
@@ -17,22 +17,71 @@
 .sexualityPicker {
     display: flex;
     flex-direction: column;
+    line-height: 3vh;
+    margin-top: 7vh;
 }
 .sexualityRadio {
     display: flex;
     flex-direction: column;
-    width: 4rem;
-    align-content: center;
+    align-items: center;
+}
+
+.itemText {
+    font-size: inherit;
 }
 
 .radios {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+}
+
+.basicinfo {
+    margin-top: 33vh !important;
+    line-height: 5vh;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.sexualityItem {
+    color: red;
+    font-size: 30;
+    margin-top: 5px;
+}
+
+.inputBox {
+    margin-left: 10px !important;
+} 
+.inputWrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: row;
 }
 
 .showDown {
-    margin: 0% auto;
+    margin: 4vh auto !important;
 }
+
+.showDownBottom {
+    margin: 4vh auto !important;
+}
+
 .hideDown {
     display: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .basicinfo {
+        margin-top: 29vh !important;
+        line-height: 5vh;
+        font-size: 15px;
+    }
+    .showDown {
+        margin: 3vh auto !important;
+    }
+
+    .showDownBottom {
+        margin: 4vh auto !important;
+    }
 }
