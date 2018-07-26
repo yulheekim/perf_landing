@@ -1,7 +1,28 @@
 .quizStyle {
-    text-align: center;
     justify-content: center;
+    text-align: center;
 }
 section {
   width: 100%;
+}
+
+.basicInfo {
+  width: 90vw !important;
+  margin: 0 auto !important;
+}
+
+/* .optionImages {
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  margin-bottom: 2vh;
+} */
+
+.option {
+  background-color: darkorange;
+  color: black;
+  text-align: center;
+  margin-top: 3vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-bottom: 1vh;
 }
