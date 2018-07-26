@@ -68,7 +68,9 @@ class BasicInfoComponent extends Component {
                             label={item}
                             name="sexuality-picker"
                         />
-                        {item}
+                        <div className="itemText">
+                            {item}
+                        </div>
                     </div>
                 )
             } else {
@@ -115,6 +117,7 @@ class BasicInfoComponent extends Component {
                         value={this.props.taker_name}
                         onChange={this.handleTakerNameChange}
                         margin="normal"
+                        className="inputBox"
                     />
                 </div>
                 <div className={(this.props.recipient_relations > 0) ? "showFor" :"hideFor"}>
