@@ -23,12 +23,10 @@
 .sexualityRadio {
     display: flex;
     flex-direction: column;
-    /* width: 4rem; */
     align-items: center;
 }
 
 .itemText {
-    /* margin-left: -1vw; */
     font-size: inherit;
 }
 
