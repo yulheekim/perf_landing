@@ -4,3 +4,4 @@ export * from './Landing';
 export * from './NoMatch';
 export * from './Quiz';
 export * from './QuizResult';
+export * from './ThankYou';

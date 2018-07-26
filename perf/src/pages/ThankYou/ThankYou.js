@@ -2,31 +2,32 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 
 import {
-  Header,
+    Header,
+    OneLiner,
 } from '../../components';
-import styles from './styles';
+import './styles.css';
 
 
 class ThankYouComponent extends Component {
-  componentDidMount() {
-    window.scrollTo(0, 0);
-  }
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
 
-  render() {
-    return (
-      <div>
-        <Header />
-        
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div>
+                <Header />
+                <OneLiner message="Thank You" />
+            </div>
+        );
+    }
 }
 
 export { ThankYouComponent };
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      ...ownProps,
+        ...ownProps,
     };
 };
 
