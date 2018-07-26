@@ -21,9 +21,9 @@ class QuestionComponent extends Component {
     populateOptions = () => {
         return _.map(this.props.questions[this.props.activeStep].cards, (item, index)=> {
             return (
-                <div className="options">
-                    <div className="option" onClick={() => this.props.handle_next(index)} key={index}>
-                        <img className="optionImages" src={item.img_lnk} />
+                <div className="options" key={index}>
+                    <div className="option" onClick={() => this.props.handle_next(index)} >
+                        <img className="optionImages" src={item.img_lnk} alt={item.img_lnk}/>
                     </div>
                     <div className="optionText">
                         {item.description}
