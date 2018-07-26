@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import './styles.css';
-import {  
+import {
     ScrollDown
 } from '../../../components';
 import {
@@ -68,7 +68,9 @@ class BasicInfoComponent extends Component {
                             label={item}
                             name="sexuality-picker"
                         />
-                        {item}
+                        <div className="itemText">
+                            {item}
+                        </div>
                     </div>
                 )
             } else {
@@ -94,39 +96,45 @@ class BasicInfoComponent extends Component {
 
     render() {
         var done = false;
-        if ((this.props.taker_name !== "") && 
-        ((this.props.recipient_relations > 0 && this.props.recipient_name !== "") || (this.props.recipient_relations === 0)) && 
-        (this.props.sexuality !== "") && 
+        if ((this.props.taker_name !== "") &&
+        ((this.props.recipient_relations > 0 && this.props.recipient_name !== "") || (this.props.recipient_relations === 0)) &&
+        (this.props.sexuality !== "") &&
         (this.props.questions[0].question_text !== "") ){
             done = true;
         }
-
         return (
-            <section>
-                <div>
-                    Help us learn more about {this.recipient()}
+            <section className="basicinfo">
+                <div className="inputWrapper">
+                    Help us learn more about
+                    <div className="inputBox">
+                        {this.recipient()}
+                    </div>
                 </div>
                 <div>
                     This perfume will be designed by
-                    <TextField
+                    <TextField required
                         label="Quiz Taker's Name"
                         value={this.props.taker_name}
                         onChange={this.handleTakerNameChange}
                         margin="normal"
+                        className="inputBox"
                     />
                 </div>
                 <div className={(this.props.recipient_relations > 0) ? "showFor" :"hideFor"}>
                     for
-                    <TextField
+                    <TextField required
                         label="Recipient's Name"
                         value={this.props.recipient_name}
                         onChange={this.handleRecipientNameChange}
                         margin="normal"
+                        className="inputBox"
                     />
                 </div>
                 <div className="sexualityPicker">
                     Which way do you want this scent lean to?
-                    {this.props.sexuality}
+                    <div className="sexualityItem">
+                        {this.props.sexuality}
+                    </div>
                     <div className="radios">
                         {this.sexualityPicker()}
                     </div>

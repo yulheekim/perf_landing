@@ -43,3 +43,8 @@ section {
     width: 100%;
     text-align: center;
 }
+
+.quizResultStyle {
+    text-align: center;
+    justify-content: center;
+}

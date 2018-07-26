@@ -14,15 +14,20 @@ import './styles.css';
 
 class QuestionComponent extends Component {
 
-    componentWillMount() {
+    componentWillUnmount() {
         this.props.start_over();
     }
 
     populateOptions = () => {
         return _.map(this.props.questions[this.props.activeStep].cards, (item, index)=> {
             return (
-                <div className="option" onClick={() => this.props.handle_next(index)} key={index}>
-                    {item.description}
+                <div className="options">
+                    <div className="option" onClick={() => this.props.handle_next(index)} key={index}>
+                        <img className="optionImages" src={item.img_lnk} />
+                    </div>
+                    <div className="optionText">
+                        {item.description}
+                    </div>
                 </div>
             )
         });

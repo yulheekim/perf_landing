@@ -16,9 +16,9 @@ const ScentCard = (result_cards, reveal_cards, onClickCard) => {
                         </div>
                         <div key="back" className="back">
                             <div className="resultContainer">
-                                <img src={item[2]} alt="back"/>
-                                <div className="results">{item[0]}</div>
-                                <div className="resultDescription">{item[1]}</div>
+                                <img src={item['image_lnk']} alt="back"/>
+                                <div className="results">{item['name']}</div>
+                                <div className="resultDescription">{item['description']}</div>
                             </div>
                         </div>
                     </ReactCardFlip>
