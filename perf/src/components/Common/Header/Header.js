@@ -26,15 +26,17 @@ class Header extends Component {
               </span>
           </Link>
           <Link to="quiz" style={menuStyles.bmItem}>
-              <AccountCircleIcon /> 
+              <AccountCircleIcon />
               <span className="menuItemText">
                 Quiz
               </span>
           </Link>
         </Menu>
+        <div className="logoContainer">
         <Link to ="" className="perf-link">
           <img src={logo} className="perf-logo" alt="logo" />
         </Link>
+        </div>
       </div>
     );
   }
