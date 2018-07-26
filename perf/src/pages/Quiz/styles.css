@@ -11,11 +11,11 @@ section {
   margin: 0 auto !important;
 }
 
-.optionImages {
+/* .optionImages {
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
   margin-bottom: 2vh;
-}
+} */
 
 .option {
   background-color: darkorange;
@@ -24,5 +24,5 @@ section {
   margin-top: 3vh;
   margin-left: 1vw;
   margin-right: 1vw;
-  padding-bottom: 1.2vh;
+  margin-bottom: 1vh;
 }

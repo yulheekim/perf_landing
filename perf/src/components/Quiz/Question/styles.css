@@ -9,7 +9,7 @@
 .optionsContainer {
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: 5vh auto;
 }
 
 .option {
@@ -17,13 +17,22 @@
   flex-direction: column;
   border: solid grey;
   margin: 2rem;
-  border-radius: 2rem;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
   width: 15vw;
+  height: 15vw;
+  padding: 0;
 }
 
 .option img {
   width: 15vw;
   height: 15vw;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 11px;
+  border-bottom-right-radius: 11px;
 }
 
 .progressBarContainer {
@@ -40,43 +49,64 @@
   margin: 0 0;
 }
 
+.progressBarContainer {
+    width: 80%;
+    padding-right: 10px;
+    margin-top: 2vh;
+}
+
 @media only screen and (max-width: 900px) {
   #questions {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 0vh !important;
+    padding-top: 1vh !important;
+    margin-top: 1vh !important;
   }
 
   .question {
     font-size: 5vw;
-    width: 80vw;
+    width: 70vw;
     word-wrap: break-word;
-    margin: 0 auto;
+    margin: 1vh auto;
   }
 
   .optionsContainer {
     display: flex;
     flex-direction: row;
-    width: 80vw;
+    width: 60vw;
     margin: 1vh auto;
     flex-wrap: wrap;
   }
 
   .option img {
-    width: 30vw;
-    height: 30vw;
+    width: 20vw;
+    height: 20vw;
   }
 
   .option {
-    width: 30vw;
+    width: 20vw;
+    height: 20vw;
     word-wrap: break-word;
+    margin-bottom: 0;
   }
 
   .progressBarContainer {
-    margin-top: 0;
+    margin-top: 3vh;
   }
 
+  .options {
+    margin: 0 auto;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .optionText {
+    font-size: 3vw;
+    word-wrap: break-word;
+  }
 }
 
 @media only screen and (max-width: 400px) {
@@ -87,12 +117,25 @@
     margin-top: 0vh !important;
   }
 
+  .question {
+    margin-top: 5vh;
+  }
+
   .optionsContainer {
     display: flex;
     flex-direction: row;
-    width: 80vw;
+    width: 70vw;
     margin: 1vh auto;
     flex-wrap: wrap;
+  }
+
+  .options {
+    width: 25vw;
+  }
+  
+  .option {
+    width: 30vw;
+    height: 30vw;
   }
 
   .option img {
@@ -100,4 +143,8 @@
     height: 30vw;
   }
 
+  .optionText {
+    font-size: 20px;
+    word-wrap: break-word;
+  }
 }

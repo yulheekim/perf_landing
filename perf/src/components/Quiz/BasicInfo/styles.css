@@ -42,10 +42,6 @@
     font-size: 30
 }
 
-/* .basicinfo TextField {
-    margin-left: 5px;
-} */
-
 .inputBox {
     margin-left: 10px !important;
 } 
@@ -57,8 +53,15 @@
 }
 
 .showDown {
-    margin: 0% auto;
+    margin: 10vh auto !important;
 }
 .hideDown {
     display: none;
+}
+
+@media only screen and (max-width: 900px) {
+    .basicinfo {
+        margin-top: 29vh !important;
+        line-height: 5vh;
+    }
 }
