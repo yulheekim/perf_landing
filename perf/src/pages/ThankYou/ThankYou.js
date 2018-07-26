@@ -24,7 +24,7 @@ class ThankYouComponent extends Component {
                 <Header />
                 <OneLiner message="THANK YOU!" />
                 <div className="orderInfoContainer">
-                    Order #
+                    Order # {this.props.order_id}
                 </div>
                 <div className="guide">
                     You're all set! You should be receiving an order confirmation email shortly.<br/>If you have any questions, please feel free to email <i>tryperf@gmail.com</i>.
@@ -40,8 +40,11 @@ class ThankYouComponent extends Component {
 export { ThankYouComponent };
 
 const mapStateToProps = (state, ownProps) => {
+    const { checkout } = state;
+    const { order_id } = checkout;
     return {
         ...ownProps,
+        order_id
     };
 };
 

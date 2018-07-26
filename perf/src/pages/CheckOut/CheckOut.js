@@ -10,7 +10,6 @@ import SwipeableViews from 'react-swipeable-views';
 import APIConfig from '../../config/api';
 import {
     change_address1,
-    change_address2,
     change_bottle,
     change_city,
     change_email,
@@ -18,11 +17,13 @@ import {
     change_message,
     change_state,
     change_zipcode,
+    handle_order_response,
     toggle_modal,
 } from '../../ducks/checkout';
 import {
     CheckOutButton,
     Header,
+    SampleCheckOutButton,
 } from '../../components';
 import './styles.css';
 import styles from './styles';
@@ -30,7 +31,6 @@ const {
     sampleButton,
     stateDropdown
 } = styles
-
 
 class CheckOutComponent extends Component {
 
@@ -108,10 +108,6 @@ class CheckOutComponent extends Component {
         this.props.change_address1(event.target.value)
     }
 
-    handleAddress2Change = (event) => {
-        this.props.change_address2(event.target.value)
-    }
-
     handleCityChange = (event) => {
         this.props.change_city(event.target.value)
     }
@@ -124,9 +120,18 @@ class CheckOutComponent extends Component {
         this.props.change_zipcode(event.target.value)
     }
 
+    componentWillMount() {
+        this.props.handle_order_response(0);
+    }
     render() {
         if (this.props.result_cards[0].name === "") {
             return (<Redirect to="quiz"/>)
+        }
+        else if (this.props.order_id !== 0) {
+            return (<Redirect to="thankyou"/>)
+        }
+        else if (this.props.error_message !== "") {
+            return (<Redirect to="error"/>)
         }
         return (
             <section id="checkout">
@@ -191,52 +196,46 @@ class CheckOutComponent extends Component {
                     </div>
                     {(this.props.current_bottle_index === 0) ?
                         <div className="checkOutButton">
-                            <Button variant="contained" color="primary" style={sampleButton} onClick={()=>this.props.toggle_modal()}>Get your sample now!</Button>
+                            <Button variant="contained" color="primary" style={sampleButton} onClick={this.props.toggle_modal}>Get your sample now!</Button>
                             <Modal
-                                open={this.props.isOpen}
-                                onClose={this.props.toggle_modal}
-                                center
-                                classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}
+                              open={this.props.isOpen}
+                              onClose={this.props.toggle_modal}
+                              center
+                              classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}
                             >
                                 <h2>Contact and Shipping Information:</h2>
                                 Your Email Address: <TextField required
-                                    label="Email Address"
-                                    value={this.props.email}
-                                    onChange={this.handleEmailChange}
-                                    margin="normal"
+                                  label="Email Address"
+                                  value={this.props.email}
+                                  onChange={this.handleEmailChange}
+                                  margin="normal"
                                 /><br/>
                                 Address Line 1: <TextField required
-                                    label="Address Line 1"
-                                    value={this.props.address1}
-                                    onChange={this.handleAddress1Change}
-                                    margin="normal"
-                                /><br/>
-                                Address Line 2: <TextField
-                                    label="Address Line 2"
-                                    value={this.props.address2}
-                                    onChange={this.handleAddress2Change}
-                                    margin="normal"
+                                  label="Address Line 1"
+                                  value={this.props.address1}
+                                  onChange={this.handleAddress1Change}
+                                  margin="normal"
                                 /><br/>
                                 City: <TextField required
-                                    label="City"
-                                    value={this.props.city}
-                                    onChange={this.handleCityChange}
-                                    margin="normal"
+                                  label="City"
+                                  value={this.props.city}
+                                  onChange={this.handleCityChange}
+                                  margin="normal"
                                 />
                                 State: <Select
-                                    onChange={this.handleStateChange}
-                                    value={this.props.state_abbrv}
-                                    style={stateDropdown}
+                                  onChange={this.handleStateChange}
+                                  value={this.props.state_abbrv}
+                                  style={stateDropdown}
                                 >
                                 {this.stateMenuItems()}
                                 </Select>
                                 Zipcode: <TextField required
-                                    label="Zipcode"
-                                    value={this.props.zipcode}
-                                    onChange={this.handleZipcodeChange}
-                                    margin="normal"
+                                  label="Zipcode"
+                                  value={this.props.zipcode}
+                                  onChange={this.handleZipcodeChange}
+                                  margin="normal"
                                 /><br/>
-                                <Link to="approve" className="submitButton">
+                                <Link to="thankyou" className="submitButton">
                                     <Button variant="contained" color="primary" >Submit</Button>
                                 </Link>
                             </Modal>
@@ -260,21 +259,22 @@ export { CheckOutComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
-    const { address1, address2, bottle_imgs, bottle_types, city, current_bottle_index, email, img_opt, isOpen, message, prices, state_abbrv, zipcode } = checkout;
+    const { address1, bottle_imgs, bottle_types, city, current_bottle_index, email, error_message, img_opt, isOpen, message, order_id, prices, state_abbrv, zipcode } = checkout;
     const { answers, result_cards, result_title, recipient_relations } = quiz;
     return {
         ...ownProps,
         address1,
-        address2,
         answers,
         bottle_imgs,
         bottle_types,
         city,
         current_bottle_index,
         email,
+        error_message,
         img_opt,
         isOpen,
         message,
+        order_id,
         prices,
         recipient_relations,
         result_cards,
@@ -286,7 +286,6 @@ const mapStateToProps = (state, ownProps) => {
 
 export const CheckOut = connect(mapStateToProps, {
     change_address1,
-    change_address2,
     change_bottle,
     change_city,
     change_email,
@@ -294,5 +293,6 @@ export const CheckOut = connect(mapStateToProps, {
     change_message,
     change_state,
     change_zipcode,
+    handle_order_response,
     toggle_modal,
 })(CheckOutComponent);

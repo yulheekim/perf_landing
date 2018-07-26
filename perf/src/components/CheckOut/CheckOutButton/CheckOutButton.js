@@ -5,49 +5,65 @@ import StripeCheckout from 'react-stripe-checkout';
 import { injectStripe } from 'react-stripe-elements';
 
 import APIConfig from '../../../config/api';
+import {
+    handle_order_error,
+    handle_order_response,
+} from '../../../ducks/checkout';
 import './styles.css';
 class CheckOutButtonComponent extends Component {
   onToken = (token, args) => {
-    const paymenturl = `${APIConfig.apiroot}/payment`;
-    const shipping = {
-      name: args.shipping_name,
-      address_country: args.shipping_address_country,
-      address_zip: args.shipping_address_zip,
-      address_state: args.shipping_address_state,
-      address_line1: args.shipping_address_line1,
-      address_city: args.shipping_address_city,
-      address_country_code: args.shipping_address_country_code
-    }
-    const billing = {
-      name: args.billing_name,
-      address_country: args.billing_address_country,
-      address_zip: args.billing_address_zip,
-      address_state: args.billing_address_state,
-      address_line1: args.billing_address_line1,
-      address_city: args.billing_address_city,
-      address_country_code: args.billing_address_country_code
-    }
-    const sending = {
-      token,
-      token_id: token.id,
-      email: token.email,
-      shipping,
-      billing,
-      taker_name: this.props.taker_name,
-      recipient_name: this.props.recipient_name,
-      recipient_relations: this.props.recipient_options[this.props.recipient_relations],
-      result_title: this.props.result_title,
-      result_cards: this.props.result_cards,
-      amount: this.props.amount,
-      sexuality: this.props.sexuality,
-      message: this.props.message,
-    }
-    axios.post(paymenturl, {
-      ...sending,
-    })
-      .then((response) => {
-        console.log("Ahung gimothi");
+      const paymenturl = `${APIConfig.apiroot}/order`;
+      const shipping = {
+        name: args.shipping_name,
+        country: args.shipping_address_country,
+        zip: args.shipping_address_zip,
+        state: args.shipping_address_state,
+        line1: args.shipping_address_line1,
+        city: args.shipping_address_city,
+        country_code: args.shipping_address_country_code
+      }
+      const billing = {
+        name: args.billing_name,
+        country: args.billing_address_country,
+        zip: args.billing_address_zip,
+        state: args.billing_address_state,
+        line1: args.billing_address_line1,
+        city: args.billing_address_city,
+        country_code: args.billing_address_country_code
+      }
+      const sending_payment = {
+        token_id: token.id,
+        email: token.email,
+        shipping,
+        billing,
+        price: 0, // need to get this from bottle
+      }
+      const sending_order = {
+        name: this.props.taker_name,
+        recipient_name: this.props.recipient_name,
+        recipient_relations: this.props.recipient_options[this.props.recipient_relations],
+        collection_title: this.props.result_title,
+        amount: 2, // need to get this from bottle
+        sexuality: this.props.sexuality, // int 0 being masc and 5 being feminine
+        message: "",
+        bottle_type: "",
+        result_metadata: {
+          primary: {name: "hai", desc:"this is hai", accord:"teran"},
+          secondary: {name: "hello", desc:"this is secondary", accord:"zerg"},
+          tertiary: {name: "nihao", desc:"this is tertiary", accord:"protos"},
+        },
+      }
+      console.log({payment: sending_payment, order: sending_order})
+      axios.post(paymenturl, {
+        payment: sending_payment,
+        order: sending_order
       })
+        .then((response) => {
+            this.props.handle_order_response(response.data.order_id);
+        })
+        .catch((error) => {
+            this.props.handle_order_error("Error making payment");
+        })
   }
 
   render() {
@@ -66,7 +82,7 @@ class CheckOutButtonComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { quiz } = state;
-  const { taker_name, recipient_name, result_title, result_cards, 
+  const { taker_name, recipient_name, result_title, result_cards,
     recipient_relations, sexuality, message, recipient_options, amount } = quiz;
   return {
     ...ownProps,
@@ -83,4 +99,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export const CheckOutButton = injectStripe(connect(mapStateToProps, {
+    handle_order_error,
+    handle_order_response,
 })(CheckOutButtonComponent));
