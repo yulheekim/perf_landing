@@ -8,15 +8,17 @@ import {
   Question,
 } from '../../components';
 import {
-  load_quiz
+  load_quiz,
+  start_over,
 } from '../../ducks/quiz';
 import './styles.css';
 
 
 class QuizComponent extends Component {
-    componentDidMount() {
-        this.props.load_quiz("dinner");
+    componentWillMount() {
         window.scrollTo(0, 0);
+        this.props.load_quiz("dinner");
+        this.props.start_over();
     }
     render() {
     //   if(this.props.error_message !== "") {
@@ -27,6 +29,7 @@ class QuizComponent extends Component {
     //         <Redirect to="nomatch" />
     //       )
     //   }
+
       return (
           <div className="quizStyle">
               <Header />
@@ -45,13 +48,15 @@ export { QuizComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz } = state;
-    const { questions } = quiz;
+    const { answers, questions } = quiz;
     return {
       ...ownProps,
+      answers,
       questions,
     };
 };
 
 export const Quiz = connect(mapStateToProps, {
-    load_quiz
+    load_quiz,
+    start_over
 })(QuizComponent);

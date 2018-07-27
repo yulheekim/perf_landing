@@ -2,34 +2,30 @@ import { Button, MenuItem, Select, TextField } from '@material-ui/core';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Modal from 'react-responsive-modal';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import SwipeableViews from 'react-swipeable-views';
 
 import APIConfig from '../../config/api';
 import {
     change_address1,
-    change_address2,
     change_bottle,
     change_city,
     change_email,
     change_image,
     change_message,
+    change_promo,
     change_state,
     change_zipcode,
-    toggle_modal,
+    check_promo,
+    handle_order_response,
 } from '../../ducks/checkout';
 import {
     CheckOutButton,
     Header,
+    SampleCheckOutButton,
 } from '../../components';
 import './styles.css';
-import styles from './styles';
-const {
-    sampleButton,
-    stateDropdown
-} = styles
 
 
 class CheckOutComponent extends Component {
@@ -87,48 +83,33 @@ class CheckOutComponent extends Component {
         })
     };
 
-    stateMenuItems = () => {
-        const states = ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA',
-        'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA',
-        'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'];
-        return _.map(states, (item, index) => {
-            return (
-                <MenuItem value={item} key={index}> {item} </MenuItem>
-            )
-        })
-    };
-
     handleBottleChange = (event) => {
         this.props.change_bottle(event.target.value);
     };
-
-    handleEmailChange = (event) => {
-        this.props.change_email(event.target.value);
+    componentWillMount() {
+        this.props.handle_order_response(0);
+    }
+    handlePromoChange = (event) => {
+        this.props.change_promo(event.target.value);
     };
-
-    handleAddress1Change = (event) => {
-        this.props.change_address1(event.target.value)
+    adjustPrice () {
+        return(
+            <td>${this.props.found_email&&this.props.current_bottle_index===0 ?
+                <span><s>{this.props.prices[this.props.current_bottle_index].toFixed(2)}</s> 0.00</span> :
+                this.props.prices[this.props.current_bottle_index].toFixed(2)}
+            </td>
+        )
     }
-
-    handleAddress2Change = (event) => {
-        this.props.change_address2(event.target.value)
-    }
-
-    handleCityChange = (event) => {
-        this.props.change_city(event.target.value)
-    }
-
-    handleStateChange = (event) => {
-        this.props.change_state(event.target.value)
-    }
-
-    handleZipcodeChange = (event) => {
-        this.props.change_zipcode(event.target.value)
-    }
-
     render() {
+        const price = this.adjustPrice();
         if (this.props.result_cards[0].name === "") {
             return (<Redirect to="quiz"/>)
+        }
+        else if (this.props.order_id !== 0) {
+            return (<Redirect to="thankyou"/>)
+        }
+        else if (this.props.error_message !== "") {
+            return (<Redirect to="error"/>)
         }
         return (
             <section id="checkout">
@@ -185,64 +166,25 @@ class CheckOutComponent extends Component {
                     <div className="priceContainer">
                         <b>Order Summary</b><br/>
                         <table><tbody>
-                            <tr><td>Item: </td><td>${this.props.prices[this.props.current_bottle_index].toFixed(2)}</td></tr>
+                            <tr><td>Item: </td>{price}</tr>
                             <tr><td>Estimated Tax: </td><td>$0.00</td></tr>
                             <tr className="bordered"><td>Shipping & handling: </td><td>$0.00</td></tr>
-                            <tr className="total"><td>Total: </td><td>${(this.props.prices[this.props.current_bottle_index]).toFixed(2)}</td></tr>
+                            <tr className="total"><td>Total: </td>{price}</tr>
                         </tbody></table>
-                    </div>
-                    {(this.props.current_bottle_index === 0) ?
-                        <div className="checkOutButton">
-                            <Button variant="contained" color="primary" style={sampleButton} onClick={()=>this.props.toggle_modal()}>Get your sample now!</Button>
-                            <Modal
-                                open={this.props.isOpen}
-                                onClose={this.props.toggle_modal}
-                                center
-                                classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}
-                            >
-                                <h2>Contact and Shipping Information:</h2>
-                                Your Email Address: <TextField required
-                                    label="Email Address"
-                                    value={this.props.email}
-                                    onChange={this.handleEmailChange}
-                                    margin="normal"
-                                /><br/>
-                                Address Line 1: <TextField required
-                                    label="Address Line 1"
-                                    value={this.props.address1}
-                                    onChange={this.handleAddress1Change}
-                                    margin="normal"
-                                /><br/>
-                                Address Line 2: <TextField
-                                    label="Address Line 2"
-                                    value={this.props.address2}
-                                    onChange={this.handleAddress2Change}
-                                    margin="normal"
-                                /><br/>
-                                City: <TextField required
-                                    label="City"
-                                    value={this.props.city}
-                                    onChange={this.handleCityChange}
+                        {this.props.current_bottle_index === 0 &&
+                            <div>
+                                Promo Code :<TextField
+                                    label={this.props.found_email ? "PROMO APPLIED!":"Enter your email"}
+                                    value={this.props.promo}
+                                    onChange={this.handlePromoChange}
                                     margin="normal"
                                 />
-                                State: <Select
-                                    onChange={this.handleStateChange}
-                                    value={this.props.state_abbrv}
-                                    style={stateDropdown}
-                                >
-                                {this.stateMenuItems()}
-                                </Select>
-                                Zipcode: <TextField required
-                                    label="Zipcode"
-                                    value={this.props.zipcode}
-                                    onChange={this.handleZipcodeChange}
-                                    margin="normal"
-                                /><br/>
-                                <Link to="approve" className="submitButton">
-                                    <Button variant="contained" color="primary" >Submit</Button>
-                                </Link>
-                            </Modal>
-                        </div>
+                            <Button variant="contained" onClick={()=>this.props.check_promo()} size='small'>OK</Button>
+                            </div>
+                        }
+                    </div>
+                    {(this.props.current_bottle_index === 0) ?
+                        <SampleCheckOutButton />
                         :
                         <div className="checkOutButton">
                             <StripeProvider apiKey={APIConfig.stripe_key}>
@@ -262,39 +204,37 @@ export { CheckOutComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
-    const { address1, address2, bottle_imgs, bottle_types, city, current_bottle_index, email, img_opt, isOpen, message, prices, state_abbrv, zipcode } = checkout;
+    const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id, prices, promo, found_email } = checkout;
     const { answers, result_cards, result_title, recipient_relations } = quiz;
     return {
         ...ownProps,
-        address1,
-        address2,
         answers,
         bottle_imgs,
         bottle_types,
-        city,
         current_bottle_index,
-        email,
+        error_message,
         img_opt,
-        isOpen,
         message,
+        order_id,
         prices,
+        promo,
         recipient_relations,
         result_cards,
         result_title,
-        state_abbrv,
-        zipcode
+        found_email,
     };
 };
 
 export const CheckOut = connect(mapStateToProps, {
     change_address1,
-    change_address2,
     change_bottle,
     change_city,
     change_email,
     change_image,
     change_message,
+    change_promo,
     change_state,
     change_zipcode,
-    toggle_modal,
+    check_promo,
+    handle_order_response,
 })(CheckOutComponent);

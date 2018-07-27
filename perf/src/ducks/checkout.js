@@ -1,18 +1,22 @@
 //Action Types
 export const CHANGE_ADDRESS1 = 'perf/checkout/CHANGE_ADDRESS1';
-export const CHANGE_ADDRESS2 = 'perf/checkout/CHANGE_ADDRESS2';
 export const CHANGE_BOTTLE = 'perf/checkout/CHANGE_BOTTLE';
 export const CHANGE_CITY = 'perf/checkout/CHANGE_CITY';
 export const CHANGE_EMAIL = 'perf/checkout/CHANGE_EMAIL';
 export const CHANGE_IMAGE = 'perf/checkout/CHANGE_IMAGE';
 export const CHANGE_MESSAGE = 'perf/checkout/CHANGE_MESSAGE';
+export const CHANGE_PROMO = 'perf/checkout/CHANGE_PROMO';
 export const CHANGE_STATE = 'perf/checkout/CHANGE_STATE';
 export const CHANGE_ZIPCODE = 'perf/checkout/CHANGE_ZIPCODE';
+export const CHECK_PROMO = 'perf/checkout/CHECK_PROMO';
 export const GO_CHECKOUT = 'perf/checkout/GO_CHECKOUT';
+export const HANDLE_ORDER_ERROR = 'perf/checkout/HANDLE_ORDER_ERROR';
+export const HANDLE_ORDER_RESPONSE = 'perf/checkout/HANDLE_ORDER_RESPONSE';
 export const LOAD_CHECKOUT = 'perf/checkout/LOAD_CHECKOUT';
 export const LOAD_CHECKOUT_SUCCESS = 'perf/checkout/LOAD_CHECKOUT_SUCCESS';
 export const LOAD_CHECKOUT_FAILURE = 'perf/checkout/LOAD_CHECKOUT_FAILURE';
-export const TOGGLE_MODAL = 'perf/checkout/TOGGLE_MODAL'
+export const TOGGLE_MODAL = 'perf/checkout/TOGGLE_MODAL';
+
 
 const INITIAL_STATE = {
     error_message: "",
@@ -23,14 +27,16 @@ const INITIAL_STATE = {
     current_bottle_index: 0,
     img_opt: 0,
     bottle_types: ['Sample Card', '10mL Roll On', '15mL Spray'],
-    prices: [0, 15, 25],
-    isOpen: false,
+    prices: [5, 15, 25],
+    open: false,
     email:"",
     address1:"",
-    address2:"",
     city:"",
     state_abbrv:"",
     zipcode:"",
+    order_id: 0,
+    promo:"",
+    found_email: false,
 }
 
 
@@ -56,17 +62,12 @@ export default function reducer(state = INITIAL_STATE, action) {
         case TOGGLE_MODAL:
             return {
                 ...state,
-                isOpen: !state.isOpen,
+                open: !state.open,
             }
         case CHANGE_ADDRESS1:
             return {
                 ...state,
                 address1: action.payload,
-            }
-        case CHANGE_ADDRESS2:
-            return {
-                ...state,
-                address2: action.payload,
             }
         case CHANGE_CITY:
             return {
@@ -87,6 +88,29 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 zipcode: action.payload,
+            }
+        case HANDLE_ORDER_RESPONSE:
+            return {
+                ...state,
+                order_id: action.payload,
+                error_message: "",
+            }
+        case HANDLE_ORDER_ERROR:
+            return {
+                ...state,
+                error_message: action.payload,
+            }
+        case CHANGE_PROMO:
+            return {
+                ...state,
+                promo: action.payload,
+            }
+        case CHECK_PROMO:
+            const loEmail = ["moco","ceold","aeng"];
+            var found = (loEmail.indexOf(state.promo) === -1 ? false : true);
+            return {
+                ...state,
+                found_email: found,
             }
         default:
             return state
@@ -148,14 +172,6 @@ export const change_address1 = (new_info) => {
         })
     }
 }
-export const change_address2 = (new_info) => {
-    return (dispatch) => {
-        dispatch({
-            type: CHANGE_ADDRESS2,
-            payload: new_info,
-        })
-    }
-}
 export const change_city = (new_info) => {
     return (dispatch) => {
         dispatch({
@@ -179,4 +195,35 @@ export const change_zipcode = (new_info) => {
             payload: new_info,
         })
     }
+}
+export const handle_order_response = (order_id) => {
+    return (dispatch) => {
+        dispatch({
+            type: HANDLE_ORDER_RESPONSE,
+            payload: order_id,
+        })
+    }
+}
+export const handle_order_error = (error_message) => {
+    return (dispatch) => {
+        dispatch({
+            type: HANDLE_ORDER_ERROR,
+            payload: error_message
+        })
+    }
+}
+export const change_promo = (promo) => {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_PROMO,
+            payload: promo
+        })
+    };
+}
+export const check_promo = () => {
+    return (dispatch) => {
+        dispatch({
+            type: CHECK_PROMO,
+        })
+    };
 }

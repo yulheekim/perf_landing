@@ -1,0 +1,16 @@
+#thankyou {
+    text-align: center;
+}
+.orderInfoContainer {
+    margin: 2rem auto 4rem auto;
+    font-size: 20px;
+}
+.guide {
+    width: 85%;
+    margin: 0 auto 5vh auto;
+    line-height: 2rem;
+    font-size: 24px;
+}
+.quizLink {
+    text-decoration: none;
+}

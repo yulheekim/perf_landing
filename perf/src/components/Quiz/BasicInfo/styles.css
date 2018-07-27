@@ -37,7 +37,8 @@
 }
 
 .basicinfo {
-    margin-top: 33vh !important;
+    margin-top: 22vh !important;
+    padding-top: 0vh !important;
     line-height: 5vh;
     font-size: 20px;
     font-weight: bold;
@@ -51,7 +52,7 @@
 
 .inputBox {
     margin-left: 10px !important;
-} 
+}
 .inputWrapper {
     display: flex;
     justify-content: center;
@@ -60,7 +61,8 @@
 }
 
 .showDown {
-    margin: 4vh auto !important;
+    margin: 10vh auto 0vh auto!important;
+    font-weight: normal !important;
 }
 
 .showDownBottom {
@@ -78,10 +80,54 @@
         font-size: 15px;
     }
     .showDown {
-        margin: 3vh auto !important;
+        margin: 6vh auto !important;
     }
 
     .showDownBottom {
         margin: 4vh auto !important;
+    }
+}
+@media only screen and (max-device-width: 480px) {
+    /* iPhone Plus, Pixel 2 (XL) */
+    .basicinfo {
+        margin-top: 26vh !important;
+        line-height: 5vh;
+        font-size: 15px;
+    }
+    .showDown {
+        margin: 6vh auto !important;
+    }
+
+    .showDownBottom {
+        margin: 4vh auto !important;
+    }
+}
+@media only screen and (max-device-width: 375px) {
+    /* iPhone 6/7/8, iPhone X, */
+    .basicinfo {
+        margin-top: 22vh !important;
+        line-height: 5vh;
+        font-size: 15px;
+    }
+    .showDown {
+        margin: 6vh auto !important;
+    }
+
+    .showDownBottom {
+        margin: 5vh auto !important;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .basicinfo {
+        margin-top: 20vh !important;
+        line-height: 4vh;
+        font-size: 12px;
+    }
+    .showDown {
+        margin: 5vh auto !important;
+    }
+
+    .showDownBottom {
+        margin: 6vh auto !important;
     }
 }

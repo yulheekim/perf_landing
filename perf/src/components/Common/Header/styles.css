@@ -8,15 +8,16 @@
   top: 0%;
 }
 
-.perf-logo {
-  height: 70%;
-  display: inline-block;
-  margin: 2vh auto;
+.perf-link img {
+  height: 7vh;
 }
-
-.perf-link {
-  margin: 2vh auto;
+.logoContainer {
   align-items: center;
+  margin: 3vh auto 3vh auto;
+}
+.perf-link {
+  margin: auto;
+
 }
 
 .menuItemText {

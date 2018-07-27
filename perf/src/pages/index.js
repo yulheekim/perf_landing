@@ -5,3 +5,4 @@ export * from './NoMatch';
 export * from './Quiz';
 export * from './QuizResult';
 export * from './ServerError';
+export * from './ThankYou';

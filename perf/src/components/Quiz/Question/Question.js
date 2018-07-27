@@ -15,16 +15,12 @@ import './styles.css';
 
 class QuestionComponent extends Component {
 
-    componentWillUnmount() {
-        this.props.start_over();
-    }
-
     populateOptions = () => {
         return _.map(this.props.questions[this.props.activeStep].cards, (item, index)=> {
             return (
                 <div className="options" key={item.id}>
                     <div className="option" onClick={() => this.props.handle_next(item.id)} >
-                        <img className="optionImages" src={item.img_lnk} />
+                        <img className="optionImages" src={item.img_lnk} alt={item.img_lnk}/>
                     </div>
                     <div className="optionText">
                         {item.description}
@@ -35,12 +31,11 @@ class QuestionComponent extends Component {
     }
 
     render() {
-        if(this.props.activeStep === 7) {
+        if(this.props.answers.indexOf(-1) === -1) {
             return (
                 <Redirect to="result" />
             )
         }
-
         return (
             <section id="questions">
                 <div className="question">{this.props.questions[this.props.activeStep].question_text}</div>
@@ -55,7 +50,7 @@ class QuestionComponent extends Component {
                         position="static"
                         activeStep={this.props.activeStep}
                         nextButton={
-                            <Button size="small" onClick={this.props.start_over} >
+                            <Button size="small" onClick={() => this.props.start_over()} >
                                 Start Over
                             </Button>
                         }

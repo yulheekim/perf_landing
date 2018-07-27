@@ -40,6 +40,11 @@ class QuizResultComponent extends Component {
                 <Redirect to="checkout" />
             )
         }
+        else if (this.props.error_message !== "") {
+            return(
+                <Redirect to="quiz" />
+            )
+        }
         return (
             <div className="quizResultStyle">
                 <Header />
