@@ -293,13 +293,13 @@ export const start_distilling = () => {
     }
 }
 
-export const load_result = (taker_name, quiz_id, answers) => {
+export const load_result = (recipient_relations, quiz_id, answers) => {
     return (dispatch) => {
         dispatch({
             type: LOAD_RESULT,
         });
         axios.post(`${quizAPIRoot}/result`, {
-            "name": taker_name,
+            "recipient_relations": recipient_relations,
             "quiz_id": quiz_id,
             "quiz_result": 
                 {
