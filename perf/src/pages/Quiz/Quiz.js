@@ -14,7 +14,7 @@ import './styles.css';
 
 
 class QuizComponent extends Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.load_quiz("dinner");
         window.scrollTo(0, 0);
     }

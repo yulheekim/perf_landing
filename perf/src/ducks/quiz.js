@@ -3,7 +3,6 @@ import axios from 'axios';
 import APIConfig from '../config/api';
 
 const quizAPIRoot = `${APIConfig.apiroot}/quiz`;
-const resultAPIRoot = `${APIConfig.apiroot}/result`;
 
 //Action Types
 export const CHANGE_RECIPIENT_NAME = "perf/quiz/CHANGE_RECIPIENT_NAME";
@@ -29,6 +28,7 @@ const INITIAL_STATE = {
     answers: [-1, -1, -1, -1, -1, -1, -1],
     error_message: "",
     quiz_name: "",
+    quiz_id: 0,
     recipient_options: ["you", "your friend", "your parent", "your sibling", "significant other"],
     recipient_relations: 0,
     taker_name: "",
@@ -97,6 +97,7 @@ export default function reducer(state = INITIAL_STATE, action) {
             if(action.payload) {
                 return {
                     ...state,
+                    quiz_id: action.payload.id,
                     error_message: "",
                     quiz_name: action.payload.quiz_name,
                     questions: action.payload.questions,
@@ -155,11 +156,11 @@ export default function reducer(state = INITIAL_STATE, action) {
             }
         case LOAD_RESULT:
         case LOAD_RESULT_SUCCESS:
-            var result_cards_list = [];
-            result_cards_list.push(action.payload.primary);
-            result_cards_list.push(action.payload.secondary);
-            result_cards_list.push(action.payload.tertiary);
             if(action.payload) {
+                var result_cards_list = [];
+                result_cards_list.push(action.payload.cards.primary);
+                result_cards_list.push(action.payload.cards.secondary);
+                result_cards_list.push(action.payload.cards.tertiary);
                 return {
                     ...state,
                     error_message: "",
@@ -292,12 +293,26 @@ export const start_distilling = () => {
     }
 }
 
-export const load_result = () => {
+export const load_result = (recipient_relations, quiz_id, answers) => {
     return (dispatch) => {
         dispatch({
-            type: LOAD_RESULT
+            type: LOAD_RESULT,
         });
-        axios.get(`${resultAPIRoot}`)
+        axios.post(`${quizAPIRoot}/result`, {
+            "recipient_relations": recipient_relations,
+            "quiz_id": quiz_id,
+            "quiz_result": 
+                {
+                    "q1": answers[0], 
+                    "q2": answers[1],
+                    "q3": answers[2],
+                    "q4": answers[3],
+                    "q5": answers[4],
+                    "q6": answers[5],
+                    "q7": answers[6]
+                }
+            
+        })
           .then((response) => load_result_success(dispatch, response))
           .catch((error) => load_result_failure(dispatch, error))
     }
