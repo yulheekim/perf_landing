@@ -106,7 +106,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                 promo: action.payload,
             }
         case CHECK_PROMO:
-            const loEmail = ["moco","ceold","aeng"];
+            const loEmail = ["moco","ceold","aeng"]; // update this to the actual list
             var found = (loEmail.indexOf(state.promo) === -1 ? false : true);
             return {
                 ...state,
