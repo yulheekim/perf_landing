@@ -28,7 +28,7 @@ const {
 
 class QuizResultComponent extends Component {
     componentDidMount() {
-        this.props.load_result(this.props.taker_name, this.props.quiz_id, this.props.answers);
+        this.props.load_result(this.props.recipient_relations, this.props.quiz_id, this.props.answers);
         window.scrollTo(0, 0);
     }
     componentWillUnmount() {
@@ -40,12 +40,13 @@ class QuizResultComponent extends Component {
                 <Redirect to="checkout" />
             )
         }
-        else if (this.props.error_message !== "") {
+        else if (this.props.error_message) {
             return(
                 <Redirect to="quiz" />
             )
         }
         return (
+            <ScrollLock>
             <div className="quizResultStyle">
                 <Header />
                 <ScrollLock>
@@ -85,6 +86,7 @@ class QuizResultComponent extends Component {
                 </section>
                 </ScrollLock>
             </div>
+            </ScrollLock>
         );
     }
 }
@@ -93,13 +95,13 @@ export { QuizResultComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz } = state;
-    const { isDistilling, result_cards, reveal_cards, taker_name, quiz_id, answers } = quiz;
+    const { isDistilling, result_cards, reveal_cards, recipient_relations, quiz_id, answers } = quiz;
     return {
       ...ownProps,
       isDistilling,
       result_cards,
       reveal_cards,
-      taker_name,
+      recipient_relations,
       quiz_id,
       answers
     };

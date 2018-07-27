@@ -156,6 +156,7 @@ export default function reducer(state = INITIAL_STATE, action) {
             }
         case LOAD_RESULT:
         case LOAD_RESULT_SUCCESS:
+            console.log(state.error_message);
             if(action.payload) {
                 var result_cards_list = [];
                 result_cards_list.push(action.payload.cards.primary);
@@ -319,6 +320,7 @@ export const load_result = (recipient_relations, quiz_id, answers) => {
 }
 
 export const load_result_success = (dispatch, response) => {
+    console.log(response);
     dispatch({
         type: LOAD_RESULT_SUCCESS,
         payload: response.data.response,
