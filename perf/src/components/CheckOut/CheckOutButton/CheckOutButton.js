@@ -45,7 +45,7 @@ class CheckOutButtonComponent extends Component {
         collection_title: this.props.result_title,
         amount: 2, // need to get this from bottle
         sexuality: this.props.sexuality, // int 0 being masc and 5 being feminine
-        message: "",
+        message: this.props.message,
         bottle_type: "",
         result_metadata: {
           primary: {name: "hai", desc:"this is hai", accord:"teran"},

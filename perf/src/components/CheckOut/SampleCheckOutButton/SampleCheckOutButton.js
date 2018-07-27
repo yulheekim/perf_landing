@@ -31,21 +31,21 @@ class SampleCheckOutButtonComponent extends Component {
         const paymenturl = `${APIConfig.apiroot}/order`;
         const shipping = {
           name: (this.props.recipient_name==="") ? this.props.taker_name : this.props.recipient_name,
-          country: this.props.country,
+          country: "US",
           zip: this.props.zipcode,
-          state: this.props.state,
+          state: this.props.state_abbrv,
           line1: this.props.address1,
           city: this.props.city,
           country_code: "US"
         }
         const billing = {
           name: this.props.taker_name,
-          country: "",
-          zip: "",
-          state: "",
-          line1: "",
-          city: "",
-          country_code: ""
+          country: "US",
+          zip: this.props.zipcode,
+          state: this.props.state_abbrv,
+          line1: this.props.address1,
+          city: this.props.city,
+          country_code: "US"
         }
         const sending_payment = {
           token_id: "",
@@ -170,7 +170,7 @@ class SampleCheckOutButtonComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const { checkout, quiz } = state;
-    const { address1, city, email, open, message, prices, state_abbrv, zipcode } = checkout;
+    const { address1, city, email, open, prices, state_abbrv, zipcode } = checkout;
     const { taker_name, recipient_name, result_title, result_cards,
       recipient_relations, sexuality, recipient_options, amount } = quiz;
     return {
@@ -187,7 +187,6 @@ const mapStateToProps = (state, ownProps) => {
         city,
         email,
         open,
-        message,
         prices,
         state_abbrv,
         zipcode

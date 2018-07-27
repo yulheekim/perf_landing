@@ -84,17 +84,6 @@ class CheckOutComponent extends Component {
         })
     };
 
-    stateMenuItems = () => {
-        const states = ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA',
-        'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA',
-        'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'];
-        return _.map(states, (item, index) => {
-            return (
-                <MenuItem value={item} key={index}> {item} </MenuItem>
-            )
-        })
-    };
-
     handleBottleChange = (event) => {
         this.props.change_bottle(event.target.value);
     };
@@ -193,28 +182,22 @@ export { CheckOutComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
-    const { address1, bottle_imgs, bottle_types, city, current_bottle_index, email, error_message, img_opt, isOpen, message, order_id, prices, state_abbrv, zipcode } = checkout;
+    const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id, prices } = checkout;
     const { answers, result_cards, result_title, recipient_relations } = quiz;
     return {
         ...ownProps,
-        address1,
         answers,
         bottle_imgs,
         bottle_types,
-        city,
         current_bottle_index,
-        email,
         error_message,
         img_opt,
-        isOpen,
         message,
         order_id,
         prices,
         recipient_relations,
         result_cards,
         result_title,
-        state_abbrv,
-        zipcode
     };
 };
 
