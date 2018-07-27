@@ -6,6 +6,8 @@
     font-size: 20px;
 }
 .guide {
+    width: 85%;
+    margin: 0 auto 5vh auto;
     line-height: 2rem;
     font-size: 24px;
 }

@@ -29,6 +29,7 @@ class QuizComponent extends Component {
     //         <Redirect to="nomatch" />
     //       )
     //   }
+
       return (
           <div className="quizStyle">
               <Header />
@@ -47,9 +48,10 @@ export { QuizComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz } = state;
-    const { questions } = quiz;
+    const { answers, questions } = quiz;
     return {
       ...ownProps,
+      answers,
       questions,
     };
 };

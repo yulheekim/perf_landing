@@ -45,7 +45,7 @@ class CheckOutButtonComponent extends Component {
         collection_title: this.props.result_title,
         amount: 2, // need to get this from bottle
         sexuality: this.props.sexuality, // int 0 being masc and 5 being feminine
-        message: this.props.message,
+        message: "",
         bottle_type: "",
         result_metadata: {
           primary: {name: "hai", desc:"this is hai", accord:"teran"},
@@ -83,7 +83,7 @@ class CheckOutButtonComponent extends Component {
 const mapStateToProps = (state, ownProps) => {
   const { quiz } = state;
   const { taker_name, recipient_name, result_title, result_cards,
-    recipient_relations, sexuality, message, recipient_options, amount } = quiz;
+    recipient_relations, sexuality, recipient_options, amount } = quiz;
   return {
     ...ownProps,
     taker_name,
@@ -94,7 +94,6 @@ const mapStateToProps = (state, ownProps) => {
     result_cards,
     amount,
     sexuality,
-    message,
   };
 };
 

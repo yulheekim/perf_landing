@@ -77,7 +77,6 @@ export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type){
         case HANDLE_NEXT:
             state.answers[state.activeStep] = action.payload;
-            console.log(state.answers);
             return {
                 ...state,
                 activeStep: state.activeStep + 1,

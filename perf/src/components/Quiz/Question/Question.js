@@ -19,7 +19,7 @@ class QuestionComponent extends Component {
             return (
                 <div className="options" key={item.id}>
                     <div className="option" onClick={() => this.props.handle_next(item.id)} >
-                        <img className="optionImages" src={item.img_lnk} />
+                        <img className="optionImages" src={item.img_lnk} alt={item.img_lnk}/>
                     </div>
                     <div className="optionText">
                         {item.description}
@@ -30,12 +30,11 @@ class QuestionComponent extends Component {
     }
 
     render() {
-        if(this.props.activeStep === 7) {
-          return (
+        if(this.props.answers.indexOf(-1) === -1) {
+            return (
                 <Redirect to="result" />
-          )
+            )
         }
-
         return (
             <section id="questions">
                 <div className="question">{this.props.questions[this.props.activeStep].question_text}</div>
