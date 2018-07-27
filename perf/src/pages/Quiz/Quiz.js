@@ -8,15 +8,17 @@ import {
   Question,
 } from '../../components';
 import {
-  load_quiz
+  load_quiz,
+  start_over,
 } from '../../ducks/quiz';
 import './styles.css';
 
 
 class QuizComponent extends Component {
     componentWillMount() {
-        this.props.load_quiz("dinner");
         window.scrollTo(0, 0);
+        this.props.load_quiz("dinner");
+        this.props.start_over();
     }
     render() {
     //   if(this.props.error_message !== "") {
@@ -53,5 +55,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export const Quiz = connect(mapStateToProps, {
-    load_quiz
+    load_quiz,
+    start_over
 })(QuizComponent);

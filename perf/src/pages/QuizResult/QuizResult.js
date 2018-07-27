@@ -34,6 +34,11 @@ class QuizResultComponent extends Component {
                 <Redirect to="checkout" />
             )
         }
+        else if (this.props.error_message !== "") {
+            return(
+                <Redirect to="quiz" />
+            )
+        }
         return (
             <div className="quizResultStyle">
                 <Header />
@@ -80,12 +85,13 @@ export { QuizResultComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz } = state;
-    const { isDistilling, result_cards, reveal_cards } = quiz;
+    const { isDistilling, result_cards, reveal_cards, recipient_name } = quiz;
     return {
       ...ownProps,
       isDistilling,
       result_cards,
-      reveal_cards
+      reveal_cards,
+      recipient_name,
     };
 };
 

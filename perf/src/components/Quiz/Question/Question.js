@@ -14,10 +14,6 @@ import './styles.css';
 
 class QuestionComponent extends Component {
 
-    componentWillUnmount() {
-        this.props.start_over();
-    }
-
     populateOptions = () => {
         return _.map(this.props.questions[this.props.activeStep].cards, (item, index)=> {
             return (
@@ -54,7 +50,7 @@ class QuestionComponent extends Component {
                         position="static"
                         activeStep={this.props.activeStep}
                         nextButton={
-                            <Button size="small" onClick={this.props.start_over} >
+                            <Button size="small" onClick={() => this.props.start_over()} >
                                 Start Over
                             </Button>
                         }

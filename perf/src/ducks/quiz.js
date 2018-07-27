@@ -145,7 +145,8 @@ export default function reducer(state = INITIAL_STATE, action) {
         case HIDE_CARDS:
             return {
                 ...state,
-                reveal_cards: [false, false, false]
+                reveal_cards: [false, false, false],
+                isDistilling: false,
             }
         case START_DISTILLING:
             return {

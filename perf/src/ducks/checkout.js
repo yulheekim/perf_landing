@@ -8,6 +8,7 @@ export const CHANGE_MESSAGE = 'perf/checkout/CHANGE_MESSAGE';
 export const CHANGE_PROMO = 'perf/checkout/CHANGE_PROMO';
 export const CHANGE_STATE = 'perf/checkout/CHANGE_STATE';
 export const CHANGE_ZIPCODE = 'perf/checkout/CHANGE_ZIPCODE';
+export const CHECK_PROMO = 'perf/checkout/CHECK_PROMO';
 export const GO_CHECKOUT = 'perf/checkout/GO_CHECKOUT';
 export const HANDLE_ORDER_ERROR = 'perf/checkout/HANDLE_ORDER_ERROR';
 export const HANDLE_ORDER_RESPONSE = 'perf/checkout/HANDLE_ORDER_RESPONSE';
@@ -100,12 +101,16 @@ export default function reducer(state = INITIAL_STATE, action) {
                 error_message: action.payload,
             }
         case CHANGE_PROMO:
+            return {
+                ...state,
+                promo: action.payload,
+            }
+        case CHECK_PROMO:
             const loEmail = ["moco","ceold","aeng"];
-            var found = (loEmail.indexOf(action.payload) === -1 ? false : true);
+            var found = (loEmail.indexOf(state.promo) === -1 ? false : true);
             return {
                 ...state,
                 found_email: found,
-                promo: action.payload,
             }
         default:
             return state
@@ -212,6 +217,13 @@ export const change_promo = (promo) => {
         dispatch({
             type: CHANGE_PROMO,
             payload: promo
+        })
+    };
+}
+export const check_promo = () => {
+    return (dispatch) => {
+        dispatch({
+            type: CHECK_PROMO,
         })
     };
 }

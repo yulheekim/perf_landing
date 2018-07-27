@@ -1,4 +1,4 @@
-import { MenuItem, Select, TextField } from '@material-ui/core';
+import { Button, MenuItem, Select, TextField } from '@material-ui/core';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -17,6 +17,7 @@ import {
     change_promo,
     change_state,
     change_zipcode,
+    check_promo,
     handle_order_response,
 } from '../../ducks/checkout';
 import {
@@ -98,6 +99,7 @@ class CheckOutComponent extends Component {
         )
     }
     render() {
+        const price = this.adjustPrice();
         if (this.props.result_cards[0].name === "") {
             return (<Redirect to="quiz"/>)
         }
@@ -162,20 +164,22 @@ class CheckOutComponent extends Component {
                     <div className="priceContainer">
                         <b>Order Summary</b><br/>
                         <table><tbody>
-                            <tr><td>Item: </td>{this.adjustPrice()}</tr>
+                            <tr><td>Item: </td>{price}</tr>
                             <tr><td>Estimated Tax: </td><td>$0.00</td></tr>
                             <tr className="bordered"><td>Shipping & handling: </td><td>$0.00</td></tr>
-                            <tr className="total"><td>Total: </td>{this.adjustPrice()}</tr>
+                            <tr className="total"><td>Total: </td>{price}</tr>
                         </tbody></table>
-                        {this.props.current_bottle_index === 0 &&<div>
-                            Promo Code :<TextField
-                                label={this.props.found_email ? "PROMO APPLIED!":"Enter your email"}
-                                value={this.props.promo}
-                                onChange={this.handlePromoChange}
-                                margin="normal"
-                                disabled={this.props.found_email}
-                            />
-                        </div>}
+                        {this.props.current_bottle_index === 0 &&
+                            <div>
+                                Promo Code :<TextField
+                                    label={this.props.found_email ? "PROMO APPLIED!":"Enter your email"}
+                                    value={this.props.promo}
+                                    onChange={this.handlePromoChange}
+                                    margin="normal"
+                                />
+                            <Button variant="contained" onClick={()=>this.props.check_promo()} size='small'>OK</Button>
+                            </div>
+                        }
                     </div>
                     {(this.props.current_bottle_index === 0) ?
                         <SampleCheckOutButton />
@@ -229,5 +233,6 @@ export const CheckOut = connect(mapStateToProps, {
     change_promo,
     change_state,
     change_zipcode,
+    check_promo,
     handle_order_response,
 })(CheckOutComponent);
