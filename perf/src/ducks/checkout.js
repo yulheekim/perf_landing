@@ -5,6 +5,7 @@ export const CHANGE_CITY = 'perf/checkout/CHANGE_CITY';
 export const CHANGE_EMAIL = 'perf/checkout/CHANGE_EMAIL';
 export const CHANGE_IMAGE = 'perf/checkout/CHANGE_IMAGE';
 export const CHANGE_MESSAGE = 'perf/checkout/CHANGE_MESSAGE';
+export const CHANGE_PROMO = 'perf/checkout/CHANGE_PROMO';
 export const CHANGE_STATE = 'perf/checkout/CHANGE_STATE';
 export const CHANGE_ZIPCODE = 'perf/checkout/CHANGE_ZIPCODE';
 export const GO_CHECKOUT = 'perf/checkout/GO_CHECKOUT';
@@ -13,7 +14,8 @@ export const HANDLE_ORDER_RESPONSE = 'perf/checkout/HANDLE_ORDER_RESPONSE';
 export const LOAD_CHECKOUT = 'perf/checkout/LOAD_CHECKOUT';
 export const LOAD_CHECKOUT_SUCCESS = 'perf/checkout/LOAD_CHECKOUT_SUCCESS';
 export const LOAD_CHECKOUT_FAILURE = 'perf/checkout/LOAD_CHECKOUT_FAILURE';
-export const TOGGLE_MODAL = 'perf/checkout/TOGGLE_MODAL'
+export const TOGGLE_MODAL = 'perf/checkout/TOGGLE_MODAL';
+
 
 const INITIAL_STATE = {
     error_message: "",
@@ -24,7 +26,7 @@ const INITIAL_STATE = {
     current_bottle_index: 0,
     img_opt: 0,
     bottle_types: ['Sample Card', '10mL Roll On', '15mL Spray'],
-    prices: [0, 15, 25],
+    prices: [5, 15, 25],
     open: false,
     email:"",
     address1:"",
@@ -32,6 +34,8 @@ const INITIAL_STATE = {
     state_abbrv:"",
     zipcode:"",
     order_id: 0,
+    promo:"",
+    found_email: false,
 }
 
 
@@ -94,6 +98,14 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 error_message: action.payload,
+            }
+        case CHANGE_PROMO:
+            const loEmail = ["moco","ceold","aeng"];
+            var found = (loEmail.indexOf(action.payload) === -1 ? false : true);
+            return {
+                ...state,
+                found_email: found,
+                promo: action.payload,
             }
         default:
             return state
@@ -194,4 +206,12 @@ export const handle_order_error = (error_message) => {
             payload: error_message
         })
     }
+}
+export const change_promo = (promo) => {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_PROMO,
+            payload: promo
+        })
+    };
 }

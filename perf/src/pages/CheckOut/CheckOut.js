@@ -1,9 +1,8 @@
-import { Button, MenuItem, Select, TextField } from '@material-ui/core';
+import { MenuItem, Select, TextField } from '@material-ui/core';
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Modal from 'react-responsive-modal';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Elements, StripeProvider } from 'react-stripe-elements';
 import SwipeableViews from 'react-swipeable-views';
 
@@ -15,6 +14,7 @@ import {
     change_email,
     change_image,
     change_message,
+    change_promo,
     change_state,
     change_zipcode,
     handle_order_response,
@@ -25,11 +25,7 @@ import {
     SampleCheckOutButton,
 } from '../../components';
 import './styles.css';
-import styles from './styles';
-const {
-    sampleButton,
-    stateDropdown
-} = styles
+
 
 class CheckOutComponent extends Component {
 
@@ -89,6 +85,17 @@ class CheckOutComponent extends Component {
     };
     componentWillMount() {
         this.props.handle_order_response(0);
+    }
+    handlePromoChange = (event) => {
+        this.props.change_promo(event.target.value);
+    };
+    adjustPrice () {
+        return(
+            <td>${this.props.found_email&&this.props.current_bottle_index===0 ?
+                <span><s>{this.props.prices[this.props.current_bottle_index].toFixed(2)}</s> 0.00</span> :
+                this.props.prices[this.props.current_bottle_index].toFixed(2)}
+            </td>
+        )
     }
     render() {
         if (this.props.result_cards[0].name === "") {
@@ -155,11 +162,20 @@ class CheckOutComponent extends Component {
                     <div className="priceContainer">
                         <b>Order Summary</b><br/>
                         <table><tbody>
-                            <tr><td>Item: </td><td>${this.props.prices[this.props.current_bottle_index].toFixed(2)}</td></tr>
+                            <tr><td>Item: </td>{this.adjustPrice()}</tr>
                             <tr><td>Estimated Tax: </td><td>$0.00</td></tr>
                             <tr className="bordered"><td>Shipping & handling: </td><td>$0.00</td></tr>
-                            <tr className="total"><td>Total: </td><td>${(this.props.prices[this.props.current_bottle_index]).toFixed(2)}</td></tr>
+                            <tr className="total"><td>Total: </td>{this.adjustPrice()}</tr>
                         </tbody></table>
+                        {this.props.current_bottle_index === 0 &&<div>
+                            Promo Code :<TextField
+                                label={this.props.found_email ? "PROMO APPLIED!":"Enter your email"}
+                                value={this.props.promo}
+                                onChange={this.handlePromoChange}
+                                margin="normal"
+                                disabled={this.props.found_email}
+                            />
+                        </div>}
                     </div>
                     {(this.props.current_bottle_index === 0) ?
                         <SampleCheckOutButton />
@@ -182,7 +198,7 @@ export { CheckOutComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
-    const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id, prices } = checkout;
+    const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id, prices, promo, found_email } = checkout;
     const { answers, result_cards, result_title, recipient_relations } = quiz;
     return {
         ...ownProps,
@@ -195,9 +211,11 @@ const mapStateToProps = (state, ownProps) => {
         message,
         order_id,
         prices,
+        promo,
         recipient_relations,
         result_cards,
         result_title,
+        found_email,
     };
 };
 
@@ -208,6 +226,7 @@ export const CheckOut = connect(mapStateToProps, {
     change_email,
     change_image,
     change_message,
+    change_promo,
     change_state,
     change_zipcode,
     handle_order_response,
