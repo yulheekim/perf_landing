@@ -16,6 +16,7 @@ import {
     hide_cards,
     reveal_card,
     start_distilling,
+    load_result,
 } from '../../ducks/quiz';
 import './styles.css';
 
@@ -23,6 +24,7 @@ import './styles.css';
 
 class QuizResultComponent extends Component {
     componentDidMount() {
+        this.props.load_result(this.props.taker_name, this.props.quiz_id, this.props.answers);
         window.scrollTo(0, 0);
     }
     componentWillUnmount() {
@@ -80,17 +82,21 @@ export { QuizResultComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz } = state;
-    const { isDistilling, result_cards, reveal_cards } = quiz;
+    const { isDistilling, result_cards, reveal_cards, taker_name, quiz_id, answers } = quiz;
     return {
       ...ownProps,
       isDistilling,
       result_cards,
-      reveal_cards
+      reveal_cards,
+      taker_name,
+      quiz_id,
+      answers
     };
 };
 
 export const QuizResult = connect(mapStateToProps, {
     hide_cards,
     reveal_card,
-    start_distilling
+    start_distilling,
+    load_result,
 })(QuizResultComponent);

@@ -7,7 +7,8 @@ import _ from 'lodash';
 
 import {
   handle_next,
-  start_over
+  start_over,
+  load_result
 } from '../../../ducks/quiz';
 import './styles.css';
 
@@ -35,9 +36,9 @@ class QuestionComponent extends Component {
 
     render() {
         if(this.props.activeStep === 7) {
-          return (
+            return (
                 <Redirect to="result" />
-          )
+            )
         }
 
         return (
@@ -77,5 +78,6 @@ const mapStateToProps = (state, ownProps) => {
 
 export const Question = connect(mapStateToProps, {
   handle_next,
-  start_over
+  start_over,
+  load_result
 })(QuestionComponent);
