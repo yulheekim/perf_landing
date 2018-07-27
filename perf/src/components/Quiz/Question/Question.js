@@ -7,7 +7,8 @@ import _ from 'lodash';
 
 import {
   handle_next,
-  start_over
+  start_over,
+  load_result
 } from '../../../ducks/quiz';
 import './styles.css';
 
@@ -72,5 +73,6 @@ const mapStateToProps = (state, ownProps) => {
 
 export const Question = connect(mapStateToProps, {
   handle_next,
-  start_over
+  start_over,
+  load_result
 })(QuestionComponent);
