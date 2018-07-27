@@ -29,7 +29,9 @@ import './styles.css';
 
 
 class CheckOutComponent extends Component {
-
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
     populateImgs = () => {
         return _.map(this.props.bottle_imgs[this.props.current_bottle_index], (item, index)=> {
             return (
