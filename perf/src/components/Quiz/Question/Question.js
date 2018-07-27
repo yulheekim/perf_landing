@@ -8,7 +8,7 @@ import _ from 'lodash';
 import {
   handle_next,
   start_over,
-  load_result
+  load_result,
 } from '../../../ducks/quiz';
 import './styles.css';
 
@@ -32,6 +32,7 @@ class QuestionComponent extends Component {
 
     render() {
         if(this.props.answers.indexOf(-1) === -1) {
+            this.props.load_result(this.props.recipient_relations, this.props.quiz_id, this.props.answers);
             return (
                 <Redirect to="result" />
             )
@@ -63,11 +64,13 @@ class QuestionComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { quiz } = state;
-  const { activeStep, answers } = quiz;
+  const { activeStep, answers, recipient_relations, quiz_id } = quiz;
   return {
     ...ownProps,
     activeStep,
     answers,
+    recipient_relations,
+    quiz_id,
   };
 }
 
