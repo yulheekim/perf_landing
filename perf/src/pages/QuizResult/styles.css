@@ -3,47 +3,105 @@ section {
     padding-top: 13vh;
     overflow: hidden;
 }
-.textContainer {
-    width: auto;
-    font-size: 32px;
-    text-align: center;
-    padding: 5vh;
+@media only screen and (max-device-width: 768px) {
+    /* iPad */
+    .textContainer {
+        width: auto;
+        font-size: 36px;
+        text-align: center;
+        padding-top: 12vh;
+        padding-bottom: 1vh;
+    }
+    .distillGif {
+        position: absolute;
+        top: 157%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 30vh;
+    }
+}
+@media only screen and (max-device-width: 480px) {
+    /* iPhone Plus, Pixel 2 (XL) */
+    .textContainer {
+        width: 90%;
+        margin: auto;
+        font-size: 32px;
+        text-align: center;
+        padding-top: 2.5vh;
+        padding-bottom: 2.5vh;
+    }
+}
+@media only screen and (max-device-width: 375px) {
+    /* iPhone 6/7/8, iPhone X, */
+    .textContainer {
+        width: 90%;
+        font-size: 28px;
+        text-align: center;
+        padding-top: 2.2vh;
+        padding-bottom: 2.2vh;
+    }
+    .distillGif {
+        position: absolute;
+        top: 154%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 30vh;
+    }
+}
+@media only screen and (max-device-width: 320px) {
+    /*iPhone 5*/
+    .textContainer {
+        width: 85vw;
+        font-size: 20px;
+        text-align: center;
+        padding-top: 1.5vh;
+        padding-bottom: 1.5vh;
+        margin: auto;
+    }
+    .distillGif {
+        position: absolute;
+        top: 153%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 30vh;
+    }
+}
+@media only screen and (min-device-width: 769px){
+    .textContainer {
+        width: auto;
+        font-size: 32px;
+        text-align: center;
+        padding: 5vh;
+    }
+    .showDown {
+        margin-top: 3vh;
+    }
+    .distillGif {
+        position: absolute;
+        top: 155.5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 33vh;
+    }
+}
+.hideDown {
+    display: none;
 }
 #distilling {
     margin: 0%;
 }
-
-.wait {
-    width: 60%;
-    height: 50%;
-    align-items: center;
-    vertical-align: middle;
-    justify-content: center;
-    margin: 4rem auto;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-.distillGif {
-    position: absolute;
-    top: 142%;
-}
-
-.showDown {
-    margin: 0% auto;
-}
-.hideDown {
-    display: none;
+.distillContainer {
+    margin: 0 auto;
 }
 .hideVis {
     visibility: hidden;
 }
 .linkToCheckout {
-    width: 100%;
+    width: 80vw;
+    margin: auto;
     text-align: center;
+    font-size: 18px;
 }
-
 .quizResultStyle {
     text-align: center;
     justify-content: center;

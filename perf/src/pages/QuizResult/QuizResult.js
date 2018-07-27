@@ -19,6 +19,10 @@ import {
     load_result,
 } from '../../ducks/quiz';
 import './styles.css';
+import styles from './styles';
+const {
+    circularProgress,
+} = styles
 
 
 
@@ -60,17 +64,19 @@ class QuizResultComponent extends Component {
                     <div className="textContainer">
                         Distilling a perf fragrance for you...
                     </div>
-
-                    <div className="wait">
-                        <TrackVisibility className="hideVis">
-                            {({ isVisible }) => isVisible && setTimeout(this.props.start_distilling, 3000)}
-                        </TrackVisibility>
-                        <img src={distill} alt="distilling GIF" className="distillGif"/>
-                        <CircularProgress size = {400} thickness = {2} />
+                    <img src={distill} alt="distilling GIF" className="distillGif"/>
+                    <div className="distillContainer">
+                        <CircularProgress size = {window.innerHeight*0.43} thickness = {2} style={circularProgress}/>
+                    </div>
+                    <TrackVisibility className="hideVis">
+                        {({ isVisible }) => isVisible && setTimeout(this.props.start_distilling, 3000)}
+                    </TrackVisibility>
+                    <div className="linkToCheckout">
                         <Link to="checkout">
                             <br/>Click here if the page does not automatically redirect in 3 seconds
                         </Link>
                     </div>
+
                 </section>
                 </ScrollLock>
             </div>
