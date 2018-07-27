@@ -30,7 +30,7 @@ const INITIAL_STATE = {
     error_message: "",
     quiz_name: "",
     recipient_options: ["you", "your friend", "your parent", "your sibling", "significant other"],
-    recipient_relations: 0,
+    recipient_relations: 1,
     taker_name: "",
     recipient_name: "",
     sexuality: "",

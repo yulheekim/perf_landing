@@ -25,7 +25,7 @@ const INITIAL_STATE = {
     img_opt: 0,
     bottle_types: ['Sample Card', '10mL Roll On', '15mL Spray'],
     prices: [0, 15, 25],
-    isOpen: false,
+    open: false,
     email:"",
     address1:"",
     city:"",
@@ -57,7 +57,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         case TOGGLE_MODAL:
             return {
                 ...state,
-                isOpen: !state.isOpen,
+                open: !state.open,
             }
         case CHANGE_ADDRESS1:
             return {

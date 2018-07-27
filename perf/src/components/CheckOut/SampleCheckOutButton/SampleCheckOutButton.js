@@ -114,52 +114,54 @@ class SampleCheckOutButtonComponent extends Component {
     }
     toggleModal = () => {
         this.props.toggle_modal();
-    }
+    };
+
     render() {
         return (
             <div className="checkOutButton">
-                <Button variant="contained" color="primary" style={sampleButton} onClick={()=>this.toggleModal()}>Get your sample now!</Button>
+                <Button variant="contained" color="primary" style={sampleButton} onClick={this.toggleModal}>Get your sample now!</Button>
                 <Modal
-                  open={this.props.isOpen}
-                  onClose={()=>this.toggleModal()}
+                  open={this.props.open}
+                  onClose={this.toggleModal}
                   center
                   classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}
                 >
-                    <h2>Contact and Shipping Information:</h2>
-                    Your Email Address: <TextField required
-                      label="Email Address"
-                      value={this.props.email}
-                      onChange={this.handleEmailChange}
-                      margin="normal"
-                    /><br/>
-                    Address Line 1: <TextField required
-                      label="Address Line 1"
-                      value={this.props.address1}
-                      onChange={this.handleAddress1Change}
-                      margin="normal"
-                    /><br/>
-                    City: <TextField required
-                      label="City"
-                      value={this.props.city}
-                      onChange={this.handleCityChange}
-                      margin="normal"
-                    />
-                    State: <Select
-                      onChange={this.handleStateChange}
-                      value={this.props.state_abbrv}
-                      style={stateDropdown}
-                    >
-                    {this.stateMenuItems()}
-                    </Select>
-                    Zipcode: <TextField required
-                      label="Zipcode"
-                      value={this.props.zipcode}
-                      onChange={this.handleZipcodeChange}
-                      margin="normal"
-                    /><br/>
-                    <Link to="thankyou" className="submitButton">
-                        <Button variant="contained" color="primary" onClick={()=>this.handleSubmit()}>Submit</Button>
-                    </Link>
+                <h2>Contact and Shipping Information:</h2>
+                Your Email Address: <TextField required
+                  label="Email Address"
+                  value={this.props.email}
+                  onChange={this.handleEmailChange}
+                  margin="normal"
+                  autoFocus={true}
+                /><br/>
+                Address Line 1: <TextField required
+                  label="Address Line 1"
+                  value={this.props.address1}
+                  onChange={this.handleAddress1Change}
+                  margin="normal"
+                /><br/>
+                City: <TextField required
+                  label="City"
+                  value={this.props.city}
+                  onChange={this.handleCityChange}
+                  margin="normal"
+                />
+                State: <Select
+                  onChange={this.handleStateChange}
+                  value={this.props.state_abbrv}
+                  style={stateDropdown}
+                >
+                {this.stateMenuItems()}
+                </Select>
+                Zipcode: <TextField required
+                  label="Zipcode"
+                  value={this.props.zipcode}
+                  onChange={this.handleZipcodeChange}
+                  margin="normal"
+                /><br/>
+                <Link to="thankyou" className="submitButton">
+                    <Button variant="contained" color="primary" onClick={()=>this.handleSubmit()} disabled={this.props.address1==="" || this.props.city==="" || this.props.email==="" || this.props.state_abbrv==="" || this.props.zipcode===""}>Submit</Button>
+                </Link>
                 </Modal>
             </div>
         );
@@ -168,7 +170,7 @@ class SampleCheckOutButtonComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const { checkout, quiz } = state;
-    const { address1, city, email, isOpen, message, prices, state_abbrv, zipcode } = checkout;
+    const { address1, city, email, open, message, prices, state_abbrv, zipcode } = checkout;
     const { taker_name, recipient_name, result_title, result_cards,
       recipient_relations, sexuality, recipient_options, amount } = quiz;
     return {
@@ -184,7 +186,7 @@ const mapStateToProps = (state, ownProps) => {
         address1,
         city,
         email,
-        isOpen,
+        open,
         message,
         prices,
         state_abbrv,

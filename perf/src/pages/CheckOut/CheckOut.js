@@ -18,7 +18,6 @@ import {
     change_state,
     change_zipcode,
     handle_order_response,
-    toggle_modal,
 } from '../../ducks/checkout';
 import {
     CheckOutButton,
@@ -99,27 +98,6 @@ class CheckOutComponent extends Component {
     handleBottleChange = (event) => {
         this.props.change_bottle(event.target.value);
     };
-
-    handleEmailChange = (event) => {
-        this.props.change_email(event.target.value);
-    };
-
-    handleAddress1Change = (event) => {
-        this.props.change_address1(event.target.value)
-    }
-
-    handleCityChange = (event) => {
-        this.props.change_city(event.target.value)
-    }
-
-    handleStateChange = (event) => {
-        this.props.change_state(event.target.value)
-    }
-
-    handleZipcodeChange = (event) => {
-        this.props.change_zipcode(event.target.value)
-    }
-
     componentWillMount() {
         this.props.handle_order_response(0);
     }
@@ -195,51 +173,7 @@ class CheckOutComponent extends Component {
                         </tbody></table>
                     </div>
                     {(this.props.current_bottle_index === 0) ?
-                        <div className="checkOutButton">
-                            <Button variant="contained" color="primary" style={sampleButton} onClick={this.props.toggle_modal}>Get your sample now!</Button>
-                            <Modal
-                              open={this.props.isOpen}
-                              onClose={this.props.toggle_modal}
-                              center
-                              classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}
-                            >
-                                <h2>Contact and Shipping Information:</h2>
-                                Your Email Address: <TextField required
-                                  label="Email Address"
-                                  value={this.props.email}
-                                  onChange={this.handleEmailChange}
-                                  margin="normal"
-                                /><br/>
-                                Address Line 1: <TextField required
-                                  label="Address Line 1"
-                                  value={this.props.address1}
-                                  onChange={this.handleAddress1Change}
-                                  margin="normal"
-                                /><br/>
-                                City: <TextField required
-                                  label="City"
-                                  value={this.props.city}
-                                  onChange={this.handleCityChange}
-                                  margin="normal"
-                                />
-                                State: <Select
-                                  onChange={this.handleStateChange}
-                                  value={this.props.state_abbrv}
-                                  style={stateDropdown}
-                                >
-                                {this.stateMenuItems()}
-                                </Select>
-                                Zipcode: <TextField required
-                                  label="Zipcode"
-                                  value={this.props.zipcode}
-                                  onChange={this.handleZipcodeChange}
-                                  margin="normal"
-                                /><br/>
-                                <Link to="thankyou" className="submitButton">
-                                    <Button variant="contained" color="primary" >Submit</Button>
-                                </Link>
-                            </Modal>
-                        </div>
+                        <SampleCheckOutButton />
                         :
                         <div className="checkOutButton">
                             <StripeProvider apiKey={APIConfig.stripe_key}>
@@ -294,5 +228,4 @@ export const CheckOut = connect(mapStateToProps, {
     change_state,
     change_zipcode,
     handle_order_response,
-    toggle_modal,
 })(CheckOutComponent);
