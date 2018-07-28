@@ -1,3 +1,33 @@
+ #whyperf .oneliner {
+    font-size: 4vw;
+    margin-top: 10vh !important;
+    width: 90vw !important;
+}
+
+.backdrop {
+    position: absolute;
+    background-color: black;
+    opacity: 0.;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* .sectionBody {
+    z-index: 20;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: inherit 5vw;
+} */ */
+
+#whyperf {
+    display: flex;
+    justify-content: center;
+}
+
+
 @media only screen and (max-device-width: 768px) {
   /* iPad */
   .mobile {

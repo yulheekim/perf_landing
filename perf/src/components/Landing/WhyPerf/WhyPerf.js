@@ -35,16 +35,19 @@ class WhyPerfComponent extends Component {
     render() {
         return (
             <section id="whyperf" className={window.innerWidth <= 768 ? "mobile" : this.props.show_which > 0 ? "descShowSection": "descHideSection"}>
-                <OneLiner message="Why Perf?" />
-                <div className="circleRow">
-                    {this.modalCircle(1)}
-                    {this.modalCircle(2)}
-                    {this.modalCircle(3)}
+                <div className="backdrop" />
+                <div className="sectionBody">
+                    <OneLiner message="Why Perf?" />
+                    <div className="circleRow">
+                        {this.modalCircle(1)}
+                        {this.modalCircle(2)}
+                        {this.modalCircle(3)}
+                    </div>
+                    <div className={this.props.show_which > 0 ? "descShow" : "descHide"}>
+                        {this.props.why_descs[this.props.show_which]}
+                    </div>
+                    <ScrollDown message="Reviews" moveto="reviews"/>
                 </div>
-                <div className={this.props.show_which > 0 ? "descShow" : "descHide"}>
-                    {this.props.why_descs[this.props.show_which]}
-                </div>
-                <ScrollDown message="Reviews" moveto="reviews"/>
             </section>
         );
     }

@@ -1,3 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
+.sectionBody .oneliner {
+    font-size: 4vw;
+    margin-top: 30vh !important;
+    width: 90vw !important;
+}
+
+.firstSection {
+    background-image: url(../../../assets/landing/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.hr {
+    width: 30vw;
+    color: white;
+    margin-top: 0;
+}
+
+.backdrop {
+    position: absolute;
+    background-color: black;
+    opacity: 0.4;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+}
+
+.sectionBody {
+    z-index: 20;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: inherit 5vw;
+}
+
 .quizLink {
     text-decoration: none;
 }
@@ -44,7 +88,7 @@
 
 @media only screen and (max-device-width: 1024px) and (min-device-width: 481px){
     .getStarted {
-        margin-top: 30vh;
+        margin-top: 15vh;
         margin-bottom: 12vh;
     }
     .quizButton {
@@ -54,7 +98,7 @@
 }
 @media only screen and (min-device-width: 1024px) {
     .getStarted {
-        margin-top: 19vh;
-        margin-bottom: 15vh;
+        margin-top: 15vh;
+        margin-bottom: 13vh;
     }
 }

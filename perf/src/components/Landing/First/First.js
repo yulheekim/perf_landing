@@ -7,22 +7,28 @@ import {
     ScrollDown,
 } from '../../Common';
 import './styles.css';
+import styles from './styles';
 
+const {
+    buttonStyle,
+  } = styles
 
 const First = () => {
     return (
         <section className="firstSection" id="first">
-            <OneLiner message="Personalized Fragrance Designed by You" />
-
-            <div className="getStarted">
-                <Link to="quiz" className="quizLink" >
-                    <Button className="quizButton" variant="contained" size="large">
-                        Get Started!
-                    </Button>
-                </Link>
+            <div className="sectionBody">
+                <OneLiner className="firstLiner" message="Personalized Fragrance Designed by You" />
+                <hr className="hr" />
+                <div className="getStarted">
+                    <Link to="quiz" className="quizLink" >
+                        <Button className="quizButton" variant="contained" size="large" style={buttonStyle}>
+                            Get Started!
+                        </Button>
+                    </Link>
+                </div>
+                <ScrollDown message="Learn More" moveto="whyperf" />
             </div>
-
-            <ScrollDown message="Learn More" moveto="whyperf" />
+            <div className="backdrop"></div>
         </section>
     ) 
 }
