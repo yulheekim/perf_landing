@@ -32,7 +32,7 @@ class ReviewsComponent extends Component {
                     <CoverFlow
                         imagesArr={cats}
                         handleSelect={(index)=>this.handleSelect(index)}
-                        background="white"
+                        background="transparent"
                         height={(window.innerWidth <= 320) ? 200:250}
                     />
                 </div>
@@ -42,17 +42,20 @@ class ReviewsComponent extends Component {
     render() {
         return (
             <section id="reviews" className="reviewSection">
-                <OneLiner message="Proudly made by Perf" />
-                {this.slider()}
-                <div className="description">
-                    {this.props.currentSlider}
-                </div>
-                <div className="getStarted2">
-                    <Link to="quiz" className="quizLink">
-                        <Button className="quizButton" variant="contained" size="large">
-                            Get Started!
-                        </Button>
-                    </Link>
+                <div className="backdrop" />
+                <div className="sectionBody">
+                    <OneLiner message="Proudly made by Perf" />
+                        {this.slider()}
+                    <div className="description">
+                        {this.props.currentSlider}
+                    </div>
+                    <div className="getStarted2">
+                        <Link to="quiz" className="quizLink">
+                            <Button className="quizButton" variant="contained" size="large">
+                                Get Started!
+                            </Button>
+                        </Link>
+                    </div>
                 </div>
             </section>
         );

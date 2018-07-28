@@ -3,13 +3,52 @@
     padding-top: 13vh;
 }
 
+.reviewSection .oneliner {
+    font-size: 4vw;
+    margin-top: 10vh !important;
+    width: 90vw !important;
+}
+
+
+#reviews {
+    background-image: url(../../../assets/landing/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+#reviews .backdrop {
+    position: absolute;
+    background-color: black;
+    opacity: 0.;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh !important;
+    margin-top: -13vh;
+}
+
+.sectionBody {
+    z-index: 20;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    width: 100vw;
+}
+
 .description {
-    margin: auto;
+    margin-left: 0 !important;
 }
 
 .getStarted2 {
     margin-top: 10vh;
-    margin-bottom: 13vh;
+    margin-bottom: 10vh;
 }
 .coverflowConatiner {
     margin-top: 5vh;

@@ -30,7 +30,9 @@
     opacity: 0.4;
     z-index: 2;
     width: 100vw;
+    /* height: 93.5vh; */
     height: 100vh;
+    margin-top: -13vh;
 }
 
 .sectionBody {
