@@ -36,7 +36,7 @@ class WhyPerfComponent extends Component {
         return (
             <section id="whyperf" className={window.innerWidth <= 768 ? "mobile" : this.props.show_which > 0 ? "descShowSection": "descHideSection"}>
                 <div className="backdrop" />
-                <div className="sectionBody">
+                <div className="whyperfSection">
                     <OneLiner message="Why Perf?" />
                     <div className="circleRow">
                         {this.modalCircle(1)}

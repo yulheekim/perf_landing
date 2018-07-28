@@ -11,6 +11,11 @@ import {
     OneLiner
 } from '../../Common';
 import './styles.css';
+import styles from './styles';
+
+const {
+    buttonStyle,
+} = styles
 
 var cats = [
     'https://i.kym-cdn.com/entries/icons/square/000/002/232/bullet_cat.jpg',
@@ -34,6 +39,7 @@ class ReviewsComponent extends Component {
                         handleSelect={(index)=>this.handleSelect(index)}
                         background="transparent"
                         height={(window.innerWidth <= 320) ? 200:250}
+                        width ={(window.innerWidth <= 320) ? 200:250}
                     />
                 </div>
         )
@@ -43,7 +49,7 @@ class ReviewsComponent extends Component {
         return (
             <section id="reviews" className="reviewSection">
                 <div className="backdrop" />
-                <div className="sectionBody">
+                <div className="reviewBody">
                     <OneLiner message="Proudly made by Perf" />
                         {this.slider()}
                     <div className="description">
@@ -51,7 +57,7 @@ class ReviewsComponent extends Component {
                     </div>
                     <div className="getStarted2">
                         <Link to="quiz" className="quizLink">
-                            <Button className="quizButton" variant="contained" size="large">
+                            <Button className="quizButton" variant="contained" size="large" style={buttonStyle}>
                                 Get Started!
                             </Button>
                         </Link>

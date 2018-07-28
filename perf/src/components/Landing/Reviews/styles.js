@@ -1,6 +1,6 @@
 export default {
     buttonStyle: {
-        width: '50vw',
+        width: '20vw',
         height: '10vh',
         boxShadow: 'none',
         backgroundColor: 'transparent',
