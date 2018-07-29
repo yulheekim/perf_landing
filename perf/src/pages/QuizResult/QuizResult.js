@@ -52,7 +52,7 @@ class QuizResultComponent extends Component {
                 <section>
 
                     <div className="textContainer">
-                        We have found your three scent profiles!
+                        We have found {(this.props.recipient_relations === 0) ? <span>your</span>:<span>{(this.props.recipient_relations === 4) && <span>your </span>}{this.props.recipient_options[this.props.recipient_relations]}'s</span>} three scent profiles!
                     </div>
                     <ResultCards
                         result_cards={this.props.result_cards}
@@ -67,14 +67,14 @@ class QuizResultComponent extends Component {
                 <ScrollLock>
                 <section id="distilling">
                     <div className="textContainer2">
-                        Distilling a Perf fragrance for you...
+                        Distilling a Perf fragrance for {(this.props.recipient_relations === 0) ? this.props.taker_name : this.props.recipient_name}...
                     </div>
                     <img src={distill} alt="distilling GIF" className="distillGif"/>
                     <div className="distillContainer">
                         <CircularProgress size = {window.innerHeight*0.43} thickness = {2} style={circularProgress}/>
                     </div>
                     <TrackVisibility className="hideVis">
-                        {({ isVisible }) => isVisible && setTimeout(this.props.start_distilling, 300000)}
+                        {({ isVisible }) => isVisible && setTimeout(this.props.start_distilling, 3000)}
                     </TrackVisibility>
                     <div className="linkToCheckout">
                         <Link to="checkout">
@@ -94,14 +94,17 @@ export { QuizResultComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz } = state;
-    const { isDistilling, result_cards, reveal_cards, recipient_relations, quiz_id, answers, result_title, } = quiz;
+    const { isDistilling, result_cards, reveal_cards, recipient_name, recipient_options, recipient_relations, quiz_id, taker_name, answers, result_title, } = quiz;
     return {
       ...ownProps,
       isDistilling,
       result_cards,
       reveal_cards,
+      recipient_name,
+      recipient_options,
       recipient_relations,
       quiz_id,
+      taker_name,
       answers,
       result_title
     };

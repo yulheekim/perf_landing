@@ -19,8 +19,6 @@
         display: flex;
         flex-direction: column;
     }
-
-
     .card img {
         min-width: 100%;
         height: 38vh;
@@ -110,7 +108,8 @@
         justify-content: center;
     }
     .card img {
-        height: 30vh;
+        width: 80vw;
+        min-height: 100%;
     }
     .results {
         position: absolute;
@@ -118,14 +117,25 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 40px;
+        font-family: 'Cormorant SC', serif;
+    }
+    .hr {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 48px;
+        width: 30%;
     }
     .reveal {
         width: 100%;
         position: absolute;
-        top: 68%;
+        top: 76%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 20px;
+        font-family: 'Hammersmith One';
+        font-weight: lighter;
     }
     .resultsBack {
         position: absolute;
@@ -133,30 +143,33 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 28px;
+        font-family: 'Cormorant SC', serif;
     }
     .resultDescription {
         width: 90%;
         position: absolute;
-        font-size: 14px;
+        font-size: 10px;
         top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
+        font-family: 'Open Sans', sans-serif;
+        font-weight: lighter;
     }
 }
 @media only screen and (max-device-width: 375px) {
     /* iPhone 6/7/8, iPhone X, */
     .resultsBack {
         position: absolute;
-        top: 18%;
+        top: 12%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 22px;
+        font-size: 20px;
     }
     .resultDescription {
         width: 90%;
         position: absolute;
-        font-size: 12px;
-        top: 60%;
+        font-size: 1.42vh;
+        top: 58%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
@@ -185,25 +198,33 @@
         transform: translate(-50%, -50%);
         font-size: 32px;
     }
+    .hr {
+        position: absolute;
+        top: 38%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 48px;
+        width: 35%;
+    }
     .reveal {
         width: 100%;
         position: absolute;
-        top: 72%;
+        top: 80%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 18px;
+        font-size: 16px;
     }
     .resultsBack {
         position: absolute;
-        top: 16%;
+        top: 12%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 18px;
+        font-size: 16px;
     }
     .resultDescription {
         width: 95%;
         position: absolute;
-        font-size: 12px;
+        font-size: 9px;
         top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -261,7 +282,7 @@
     }
     .resultsBack {
         position: absolute;
-        top: 15%;
+        top: 12%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 48px;
@@ -270,8 +291,8 @@
     .resultDescription {
         width: 90%;
         position: absolute;
-        font-size: 17px;
-        top: 60%;
+        font-size: 16px;
+        top: 58%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-family: 'Open Sans', sans-serif;

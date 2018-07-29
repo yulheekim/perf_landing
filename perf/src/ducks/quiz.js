@@ -322,7 +322,6 @@ export const load_result = (recipient_relations, quiz_id, answers) => {
 }
 
 export const load_result_success = (dispatch, response) => {
-    console.log(response.data);
     dispatch({
         type: LOAD_RESULT_SUCCESS,
         payload: response.data.response,

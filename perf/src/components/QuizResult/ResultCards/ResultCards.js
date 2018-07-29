@@ -34,7 +34,6 @@ const ScentCard = (result_cards, reveal_cards, onClickCard) => {
 }
 
 export const ResultCards = ({result_cards, reveal_cards, onClickCard}) => {
-    console.log(result_cards);
     return (
         <div className="cardsContainer">
             {ScentCard(result_cards, reveal_cards, onClickCard)}
