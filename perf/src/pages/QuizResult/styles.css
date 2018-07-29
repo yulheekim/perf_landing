@@ -120,7 +120,10 @@ section {
         /* font-weight: lighter; */
     }
     .showDown {
-        margin-top: 3vh;
+        margin-top: 3vh !important;
+    }
+    .showDown a {
+        margin-top: 0vh !important;
     }
     .textContainer2 {
         width: auto;
@@ -137,9 +140,7 @@ section {
         transform: translate(-50%, -50%);
         height: 33vh;
     }
-    .showDown {
-        margin-top: 3vh !important;
-    }
+
 }
 
 .hideDown {
@@ -167,4 +168,5 @@ section {
     justify-content: center;
     font-family: 'Cormorant Garamond', sans-serif;
     font-weight: bold;
+    background-color: white;
 }
