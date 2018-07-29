@@ -84,6 +84,9 @@ section {
         height: 33vh;
     }
 }
+.showDown {
+    margin-top: 3vh!important;
+}
 .hideDown {
     display: none;
 }
