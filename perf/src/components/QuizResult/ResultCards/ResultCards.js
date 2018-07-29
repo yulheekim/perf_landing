@@ -13,9 +13,10 @@ const ScentCard = (result_cards, reveal_cards, onClickCard) => {
                         <div key="front" className="front" onClick={()=> onClickCard(index)}>
                             <div className="card">
                                 <img src={item['image_lnk']} alt="front"/>
-                                <div className="overlay"><div className="results">{item['name']}</div><div className="reveal">Click to Reveal</div></div>
+                                <div className="overlay"><div className="results">{item['name']}</div><div className="reveal">Click to Reveal</div><hr className="hr" /></div>
                                 <div className="results">{item['name']}</div>
                                 <div className="reveal">Click to Reveal</div>
+                                <hr className="hr" />
                             </div>
                         </div>
                         <div key="back" className="back">
@@ -23,7 +24,7 @@ const ScentCard = (result_cards, reveal_cards, onClickCard) => {
                                 <img src={item['image_lnk']} alt="back"/>
                                 <div className="overlayBack"></div>
                                 <div className="resultsBack">{item['name']}</div>
-                                <div className="resultDescription">{item['description']}. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</div>
+                                <div className="resultDescription">{item['description']}</div>
                             </div>
                         </div>
                     </ReactCardFlip>

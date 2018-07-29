@@ -19,6 +19,7 @@
         flex-direction: column;
     }
     .card img {
+        width: inherit;
         height: 38vh;
     }
     .results {
@@ -224,10 +225,18 @@
     .reveal {
         width: 100%;
         position: absolute;
-        top: 58%;
+        top: 65%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 24px;
+    }
+    .hr {
+        position: absolute;
+        top: 47%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 48px;
+        width: 40%;
     }
     .resultsBack {
         position: absolute;
