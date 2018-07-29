@@ -56,16 +56,16 @@ const INITIAL_STATE = {
     },],
     result_cards: [{name:"Navigator",
                       accord: "",
-                      description: "this is a short description for Naviagator",
-                      image_lnk: "http://www.bandt.com.au/information/uploads/2018/01/Compass-1260x840.png"},
+                      description: ["Enthusiasts are dramatic, creative, self-confident, dominant, and extremely difficult to resist, able to achieve nearly anything they want in any area of life they commit to.  Self-confident and attractive, Enthusiasts are capable of uniting different groups of people and leading them as one towards a shared cause.","Your fun, charming scent blends with other fragrances to make a complex and unique personal statement."],
+                      image_lnk: "https://i.pinimg.com/originals/05/4d/47/054d47a4e782a56bef5823d5ed186abc.jpg"},
                   {name:"Innovator",
                       accord: "",
-                      description: "this is a short description for Innovator",
+                      description: ["Achievers are continuously looking for dynamic, speed, and competition, and enjoy being the first in everything — from work to social gatherings.  It is in their nature to take action, sometimes before they think about it well.  You'll rarely meet an Achiever who isn't capable of finishing several things at once, but sometimes struggles to work well with others.","Your energizing fragrance is crisp and dynamic with blends of natural, fresh scents."],
                       image_lnk: "https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/publications/pharmaceutical-science/in-pharmatechnologist.com/article/2018/05/16/experts-warn-if-europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries/8201005-1-eng-GB/Experts-warn-If-Europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries_wrbm_large.jpg"},
-                  {name:"Mediator",
+                  {name:"Architect",
                       accord: "",
-                      description: "this is a short description for Mediator",
-                      image_lnk: "https://i.amz.mshcdn.com/anNMhqPi83FtPO7tiOCrSrm1__4=/1200x627/2015%2F07%2F08%2F48%2Fthreedogsth.8e48d.jpg"},
+                      description: ["Architects are responsible, traditional, and often very serious by nature.  They are masters of self-control and have the ability to lead the way, make solid and realistic plans, and manage many people who work for them.  They will learn from their mistakes and get to the top based on their experience and expertise.","Your natural, breezy, clean fragrance will support and add complexity to any other scent."],
+                      image_lnk: "https://i.greatbigstory.com/uploads/story/keyframe_image/1809/web_Rock_Balancing_Site.jpg"},
                   ],
     reveal_cards: [false, false, false],
     result_title: "Bergamot",
@@ -162,6 +162,9 @@ export default function reducer(state = INITIAL_STATE, action) {
                 result_cards_list.push(action.payload.card.primary);
                 result_cards_list.push(action.payload.card.secondary);
                 result_cards_list.push(action.payload.card.tertiary);
+                result_cards_list[0].description = result_cards_list[0].description.split("/");
+                result_cards_list[1].description = result_cards_list[1].description.split("/");
+                result_cards_list[2].description = result_cards_list[2].description.split("/");
                 return {
                     ...state,
                     error_message: "",
@@ -302,9 +305,9 @@ export const load_result = (recipient_relations, quiz_id, answers) => {
         axios.post(`${quizAPIRoot}/result`, {
             "recipient_relations": recipient_relations,
             "quiz_id": quiz_id,
-            "quiz_result": 
+            "quiz_result":
                 {
-                    "q1": answers[0], 
+                    "q1": answers[0],
                     "q2": answers[1],
                     "q3": answers[2],
                     "q4": answers[3],
@@ -319,6 +322,7 @@ export const load_result = (recipient_relations, quiz_id, answers) => {
 }
 
 export const load_result_success = (dispatch, response) => {
+    console.log(response.data);
     dispatch({
         type: LOAD_RESULT_SUCCESS,
         payload: response.data.response,

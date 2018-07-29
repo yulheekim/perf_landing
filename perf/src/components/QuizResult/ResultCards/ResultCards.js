@@ -24,7 +24,7 @@ const ScentCard = (result_cards, reveal_cards, onClickCard) => {
                                 <img src={item['image_lnk']} alt="back"/>
                                 <div className="overlayBack"></div>
                                 <div className="resultsBack">{item['name']}</div>
-                                <div className="resultDescription">{item['description']}</div>
+                                <div className="resultDescription">{item['description'][0]}</div>
                             </div>
                         </div>
                     </ReactCardFlip>
@@ -34,6 +34,7 @@ const ScentCard = (result_cards, reveal_cards, onClickCard) => {
 }
 
 export const ResultCards = ({result_cards, reveal_cards, onClickCard}) => {
+    console.log(result_cards);
     return (
         <div className="cardsContainer">
             {ScentCard(result_cards, reveal_cards, onClickCard)}

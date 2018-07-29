@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond|Hammersmith+One|Lateef');
 section {
     height: 87vh;
     padding-top: 13vh;
@@ -12,6 +12,16 @@ section {
         text-align: center;
         padding-top: 12vh;
         padding-bottom: 1vh;
+        font-family: 'Hammersmith One';
+        font-weight: lighter;
+    }
+    .textContainer2 {
+        width: auto;
+        font-size: 36px;
+        text-align: center;
+        padding: 5vh;
+        font-family: 'Hammersmith One';
+        font-weight: lighter;
     }
     .distillGif {
         position: absolute;
@@ -73,9 +83,19 @@ section {
         font-size: 32px;
         text-align: center;
         padding: 5vh;
+        font-family: 'Hammersmith One';
+        font-weight: lighter;
     }
     .showDown {
         margin-top: 3vh;
+    }
+    .textContainer2 {
+        width: auto;
+        font-size: 38px;
+        text-align: center;
+        padding: 5vh;
+        font-family: 'Hammersmith One';
+        font-weight: lighter;
     }
     .distillGif {
         position: absolute;
@@ -105,6 +125,8 @@ section {
     margin: auto;
     text-align: center;
     font-size: 18px;
+    font-weight: lighter;
+    font-family: sans-serif;
 }
 .quizResultStyle {
     text-align: center;

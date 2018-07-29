@@ -66,15 +66,15 @@ class QuizResultComponent extends Component {
                 </ScrollLock>
                 <ScrollLock>
                 <section id="distilling">
-                    <div className="textContainer">
-                        Distilling a perf fragrance for you...
+                    <div className="textContainer2">
+                        Distilling a Perf fragrance for you...
                     </div>
                     <img src={distill} alt="distilling GIF" className="distillGif"/>
                     <div className="distillContainer">
                         <CircularProgress size = {window.innerHeight*0.43} thickness = {2} style={circularProgress}/>
                     </div>
                     <TrackVisibility className="hideVis">
-                        {({ isVisible }) => isVisible && setTimeout(this.props.start_distilling, 3000)}
+                        {({ isVisible }) => isVisible && setTimeout(this.props.start_distilling, 300000)}
                     </TrackVisibility>
                     <div className="linkToCheckout">
                         <Link to="checkout">
