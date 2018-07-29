@@ -13,6 +13,8 @@ import {
 import './styles.css';
 
 
+
+
 class QuestionComponent extends Component {
 
     populateOptions = () => {
@@ -35,8 +37,8 @@ class QuestionComponent extends Component {
             this.props.load_result(this.props.recipient_relations, this.props.quiz_id, this.props.answers);
             return (
                 <Redirect to="result" />
-            )
-        }
+            ) 
+       }
         return (
             <section id="questions">
                 <div className="question">{this.props.questions[this.props.activeStep].question_text}</div>
@@ -64,13 +66,14 @@ class QuestionComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { quiz } = state;
-  const { activeStep, answers, recipient_relations, quiz_id } = quiz;
+  const { activeStep, answers, recipient_relations, quiz_id, quizresult_id } = quiz;
   return {
     ...ownProps,
     activeStep,
     answers,
     recipient_relations,
     quiz_id,
+    quizresult_id
   };
 }
 

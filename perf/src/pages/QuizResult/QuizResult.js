@@ -44,7 +44,7 @@ class QuizResultComponent extends Component {
                 <Redirect to="error" />
             )
         }
-        else if (!this.props.result_title) {
+        else if (this.props.quizresult_id < 0) {
             return (
                 <Redirect to="quiz" />
             )
@@ -55,7 +55,6 @@ class QuizResultComponent extends Component {
                 <Header />
                 <ScrollLock>
                 <section>
-
                     <div className="textContainer">
                         We have found your three scent profiles!
                     </div>
@@ -99,7 +98,7 @@ export { QuizResultComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz } = state;
-    const { isDistilling, result_cards, reveal_cards, recipient_relations, quiz_id, answers, result_title, } = quiz;
+    const { isDistilling, result_cards, reveal_cards, recipient_relations, quiz_id, answers, quizresult_id } = quiz;
     return {
       ...ownProps,
       isDistilling,
@@ -108,7 +107,7 @@ const mapStateToProps = (state, ownProps) => {
       recipient_relations,
       quiz_id,
       answers,
-      result_title
+      quizresult_id
     };
 };
 

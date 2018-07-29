@@ -108,7 +108,7 @@ class CheckOutComponent extends Component {
     }
     render() {
         const price = this.adjustPrice();
-        if (!this.props.result_title) {
+        if (this.props.quizresult_id < 1) {
             return (<Redirect to="quiz"/>)
         }
         else if (this.props.order_id !== 0) {
@@ -236,7 +236,7 @@ export { CheckOutComponent };
 const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
     const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id, prices, promo, found_email } = checkout;
-    const { answers, result_cards, result_title, recipient_options, recipient_relations } = quiz;
+    const { answers, result_cards, result_title, recipient_options, recipient_relations, quizresult_id } = quiz;
     return {
         ...ownProps,
         answers,
@@ -254,6 +254,7 @@ const mapStateToProps = (state, ownProps) => {
         result_cards,
         result_title,
         found_email,
+        quizresult_id,
     };
 };
 
