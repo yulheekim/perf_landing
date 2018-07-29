@@ -1,363 +1,303 @@
-#checkout {
-    text-align: center;
-    justify-content: center;
+@import url('https://fonts.googleapis.com/css?family=Merriweather');
+
+#checkoutBody {
+    font-family: 'Merriweather', serif;
 }
 
-.otherImgs {
-    display: flex;
-    flex-direction: row;
-}
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 4000px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
 
-.selectedBotImg {
-    width: 27vw;
-    height: 27vw;
-    border: solid grey;
-    margin: 2vh auto 2vh;
-}
-.orderSummary td {
-    padding-right: 2rem;
-    text-align: left;
-}
-table {
-    width: 100%;
-    line-height: 3vh;
-}
-.bordered td {
-    border-bottom: 1px solid #000;
-}
-.total {
-    line-height: 2rem;
-}
-.wordCountBad {
-    display: inline-flex;
-    justify-content: flex-end;
-    color: red;
-}
-.wordCountGood {
-    display: inline-flex;
-    justify-content: flex-end;
-}
+    #checkoutBody .boxes {
+        display: flex;
+        justify-content: center;
+        margin-top: 8vh;
+    }
 
-.custom-modal {
-  max-width: 70%;
-  width: 100%;
-}
-.submitButton {
-    width: 100%;
-    text-decoration: none;
-    display: inline-flex;
-    justify-content: flex-end;
-    margin-top: 3rem;
-    margin-right: 3rem;
-}
-
-@media only screen and (max-device-width: 768px) and (min-device-width: 481px) {
-  /* iPad */
-    #checkout {
-        overflow: scroll;
-        -webkit-overflow-scrolling: touch;
-        text-align: center;
+    /* LeftBox */
+    .leftBox {
+        width: 50vw;
+        display: flex;
         justify-content: center;
     }
-    .leftBox {
-        width: 50%;
-        height: 75vh;
-        float: left;
+    .imgContainer {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        width: 30vw;
+        height: 30vw;
     }
-    .rightBox {
-        margin-right: 10vw;
-        margin-left: 5vw;
-        width: 34vw;
-        height: 75vh;
-        float: right;
-        display: flex;
-        flex-direction: column;
-    }
-    .swiper{
-        width: 32vh;
-        height: 32vh;
+    .swiper {
+        width: 30vw;
+        height: 30vw;
         border: solid grey 0.5px;
         margin-bottom: 1rem;
     }
-    .imgContainer {
-        margin: 8vh auto 0 auto;
+    .otherImgs {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 30vw;
+        margin: auto;
+    }
+    .otherImgs img {
+        width: 9.5vw;
+        height: 9.5vw;
+        border: solid grey 0.5px;
+    }
+
+    /* RightBox */
+    .RightBox {
+        width: 50vw;
+        display: flex;
         justify-content: center;
     }
-    .otherImgs img{
-        width: 10vh;
-        height: 10vh;
-        border: solid grey 0.5px;
-        margin: 0 0.5vh 0 0.5vh;
-    }
     .perfumeInfo {
-        display: flex;
-        flex-direction: column;
+        width: 40vw;
+        line-height: 5vh;
+    }
+    .perfumeInfo .title {
+        font-size: 2vw;
+    }
+    .perfumeInfo .description {
+        font-size: 1.5vh;
+    }
+    .selectContainer {
         margin-top: 5vh;
+        font-size: 2vw;
+        width: 22vw;
     }
-    .title {
-        font-size: 32px;
-        line-height: 4rem;
+    .priceContainer {
+        margin-top: 2vh;
     }
-    .description {
-        font-size: 20px;
-        line-height: 2rem;
-        margin: 0;
+
+    /*  */
+    .down {
+        margin-top: 12vh;
     }
-    .showMessage {
-        margin: 3vh auto 0 auto;
-        width: 65%;
-        text-align: left;
-    }
-    .hideMessage {
-        display: none;
-    }
-    .orderSummary {
-        width: 90%;
-        padding: 1rem;
-        margin: 5rem auto 0rem auto;
-        background-color: lightgrey;
-        border-radius: 1rem;
-    }
-    .checkOutButton {
-        width: 100%;
-        display: inline-flex;
-        justify-content: flex-end;
-        margin-top: 2rem;
-    }
-    .selectContainer {
-        width: 80%;
-        margin: 3rem auto 1rem 0rem;
+
+    /* checkout */
+    #checkout .boxes {
+        width: 70vw;
         display: flex;
-        text-align: center;
-        line-height: 2rem;
-        font-size: 2.5vh;
-   }
-   .priceContainer {
-       width: 85%;
-       font-size: 2.5vh;
-       line-height: 2rem;
-       margin: 3vh auto 0 0;
-   }
-}
-@media only screen and (max-device-width: 480px) {
-    /* iPhone Plus, Pixel 2 (XL) */
-    .swiper{
-        width: 38vh;
-        height: 38vh;
-        border: solid grey 0.5px;
-        margin-bottom: 1rem;
-    }
-    .imgContainer {
-        margin: 3vh auto 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
         justify-content: center;
+        margin: auto;
+        margin-top: 8vh;
+        margin-left: 15vw;
     }
-    .otherImgs img{
-        width: 12vh;
-        height: 12vh;
-        border: solid grey 0.5px;
-        margin: 0 0.5vh 0 0.5vh;
-    }
-    .selectContainer {
-        width: 85%;
-        margin: 3vh auto 0 auto;
-        font-size: 2.5vh;
-        display: flex;
-        flex-direction: row;
-        line-height: 5vh;
-    }
-    .priceContainer {
-        width: 85%;
-        font-size: 2.5vh;
-        line-height: 5vh;
-        margin: 3vh auto 5vh auto;
-    }
-    .perfumeInfo {
-        display: flex;
-        flex-direction: row;
-        width: 80vw;
-        margin: 4vh auto 0 auto;
-    }
-    .selectedBotImg {
-        margin: 0;
-        text-align: center;
-    }
-    .itemInfo {
+
+    /* LeftBox */
+    #checkout .leftBox {
+        width: 50vw;
         display: flex;
         flex-direction: column;
-        margin: auto 0 auto 3vw;
-        text-align: left;
-    }
-    .title {
-        font-size: 26px;
-        margin-bottom: 1vh;
-    }
-    .description {
-        font-size: 18px;
-        margin: 0;
-    }
-    .showMessage {
-        margin: 5vh auto 1vh auto;
-        width: 80%;
-        text-align: left;
-    }
-    .hideMessage {
-        display: none;
-    }
-    .orderSummary {
-        width: 77%;
-        padding: 3vh 5vw 1vh 5vw;
-        margin: 4vh auto 0rem auto;
-        background-color: lightgrey;
-        border-radius: 1rem;
-        line-height: 2vw;
-    }
-    .promoContainer {
-        text-align: left;
-        height: 10vh;
-        margin: 0;
-    }
-    .checkOutButton {
-        width: 100%;
-        display: inline-flex;
-        justify-content: flex-end;
-        margin-top: 2rem;
-    }
-}
-@media only screen and (max-device-width: 375px) {
-    /* iPhone 6/7/8, iPhone X, */
-    .priceContainer {
-        width: 85%;
-        font-size: 2.5vh;
-        line-height: 5vh;
-        margin: 3vh auto 3vh auto;
-    }
-}
-@media only screen and (max-device-width: 320px) {
-    /*iPhone 5*/
-    .priceContainer {
-        width: 85%;
-        font-size: 2.5vh;
-        line-height: 5vh;
-        margin: 3vh auto 2vh auto;
-    }
-    .showMessage {
-        margin: 2vh auto 0vh auto;
-        width: 80%;
-        text-align: left;
-    }
-    .orderSummary {
-        width: 90%;
-        padding: 2vh 2vw 1vh 2vw;
-        margin: 4vh auto 0rem auto;
-        background-color: lightgrey;
-        border-radius: 1rem;
-        line-height: 2.5vw;
-    }
-    .promoContainer {
-        height: 10vh;
-        margin: 0;
-    }
-    .checkOutButton {
-        width: 100%;
-        display: inline-flex;
-        justify-content: flex-end;
-        margin-top: 4vh;
-    }
-}
-@media only screen and (min-device-width: 769px){
-    .leftBox {
-        width: 34vw;
-        margin-right: 5vw;
+        margin: auto;
         margin-left: 10vw;
-        height: 75vh;
-        float: left;
+    }
+    #checkout .hideMessage {
+
+    }
+    #checkout .selectedBotImg {
+        width: 20vw;
+        height: 20vw;
+        border: solid grey 0.5px;
+    }
+    #checkout .perfumeInfo {
+        width: 30vw;
+        height: 30vw;
+    }
+    #checkout .hideMessage {
+        width: 30vw;
+    
+    }
+    /* RightBox */
+    #checkout .rightBox {
+        width: 50vw;
+        margin-top: 0;
+        justify-content: center;
+    }
+    #checkout .leftBox .hideMessage {
+        width: 25vw;
+    }
+    #checkout .orderSummary {
+        font-size: 2vw;
+    }
+    #checkout table {
+        font-size: 1vw;
+    }
+    #checkout .promoContainer {
+        margin-top: 5vh;
+        width: 35vw;
+    }
+    #checkout button {
+        background-color: transparent;
+        border: solid black 0.5px;
+        border-radius: 0;
+        box-shadow: transparent;
+    }
+    #checkout .checkOutButton {
+        margin-top: 5vh;
+    }
+    #checkout .sampleButton {
+        color: black;
+    }
+}
+
+/* phones in general  */
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 800px)  { 
+    #checkoutBody .boxes {
+        flex-direction: column;
+        margin-top: 2vh;
+        height: 70vh;
+        justify-content: center;
+    }
+    /* LeftBox */
+    .leftBox {
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+    }
+    .imgContainer {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        width: 70vw;
+        height: 70vw;
     }
-    .rightBox {
-        margin-right: 10vw;
-        margin-left: 5vw;
-        width: 34vw;
-        height: 75vh;
-        float: right;
-        display: flex;
-        flex-direction: column;
-    }
-    .swiper{
-        width: 50vh;
-        height: 50vh;
+    .swiper {
+        width: 70vw;
+        height: 70vw;
         border: solid grey 0.5px;
         margin-bottom: 1rem;
     }
-    .imgContainer {
-        margin: 5vh 7vw auto auto;
+    .otherImgs {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 70vw;
+        margin: auto;
+    }
+    .otherImgs img {
+        width: 22vw;
+        height: 22vw;
+        border: solid grey 0.5px;
+    } 
+
+    /* RightBox */
+    #checkoutBody .rightBox {
+        width: 100vw;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        margin-left: 15vw;
     }
-    .otherImgs img{
-        width: 16vh;
-        height: 16vh;
-        border: solid grey 0.5px;
-        margin: 0 0.5vh 0 0.5vh;
+    
+    
+    .selectContainer {
+        margin-top: 8vh;
+        font-size: 5vw;
+        width: 70vw;
+    }
+    .priceContainer {
+        margin-top: 2vh;
+        font-size: 4vw;
     }
 
-    .perfumeInfo {
+    /* checkout */
+    #checkout .boxes {
+        width: 100vw;
+        flex-direction: column;
+        margin: auto;
+        margin-top: 2vh;
+        justify-content: center;
+        /* margin-left: 15vw; */
+    }
+
+    /* LeftBox */
+    #checkout .leftBox {
+        width: 100vw;
         display: flex;
         flex-direction: column;
+        margin: auto;
+        margin-left: 10vw;
+    }
+    #checkout .selectedBotImg {
+        width: 20vw;
+        height: 20vw;
+        padding-right: 20vw;
+        margin-right: 10vw;
+        border: solid grey 0.5px;
+    }
+    .perfumeInfo {
+        width: 40vw;
+        line-height: 5vh;
+    }
+    .perfumeInfo .title {
+        font-size: 5vw;
+    }
+    .perfumeInfo .description {
+        font-size: 4vw;
+    }
+    #checkout .hideMessage {
+        width: 80vw;
+    }
+    #checkout .itemInfo {
+        font-size: 15vw;
+    }
+    #checkout .perfumeInfo {
+        display: flex;
+        flex-direction: row;
+        width: 70vw;
+        height: 20vh;
+    }
+    #checkout .hideMessage {
+        width: 80vw;
+    
+    }
+
+     /* RightBox */
+     #checkout .rightBox {
+        width: 70vw;
+        margin-top: 2vh;
+        justify-content: center;
+        margin-left: 10vw;
+    }
+    #checkout .hideMessage {
+        margin-top: -3vh;
+    }
+    #checkout .orderSummary {
+        width: 80vw;
+        font-size: 5vw;
+    }
+    #checkout table {
+        width: 50vw;
+        font-size: 3vw;
+    }
+    #checkout .promoContainer {
+        font-size: 4vw;
+        margin-top: 5vh;
+        width: 80vw;
+    }
+    #checkout button {
+        background-color: transparent;
+        border: solid black 0.5px;
+        border-radius: 0;
+        box-shadow: transparent;
+    }
+    #checkout .checkOutButton {
         margin-top: 5vh;
     }
-    .title {
-        font-size: 32px;
-        line-height: 4rem;
+    #checkout .sampleButton {
+        width: 80vw;
+        color: black;
     }
-    .description {
-        font-size: 20px;
-        line-height: 2rem;
-        margin: 0;
-    }
-    .showMessage {
-        margin: 3vh auto 0 auto;
-        width: 100%;
-        text-align: left;
-    }
-    .hideMessage {
-        display: none;
-    }
-    .orderSummary {
-        width: 90%;
-        padding: 1rem;
-        margin: 5rem auto 0rem auto;
-        background-color: lightgrey;
-        border-radius: 1rem;
-    }
-    .checkOutButton {
-        width: 100%;
-        display: inline-flex;
-        justify-content: flex-end;
-        margin-top: 2rem;
-    }
-    .selectContainer {
-        width: 80%;
-        margin: 3rem auto 1rem 0rem;
-        display: flex;
-        text-align: center;
-        line-height: 2rem;
-        font-size: 2.5vh;
-   }
-   .priceContainer {
-       width: 85%;
-       font-size: 2.5vh;
-       line-height: 2rem;
-       margin: 3vh auto 0 0;
-   }
 }
+
+/* /////////////////////////////////////// */
+
+
+
+

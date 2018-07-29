@@ -19,6 +19,7 @@ import {
     change_zipcode,
     check_promo,
     handle_order_response,
+    load_bottles,
 } from '../../ducks/checkout';
 import {
     ScrollDown,
@@ -36,11 +37,12 @@ const { promoText, promoButton} = styles
 class CheckOutComponent extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
+        this.props.load_bottles();
     }
     populateImgs = () => {
         return _.map(this.props.bottle_imgs[this.props.current_bottle_index], (item, index)=> {
             return (
-                <img alt={item} onClick={() => this.props.change_image(index)} key={index}/>
+                <img src={item} onClick={() => this.props.change_image(index)} key={index} alt="bottle"/>
             )
         });
     }
@@ -105,124 +107,132 @@ class CheckOutComponent extends Component {
         )
     }
     render() {
-        console.log(this.props.result_title);
         const price = this.adjustPrice();
-        if (this.props.result_cards[0].name === "") {
+        if (this.props.quizresult_id < 1) {
             return (<Redirect to="quiz"/>)
         }
         else if (this.props.order_id !== 0) {
             return (<Redirect to="thankyou"/>)
         }
-        else if (this.props.error_message !== "") {
+        else if (this.props.error_message) {
             return (<Redirect to="error"/>)
         }
         return (
-            <div>
+            <div id="checkoutBody">
                 <section id="select">
                     <Header />
-                    <div className="leftBox">
-                        <div className="imgContainer">
-                            <SwipeableViews
-                                index={this.props.img_opt}
-                                onChangeIndex={this.props.change_image(this.props.img_opt)}
-                                enableMouseEvents
-                                className="swiper"
-                            >
-                                {this.populateImgs()}
-                            </SwipeableViews>
-                            <div className="otherImgs">
-                                {this.populateImgs()}
+                    <div className="boxes">
+                        <div className="leftBox">
+                            <div className="imgContainer">
+                                <SwipeableViews
+                                    index={this.props.img_opt}
+                                    onChangeIndex={this.props.change_image(this.props.img_opt)}
+                                    enableMouseEvents
+                                    className="swiper"
+                                >
+                                    {this.populateImgs()}
+                                </SwipeableViews>
+                                <div className="otherImgs">
+                                    {this.populateImgs()}
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className="rightBox">
-                        {(window.innerWidth < 768) ?
-                            <div className="selectContainer">
-                                <b>Size:</b>&nbsp;&nbsp;<Select
-                                    onChange={this.handleBottleChange}
-                                    value={this.props.current_bottle_index}
-                                    fullWidth={true}
-                                >
-                                {this.bottleMenuItems()}
-                                </Select>
-                            </div>:
-                            <div className="perfumeInfo">
-                                <div className="title">{this.props.result_title}</div>
-                                {this.populateDescriptions()}
+                        <div className="rightBox">
+                            {(window.innerWidth < 768) ?
+                                <div className="selectContainer">
+                                    <b>Size:</b>&nbsp;&nbsp;<Select
+                                        onChange={this.handleBottleChange}
+                                        value={this.props.current_bottle_index}
+                                        fullWidth={true}
+                                    >
+                                    {this.bottleMenuItems()}
+                                    </Select>
+                                </div>:
+                                <div className="perfumeInfo">
+                                    <div className="title">{this.props.result_title}</div>
+                                    {this.populateDescriptions()}
+                                </div>
+                            }
+                            {(window.innerWidth >= 768) &&
+                                <div className="selectContainer">
+                                    <b>Size:</b>&nbsp;&nbsp;<Select
+                                        onChange={this.handleBottleChange}
+                                        value={this.props.current_bottle_index}
+                                        fullWidth={true}
+                                    >
+                                    {this.bottleMenuItems()}
+                                    </Select>
+                                </div>
+                            }
+                            <div className="priceContainer">
+                                <b>Price:</b>&nbsp;&nbsp;${this.props.prices[this.props.current_bottle_index].toFixed(2)}&nbsp;&nbsp;
+                                {(this.props.current_bottle_index === 0) ?
+                                    "(FREE to subscriptors)" : "+ Shipping Fee"}
                             </div>
-                        }
-                        {(window.innerWidth >= 768) &&
-                            <div className="selectContainer">
-                                <b>Size:</b>&nbsp;&nbsp;<Select
-                                    onChange={this.handleBottleChange}
-                                    value={this.props.current_bottle_index}
-                                    fullWidth={true}
-                                >
-                                {this.bottleMenuItems()}
-                                </Select>
-                            </div>
-                        }
-                        <div className="priceContainer">
-                            <b>Price:</b>&nbsp;&nbsp;${this.props.prices[this.props.current_bottle_index].toFixed(2)}&nbsp;&nbsp;
-                            {(this.props.current_bottle_index === 0) ?
-                                "(FREE to subscriptors)" : "+ Shipping Fee"}
                         </div>
                     </div>
                     <ScrollDown message="Order Here" moveto="checkout" />
                 </section>
 
                 <section id="checkout">
-                    <div className="leftBox">
-                        {(window.innerWidth >= 768) ?
-                            <div className="perfumeInfo">
-                                <div className="itemInfo">
-                                    <div className="title">{this.props.result_title}</div>
-                                    <div className="description">Item: {this.props.bottle_types[this.props.current_bottle_index]}</div>
+                    <div className="boxes">
+                        <div className="leftBox">
+                            {(window.innerWidth >= 768) ?
+                                <div className="perfumeInfo">
+                                    <div className="itemInfo">
+                                        <div className="title">{this.props.result_title}</div>
+                                        <div className="description">Item: {this.props.bottle_types[this.props.current_bottle_index]}</div>
+                                    </div>
+                                    <div className="selectedBotImg">
+                                        <img src={this.props.bottle_imgs[this.props.current_bottle_index][0]} alt={this.props.current_bottle_index} />
+                                    </div>
                                 </div>
-                                <img src={this.props.bottle_imgs[this.props.current_bottle_index][0]} alt={this.props.current_bottle_index} className="selectedBotImg"/>
-                            </div>
-                            :<div className="perfumeInfo">
-                                <img src={this.props.bottle_imgs[this.props.current_bottle_index][0]} alt={this.props.current_bottle_index} className="selectedBotImg"/>
-                                <div className="itemInfo">
-                                    <div className="title">{this.props.result_title}</div>
-                                    <div className="description">Item: {this.props.bottle_types[this.props.current_bottle_index]}</div>
+                                :<div className="perfumeInfo">
+                                    <div className="selectedBotImg">
+                                        <img src={this.props.bottle_imgs[this.props.current_bottle_index][0]} alt={this.props.current_bottle_index} />
+                                    </div>
+                                    <div className="itemInfo">
+                                        <div className="title">{this.props.result_title}</div>
+                                        <div className="description">Item: {this.props.bottle_types[this.props.current_bottle_index]}</div>
+                                    </div>
                                 </div>
+                            }
+                            {this.writeMessage()}
+                        </div>
+                        <div className="rightBox">
+                            <div className="orderSummary">
+                                <div className="description"><b>Order Summary</b></div><br/>
+                                <table><tbody>
+                                    <tr><td>Item: </td>{price}</tr>
+                                    <tr className="bordered"><td>Shipping & handling: </td><td>$0.00</td></tr>
+                                    <tr className="total"><td>Total: </td>{price}</tr>
+                                </tbody></table>
+                                {this.props.current_bottle_index === 0 &&
+                                    <div className="promoContainer">
+                                        Promo Code :<TextField
+                                            label={this.props.found_email ? "PROMO APPLIED!":"Enter your email"}
+                                            value={this.props.promo}
+                                            onChange={this.handlePromoChange}
+                                            style={promoText}
+                                        />&nbsp;
+                                    <Button variant="contained" onClick={()=>this.props.check_promo()} size='small' style={promoButton}>OK</Button>
+                                    </div>
+                                }
                             </div>
-                        }
-                        {this.writeMessage()}
-                    </div>
-                    <div className="rightBox">
-                        <div className="orderSummary">
-                            <div className="description"><b>Order Summary</b></div><br/>
-                            <table><tbody>
-                                <tr><td>Item: </td>{price}</tr>
-                                <tr className="bordered"><td>Shipping & handling: </td><td>$0.00</td></tr>
-                                <tr className="total"><td>Total: </td>{price}</tr>
-                            </tbody></table>
-                            {this.props.current_bottle_index === 0 &&
-                                <div className="promoContainer">
-                                    Promo Code :<TextField
-                                        label={this.props.found_email ? "PROMO APPLIED!":"Enter your email"}
-                                        value={this.props.promo}
-                                        onChange={this.handlePromoChange}
-                                        style={promoText}
-                                    />&nbsp;
-                                <Button variant="contained" onClick={()=>this.props.check_promo()} size='small' style={promoButton}>OK</Button>
+                            {(this.props.current_bottle_index === 0 && this.props.found_email) ?
+                                <SampleCheckOutButton 
+                                />
+                                :
+                                <div className="checkOutButton">
+                                    <StripeProvider apiKey={APIConfig.stripe_key}>
+                                        <Elements>
+                                            <CheckOutButton />
+                                        </Elements>
+                                    </StripeProvider>
                                 </div>
                             }
                         </div>
-                        {(this.props.current_bottle_index === 0) ?
-                            <SampleCheckOutButton />
-                            :
-                            <div className="checkOutButton">
-                                <StripeProvider apiKey={APIConfig.stripe_key}>
-                                    <Elements>
-                                        <CheckOutButton />
-                                    </Elements>
-                                </StripeProvider>
-                            </div>
-                        }
                     </div>
                 </section>
             </div>
@@ -235,7 +245,7 @@ export { CheckOutComponent };
 const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
     const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id, prices, promo, found_email } = checkout;
-    const { answers, result_cards, result_title, recipient_options, recipient_relations } = quiz;
+    const { answers, result_cards, result_title, recipient_options, recipient_relations, quizresult_id } = quiz;
     return {
         ...ownProps,
         answers,
@@ -253,6 +263,7 @@ const mapStateToProps = (state, ownProps) => {
         result_cards,
         result_title,
         found_email,
+        quizresult_id,
     };
 };
 
@@ -268,4 +279,5 @@ export const CheckOut = connect(mapStateToProps, {
     change_zipcode,
     check_promo,
     handle_order_response,
+    load_bottles,
 })(CheckOutComponent);

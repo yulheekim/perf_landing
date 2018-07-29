@@ -110,7 +110,7 @@ class BasicInfoComponent extends Component {
                         {this.recipient()}
                     </div>
                 </div>
-                <div>
+                <div className="desginBy">
                     This perfume will be designed by
                     <TextField required
                         label="Quiz Taker's Name"
