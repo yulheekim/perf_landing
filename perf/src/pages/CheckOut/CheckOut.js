@@ -19,6 +19,7 @@ import {
     change_zipcode,
     check_promo,
     handle_order_response,
+    load_bottles,
 } from '../../ducks/checkout';
 import {
     ScrollDown,
@@ -36,6 +37,7 @@ const { promoText, promoButton} = styles
 class CheckOutComponent extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
+        this.props.load_bottles();
     }
     populateImgs = () => {
         return _.map(this.props.bottle_imgs[this.props.current_bottle_index], (item, index)=> {
@@ -268,4 +270,5 @@ export const CheckOut = connect(mapStateToProps, {
     change_zipcode,
     check_promo,
     handle_order_response,
+    load_bottles,
 })(CheckOutComponent);

@@ -12,9 +12,9 @@ export const CHECK_PROMO = 'perf/checkout/CHECK_PROMO';
 export const GO_CHECKOUT = 'perf/checkout/GO_CHECKOUT';
 export const HANDLE_ORDER_ERROR = 'perf/checkout/HANDLE_ORDER_ERROR';
 export const HANDLE_ORDER_RESPONSE = 'perf/checkout/HANDLE_ORDER_RESPONSE';
-export const LOAD_CHECKOUT = 'perf/checkout/LOAD_CHECKOUT';
-export const LOAD_CHECKOUT_SUCCESS = 'perf/checkout/LOAD_CHECKOUT_SUCCESS';
-export const LOAD_CHECKOUT_FAILURE = 'perf/checkout/LOAD_CHECKOUT_FAILURE';
+export const LOAD_BOTTLES = 'perf/checkout/LOAD_BOTTLES';
+export const LOAD_BOTTLES_ERROR = 'perf/checkout/LOAD_BOTTLES_ERROR'; 
+export const LOAD_BOTTLES_SUCCESS = 'perf/checkout/LOAD_BOTTLES_SUCCESS';
 export const TOGGLE_MODAL = 'perf/checkout/TOGGLE_MODAL';
 
 
@@ -121,7 +121,7 @@ export default function reducer(state = INITIAL_STATE, action) {
 }
 
 // Action creator
-export const load_checkout = () => {
+export const load_bottles = () => {
 
 }
 
