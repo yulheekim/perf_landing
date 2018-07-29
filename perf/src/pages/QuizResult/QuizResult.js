@@ -41,6 +41,11 @@ class QuizResultComponent extends Component {
         }
         else if (this.props.error_message) {
             return(
+                <Redirect to="error" />
+            )
+        }
+        else if (!this.props.result_title) {
+            return (
                 <Redirect to="quiz" />
             )
         }

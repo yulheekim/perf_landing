@@ -10,6 +10,10 @@ import './styles.css';
 
 
 class ServerErrorComponent extends Component {
+    ComponentWillUnmount () {
+        this.props.clear_error_quiz();
+        this.props.clear_error_checkout();
+    }
     render() {
         return (
             <div className="App">
@@ -29,8 +33,13 @@ class ServerErrorComponent extends Component {
 export { ServerErrorComponent };
 
 const mapStateToProps = (state, ownProps) => {
+    const { quiz, checkout } = state;
+    const quiz_error_message = quiz.error_message;
+    const checkout_error_message = checkout.error_message;
     return {
       ...ownProps,
+      quiz_error_message,
+      checkout_error_message
     };
 };
 

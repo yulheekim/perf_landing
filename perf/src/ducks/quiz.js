@@ -10,6 +10,7 @@ export const CHANGE_RECIPIENT_NAME = "perf/quiz/CHANGE_RECIPIENT_NAME";
 export const CHANGE_RELATIONS = "perf/quiz/CHANGE_RELATIONS";
 export const CHANGE_SEXUALITY = "perf/quiz/CHANGE_SEXUALITY";
 export const CHANGE_TAKER_NAME = "perf/quiz/CHANGE_TAKER_NAME";
+export const CLEAR_ERROR_QUIZ = "perf/quiz/CLEAR_ERROR_QUIZ";
 export const HANDLE_NEXT= 'perf/quiz/HANDLE_NEXT';
 export const HIDE_CARDS= 'perf/quiz/HIDE_CARDS';
 export const LOAD_QUIZ = "perf/quiz/LOAD_QUIZ";
@@ -68,7 +69,7 @@ const INITIAL_STATE = {
                       image_lnk: "https://i.amz.mshcdn.com/anNMhqPi83FtPO7tiOCrSrm1__4=/1200x627/2015%2F07%2F08%2F48%2Fthreedogsth.8e48d.jpg"},
                   ],
     reveal_cards: [false, false, false],
-    result_title: "Bergamot",
+    result_title: "",
     isDistilling: false,
     quizresult_id: -1,
 };
@@ -136,6 +137,11 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 sexuality: action.payload
+            }
+        case CLEAR_ERROR_QUIZ:
+            return {
+                ...state,
+                error_message: ""
             }
         case REVEAL_CARD:
             var new_reveal_cards = state.reveal_cards.slice()
@@ -329,4 +335,12 @@ export const load_result_failure = (dispatch, error) => {
     dispatch({
         type: LOAD_RESULT_FAILURE,
     });
+}
+
+export const clear_error_quiz = (dispatch) => {
+    return (dispatch) => {
+        dispatch({
+            type: CLEAR_ERROR_QUIZ
+        })
+    }
 }

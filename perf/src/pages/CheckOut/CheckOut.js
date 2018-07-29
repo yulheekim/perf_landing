@@ -108,13 +108,13 @@ class CheckOutComponent extends Component {
     }
     render() {
         const price = this.adjustPrice();
-        if (this.props.result_cards[0].name === "") {
+        if (!this.props.result_title) {
             return (<Redirect to="quiz"/>)
         }
         else if (this.props.order_id !== 0) {
             return (<Redirect to="thankyou"/>)
         }
-        else if (this.props.error_message !== "") {
+        else if (this.props.error_message) {
             return (<Redirect to="error"/>)
         }
         return (
