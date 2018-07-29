@@ -17,6 +17,9 @@ import {
     reveal_card,
     start_distilling,
     load_result,
+    QUIZ_RESULT_LOADED,
+    QUIZ_RESULT_LOADING,
+    QUIZ_RESULT_UNSTARTED
 } from '../../ducks/quiz';
 import './styles.css';
 import styles from './styles';
@@ -28,10 +31,6 @@ const {
 
 class QuizResultComponent extends Component {
     componentDidMount() {
-        console.log(this.props.result_title);
-        console.log(this.props.answers);
-        console.log(this.props.recipient_relations);
-        console.log(this.props.quiz_id);
         window.scrollTo(0, 0);
     }
     componentWillUnmount() {
@@ -45,6 +44,11 @@ class QuizResultComponent extends Component {
         }
         else if (this.props.error_message) {
             return(
+                <Redirect to="error" />
+            )
+        }
+        else if (this.props.quiz_result_status === QUIZ_RESULT_UNSTARTED) {
+            return (
                 <Redirect to="quiz" />
             )
         }
@@ -54,7 +58,6 @@ class QuizResultComponent extends Component {
                 <Header />
                 <ScrollLock>
                 <section>
-
                     <div className="textContainer">
                         We have found your three scent profiles!
                     </div>
@@ -98,7 +101,7 @@ export { QuizResultComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz } = state;
-    const { isDistilling, result_cards, reveal_cards, recipient_relations, quiz_id, answers, result_title, } = quiz;
+    const { isDistilling, result_cards, reveal_cards, recipient_relations, quiz_id, quiz_result_status, answers, quizresult_id } = quiz;
     return {
       ...ownProps,
       isDistilling,
@@ -106,8 +109,9 @@ const mapStateToProps = (state, ownProps) => {
       reveal_cards,
       recipient_relations,
       quiz_id,
+      quiz_result_status,
       answers,
-      result_title
+      quizresult_id
     };
 };
 

@@ -60,17 +60,29 @@ class SampleCheckOutButtonComponent extends Component {
           recipient_name: this.props.recipient_name,
           recipient_relations: this.props.recipient_options[this.props.recipient_relations],
           collection_title: this.props.result_title,
-          amount: 2, // need to get this from bottle
+          amount: this.props.amounts[this.props.current_bottle_index], // need to get this from bottle
           sexuality: this.props.sexuality, // int 0 being masc and 5 being feminine
-          message: "",
-          bottle_type: "",
+          message: this.props.message,
+          bottle_type: this.props.types[this.props.current_bottle_index],
           result_metadata: {
-            primary: {name: "hai", desc:"this is hai", accord:"teran"},
-            secondary: {name: "hello", desc:"this is secondary", accord:"zerg"},
-            tertiary: {name: "nihao", desc:"this is tertiary", accord:"protos"},
+            primary: {
+                name: this.props.result_cards[0].name,
+                desc: this.props.result_cards[0].description,
+                accord: this.props.result_cards[0].accord,
+              },
+              secondary: {
+                name: this.props.result_cards[1].name,
+                desc: this.props.result_cards[1].description,
+                accord: this.props.result_cards[1].accord,
+              },
+              tertiary: {
+                name: this.props.result_cards[2].name,
+                desc: this.props.result_cards[2].description,
+                accord: this.props.result_cards[2].accord,
+              },
+              quiz_result_id: this.props.quizresult_id
           },
         }
-        console.log({payment: sending_payment, order: sending_order})
         axios.post(paymenturl, {
           payment: sending_payment,
           order: sending_order
@@ -171,9 +183,10 @@ class SampleCheckOutButtonComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const { checkout, quiz } = state;
-    const { address1, city, email, open, prices, state_abbrv, zipcode } = checkout;
+    const { address1, city, email, open, state_abbrv, zipcode, current_bottle_index,
+        prices, amounts, types, message } = checkout;
     const { taker_name, recipient_name, result_title, result_cards,
-      recipient_relations, sexuality, recipient_options, amount } = quiz;
+      recipient_relations, sexuality, recipient_options, quizresult_id } = quiz;
     return {
         ...ownProps,
         taker_name,
@@ -182,15 +195,19 @@ const mapStateToProps = (state, ownProps) => {
         recipient_relations,
         result_title,
         result_cards,
-        amount,
         sexuality,
         address1,
         city,
         email,
         open,
-        prices,
         state_abbrv,
-        zipcode
+        zipcode,
+        current_bottle_index,
+        prices,
+        amounts,
+        types,
+        quizresult_id,
+        message
     };
 };
 

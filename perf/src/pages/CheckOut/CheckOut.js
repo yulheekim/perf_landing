@@ -19,6 +19,7 @@ import {
     change_zipcode,
     check_promo,
     handle_order_response,
+    load_bottles,
 } from '../../ducks/checkout';
 import {
     ScrollDown,
@@ -36,11 +37,12 @@ const { promoText, promoButton} = styles
 class CheckOutComponent extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
+        this.props.load_bottles();
     }
     populateImgs = () => {
         return _.map(this.props.bottle_imgs[this.props.current_bottle_index], (item, index)=> {
             return (
-                <img alt={item} onClick={() => this.props.change_image(index)} key={index}/>
+                <img src={item} onClick={() => this.props.change_image(index)} key={index} alt="bottle"/>
             )
         });
     }
@@ -105,15 +107,14 @@ class CheckOutComponent extends Component {
         )
     }
     render() {
-        console.log(this.props.result_title);
         const price = this.adjustPrice();
-        if (this.props.result_cards[0].name === "") {
+        if (this.props.quizresult_id < 1) {
             return (<Redirect to="quiz"/>)
         }
         else if (this.props.order_id !== 0) {
             return (<Redirect to="thankyou"/>)
         }
-        else if (this.props.error_message !== "") {
+        else if (this.props.error_message) {
             return (<Redirect to="error"/>)
         }
         return (
@@ -219,7 +220,7 @@ class CheckOutComponent extends Component {
                                     </div>
                                 }
                             </div>
-                            {(this.props.current_bottle_index === 0) ?
+                            {(this.props.current_bottle_index === 0 && this.props.found_email) ?
                                 <SampleCheckOutButton 
                                 />
                                 :
@@ -244,7 +245,7 @@ export { CheckOutComponent };
 const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
     const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id, prices, promo, found_email } = checkout;
-    const { answers, result_cards, result_title, recipient_options, recipient_relations } = quiz;
+    const { answers, result_cards, result_title, recipient_options, recipient_relations, quizresult_id } = quiz;
     return {
         ...ownProps,
         answers,
@@ -262,6 +263,7 @@ const mapStateToProps = (state, ownProps) => {
         result_cards,
         result_title,
         found_email,
+        quizresult_id,
     };
 };
 
@@ -277,4 +279,5 @@ export const CheckOut = connect(mapStateToProps, {
     change_zipcode,
     check_promo,
     handle_order_response,
+    load_bottles,
 })(CheckOutComponent);
