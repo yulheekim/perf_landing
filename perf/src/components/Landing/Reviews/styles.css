@@ -1,22 +1,113 @@
-.reviewSection {
-    height: 87vh;
-    padding-top: 13vh;
+#reviews {
+    background-image: url(../../../assets/landing/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    display: flex;
+    height: 100vh !important;
+    padding-top: 0 !important;
 }
 
+@media screen 
+and (min-device-width: 1200px) 
+and (max-device-width: 4000px) { 
+    .reviewSection .oneliner {
+        font-size: 4vw;
+        margin-top: 10vh !important;
+        width: 90vw !important;
+    }
+
+
+    #reviews .backdrop {
+        position: absolute;
+        background-color: black;
+        opacity: 0.;
+        z-index: 1;
+        width: 100vw;
+        height: 113vh !important;
+    }
+    
+    #reviews .reviewBody {
+        z-index: 20;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100vh !important;
+    }
+    
+}
+
+
+
+
+
 .description {
-    margin: auto;
+    width: 100vw !important;
 }
 
 .getStarted2 {
-    margin-top: 10vh;
-    margin-bottom: 13vh;
+    margin-top: 6vh;
+    margin-bottom: 3vh;
 }
 .coverflowConatiner {
     margin-top: 5vh;
 }
-@media only screen and (max-device-width: 480px) {
-    /*iPhone 5*/
-    .coverflowConatiner {
-        margin-top: 0vh;
+
+/* phones in general  */
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 800px)  { 
+    .reviewSection .oneliner {
+        font-size: 8vw;
+        margin-top: 5vh !important;
+        margin-bottom: 2vh !important;
+        width: 70vw !important;
+    }
+
+    #reviews .getStarted {
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+    }
+
+    #reviews .backdrop {
+        height: 100vh !important;
+        margin-top: 0;
+        z-index: 0;
+    }
+
+    #reviews .reviewBody {
+        z-index: 20;
+        padding-top: 13vh !important;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 375px)  { 
+    .reviewSection .oneliner {
+        font-size: 8vw;
+        margin-top: 10vh !important;
+    }
+
+    .getStarted {
+        margin-top: 9vh;
+        margin-bottom: 7vh !important;
+    }
+
+    #reviews .backdrop {
+        height: 100vh !important;
+        margin-top: 0;
+        z-index: 0;
+    }
+
+    #reviews .reviewBody {
+        z-index: 20;
     }
 }

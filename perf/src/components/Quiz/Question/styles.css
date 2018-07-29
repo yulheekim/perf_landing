@@ -37,22 +37,18 @@
 
 .progressBarContainer {
   justify-content: center;
-  background-color: #fafafa;
-  width: 80vw;
+  width: 30vw;
   margin: auto;
+  padding-right: 10px;
+  margin-top: 2vh;
 }
 
 .progressBar {
+  background-color: orange;
   justify-content: center !important;
   margin: 0 7vw;
   width: 80vw;
   margin: 0 0;
-}
-
-.progressBarContainer {
-    width: 80%;
-    padding-right: 10px;
-    margin-top: 2vh;
 }
 
 @media only screen and (max-width: 900px) {
@@ -127,6 +123,7 @@
     width: 70vw;
     margin: 1vh auto;
     flex-wrap: wrap;
+    padding-bottom: 15vh;
   }
 
   .options {
@@ -144,7 +141,14 @@
   }
 
   .optionText {
-    font-size: 20px;
+    font-size: 13px;
     word-wrap: break-word;
+  }
+
+  .progressBarContainer {
+    position: absolute;
+    margin-top: 35vh;
+    margin-left: 17vw;
+    width: 65vw;
   }
 }

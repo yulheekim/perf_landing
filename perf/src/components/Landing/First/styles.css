@@ -1,3 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
+
+.sectionBody .oneliner {
+    font-size: 4vw;
+    margin-top: 30vh !important;
+    width: 90vw !important;
+}
+
+.firstSection {
+    background-image: url(../../../assets/landing/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-origin: content-box;
+    background-position: center;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.hr {
+    width: 30vw;
+    color: white;
+    margin-top: 0;
+}
+
+.backdrop {
+    position: absolute;
+    background-color: black;
+    opacity: 0.4;
+    z-index: 2;
+    width: 100vw;
+    height: 100vh;
+    margin-top: -13vh;
+}
+
+.sectionBody {
+    z-index: 20;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: inherit 5vw;
+}
+
+.getStarted {
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+}
+
 .quizLink {
     text-decoration: none;
 }
@@ -15,46 +66,92 @@
     padding-top: 13vh;
 }
 
+/* @media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+  
+} */
+
+/* phones in general  */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px)  { 
+    .sectionBody .oneliner {
+        font-size: 7vw;
+        margin-top: 30vh !important;
+        width: 70vw !important;
+    }
+
+    .getStarted {
+        margin-top: 10vh;
+        margin-bottom: 15vh;
+    }
+    .backdrop {
+        height: 100vh!
+    }
+}
+
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 375px)  { 
+    .sectionBody .oneliner {
+        font-size: 7vw;
+        margin-top: 30vh !important;
+        width: 70vw !important;
+    }
+
+    .getStarted {
+        margin-top: 9vh;
+        margin-bottom: 15vh !important;
+    }
+}
+
+
+
+/* @media only screen and (max-device-width: 600px) {
+    
+}
+
+@media only screen and (max-device-width: 400px) {
+    
+}
+
 @media only screen and (max-device-width: 480px) {
     .getStarted {
         margin-top: 30vh;
         margin-bottom: 12vh;
     }
-}
-@media only screen and (max-device-width: 375px) {
+} */
+/* @media only screen and (max-device-width: 375px) {
     .getStarted {
-        margin-top: 22vh;
+        margin-top: 10vh;
         margin-bottom: 8vh;
     }
-}
-@media only screen and (max-device-width: 360px) {
-    /*damn galaxy*/
+} */
+/* @media only screen and (max-device-width: 360px) {
+    damn galaxy
     .getStarted {
         margin-top: 28vh;
         margin-bottom: 14vh;
     }
-}
-@media only screen and (max-device-width: 360px) {
-    /* damn iPhone5/SE */
+} */
+/* @media only screen and (max-device-width: 360px) {
+    damn iPhone5/SE
     .getStarted {
         margin-top: 20vh;
         margin-bottom: 10vh;
     }
-}
+} */
 
-@media only screen and (max-device-width: 1024px) and (min-device-width: 481px){
+/* @media only screen and (max-device-width: 1024px) and (min-device-width: 481px){
     .getStarted {
-        margin-top: 30vh;
+        margin-top: 15vh;
         margin-bottom: 12vh;
     }
     .quizButton {
         width: 50%;
         height: 60%;
     }
-}
-@media only screen and (min-device-width: 1024px) {
-    .getStarted {
-        margin-top: 25vh;
-        margin-bottom: 12vh;
-    }
-}
+<<<<<<< HEAD
+} */

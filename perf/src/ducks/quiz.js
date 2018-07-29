@@ -10,6 +10,7 @@ export const CHANGE_RECIPIENT_NAME = "perf/quiz/CHANGE_RECIPIENT_NAME";
 export const CHANGE_RELATIONS = "perf/quiz/CHANGE_RELATIONS";
 export const CHANGE_SEXUALITY = "perf/quiz/CHANGE_SEXUALITY";
 export const CHANGE_TAKER_NAME = "perf/quiz/CHANGE_TAKER_NAME";
+export const CLEAR_ERROR_QUIZ = "perf/quiz/CLEAR_ERROR_QUIZ";
 export const HANDLE_NEXT= 'perf/quiz/HANDLE_NEXT';
 export const HIDE_CARDS= 'perf/quiz/HIDE_CARDS';
 export const LOAD_QUIZ = "perf/quiz/LOAD_QUIZ";
@@ -23,6 +24,11 @@ export const START_DISTILLING = 'perf/quiz/START_DISTILLING';
 export const START_OVER= 'perf/quiz/START_OVER';
 
 
+// CONST FOR REPRESENTING STATE OF QUIZ RESULT 
+export const QUIZ_RESULT_UNSTARTED = 'QUIZ_RESULT_UNSTARTED';
+export const QUIZ_RESULT_LOADING = 'QUIZ_RESULT_LOADING';
+export const QUIZ_RESULT_LOADED = 'QUIZ_RESULT_LOADED';
+
 // The options and results are hardcoded for now but will be from the server as soon as server supports them
 const INITIAL_STATE = {
     activeStep: 0,
@@ -30,6 +36,7 @@ const INITIAL_STATE = {
     error_message: "",
     quiz_name: "",
     quiz_id: 0,
+    quiz_result_status: QUIZ_RESULT_UNSTARTED,
     recipient_options: ["you", "your friend", "your parent", "your sibling", "significant other"],
     recipient_relations: 0,
     taker_name: "",
@@ -68,9 +75,9 @@ const INITIAL_STATE = {
                       image_lnk: "https://i.greatbigstory.com/uploads/story/keyframe_image/1809/web_Rock_Balancing_Site.jpg"},
                   ],
     reveal_cards: [false, false, false],
-    result_title: "Bergamot",
+    result_title: "",
     isDistilling: false,
-    amount: 10,
+    quizresult_id: -1,
 };
 
 //Reducers
@@ -93,6 +100,10 @@ export default function reducer(state = INITIAL_STATE, action) {
                 sexuality: "",
             }
         case LOAD_QUIZ:
+            return {
+                ...state,
+                quiz_result_status: QUIZ_RESULT_LOADING
+            }
         case LOAD_QUIZ_SUCCESS:
             if(action.payload) {
                 return {
@@ -101,14 +112,13 @@ export default function reducer(state = INITIAL_STATE, action) {
                     error_message: "",
                     quiz_name: action.payload.quiz_name,
                     questions: action.payload.questions,
+                    quiz_result_status: QUIZ_RESULT_LOADED
                 }
             }
             return {
                 ...state,
                 error_message: ""
             }
-
-
         case LOAD_QUIZ_FAILURE:
             /*
             if the quiz load fails, need to lead them to a 500 page.
@@ -136,6 +146,11 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 sexuality: action.payload
+            }
+        case CLEAR_ERROR_QUIZ:
+            return {
+                ...state,
+                error_message: ""
             }
         case REVEAL_CARD:
             var new_reveal_cards = state.reveal_cards.slice()
@@ -169,7 +184,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                     ...state,
                     error_message: "",
                     result_cards: result_cards_list,
-                    quiz_result_id: action.payload.quiz_result_id,
+                    quizresult_id: action.payload.quizresult_id,
                     result_title: namer(action.payload.collection_name).ntc[1].name,
                 }
             } else {
@@ -332,4 +347,12 @@ export const load_result_failure = (dispatch, error) => {
     dispatch({
         type: LOAD_RESULT_FAILURE,
     });
+}
+
+export const clear_error_quiz = (dispatch) => {
+    return (dispatch) => {
+        dispatch({
+            type: CLEAR_ERROR_QUIZ
+        })
+    }
 }
