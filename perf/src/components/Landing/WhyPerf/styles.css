@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     font-family: 'Cormorant Garamond', serif;
+    height: 100vh !important;
 }
 
 #whyperf .backdrop {
@@ -17,8 +18,8 @@
     opacity: 0.;
     z-index: 1;
     width: 100vw;
-    height: 113vh !important;
-    /* margin-top: -6.5vh !important; */
+    height: 100vh !important;
+    margin-top: -13vh !important;
 }
 
 #whyperf .whyperfSection {
@@ -123,13 +124,21 @@
     }
 }
 
+
  
 
 /* phones in general  */
 @media screen 
   and (min-device-width: 375px) 
-  and (max-device-width: 667px)  { 
-  
+  and (max-device-width: 800px)  { 
+    #whyperf {
+        padding-top: 0;
+    }
+
+    .whyperfSection {
+        padding-top: 13vh;
+    }
+
     .whyperfSection .oneliner {
         font-size: 8vw;
         margin-top: 5vh !important;
@@ -137,24 +146,53 @@
         width: 70vw !important;
     }
 
+    #whyperf .whyperfSection {
+        width: 90vw;
+        padding-top: 13vh !important;
+    }
+
+    #whyperf .circleRow {
+        margin: 0 0;
+    }
+
     #whyperf .getStarted {
-        margin-top: 10vh;
-        margin-bottom: 10vh;
+        margin-top: 10vh !important;
+        margin-bottom: 10vh !important;
+    }
+
+    #whyperf .backdrop {
+        margin-top: 0vh !important;
     }
 }
 
 @media screen 
   and (min-device-width: 300px) 
   and (max-device-width: 375px)  { 
-    .sectionBody .j {
+    /* .sectionBody .j {
         font-size: 8vw;
         margin-top: 10vh !important;
-    }
+    } */
 
     .getStarted {
         margin-top: 9vh;
         margin-bottom: 9vh;
     }
+
+    #whyperf .backdrop {
+        margin-top: 0vh !important;
+    }
+
+    #whyperf .whyperfSection {
+        width: 90vw;
+        padding-top: 13vh !important;
+    }
+
+    #whyperf .circleRow {
+        margin: 0 auto;
+        width: 90vw;
+    }
+
+    
 }
 
 
@@ -207,11 +245,6 @@
 
 @media only screen and (max-device-width: 480px) {
   /* iPhone Plus, Pixel 2 (XL) */
-  .mobile {
-      height: 87vh;
-      overflow: hidden;
-  }
-
   .circleRow {
       flex-direction: column;
       display: inline-block;
@@ -254,11 +287,6 @@
 
 @media only screen and (max-device-width: 375px) {
   /* iPhone 6/7/8, iPhone X, */
-  .mobile {
-      height: 87vh;
-      overflow: hidden;
-  }
-
   .circleRow {
       margin-top: 5%;
       flex-direction: column;
@@ -388,8 +416,4 @@
     .descShow {
       display: none;
     }
-}
-
-@media only screen and (min-device-width: 769px){
-  
 }

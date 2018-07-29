@@ -85,7 +85,10 @@
 
     .getStarted {
         margin-top: 10vh;
-        margin-bottom: 10vh;
+        margin-bottom: 15vh;
+    }
+    .backdrop {
+        height: 100vh!
     }
 }
 
@@ -100,7 +103,7 @@
 
     .getStarted {
         margin-top: 9vh;
-        margin-bottom: 9vh;
+        margin-bottom: 15vh !important;
     }
 }
 
