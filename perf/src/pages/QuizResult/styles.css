@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond|Hammersmith+One|Lateef');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond|Hammersmith+One|Lora');
 section {
     height: 87vh;
     padding-top: 13vh;
@@ -116,8 +116,8 @@ section {
         font-size: 32px;
         text-align: center;
         padding: 5vh;
-        font-family: 'Hammersmith One';
-        font-weight: lighter;
+        font-family: 'Lora';
+        /* font-weight: lighter; */
     }
     .showDown {
         margin-top: 3vh;
@@ -127,7 +127,7 @@ section {
         font-size: 38px;
         text-align: center;
         padding: 5vh;
-        font-family: 'Hammersmith One';
+        font-family: 'Lora';
         font-weight: lighter;
     }
     .distillGif {

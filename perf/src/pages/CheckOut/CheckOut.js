@@ -105,7 +105,6 @@ class CheckOutComponent extends Component {
         )
     }
     render() {
-        console.log(this.props.result_title);
         const price = this.adjustPrice();
         if (this.props.result_cards[0].name === "") {
             return (<Redirect to="quiz"/>)
@@ -207,6 +206,12 @@ class CheckOutComponent extends Component {
                                         value={this.props.promo}
                                         onChange={this.handlePromoChange}
                                         style={promoText}
+                                        onKeyPress={(ev) => {
+                                            if (ev.key === 'Enter') {
+                                                this.props.check_promo();
+                                                ev.preventDefault();
+                                            }
+                                        }}
                                     />&nbsp;
                                 <Button variant="contained" onClick={()=>this.props.check_promo()} size='small' style={promoButton}>OK</Button>
                                 </div>
