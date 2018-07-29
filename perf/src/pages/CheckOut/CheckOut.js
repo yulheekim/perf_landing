@@ -42,7 +42,7 @@ class CheckOutComponent extends Component {
     populateImgs = () => {
         return _.map(this.props.bottle_imgs[this.props.current_bottle_index], (item, index)=> {
             return (
-                <img alt={item} onClick={() => this.props.change_image(index)} key={index}/>
+                <img src={item} onClick={() => this.props.change_image(index)} key={index} alt="bottle"/>
             )
         });
     }
@@ -107,7 +107,6 @@ class CheckOutComponent extends Component {
         )
     }
     render() {
-        console.log(this.props.result_title);
         const price = this.adjustPrice();
         if (this.props.result_cards[0].name === "") {
             return (<Redirect to="quiz"/>)
@@ -214,7 +213,7 @@ class CheckOutComponent extends Component {
                                 </div>
                             }
                         </div>
-                        {(this.props.current_bottle_index === 0) ?
+                        {(this.props.current_bottle_index === 0 && this.props.found_email) ?
                             <SampleCheckOutButton />
                             :
                             <div className="checkOutButton">

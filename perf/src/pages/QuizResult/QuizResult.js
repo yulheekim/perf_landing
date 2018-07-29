@@ -28,10 +28,6 @@ const {
 
 class QuizResultComponent extends Component {
     componentDidMount() {
-        console.log(this.props.result_title);
-        console.log(this.props.answers);
-        console.log(this.props.recipient_relations);
-        console.log(this.props.quiz_id);
         window.scrollTo(0, 0);
     }
     componentWillUnmount() {

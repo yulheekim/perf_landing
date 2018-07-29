@@ -1,3 +1,7 @@
+import axios from 'axios';
+
+import APIConfig from '../config/api';
+
 //Action Types
 export const CHANGE_ADDRESS1 = 'perf/checkout/CHANGE_ADDRESS1';
 export const CHANGE_BOTTLE = 'perf/checkout/CHANGE_BOTTLE';
@@ -27,6 +31,8 @@ const INITIAL_STATE = {
     current_bottle_index: 0,
     img_opt: 0,
     bottle_types: ['2mL Spray Sample', '10mL Roll On', '15mL Spray'],
+    amounts: [2, 10, 15],
+    types: ['spray', 'roll on', 'spray'],
     prices: [5, 15, 25],
     open: false,
     email:"",
@@ -115,6 +121,41 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 found_email: found,
             }
+        case LOAD_BOTTLES:
+        case LOAD_BOTTLES_SUCCESS:
+            if(action.payload) {
+                var loaded_bottle_images = [];
+                var loaded_bottle_types = [];
+                var loaded_prices = [];
+                var loaded_sizes = [];
+                var loaded_types = [];
+                for (var i = 0; i < action.payload.length; i++) {
+                    const item = action.payload[i];
+                    loaded_bottle_images.push(item.images);
+                    loaded_bottle_types.push(item.volume + ' mL ' + item.type);
+                    loaded_prices.push(item.price);
+                    loaded_sizes.push(item.volume);
+                    loaded_types.push(item.type);
+                }
+                return {
+                    ...state,
+                    bottle_imgs: loaded_bottle_images,
+                    prices: loaded_prices,
+                    bottle_types: loaded_bottle_types,
+                    amounts: loaded_sizes,
+                    types: loaded_types,
+                }
+            }
+            else {
+                return {
+                ...state,
+                }
+            }
+        case LOAD_BOTTLES_ERROR:
+            return {
+                ...state,
+                error_message: "Error loading bottle options"
+            }
         default:
             return state
     }
@@ -122,8 +163,29 @@ export default function reducer(state = INITIAL_STATE, action) {
 
 // Action creator
 export const load_bottles = () => {
+    const url = APIConfig.apiroot + '/bottle'
+    return (dispatch) => {
+        dispatch({
+            type: LOAD_BOTTLES
+        });
+        axios.get(url)
+          .then((response) => load_bottles_success(dispatch, response))
+          .catch((error) => load_bottles_error(dispatch, error))
+    };
+};
 
-}
+export const load_bottles_success = (dispatch, response) => {
+    dispatch({
+        type: LOAD_BOTTLES_SUCCESS,
+        payload: response.data.response
+    });
+};
+
+export const load_bottles_error = (dispatch, error) => {
+    dispatch({
+        type: LOAD_BOTTLES_ERROR,
+    });
+};
 
 export const change_bottle = (id) => {
     return (dispatch) => {

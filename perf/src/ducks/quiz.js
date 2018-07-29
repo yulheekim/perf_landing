@@ -70,7 +70,7 @@ const INITIAL_STATE = {
     reveal_cards: [false, false, false],
     result_title: "Bergamot",
     isDistilling: false,
-    amount: 10,
+    quizresult_id: -1,
 };
 
 //Reducers
@@ -166,7 +166,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                     ...state,
                     error_message: "",
                     result_cards: result_cards_list,
-                    quiz_result_id: action.payload.quiz_result_id,
+                    quizresult_id: action.payload.quizresult_id,
                     result_title: namer(action.payload.collection_name).ntc[1].name,
                 }
             } else {
