@@ -26,7 +26,7 @@ const INITIAL_STATE = {
                   ['15mL_spray_img0', '15mL_spray_img1', '15mL_spray_img2']],
     current_bottle_index: 0,
     img_opt: 0,
-    bottle_types: ['Sample Card', '10mL Roll On', '15mL Spray'],
+    bottle_types: ['2mL Spray Sample', '10mL Roll On', '15mL Spray'],
     prices: [5, 15, 25],
     open: false,
     email:"",
@@ -108,6 +108,9 @@ export default function reducer(state = INITIAL_STATE, action) {
         case CHECK_PROMO:
             const loEmail = ["moco","ceold","aeng"]; // update this to the actual list
             var found = (loEmail.indexOf(state.promo) === -1 ? false : true);
+            if (!found) {
+                alert("Please check your promo code.")
+            }
             return {
                 ...state,
                 found_email: found,

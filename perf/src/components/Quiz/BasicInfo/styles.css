@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
+
 .showFor {
 }
 
@@ -14,6 +16,7 @@
     width: 2rem;
     height: 2rem;
 }
+
 .sexualityPicker {
     display: flex;
     flex-direction: column;
@@ -37,11 +40,22 @@
 }
 
 .basicinfo {
-    margin-top: 22vh !important;
+    margin-top: 25vh !important;
     padding-top: 0vh !important;
     line-height: 5vh;
-    font-size: 20px;
-    font-weight: bold;
+    width: 80vw;
+    display: flex; 
+    flex-direction: column;
+    margin: auto;
+    font-size: 1.5vw;
+}
+
+.inputWrapper {
+    display: flex !important;
+font-family: 'Hammersmith One', sans-serif;    justify-content: center;
+    align-content: center;
+    flex-direction: row;
+    padding-bottom: 2vh;
 }
 
 .sexualityItem {
@@ -53,16 +67,22 @@
 .inputBox {
     margin-left: 10px !important;
 }
-.inputWrapper {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-direction: row;
+
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 1600px) { 
+  
+
+    .inputWrapper .sexualityPicker .desginBy {
+        font-size: 4vw;
+    }
 }
+
 
 .showDown {
     margin: 10vh auto 0vh auto!important;
     font-weight: normal !important;
+    font-family: 'Cormorant Garamond', serif !important;
 }
 
 .showDownBottom {
@@ -73,7 +93,48 @@
     display: none;
 }
 
-@media only screen and (max-width: 900px) {
+/* phones in general  */
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 667px)  { 
+    .basicinfo {
+        margin-top: 29vh !important;
+        line-height: 5vh;
+        font-size: 15px;
+    }
+
+    .inputWrapper .sexualityPicker .desginBy {
+        font-size: 5vw;
+    }
+
+    .showDown {
+        margin: 6vh auto !important;
+    }
+
+    .showDownBottom {
+        margin: 4vh auto !important;
+    }
+}
+
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 375px)  { 
+    .basicinfo {
+        margin-top: 29vh !important;
+        line-height: 5vh;
+        font-size: 5vw;
+    }
+    .showDown {
+        margin: 6vh auto !important;
+    }
+
+    .showDownBottom {
+        margin: 4vh auto !important;
+    }
+}
+
+
+/* @media only screen and (max-width: 900px) {
     .basicinfo {
         margin-top: 29vh !important;
         line-height: 5vh;
@@ -86,9 +147,9 @@
     .showDownBottom {
         margin: 4vh auto !important;
     }
-}
-@media only screen and (max-device-width: 480px) {
-    /* iPhone Plus, Pixel 2 (XL) */
+} */
+/* @media only screen and (max-device-width: 480px) {
+    iPhone Plus, Pixel 2 (XL)
     .basicinfo {
         margin-top: 26vh !important;
         line-height: 5vh;
@@ -101,9 +162,13 @@
     .showDownBottom {
         margin: 4vh auto !important;
     }
-}
-@media only screen and (max-device-width: 375px) {
-    /* iPhone 6/7/8, iPhone X, */
+
+    .inputWrapper .desginBy .sexualityPicker {
+        font-size: 5vw;
+    }
+} */
+/* @media only screen and (max-device-width: 375px) {
+    iPhone 6/7/8, iPhone X,
     .basicinfo {
         margin-top: 22vh !important;
         line-height: 5vh;
@@ -116,8 +181,8 @@
     .showDownBottom {
         margin: 5vh auto !important;
     }
-}
-@media only screen and (max-width: 320px) {
+} */
+/* @media only screen and (max-width: 320px) {
     .basicinfo {
         margin-top: 20vh !important;
         line-height: 4vh;
@@ -130,4 +195,4 @@
     .showDownBottom {
         margin: 6vh auto !important;
     }
-}
+} */

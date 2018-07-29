@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
+@import url('https://fonts.googleapis.com/css?family=Teko');
+@import url('https://fonts.googleapis.com/css?family=Hammersmith+One');
 .quizStyle {
     justify-content: center;
     text-align: center;
@@ -18,11 +21,20 @@ section {
 } */
 
 .option {
-  background-color: darkorange;
   color: black;
   text-align: center;
   margin-top: 3vh;
   margin-left: 1vw;
   margin-right: 1vw;
   margin-bottom: 1vh;
+
 }
+
+body {
+  background-color: #C3C9E9;
+  /* font-family: 'Cormorant Garamond', serif; */
+  /* font-family: 'Teko', sans-serif; */
+  font-family: 'Hammersmith One', sans-serif;
+  font-weight: lighter;
+}
+

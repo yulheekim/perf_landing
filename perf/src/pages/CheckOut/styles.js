@@ -1,11 +1,8 @@
 export default {
-    sampleButton: {
-        textTransform: 'none',
-        width: '12rem',
-        marginRight: '2rem',
-        marginBottom: '1rem',
+    promoText: {
+        width: '50%'
     },
-    stateDropdown: {
-        width: '15%'
+    promoButton: {
+        minWidth: '40px',
     }
 }

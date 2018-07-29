@@ -12,7 +12,6 @@ import {
 } from '../../../ducks/quiz';
 import './styles.css';
 
-
 class QuestionComponent extends Component {
 
     populateOptions = () => {
@@ -47,7 +46,6 @@ class QuestionComponent extends Component {
                     <MobileStepper
                         variant="progress"
                         steps={8}
-                        className="progressBar"
                         position="static"
                         activeStep={this.props.activeStep}
                         nextButton={

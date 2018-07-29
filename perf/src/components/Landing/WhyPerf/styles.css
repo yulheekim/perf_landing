@@ -35,16 +35,92 @@
     justify-content: center;
 }
 
+/* .circle {
+    border-radius: 50%;
+    background-color: lightblue;
+    position: relative;
+    width: 15vw;
+    height: 15vw;
+} */
+
+
  @media screen 
   and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) { 
+  and (max-device-width: 4000px) { 
   
     .whyperfSection .oneliner {
         font-size: 4vw;
-        margin-top: 10vh !important;
+        /* margin-top: 5vh !important; */
         width: 90vw !important;
     }
 
+    #whyperf .whyperfSection {
+        margin-top: -15vh;
+    }
+    .circle:hover {
+        background-color: rgb(232,0,0);
+        z-index: 10;
+    }
+
+    .circle {
+        border-radius: 50%;
+        background-color: lightblue;
+        width: 15vw;
+        height: 15vw;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        z-index: -1;
+    }
+  
+    .circle:hover {
+        background-color: rgb(232,0,0);
+        z-index: 10;
+    }
+  
+    .reason {
+        display: none;
+    }
+  
+    .circleRow {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 80vw;
+        height: 40vw;
+        margin: 0 auto 0 auto;
+        height: 13rem;
+    }
+  
+    .circleWrapper {
+        height: 13rem;
+        padding-top: 4vh;
+    }
+  
+    .descShow {
+        width: 100%;
+        color: white;
+        height: 17vh;
+        margin-top: 13vh;
+    }
+    .descShowSection {
+        background-color: rgba(0, 0, 0, 0.8);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        z-index: 30;
+        height: 87vh;
+        /* padding-top: 13vh; */
+    }
+  
+    .descHideSection {
+        /* padding-top: 13vh; */
+        height: 87vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .descHide {
+      height: 30vh;
+    }
 }
 
  
@@ -53,6 +129,7 @@
 @media screen 
   and (min-device-width: 375px) 
   and (max-device-width: 667px)  { 
+  
     .whyperfSection .oneliner {
         font-size: 8vw;
         margin-top: 5vh !important;
@@ -69,7 +146,7 @@
 @media screen 
   and (min-device-width: 300px) 
   and (max-device-width: 375px)  { 
-    .sectionBody .oneliner {
+    .sectionBody .j {
         font-size: 8vw;
         margin-top: 10vh !important;
     }
@@ -106,8 +183,8 @@
       border-radius: 50%;
       background-color: lightblue;
       position: relative;
-      width: 12rem;
-      height: 12rem;
+      width: 15vw;
+      height: 15vw;
   }
 
   .reason {
@@ -314,62 +391,5 @@
 }
 
 @media only screen and (min-device-width: 769px){
-  .circle {
-      border-radius: 50%;
-      background-color: lightblue;
-      width: 20vw;
-      height: 20vw;
-      margin-left: 2rem;
-      margin-right: 2rem;
-      z-index: -1;
-  }
-
-  .circle:hover {
-      background-color: rgb(232,0,0);
-      z-index: 10;
-  }
-
-  .reason {
-      display: none;
-  }
-
-  .circleRow {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 80vw;
-      margin: 0 auto 0 auto;
-      height: 13rem;
-  }
-
-  .circleWrapper {
-      height: 13rem;
-      padding-top: 4vh;
-  }
-
-  .descShow {
-      width: 100%;
-      color: white;
-      height: 17vh;
-      margin-top: 13vh;
-  }
-  .descShowSection {
-      background-color: rgba(0, 0, 0, 0.8);
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      z-index: 30;
-      height: 87vh;
-      /* padding-top: 13vh; */
-  }
-
-  .descHideSection {
-      /* padding-top: 13vh; */
-      height: 87vh;
-      display: flex;
-      flex-direction: column;
-  }
-  .descHide {
-    height: 30vh;
-  }
+  
 }
