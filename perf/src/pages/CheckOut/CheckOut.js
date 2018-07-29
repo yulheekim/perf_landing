@@ -212,7 +212,7 @@ class CheckOutComponent extends Component {
                                 </div>
                             }
                         </div>
-                        {(this.props.current_bottle_index === 0) ?
+                        {(this.props.current_bottle_index === 0 && this.props.found_email) ?
                             <SampleCheckOutButton />
                             :
                             <div className="checkOutButton">
