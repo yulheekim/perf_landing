@@ -23,6 +23,7 @@ import styles from './styles';
 const {
     sampleButton,
     stateDropdown,
+    sampleMobileButton,
 } = styles
 
 
@@ -119,7 +120,7 @@ class SampleCheckOutButtonComponent extends Component {
     render() {
         return (
             <div className="checkOutButton">
-                <Button variant="contained" color="primary" style={sampleButton} onClick={this.toggleModal}>Get your sample now!</Button>
+                <Button variant="contained" color="primary" style={(window.innerWidth < 800 ? sampleMobileButton : sampleButton)} onClick={this.toggleModal}>Get your sample now!</Button>
                 <Modal
                   open={this.props.open}
                   onClose={this.toggleModal}
