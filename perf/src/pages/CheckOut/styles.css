@@ -4,10 +4,10 @@
     font-family: 'Merriweather', serif;
 }
 
-@media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 4000px) 
-  and (-webkit-min-device-pixel-ratio: 1) { 
+@media screen
+  and (min-device-width: 1200px)
+  and (max-device-width: 4000px)
+  and (-webkit-min-device-pixel-ratio: 1) {
 
     #checkoutBody .boxes {
         display: flex;
@@ -117,7 +117,7 @@
         margin-left: 10vw;
     }
     #checkout .hideMessage {
-
+        display: none;
     }
     #checkout .selectedBotImg {
         width: 20vw;
@@ -134,7 +134,7 @@
     }
     #checkout .hideMessage {
         width: 30vw;
-    
+
     }
     /* RightBox */
     #checkout .rightBox {
@@ -172,9 +172,9 @@
 }
 
 /* phones in general  */
-@media only screen 
-  and (min-device-width: 300px) 
-  and (max-device-width: 800px)  { 
+@media only screen
+  and (min-device-width: 300px)
+  and (max-device-width: 800px)  {
     #checkoutBody .boxes {
         flex-direction: column;
         margin-top: 2vh;
@@ -218,7 +218,7 @@
         width: 22vw;
         height: 22vw;
         border: solid grey 0.5px;
-    } 
+    }
 
     /* RightBox */
     #checkoutBody .rightBox {
@@ -228,8 +228,8 @@
         margin-left: 15vw;
         padding-down: 15vh;
     }
-    
-    
+
+
     .selectContainer {
         margin-top: 12vh;
         font-size: 5vw;
@@ -239,7 +239,7 @@
         margin-top: 2vh;
         font-size: 4vw;
     }
-    
+
     .down {
         padding-bottom: 10vh !important;
     }
@@ -264,7 +264,7 @@
         margin: auto;
         margin-left: 10vw;
         align-content: flex-start;
-        margin-top: -25vh; 
+        margin-top: -25vh;
     }
     #checkout .selectedBotImg {
         width: 20vw;
@@ -305,7 +305,7 @@
     }
     #checkout .hideMessage {
         width: 80vw;
-    
+
     }
 
      /* RightBox */
@@ -354,7 +354,3 @@
 }
 
 /* /////////////////////////////////////// */
-
-
-
-

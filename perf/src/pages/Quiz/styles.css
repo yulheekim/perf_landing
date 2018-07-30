@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
 @import url('https://fonts.googleapis.com/css?family=Teko');
-@import url('https://fonts.googleapis.com/css?family=Hammersmith+One');
+@import url('https://fonts.googleapis.com/css?family=Hammersmith+One|Lora');
 .quizStyle {
     justify-content: center;
     text-align: center;
@@ -34,7 +34,6 @@ body {
   background-color: #C3C9E9;
   /* font-family: 'Cormorant Garamond', serif; */
   /* font-family: 'Teko', sans-serif; */
-  font-family: 'Hammersmith One', sans-serif;
+  font-family: 'Lora', sans-serif;
   font-weight: lighter;
 }
-
