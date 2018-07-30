@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+SC|Hammersmith+One|Lora|Open+Sans');
 @media only screen and (max-device-width: 768px) {
     /* iPad */
     .cardsContainer {
@@ -19,6 +20,7 @@
         flex-direction: column;
     }
     .card img {
+        min-width: 100%;
         height: 38vh;
     }
     .results {
@@ -27,29 +29,43 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 40px;
+        font-family: 'Cormorant SC', serif;
+    }
+    .hrCard   {
+        position: absolute;
+        top: 48%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 48px;
+        width: 40%;
     }
     .reveal {
         width: 100%;
         position: absolute;
-        top: 58%;
+        top: 64%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 22px;
+        font-family: 'Hammersmith One';
+        font-weight: lighter;
     }
     .resultsBack {
         position: absolute;
-        top: 16%;
+        top: 12%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 40px;
+        font-family: 'Cormorant SC', serif;
     }
     .resultDescription {
         width: 90%;
         position: absolute;
-        font-size: 19px;
+        font-size: 14px;
         top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
+        font-family: 'Open Sans', sans-serif;
+        font-weight: lighter;
     }
     .overlay {
         width: 100%;
@@ -92,7 +108,8 @@
         justify-content: center;
     }
     .card img {
-        height: 30vh;
+        width: 80vw;
+        min-height: 100%;
     }
     .results {
         position: absolute;
@@ -100,14 +117,25 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 40px;
+        font-family: 'Cormorant SC', serif;
+    }
+    .hrCard {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 48px;
+        width: 30%;
     }
     .reveal {
         width: 100%;
         position: absolute;
-        top: 68%;
+        top: 76%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 20px;
+        font-family: 'Hammersmith One';
+        font-weight: lighter;
     }
     .resultsBack {
         position: absolute;
@@ -115,30 +143,33 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 28px;
+        font-family: 'Cormorant SC', serif;
     }
     .resultDescription {
         width: 90%;
         position: absolute;
-        font-size: 14px;
+        font-size: 10px;
         top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
+        font-family: 'Open Sans', sans-serif;
+        font-weight: lighter;
     }
 }
 @media only screen and (max-device-width: 375px) {
     /* iPhone 6/7/8, iPhone X, */
     .resultsBack {
         position: absolute;
-        top: 18%;
+        top: 12%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 22px;
+        font-size: 20px;
     }
     .resultDescription {
         width: 90%;
         position: absolute;
-        font-size: 12px;
-        top: 60%;
+        font-size: 1.42vh;
+        top: 58%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
@@ -167,25 +198,34 @@
         transform: translate(-50%, -50%);
         font-size: 32px;
     }
+    .hrCard {
+        position: absolute;
+        top: 38%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 48px;
+        width: 35%;
+    }
     .reveal {
         width: 100%;
         position: absolute;
-        top: 72%;
+        top: 80%;
         left: 50%;
+        font-family: 'Hammersmith One';
         transform: translate(-50%, -50%);
-        font-size: 18px;
+        font-size: 16px;
     }
     .resultsBack {
         position: absolute;
-        top: 16%;
+        top: 12%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 18px;
+        font-size: 16px;
     }
     .resultDescription {
         width: 95%;
         position: absolute;
-        font-size: 12px;
+        font-size: 9px;
         top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -213,6 +253,7 @@
     }
     .card img {
         height: 55vh;
+        min-width: 100%;
     }
     .results {
         position: absolute;
@@ -220,29 +261,43 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 48px;
+        font-family: 'Cormorant SC', serif;
     }
     .reveal {
         width: 100%;
         position: absolute;
-        top: 58%;
+        top: 66%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 24px;
+        font-family: 'Hammersmith One';
+        font-weight: lighter;
     }
-    .resultsBack {
+    .hrCard {
         position: absolute;
-        top: 20%;
+        top: 48%;
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 48px;
+        width: 40%;
+    }
+    .resultsBack {
+        position: absolute;
+        top: 12%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 48px;
+        font-family: 'Cormorant SC', serif;
     }
     .resultDescription {
         width: 90%;
         position: absolute;
-        font-size: 20px;
-        top: 60%;
+        font-size: 2.4vh;
+        top: 58%;
         left: 50%;
         transform: translate(-50%, -50%);
+        font-family: 'Open Sans', sans-serif;
+        font-weight: lighter;
     }
     .overlay {
         width: 100%;
@@ -264,7 +319,7 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        opacity: 0.5;
+        opacity: 0.6;
         transition: .5s ease;
         background-color: black;
         border-radius: 2rem;

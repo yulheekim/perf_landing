@@ -55,9 +55,9 @@ class CheckOutComponent extends Component {
         const char_length = this.props.message.length;
         const char_limit = APIConfig.gift_msg_char_limit;
         return (
-            <div className={(this.props.recipient_relations > 0) ? "showMessage" :"hideMessage"}>
+            <div className="showMessage">
                 <div>
-                    Write a message to <i>{this.props.recipient_options[this.props.recipient_relations]}</i> ({char_limit} characters max):
+                    Write a message to <i>{this.props.recipient_relations === 0 ? "yourself " : this.props.recipient_options[this.props.recipient_relations]}</i> ({char_limit} characters max):
                     <TextField
                         label="Write a message here"
                         value={this.props.message}
@@ -76,7 +76,7 @@ class CheckOutComponent extends Component {
     populateDescriptions = () => {
         return _.map(this.props.result_cards, (item, index)=> {
             return (
-                <div className="description" key={index}> - {item['name']} : {item['description']}</div>
+                <div className="description" key={index}> - {item['name']} : {item['description'][1]}</div>
             )
         })
     };
@@ -107,6 +107,8 @@ class CheckOutComponent extends Component {
         )
     }
     render() {
+        console.log(this.props.prices);
+        console.log(this.props.current_bottle_index);
         const price = this.adjustPrice();
         if (this.props.quizresult_id < 1) {
             return (<Redirect to="quiz"/>)
@@ -141,10 +143,12 @@ class CheckOutComponent extends Component {
                         <div className="rightBox">
                             {(window.innerWidth < 768) ?
                                 <div className="selectContainer">
-                                    <b>Size:</b>&nbsp;&nbsp;<Select
+                                    <b>Size:</b>&nbsp;&nbsp;
+                                    <Select
                                         onChange={this.handleBottleChange}
                                         value={this.props.current_bottle_index}
                                         fullWidth={true}
+                                        style={{'fontFamily':'Lora',}}
                                     >
                                     {this.bottleMenuItems()}
                                     </Select>
@@ -156,10 +160,12 @@ class CheckOutComponent extends Component {
                             }
                             {(window.innerWidth >= 768) &&
                                 <div className="selectContainer">
-                                    <b>Size:</b>&nbsp;&nbsp;<Select
+                                    <b>Size:</b>&nbsp;&nbsp;
+                                    <Select
                                         onChange={this.handleBottleChange}
                                         value={this.props.current_bottle_index}
                                         fullWidth={true}
+                                        style={{'fontFamily':'Lora',}}
                                     >
                                     {this.bottleMenuItems()}
                                     </Select>
@@ -200,6 +206,7 @@ class CheckOutComponent extends Component {
                             }
                             {this.writeMessage()}
                         </div>
+
                         <div className="rightBox">
                             <div className="orderSummary">
                                 <div className="description"><b>Order Summary</b></div><br/>
@@ -210,19 +217,24 @@ class CheckOutComponent extends Component {
                                 </tbody></table>
                                 {this.props.current_bottle_index === 0 &&
                                     <div className="promoContainer">
-                                        Promo Code :<TextField
+                                        Promo Code :&nbsp;<TextField
                                             label={this.props.found_email ? "PROMO APPLIED!":"Enter your email"}
                                             value={this.props.promo}
                                             onChange={this.handlePromoChange}
                                             style={promoText}
+                                            onKeyPress={(ev) => {
+                                                if (ev.key === 'Enter') {
+                                                    this.props.check_promo();
+                                                    ev.preventDefault();
+                                                }
+                                            }}
                                         />&nbsp;
                                     <Button variant="contained" onClick={()=>this.props.check_promo()} size='small' style={promoButton}>OK</Button>
                                     </div>
                                 }
                             </div>
                             {(this.props.current_bottle_index === 0 && this.props.found_email) ?
-                                <SampleCheckOutButton 
-                                />
+                                <SampleCheckOutButton />
                                 :
                                 <div className="checkOutButton">
                                     <StripeProvider apiKey={APIConfig.stripe_key}>

@@ -1,16 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond|Hammersmith+One|Lora');
 section {
     height: 87vh;
     padding-top: 13vh;
     overflow: hidden;
 }
+@media screen
+  and (min-device-width: 1200px)
+  and (max-device-width: 4000px)
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+    section {
+        height: 87vh;
+        padding-top: 13vh;
+        overflow: hidden;
+    }
+    .quizResultStyle {
+        overflow: hidden;
+    }
+    .showDownResult {
+        margin-top: 1vh!important;
+    }
+    /* .quizResultStyle .down {
+        margin-top: 5vh;
+    } */
+    .hideDown {
+        display: none;
+    }
+    #distilling {
+        margin: 0%;
+    }
+    .distillContainer {
+        margin: 0 auto;
+    }
+    .hideVis {
+        visibility: hidden;
+    }
+    .linkToCheckout {
+        width: 80vw;
+        margin: auto;
+        text-align: center;
+        font-size: 18px;
+    }
+    .quizResultStyle {
+        text-align: center;
+        justify-content: center;
+    }
+}
+
 @media only screen and (max-device-width: 768px) {
     /* iPad */
     .textContainer {
         width: auto;
-        font-size: 36px;
+        font-size: 34px;
         text-align: center;
         padding-top: 12vh;
         padding-bottom: 1vh;
+        font-family: 'Lora';
+        font-weight: lighter;
+    }
+    .textContainer2 {
+        width: auto;
+        font-size: 36px;
+        text-align: center;
+        padding: 5vh;
+        font-family: 'Lora';
+        font-weight: lighter;
     }
     .distillGif {
         position: absolute;
@@ -19,30 +73,57 @@ section {
         transform: translate(-50%, -50%);
         height: 30vh;
     }
+    .showDownResult {
+        margin-top: 3vh !important;
+    }
 }
 @media only screen and (max-device-width: 480px) {
     /* iPhone Plus, Pixel 2 (XL) */
     .textContainer {
-        width: 90%;
+        width: 95%;
         margin: auto;
-        font-size: 32px;
+        font-size: 27px;
         text-align: center;
         padding-top: 2.5vh;
         padding-bottom: 2.5vh;
+        font-family: 'Lora';
+        font-weight: lighter;
+    }
+    .textContainer2 {
+        width: auto;
+        font-size: 28px;
+        text-align: center;
+        padding: 4.5vh;
+        font-family: 'Lora';
+        font-weight: lighter;
+    }
+    .showDownResult {
+        margin-top: 0vh !important;
+    }
+    .showDownResult a {
+        margin-top: 0vh !important;
     }
 }
 @media only screen and (max-device-width: 375px) {
     /* iPhone 6/7/8, iPhone X, */
     .textContainer {
-        width: 90%;
-        font-size: 28px;
+        width: 95%;
+        font-size: 24px;
         text-align: center;
         padding-top: 2.2vh;
         padding-bottom: 2.2vh;
     }
+    .textContainer2 {
+        width: auto;
+        font-size: 24px;
+        text-align: center;
+        padding: 4.2vh;
+        font-family: 'Lora';
+        font-weight: lighter;
+    }
     .distillGif {
         position: absolute;
-        top: 154%;
+        top: 158%;
         left: 50%;
         transform: translate(-50%, -50%);
         height: 30vh;
@@ -51,16 +132,25 @@ section {
 @media only screen and (max-device-width: 320px) {
     /*iPhone 5*/
     .textContainer {
-        width: 85vw;
+        width: 95%;
         font-size: 20px;
+        line-height: 4.3vh;
         text-align: center;
         padding-top: 1.5vh;
         padding-bottom: 1.5vh;
         margin: auto;
     }
+    .textContainer2 {
+        width: auto;
+        font-size: 22px;
+        text-align: center;
+        padding: 4vh;
+        font-family: 'Lora';
+        font-weight: lighter;
+    }
     .distillGif {
         position: absolute;
-        top: 153%;
+        top: 158%;
         left: 50%;
         transform: translate(-50%, -50%);
         height: 30vh;
@@ -72,9 +162,22 @@ section {
         font-size: 32px;
         text-align: center;
         padding: 5vh;
+        font-family: 'Lora';
+        /* font-weight: lighter; */
     }
-    .showDown {
-        margin-top: 3vh;
+    .showDownResult {
+        margin-top: 3vh !important;
+    }
+    .showDownResult a {
+        margin-top: 0vh !important;
+    }
+    .textContainer2 {
+        width: auto;
+        font-size: 38px;
+        text-align: center;
+        padding: 5vh;
+        font-family: 'Lora';
+        font-weight: lighter;
     }
     .distillGif {
         position: absolute;
@@ -83,10 +186,9 @@ section {
         transform: translate(-50%, -50%);
         height: 33vh;
     }
+
 }
-.showDown {
-    margin-top: 3vh!important;
-}
+
 .hideDown {
     display: none;
 }
@@ -103,9 +205,14 @@ section {
     width: 80vw;
     margin: auto;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: lighter;
+    font-family: sans-serif;
 }
 .quizResultStyle {
     text-align: center;
     justify-content: center;
+    font-family: 'Cormorant Garamond', sans-serif;
+    font-weight: bold;
+    background-color: white;
 }

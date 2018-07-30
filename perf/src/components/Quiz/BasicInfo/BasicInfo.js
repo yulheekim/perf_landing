@@ -24,6 +24,7 @@ class BasicInfoComponent extends Component {
             <Select
                 onChange={this.handleRelationChange}
                 value={this.props.recipient_relations}
+                style={{'fontFamily':'Lora', 'fontSize':'inherit', 'color':'darkblue'}}
             >
                 {this.menuItems()}
             </Select>
@@ -139,7 +140,7 @@ class BasicInfoComponent extends Component {
                         {this.sexualityPicker()}
                     </div>
                 </div>
-                <div className={done ? "showDown" : "hideDown"} >
+                <div className={done ? (this.props.recipient_relations > 0 ? "showDown" : "showDownYou"): "hideDown"} >
                     <ScrollDown message="Proceed on to the quiz!" moveto="questions"/>
                 </div>
             </section>

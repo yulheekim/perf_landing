@@ -19,7 +19,7 @@ const First = () => {
             <div className="sectionBody">
                 <OneLiner className="firstLiner" message="Personalized Fragrance Designed by You" />
                 <hr className="hr" />
-                <div className="getStarted">
+                <div className="getStartedFirst">
                     <Link to="quiz" className="quizLink" >
                         <Button className="quizButton" variant="contained" size="large" style={buttonStyle}>
                             Get Started!
@@ -30,7 +30,7 @@ const First = () => {
             </div>
             <div className="backdrop"></div>
         </section>
-    ) 
+    )
 }
 
 export { First };

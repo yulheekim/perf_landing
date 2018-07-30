@@ -4,16 +4,19 @@
     font-family: 'Merriweather', serif;
 }
 
-@media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 4000px) 
-  and (-webkit-min-device-pixel-ratio: 1) { 
+@media screen
+  and (min-device-width: 1200px)
+  and (max-device-width: 4000px)
+  and (-webkit-min-device-pixel-ratio: 1) {
 
     #checkoutBody .boxes {
         display: flex;
         justify-content: center;
         margin-top: 8vh;
     }
+    /* #select {
+        margin-bottom: 25vh !important;
+    } */
 
     /* LeftBox */
     .leftBox {
@@ -27,12 +30,22 @@
         justify-content: center;
         width: 30vw;
         height: 30vw;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-origin: content-box;
+        background-position: center;
     }
     .swiper {
         width: 30vw;
-        height: 30vw;
-        border: solid grey 0.5px;
+        height: 50vw;
         margin-bottom: 1rem;
+        overflow: hidden;
+    }
+    .swiper > div img {
+        width: 30vw;
+        height: 30vw;
+        margin: auto;
+        overflow: hidden;
     }
     .otherImgs {
         display: flex;
@@ -44,24 +57,17 @@
     .otherImgs img {
         width: 9.5vw;
         height: 9.5vw;
-        border: solid grey 0.5px;
     }
 
-    /* RightBox */
-    .RightBox {
-        width: 50vw;
-        display: flex;
-        justify-content: center;
-    }
     .perfumeInfo {
         width: 40vw;
         line-height: 5vh;
     }
     .perfumeInfo .title {
-        font-size: 2vw;
+        font-size: 2.1vw;
     }
     .perfumeInfo .description {
-        font-size: 1.5vh;
+        font-size: 1.7vh;
     }
     .selectContainer {
         margin-top: 5vh;
@@ -70,6 +76,10 @@
     }
     .priceContainer {
         margin-top: 2vh;
+    }
+    #checkoutBody .description {
+        width: 40vw !important;
+        word-wrap: break-word;
     }
 
     /*  */
@@ -96,30 +106,26 @@
         margin: auto;
         margin-left: 10vw;
     }
-    #checkout .hideMessage {
-
-    }
     #checkout .selectedBotImg {
         width: 20vw;
         height: 20vw;
-        border: solid grey 0.5px;
+    }
+    #checkout .selectedBotImg img {
+        width: 20vw;
+        height: 20vw;
     }
     #checkout .perfumeInfo {
         width: 30vw;
-        height: 30vw;
-    }
-    #checkout .hideMessage {
-        width: 30vw;
-    
+        height: 29vw;
+        min-height: 256px;
     }
     /* RightBox */
     #checkout .rightBox {
         width: 50vw;
         margin-top: 0;
         justify-content: center;
-    }
-    #checkout .leftBox .hideMessage {
-        width: 25vw;
+        margin-left: 5vw;
+        align-self: flex-start;
     }
     #checkout .orderSummary {
         font-size: 2vw;
@@ -130,6 +136,7 @@
     #checkout .promoContainer {
         margin-top: 5vh;
         width: 35vw;
+        font-size: 1.4vw;
     }
     #checkout button {
         background-color: transparent;
@@ -143,15 +150,31 @@
     #checkout .sampleButton {
         color: black;
     }
+    .showMessage {
+        font-size: 1.2vw;
+    }
+    .showMessage textarea {
+        font-family: 'Lora', serif!important;
+    }
+    .wordCountGood, .wordCountBad {
+        width: inherit;
+        text-align: right;
+    }
+    .wordCountBad {
+        color: red;
+    }
+    .promoContainer input {
+        font-family: 'Lora', serif!important;
+    }
 }
 
 /* phones in general  */
-@media only screen 
-  and (min-device-width: 300px) 
-  and (max-device-width: 800px)  { 
+@media only screen
+  and (min-device-width: 300px)
+  and (max-device-width: 800px)  {
     #checkoutBody .boxes {
         flex-direction: column;
-        margin-top: 2vh;
+        margin-top: 4vh;
         height: 70vh;
         justify-content: center;
     }
@@ -160,6 +183,11 @@
         width: 100vw;
         display: flex;
         justify-content: center;
+        align-self: flex-start;
+    }
+    #select .rightBox {
+        width: 70vw;
+        margin: auto;
     }
     .imgContainer {
         display: flex;
@@ -170,9 +198,13 @@
     }
     .swiper {
         width: 70vw;
-        height: 70vw;
-        border: solid grey 0.5px;
+        height: 90vh;
         margin-bottom: 1rem;
+    }
+    .swiper > div img {
+        width: 70vw;
+        height: 70vw;
+        margin: auto;
     }
     .otherImgs {
         display: flex;
@@ -184,26 +216,20 @@
     .otherImgs img {
         width: 22vw;
         height: 22vw;
-        border: solid grey 0.5px;
-    } 
-
-    /* RightBox */
-    #checkoutBody .rightBox {
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        margin-left: 15vw;
     }
-    
-    
+
+    .priceContainer {
+        margin-top: 4vh;
+    }
+
     .selectContainer {
-        margin-top: 8vh;
+        margin-top: 12vh;
         font-size: 5vw;
         width: 70vw;
     }
-    .priceContainer {
-        margin-top: 2vh;
-        font-size: 4vw;
+
+    .down {
+        padding-bottom: 10vh !important;
     }
 
     /* checkout */
@@ -211,75 +237,74 @@
         width: 100vw;
         flex-direction: column;
         margin: auto;
-        margin-top: 2vh;
+        margin-top: 3vh;
         justify-content: center;
-        /* margin-left: 15vw; */
+        align-self: flex-start;
     }
 
     /* LeftBox */
     #checkout .leftBox {
-        width: 100vw;
+        width: 80vw;
         display: flex;
         flex-direction: column;
         margin: auto;
-        margin-left: 10vw;
+        align-content: flex-start;
+    }
+    #checkout .rightBox {
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        margin: 3vh auto 0vh auto;
     }
     #checkout .selectedBotImg {
         width: 20vw;
         height: 20vw;
-        padding-right: 20vw;
         margin-right: 10vw;
-        border: solid grey 0.5px;
     }
-    .perfumeInfo {
-        width: 40vw;
-        line-height: 5vh;
-    }
-    .perfumeInfo .title {
-        font-size: 5vw;
-    }
-    .perfumeInfo .description {
-        font-size: 4vw;
-    }
-    #checkout .hideMessage {
-        width: 80vw;
-    }
-    #checkout .itemInfo {
-        font-size: 15vw;
+    #checkout .selectedBotImg img {
+        width: 23vw;
+        height: 23vw;
+        overflow: hidden;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
     }
     #checkout .perfumeInfo {
         display: flex;
         flex-direction: row;
-        width: 70vw;
-        height: 20vh;
+        width: 90vw;
+        height: 15vh;
     }
-    #checkout .hideMessage {
-        width: 80vw;
-    
-    }
-
-     /* RightBox */
-     #checkout .rightBox {
-        width: 70vw;
-        margin-top: 2vh;
+    #checkout .itemInfo {
+        font-size: 15vw;
         justify-content: center;
-        margin-left: 10vw;
     }
-    #checkout .hideMessage {
-        margin-top: -3vh;
+    .perfumeInfo .title {
+        font-size: 5vw;
+        width: 55vw;
+    }
+    .perfumeInfo .description {
+        font-size: 4vw;
+        width: 55vw !important;
+    }
+    .showMessage textarea {
+        font-family: 'Lora', serif!important;
     }
     #checkout .orderSummary {
-        width: 80vw;
+        width: 100vw;
         font-size: 5vw;
     }
     #checkout table {
-        width: 50vw;
-        font-size: 3vw;
+        width: 60vw;
+        font-size: 2vh;
     }
     #checkout .promoContainer {
         font-size: 4vw;
         margin-top: 5vh;
         width: 80vw;
+    }
+    .promoContainer input {
+        font-family: 'Lora', serif!important;
     }
     #checkout button {
         background-color: transparent;
@@ -289,15 +314,19 @@
     }
     #checkout .checkOutButton {
         margin-top: 5vh;
+        margin-left: 5vw;
     }
     #checkout .sampleButton {
         width: 80vw;
         color: black;
     }
+
+    .stripeButton {
+        width: 70vw;
+    }
+    .showMessage {
+        width: 80vw;
+    }
 }
 
 /* /////////////////////////////////////// */
-
-
-
-
