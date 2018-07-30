@@ -9,6 +9,7 @@ import {
   handle_next,
   start_over,
   load_result,
+  toggle_gif,
 } from '../../../ducks/quiz';
 import './styles.css';
 
@@ -18,8 +19,11 @@ class QuestionComponent extends Component {
         return _.map(this.props.questions[this.props.activeStep].cards, (item, index)=> {
             return (
                 <div className="options" key={item.id}>
-                    <div className="option" onClick={() => this.props.handle_next(item.id)} >
-                        <img className="optionImages" src={item.img_lnk} alt={item.img_lnk}/>
+                    <div className="option" 
+                        onMouseEnter={()=> this.props.toggle_gif(index)}
+                        onMouseLeave={()=> this.props.toggle_gif(-1)}
+                        onClick={() => this.props.handle_next(item.id)} >
+                        <img className="optionImages" src={this.props.gifme === index ? item.gif_lnk : item.img_lnk} alt={item.img_lnk}/>
                     </div>
                     <div className="optionText">
                         {item.description}
@@ -35,7 +39,8 @@ class QuestionComponent extends Component {
             return (
                 <Redirect to="result" />
             ) 
-       }
+        }
+        const cards = this.props.questions[this.props.activeStep].cards
         return (
             <section id="questions">
                 <div className="question">{this.props.questions[this.props.activeStep].question_text}</div>
@@ -62,19 +67,21 @@ class QuestionComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { quiz } = state;
-  const { activeStep, answers, recipient_relations, quiz_id, quizresult_id } = quiz;
+  const { activeStep, answers, recipient_relations, quiz_id, quizresult_id, gifme } = quiz;
   return {
     ...ownProps,
     activeStep,
     answers,
     recipient_relations,
     quiz_id,
-    quizresult_id
+    quizresult_id,
+    gifme
   };
 }
 
 export const Question = connect(mapStateToProps, {
   handle_next,
   start_over,
-  load_result
+  load_result,
+  toggle_gif,
 })(QuestionComponent);

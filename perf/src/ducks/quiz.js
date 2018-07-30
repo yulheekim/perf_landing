@@ -21,7 +21,8 @@ export const LOAD_RESULT_FAILURE = 'perf/quiz/LOAD_RESULT_FAILURE';
 export const LOAD_RESULT_SUCCESS = 'perf/quiz/LOAD_RESULT_SUCCESS';
 export const REVEAL_CARD = "perf/quiz/REVEAL_CARD";
 export const START_DISTILLING = 'perf/quiz/START_DISTILLING';
-export const START_OVER= 'perf/quiz/START_OVER';
+export const START_OVER = 'perf/quiz/START_OVER';
+export const TOGGLE_GIF = 'perf/quiz/TOGGLE_GIF';
 
 
 // CONST FOR REPRESENTING STATE OF QUIZ RESULT
@@ -49,8 +50,8 @@ const INITIAL_STATE = {
         "cards": [
             {
                 "id": 29,
-                "description": "window",
-                "img_lnk": "https://s3-us-west-2.amazonaws.com/quiz.tryperf.com/dinner/q1/option1.png",
+                "description": "",
+                "img_lnk": "",
                 "sexuality": 0,
                 "personality": 0,
                 "occasion": 2,
@@ -78,6 +79,7 @@ const INITIAL_STATE = {
     result_title: "",
     isDistilling: false,
     quizresult_id: -1,
+    gifme: -1,
 };
 
 //Reducers
@@ -196,6 +198,11 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 error_message: "Something went wrong while loading the result. We put a monkey on it so it should be solved in no time!",
+            }
+        case TOGGLE_GIF:
+            return {
+                ...state,
+                gifme: action.payload
             }
         default:
             return {
@@ -349,6 +356,15 @@ export const clear_error_quiz = (dispatch) => {
     return (dispatch) => {
         dispatch({
             type: CLEAR_ERROR_QUIZ
+        })
+    }
+}
+
+export const toggle_gif = (index) => {
+    return (dispatch) => {
+        dispatch({
+            type: TOGGLE_GIF,
+            payload: index,
         })
     }
 }
