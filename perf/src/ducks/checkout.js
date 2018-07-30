@@ -18,7 +18,7 @@ export const GO_CHECKOUT = 'perf/checkout/GO_CHECKOUT';
 export const HANDLE_ORDER_ERROR = 'perf/checkout/HANDLE_ORDER_ERROR';
 export const HANDLE_ORDER_RESPONSE = 'perf/checkout/HANDLE_ORDER_RESPONSE';
 export const LOAD_BOTTLES = 'perf/checkout/LOAD_BOTTLES';
-export const LOAD_BOTTLES_ERROR = 'perf/checkout/LOAD_BOTTLES_ERROR'; 
+export const LOAD_BOTTLES_ERROR = 'perf/checkout/LOAD_BOTTLES_ERROR';
 export const LOAD_BOTTLES_SUCCESS = 'perf/checkout/LOAD_BOTTLES_SUCCESS';
 export const TOGGLE_MODAL = 'perf/checkout/TOGGLE_MODAL';
 
@@ -137,7 +137,11 @@ export default function reducer(state = INITIAL_STATE, action) {
                 var loaded_types = [];
                 for (var i = 0; i < action.payload.length; i++) {
                     const item = action.payload[i];
-                    loaded_bottle_images.push(item.images);
+                    var images = [];
+                    for (var j = 1; j <= action.payload.length; j++) {
+                        images.push(item.images['image'+j])
+                    }
+                    loaded_bottle_images.push(images);
                     loaded_bottle_types.push(item.volume + ' mL ' + item.type);
                     loaded_prices.push(item.price);
                     loaded_sizes.push(item.volume);
@@ -169,7 +173,7 @@ export default function reducer(state = INITIAL_STATE, action) {
 
 // Action creator
 export const load_bottles = () => {
-    const url = APIConfig.apiroot + '/bottle'
+    const url = APIConfig.apiroot + '/bottle';
     return (dispatch) => {
         dispatch({
             type: LOAD_BOTTLES

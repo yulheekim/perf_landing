@@ -24,7 +24,7 @@ export const START_DISTILLING = 'perf/quiz/START_DISTILLING';
 export const START_OVER= 'perf/quiz/START_OVER';
 
 
-// CONST FOR REPRESENTING STATE OF QUIZ RESULT 
+// CONST FOR REPRESENTING STATE OF QUIZ RESULT
 export const QUIZ_RESULT_UNSTARTED = 'QUIZ_RESULT_UNSTARTED';
 export const QUIZ_RESULT_LOADING = 'QUIZ_RESULT_LOADING';
 export const QUIZ_RESULT_LOADED = 'QUIZ_RESULT_LOADED';
@@ -94,10 +94,6 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 activeStep: 0,
                 answers: [-1, -1, -1, -1, -1, -1, -1],
-                recipient_relations: 0,
-                taker_name: "",
-                recipient_name: "",
-                sexuality: "",
             }
         case LOAD_QUIZ:
             return {

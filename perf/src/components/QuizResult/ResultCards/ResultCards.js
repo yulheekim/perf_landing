@@ -27,8 +27,9 @@ const ScentCard = (result_cards, reveal_cards, onClickCard) => {
                                 <div className="resultDescription">{item['description'][0]}</div>
                             </div>
                         </div>
-                    </ReactCardFlip>
-                </div>
+                    </div>
+                </ReactCardFlip>
+            </div>
         )
     });
 }

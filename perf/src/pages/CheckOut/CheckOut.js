@@ -107,6 +107,8 @@ class CheckOutComponent extends Component {
         )
     }
     render() {
+        console.log(this.props.prices);
+        console.log(this.props.current_bottle_index);
         const price = this.adjustPrice();
         if (this.props.quizresult_id < 1) {
             return (<Redirect to="quiz"/>)

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+Garamond|Lora');
 
 .showFor {
 }
@@ -44,15 +44,15 @@
     padding-top: 0vh !important;
     line-height: 5vh;
     width: 80vw;
-    display: flex; 
+    display: flex;
     flex-direction: column;
     margin: auto;
-    font-size: 1.5vw;
+    font-size: 2.8vh;
 }
 
 .inputWrapper {
     display: flex !important;
-font-family: 'Hammersmith One', sans-serif;    justify-content: center;
+font-family: 'Lora', sans-serif;    justify-content: center;
     align-content: center;
     flex-direction: row;
     padding-bottom: 2vh;
@@ -67,18 +67,62 @@ font-family: 'Hammersmith One', sans-serif;    justify-content: center;
 .inputBox {
     margin-left: 10px !important;
 }
+.inputBox input {
+    font-family:'Lora';
+    font-style:'italic';
+    font-size: 2.8vh;
+    color: darkblue;
+}
+.showDown a{
+    margin: 6vh auto 0vh auto!important;
+    font-weight: normal !important;
+    font-family: 'Cormorant Garamond', serif !important;
+}
+.showDownYou a{
+    margin: 17vh auto 0vh auto!important;
+    font-weight: normal !important;
+    font-family: 'Cormorant Garamond', serif !important;
+}
+@media screen
+  and (min-device-width: 1200px)
+  and (max-device-width: 1600px) {
 
-@media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) { 
-  
 
     .inputWrapper .sexualityPicker .desginBy {
         font-size: 4vw;
     }
 }
 
-
+@media screen
+  and (min-device-width: 667px)
+  and (max-device-width: 768px) {
+    .basicinfo {
+        margin-top: 22vh !important;
+        padding-top: 0vh !important;
+        line-height: 4vh;
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        font-size: 2.2vh;
+    }
+    .inputBox input {
+        font-family:'Lora';
+        font-style:'italic';
+        font-size: 2.2vh;
+        color: darkblue;
+    }
+    .showDown a{
+        margin: 8vh auto 0vh auto!important;
+        font-weight: normal !important;
+        font-family: 'Cormorant Garamond', serif !important;
+    }
+    .showDownYou a{
+        margin: 25vh auto 0vh auto!important;
+        font-weight: normal !important;
+        font-family: 'Cormorant Garamond', serif !important;
+    }
+}
 .showDown {
     margin: 10vh auto 0vh auto!important;
     font-weight: normal !important;
@@ -94,21 +138,42 @@ font-family: 'Hammersmith One', sans-serif;    justify-content: center;
 }
 
 /* phones in general  */
-@media only screen 
-  and (min-device-width: 375px) 
-  and (max-device-width: 667px)  { 
+@media only screen
+  and (min-device-width: 375px)
+  and (max-device-width: 667px)  {
     .basicinfo {
-        margin-top: 29vh !important;
+        margin-top: 25vh !important;
         line-height: 5vh;
-        font-size: 15px;
+        font-size: 16px;
     }
 
     .inputWrapper .sexualityPicker .desginBy {
         font-size: 5vw;
     }
 
+    .showDown a{
+        margin: 5vh auto 0vh auto!important;
+        font-weight: normal !important;
+        font-family: 'Cormorant Garamond', serif !important;
+    }
     .showDown {
-        margin: 6vh auto !important;
+        margin: 0vh auto 0vh auto!important;
+        font-weight: normal !important;
+        font-family: 'Cormorant Garamond', serif !important;
+    }
+    .inputBox input {
+        font-family:'Lora';
+        font-style:'italic';
+        font-size: 2.2vh;
+        color: darkblue;
+    }
+    .down a {
+        margin: 0vh auto 0vh auto!important;
+    }
+    .showDownYou a{
+        margin: 12vh auto 0vh auto!important;
+        font-weight: normal !important;
+        font-family: 'Cormorant Garamond', serif !important;
     }
 
     .showDownBottom {
@@ -116,16 +181,39 @@ font-family: 'Hammersmith One', sans-serif;    justify-content: center;
     }
 }
 
-@media only screen 
-  and (min-device-width: 300px) 
-  and (max-device-width: 375px)  { 
+@media only screen
+  and (min-device-width: 300px)
+  and (max-device-width: 375px)  {
     .basicinfo {
-        margin-top: 29vh !important;
+        margin-top: 22vh !important;
         line-height: 5vh;
-        font-size: 5vw;
+        font-size: 1.8vh;
     }
     .showDown {
         margin: 6vh auto !important;
+    }
+    .showDown a{
+        margin: 2vh auto 0vh auto!important;
+        font-weight: normal !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 2.5vh!important;
+        width: 60vw;
+    }
+    .inputBox input {
+        font-family:'Lora';
+        font-style:'italic';
+        font-size: 2vh;
+        color: darkblue;
+    }
+    .down a {
+        margin: 0vh auto 0vh auto!important;
+    }
+    .showDownYou a{
+        margin: 18vh auto 0vh auto!important;
+        font-weight: normal !important;
+        font-family: 'Cormorant Garamond', serif !important;
+        font-size: 2.5vh!important;
+        width: 60vw;
     }
 
     .showDownBottom {

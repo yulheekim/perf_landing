@@ -13,6 +13,7 @@
 }
 
 .option {
+  background-color: #C3C9E9;
   display: flex;
   flex-direction: column;
   border: solid grey;
@@ -44,67 +45,136 @@
 }
 
 .progressBar {
-  background-color: orange;
-  justify-content: center !important;
+  /* justify-content: center !important; */
   margin: 0 7vw;
   width: 80vw;
   margin: 0 0;
 }
 
-@media only screen and (max-width: 900px) {
-  #questions {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 1vh !important;
-    margin-top: 1vh !important;
-  }
+/* phones in general  */
+@media only screen
+  and (min-device-width: 360px)
+  and (max-device-width: 800px)  {
+    #questions {
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 13vh !important;
+      margin-top: 20vh !important;
+      margin-bottom: 28vh;
+    }
 
-  .question {
-    font-size: 5vw;
-    width: 70vw;
-    word-wrap: break-word;
-    margin: 1vh auto;
-  }
+    .question {
+      font-size: 5vw;
+      width: 70vw;
+      word-wrap: break-word;
+      margin: 1vh auto;
+    }
 
-  .optionsContainer {
-    display: flex;
-    flex-direction: row;
-    width: 60vw;
-    margin: 1vh auto;
-    flex-wrap: wrap;
-  }
+    .optionsContainer {
+      display: flex;
+      flex-direction: row;
+      width: 60vw;
+      margin: 1vh auto;
+      flex-wrap: wrap;
+    }
 
-  .option img {
-    width: 20vw;
-    height: 20vw;
-  }
+    .option img {
+      width: 25vw;
+      height: 25vw;
+    }
 
-  .option {
-    width: 20vw;
-    height: 20vw;
-    word-wrap: break-word;
-    margin-bottom: 0;
-  }
+    .option {
+      width: 25vw;
+      height: 25vw;
+      word-wrap: break-word;
+      margin-bottom: 0;
+    }
 
-  .progressBarContainer {
-    margin-top: 3vh;
-  }
+    .progressBarContainer {
+      width: 60vw;
+      position: absolute;
+      margin-top: 35vh;
+      margin-left: 17vw;
+      width: 65vw;
+    }
 
-  .options {
-    margin: 0 auto;
-    width: 30vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+    .options {
+      margin: 0 auto;
+      width: 30vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  .optionText {
-    font-size: 3vw;
-    word-wrap: break-word;
-  }
+    .optionText {
+      font-size: 4vw;
+      word-wrap: break-word;
+    }
 }
+@media only screen
+  and (min-device-width: 310px)
+  and (max-device-width: 360px)  {
+    #questions {
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 13vh !important;
+      margin-top: 20vh !important;
+      margin-bottom: 28vh;
+    }
 
+    .question {
+      font-size: 5vw;
+      width: 70vw;
+      word-wrap: break-word;
+      margin: 1vh auto;
+    }
+
+    .optionsContainer {
+      display: flex;
+      flex-direction: row;
+      width: 60vw;
+      margin: 1vh auto;
+      flex-wrap: wrap;
+    }
+
+    .option img {
+      width: 25vw;
+      height: 25vw;
+    }
+
+    .option {
+      width: 25vw;
+      height: 25vw;
+      word-wrap: break-word;
+      margin-bottom: 0;
+    }
+
+    .progressBarContainer {
+      width: 60vw;
+      position: absolute;
+      margin-top: 35vh;
+      margin-left: 17vw;
+      width: 65vw;
+    }
+
+    .options {
+      margin: 0 auto;
+      width: 30vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .optionText {
+      font-size: 4vw;
+      word-wrap: break-word;
+    }
+}
+/*
 @media only screen and (max-width: 420px) {
   #questions {
     display: flex;
@@ -129,7 +199,7 @@
   .options {
     width: 25vw;
   }
-  
+
   .option {
     width: 30vw;
     height: 30vw;
@@ -151,4 +221,4 @@
     margin-left: 17vw;
     width: 65vw;
   }
-}
+} */

@@ -65,6 +65,9 @@
     height: 87vh;
     padding-top: 13vh;
 }
+.firstSection .down {
+    margin-top: 0vh !important;
+}
 
 /* @media screen 
   and (min-device-width: 1200px) 
