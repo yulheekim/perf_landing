@@ -21,5 +21,14 @@
 }
 
 .menuItemText {
-  margin-left: 4vh;
+
+  display: table-cell;
+  vertical-align: middle;
+  line-height: 1.5em;
+}
+svg {
+     margin-right: 4vh;
+    display: table-cell;
+    vertical-align: middle;
+    line-height: 1.5em;
 }

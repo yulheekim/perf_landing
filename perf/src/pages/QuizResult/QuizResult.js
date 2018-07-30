@@ -66,7 +66,7 @@ class QuizResultComponent extends Component {
                         reveal_cards={this.props.reveal_cards}
                         onClickCard={this.props.reveal_card}
                     />
-                    <div className={this.props.reveal_cards.every((x) => x===true) ? "showDown" : "hideDown"} >
+                    <div className={this.props.reveal_cards.every((x) => x===true) ? "showDownResult" : "hideDown"} >
                         <ScrollDown message="Meet your fragrance" moveto="distilling"/>
                     </div>
                 </section>

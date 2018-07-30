@@ -7,7 +7,7 @@ section {
 @media screen
   and (min-device-width: 1200px)
   and (max-device-width: 4000px)
-  and (-webkit-min-device-pixel-ratio: 1) { 
+  and (-webkit-min-device-pixel-ratio: 1) {
 
     section {
         height: 87vh;
@@ -17,7 +17,7 @@ section {
     .quizResultStyle {
         overflow: hidden;
     }
-    .showDown {
+    .showDownResult {
         margin-top: 1vh!important;
     }
     /* .quizResultStyle .down {
@@ -55,7 +55,7 @@ section {
         text-align: center;
         padding-top: 12vh;
         padding-bottom: 1vh;
-        font-family: 'Hammersmith One';
+        font-family: 'Lora';
         font-weight: lighter;
     }
     .textContainer2 {
@@ -63,7 +63,7 @@ section {
         font-size: 36px;
         text-align: center;
         padding: 5vh;
-        font-family: 'Hammersmith One';
+        font-family: 'Lora';
         font-weight: lighter;
     }
     .distillGif {
@@ -73,7 +73,7 @@ section {
         transform: translate(-50%, -50%);
         height: 30vh;
     }
-    .showDown {
+    .showDownResult {
         margin-top: 3vh !important;
     }
 }
@@ -86,7 +86,7 @@ section {
         text-align: center;
         padding-top: 2.5vh;
         padding-bottom: 2.5vh;
-        font-family: 'Hammersmith One';
+        font-family: 'Lora';
         font-weight: lighter;
     }
     .textContainer2 {
@@ -94,10 +94,13 @@ section {
         font-size: 28px;
         text-align: center;
         padding: 4.5vh;
-        font-family: 'Hammersmith One';
+        font-family: 'Lora';
         font-weight: lighter;
     }
-    .showDown {
+    .showDownResult {
+        margin-top: 0vh !important;
+    }
+    .showDownResult a {
         margin-top: 0vh !important;
     }
 }
@@ -115,7 +118,7 @@ section {
         font-size: 24px;
         text-align: center;
         padding: 4.2vh;
-        font-family: 'Hammersmith One';
+        font-family: 'Lora';
         font-weight: lighter;
     }
     .distillGif {
@@ -142,7 +145,7 @@ section {
         font-size: 22px;
         text-align: center;
         padding: 4vh;
-        font-family: 'Hammersmith One';
+        font-family: 'Lora';
         font-weight: lighter;
     }
     .distillGif {
@@ -162,10 +165,10 @@ section {
         font-family: 'Lora';
         /* font-weight: lighter; */
     }
-    .showDown {
+    .showDownResult {
         margin-top: 3vh !important;
     }
-    .showDown a {
+    .showDownResult a {
         margin-top: 0vh !important;
     }
     .textContainer2 {

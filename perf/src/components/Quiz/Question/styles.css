@@ -1,9 +1,10 @@
 #questions {
-  padding-top: 22vh !important;
+  padding-top: 13vh !important;
 }
 
 .question {
-  font-size: 32px;
+    margin-top: 10vh;
+    font-size: 32px;
 }
 
 .optionsContainer {
@@ -16,7 +17,7 @@
   background-color: #C3C9E9;
   display: flex;
   flex-direction: column;
-  border: solid grey;
+  border: solid #A9A9A9;
   margin: 2rem;
   border-top-left-radius: 28px;
   border-top-right-radius: 28px;
@@ -61,8 +62,9 @@
       flex-direction: column;
       justify-content: center;
       padding-top: 13vh !important;
-      margin-top: 20vh !important;
-      margin-bottom: 28vh;
+      margin-top: 0vh !important;
+      height: 67vh;
+      padding-bottom: 20vh;
     }
 
     .question {
@@ -182,11 +184,9 @@
     justify-content: center;
     margin-top: 0vh !important;
   }
-
   .question {
     margin-top: 5vh;
   }
-
   .optionsContainer {
     display: flex;
     flex-direction: row;
@@ -195,26 +195,21 @@
     flex-wrap: wrap;
     padding-bottom: 15vh;
   }
-
   .options {
     width: 25vw;
   }
-
   .option {
     width: 30vw;
     height: 30vw;
   }
-
   .option img {
     width: 30vw;
     height: 30vw;
   }
-
   .optionText {
     font-size: 13px;
     word-wrap: break-word;
   }
-
   .progressBarContainer {
     position: absolute;
     margin-top: 35vh;

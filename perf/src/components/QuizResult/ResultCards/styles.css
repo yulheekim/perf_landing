@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cormorant+SC|Hammersmith+One|Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Cormorant+SC|Hammersmith+One|Lora|Open+Sans');
 @media only screen and (max-device-width: 768px) {
     /* iPad */
     .cardsContainer {
@@ -31,7 +31,7 @@
         font-size: 40px;
         font-family: 'Cormorant SC', serif;
     }
-    .hr {
+    .hrCard   {
         position: absolute;
         top: 48%;
         left: 50%;
@@ -119,7 +119,7 @@
         font-size: 40px;
         font-family: 'Cormorant SC', serif;
     }
-    .hr {
+    .hrCard {
         position: absolute;
         top: 40%;
         left: 50%;
@@ -198,7 +198,7 @@
         transform: translate(-50%, -50%);
         font-size: 32px;
     }
-    .hr {
+    .hrCard {
         position: absolute;
         top: 38%;
         left: 50%;
@@ -211,6 +211,7 @@
         position: absolute;
         top: 80%;
         left: 50%;
+        font-family: 'Hammersmith One';
         transform: translate(-50%, -50%);
         font-size: 16px;
     }
@@ -272,7 +273,7 @@
         font-family: 'Hammersmith One';
         font-weight: lighter;
     }
-    .hr {
+    .hrCard {
         position: absolute;
         top: 48%;
         left: 50%;

@@ -55,9 +55,9 @@ class CheckOutComponent extends Component {
         const char_length = this.props.message.length;
         const char_limit = APIConfig.gift_msg_char_limit;
         return (
-            <div className={(this.props.recipient_relations > 0) ? "showMessage" :"hideMessage"}>
+            <div className="showMessage">
                 <div>
-                    Write a message to <i>{this.props.recipient_options[this.props.recipient_relations]}</i> ({char_limit} characters max):
+                    Write a message to <i>{this.props.recipient_relations === 0 ? "yourself " : this.props.recipient_options[this.props.recipient_relations]}</i> ({char_limit} characters max):
                     <TextField
                         label="Write a message here"
                         value={this.props.message}
@@ -143,10 +143,12 @@ class CheckOutComponent extends Component {
                         <div className="rightBox">
                             {(window.innerWidth < 768) ?
                                 <div className="selectContainer">
-                                    <b>Size:</b>&nbsp;&nbsp;<Select
+                                    <b>Size:</b>&nbsp;&nbsp;
+                                    <Select
                                         onChange={this.handleBottleChange}
                                         value={this.props.current_bottle_index}
                                         fullWidth={true}
+                                        style={{'fontFamily':'Lora',}}
                                     >
                                     {this.bottleMenuItems()}
                                     </Select>
@@ -158,10 +160,12 @@ class CheckOutComponent extends Component {
                             }
                             {(window.innerWidth >= 768) &&
                                 <div className="selectContainer">
-                                    <b>Size:</b>&nbsp;&nbsp;<Select
+                                    <b>Size:</b>&nbsp;&nbsp;
+                                    <Select
                                         onChange={this.handleBottleChange}
                                         value={this.props.current_bottle_index}
                                         fullWidth={true}
+                                        style={{'fontFamily':'Lora',}}
                                     >
                                     {this.bottleMenuItems()}
                                     </Select>
@@ -213,7 +217,7 @@ class CheckOutComponent extends Component {
                                 </tbody></table>
                                 {this.props.current_bottle_index === 0 &&
                                     <div className="promoContainer">
-                                        Promo Code :<TextField
+                                        Promo Code :&nbsp;<TextField
                                             label={this.props.found_email ? "PROMO APPLIED!":"Enter your email"}
                                             value={this.props.promo}
                                             onChange={this.handlePromoChange}

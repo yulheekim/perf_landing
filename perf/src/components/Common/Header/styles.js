@@ -36,16 +36,17 @@ export default {
             alignItems: 'start',
         },
         bmItem: {
-            display: 'block',
+            display: 'table',
             color: '#eaf2ff',
             textDecoration: 'none',
-            fontSize: '1.15em',
+            fontSize: '1em',
             float: 'left',
-            justifyContent: 'space-around'
+            justifyContent: 'space-around',
+
         },
         bmOverlay: {
             background: 'rgba(0, 0, 0, 0.3)'
         }
     },
-    
+
 }
