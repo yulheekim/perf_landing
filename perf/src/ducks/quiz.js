@@ -94,10 +94,6 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 activeStep: 0,
                 answers: [-1, -1, -1, -1, -1, -1, -1],
-                recipient_relations: 0,
-                taker_name: "",
-                recipient_name: "",
-                sexuality: "",
             }
         case LOAD_QUIZ:
             return {
@@ -172,19 +168,22 @@ export default function reducer(state = INITIAL_STATE, action) {
             }
         case LOAD_RESULT:
         case LOAD_RESULT_SUCCESS:
-            if(action.payload){
-                var result_cards_list = [];
-                result_cards_list.push(action.payload.card.primary);
-                result_cards_list.push(action.payload.card.secondary);
-                result_cards_list.push(action.payload.card.tertiary);
-                return {
-                    ...state,
-                    error_message: "",
-                    result_cards: result_cards_list,
-                    quizresult_id: action.payload.quizresult_id,
-                    result_title: namer(action.payload.collection_name).ntc[1].name,
-                }
-            } else {
+        if(action.payload){
+            var result_cards_list = [];
+            result_cards_list.push(action.payload.card.primary);
+            result_cards_list.push(action.payload.card.secondary);
+            result_cards_list.push(action.payload.card.tertiary);
+            result_cards_list[0].description = result_cards_list[0].description.split("/");
+            result_cards_list[1].description = result_cards_list[1].description.split("/");
+            result_cards_list[2].description = result_cards_list[2].description.split("/");
+            return {
+                ...state,
+                error_message: "",
+                result_cards: result_cards_list,
+                quizresult_id: action.payload.quizresult_id,
+                result_title: namer(action.payload.collection_name).ntc[1].name,
+            }
+        } else {
                 return {
                     ...state,
                 }

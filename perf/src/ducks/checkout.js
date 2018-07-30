@@ -137,7 +137,11 @@ export default function reducer(state = INITIAL_STATE, action) {
                 var loaded_types = [];
                 for (var i = 0; i < action.payload.length; i++) {
                     const item = action.payload[i];
-                    loaded_bottle_images.push(item.images);
+                    var images = [];
+                    for (var j = 1; j <= action.payload.length; j++) {
+                        images.push(item.images['image'+j])
+                    }
+                    loaded_bottle_images.push(images);
                     loaded_bottle_types.push(item.volume + ' mL ' + item.type);
                     loaded_prices.push(item.price);
                     loaded_sizes.push(item.volume);

@@ -76,7 +76,7 @@ class CheckOutComponent extends Component {
     populateDescriptions = () => {
         return _.map(this.props.result_cards, (item, index)=> {
             return (
-                <div className="description" key={index}> - {item['name']} : {item['description']}</div>
+                <div className="description" key={index}> - {item['name']} : {item['description'][1]}</div>
             )
         })
     };
@@ -107,6 +107,8 @@ class CheckOutComponent extends Component {
         )
     }
     render() {
+        console.log(this.props.prices);
+        console.log(this.props.current_bottle_index);
         const price = this.adjustPrice();
         if (this.props.quizresult_id < 1) {
             return (<Redirect to="quiz"/>)

@@ -1,8 +1,46 @@
-section {
-    height: 87vh;
-    padding-top: 13vh;
-    overflow: hidden;
+@media screen 
+  and (min-device-width: 1200px) 
+  and (max-device-width: 4000px) 
+  and (-webkit-min-device-pixel-ratio: 1) { 
+
+    section {
+        height: 87vh;
+        padding-top: 13vh;
+        overflow: hidden;
+    }
+    .quizResultStyle {
+        overflow: hidden;
+    }
+    .showDown {
+        margin-top: 1vh!important;
+    }
+    /* .quizResultStyle .down {
+        margin-top: 5vh;
+    } */
+    .hideDown {
+        display: none;
+    }
+    #distilling {
+        margin: 0%;
+    }
+    .distillContainer {
+        margin: 0 auto;
+    }
+    .hideVis {
+        visibility: hidden;
+    }
+    .linkToCheckout {
+        width: 80vw;
+        margin: auto;
+        text-align: center;
+        font-size: 18px;
+    }
+    .quizResultStyle {
+        text-align: center;
+        justify-content: center;
+    }
 }
+
 @media only screen and (max-device-width: 768px) {
     /* iPad */
     .textContainer {
@@ -73,8 +111,8 @@ section {
         text-align: center;
         padding: 5vh;
     }
-    .showDown {
-        margin-top: 3vh;
+    .quizResultStyle .showDown {
+        margin-top: 10vh;
     }
     .distillGif {
         position: absolute;
@@ -83,29 +121,4 @@ section {
         transform: translate(-50%, -50%);
         height: 33vh;
     }
-}
-.showDown {
-    margin-top: 3vh!important;
-}
-.hideDown {
-    display: none;
-}
-#distilling {
-    margin: 0%;
-}
-.distillContainer {
-    margin: 0 auto;
-}
-.hideVis {
-    visibility: hidden;
-}
-.linkToCheckout {
-    width: 80vw;
-    margin: auto;
-    text-align: center;
-    font-size: 18px;
-}
-.quizResultStyle {
-    text-align: center;
-    justify-content: center;
 }
