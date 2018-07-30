@@ -40,7 +40,7 @@
 }
 
 .basicinfo {
-    margin-top: 22vh !important;
+    margin-top: 25vh !important;
     padding-top: 0vh !important;
     line-height: 5vh;
     width: 80vw;
@@ -74,12 +74,12 @@ font-family: 'Lora', sans-serif;    justify-content: center;
     color: darkblue;
 }
 .showDown a{
-    margin: 8vh auto 0vh auto!important;
+    margin: 6vh auto 0vh auto!important;
     font-weight: normal !important;
     font-family: 'Cormorant Garamond', serif !important;
 }
 .showDownYou a{
-    margin: 20vh auto 0vh auto!important;
+    margin: 17vh auto 0vh auto!important;
     font-weight: normal !important;
     font-family: 'Cormorant Garamond', serif !important;
 }
