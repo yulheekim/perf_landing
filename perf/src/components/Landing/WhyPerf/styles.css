@@ -48,7 +48,6 @@
  @media screen 
   and (min-device-width: 1200px) 
   and (max-device-width: 4000px) { 
-  
     .whyperfSection .oneliner {
         font-size: 4vw;
         /* margin-top: 5vh !important; */
@@ -121,6 +120,9 @@
     }
     .descHide {
       height: 30vh;
+    }
+    .whyperfSection .down {
+        margin-top: 0vh !important;
     }
 }
 
