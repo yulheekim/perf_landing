@@ -21,6 +21,8 @@ export const HANDLE_ORDER_RESPONSE = 'perf/checkout/HANDLE_ORDER_RESPONSE';
 export const LOAD_BOTTLES = 'perf/checkout/LOAD_BOTTLES';
 export const LOAD_BOTTLES_ERROR = 'perf/checkout/LOAD_BOTTLES_ERROR';
 export const LOAD_BOTTLES_SUCCESS = 'perf/checkout/LOAD_BOTTLES_SUCCESS';
+export const RESET_CHECKOUT = 'perf/checkout/RESET_CHECKOUT';
+export const RESET_ID = 'perf/checkout/RESET_ID';
 export const TOGGLE_MODAL = 'perf/checkout/TOGGLE_MODAL';
 
 
@@ -185,6 +187,25 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 error_message: "Error loading bottle options"
             }
+        case RESET_ID:
+            return {
+                ...state,
+                order_id: 0
+            }
+        case RESET_CHECKOUT:
+            return {
+                ...state,
+                current_bottle_index: 0,
+                img_opt: 0,
+                email:"",
+                address1:"",
+                city:"",
+                state_abbrv:"",
+                zipcode:"",
+                promo:"",
+                found_email: false,
+                open: false,
+            }
         default:
             return state
     }
@@ -333,6 +354,22 @@ export const clear_error_checkout = () => {
     return (dispatch) => {
         dispatch({
             type: CLEAR_ERROR_CHECKOUT,
+        })
+    }
+}
+
+export const reset_id = () => {
+    return (dispatch) => {
+        dispatch({
+            type: RESET_ID
+        })
+    }
+}
+
+export const reset_checkout = () => {
+    return (dispatch) => {
+        dispatch({
+            type: RESET_CHECKOUT
         })
     }
 }
