@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
+import whyperf1 from '../../../assets/landing/whyperf1.png';
+import whyperf2 from '../../../assets/landing/whyperf2.png';
+import whyperf3 from '../../../assets/landing/whyperf3.png';
 import './styles.css';
 import {
   toggle_modal,
@@ -17,14 +20,11 @@ class WhyPerfComponent extends Component {
         this.props.toggle_modal(id);
     }
     modalCircle = (id) => {
+        const images = [whyperf1, whyperf2, whyperf3];
         return (
             <div className="circleWrapper">
-                <button
-                    onClick={()=>this.toggleModal(id)}
-                    className="circle"
-                    onMouseEnter={()=>this.toggleModal(id)}
-                    onMouseLeave={()=>this.toggleModal(0)}
-                />
+                <img src={images[id-1]} onClick={()=>this.toggleModal(id)} onMouseEnter={()=>this.toggleModal(id)}
+                onMouseLeave={()=>this.toggleModal(0)}></img>
                 <div className="reason">{this.props.why_descs[id]}</div>
 
             </div>

@@ -42,7 +42,8 @@ export default {
             fontSize: '1em',
             float: 'left',
             justifyContent: 'space-around',
-
+            fontFamily: 'Lora',
+            marginBottom: '0.5em'
         },
         bmOverlay: {
             background: 'rgba(0, 0, 0, 0.3)'

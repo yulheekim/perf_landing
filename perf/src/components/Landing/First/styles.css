@@ -7,7 +7,7 @@
 }
 
 .firstSection {
-    background-image: url(../../../assets/landing/background.png);
+    background-image: url(../../../assets/landing/landing_background.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-origin: content-box;
@@ -27,8 +27,6 @@
 
 .backdrop {
     position: absolute;
-    background-color: black;
-    opacity: 0.4;
     z-index: 2;
     width: 100vw;
     height: 100vh;

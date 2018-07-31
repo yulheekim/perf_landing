@@ -6,7 +6,7 @@ import { Redirect } from 'react-router-dom';
 import ScrollLock from 'react-scroll-lock-component';
 import TrackVisibility from 'react-on-screen';
 
-import  distill  from '../../assets/result/distill.gif'
+import  distill  from '../../assets/result/distill_nobackground.gif'
 import {
     Header,
     ResultCards,
@@ -78,13 +78,13 @@ class QuizResultComponent extends Component {
                     </div>
                     <img src={distill} alt="distilling GIF" className="distillGif"/>
                     <div className="distillContainer">
-                        <CircularProgress size = {window.innerHeight*0.43} thickness = {2} style={circularProgress}/>
+                        <CircularProgress size = {window.innerHeight*0.43} thickness = {1} style={circularProgress}/>
                     </div>
                     <TrackVisibility className="hideVis">
                         {({ isVisible }) => isVisible && setTimeout(this.props.start_distilling, 3000)}
                     </TrackVisibility>
-                    <div className="linkToCheckout">
-                        <Link to="checkout">
+                    <div >
+                        <Link to="checkout" className="linkToCheckout">
                             <br/>Click here if the page does not automatically redirect in 3 seconds
                         </Link>
                     </div>

@@ -23,7 +23,7 @@ class Header extends Component {
                 Home
               </span>
           </Link>
-          <Link to="quiz" style={menuStyles.bmItem}>
+          <Link to="quiz" style={menuStyles.bmItem} className="menu-item">
               <AccountCircle />
               <span className="menuItemText">
                 Quiz

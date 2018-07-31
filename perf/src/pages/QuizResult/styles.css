@@ -40,6 +40,8 @@ section {
         margin: auto;
         text-align: center;
         font-size: 18px;
+        color: beige;
+        text-decoration: underline;
     }
     .quizResultStyle {
         text-align: center;
@@ -208,11 +210,19 @@ section {
     font-size: 16px;
     font-weight: lighter;
     font-family: sans-serif;
+    color: beige;
+    text-decoration: underline;
 }
 .quizResultStyle {
     text-align: center;
     justify-content: center;
     font-family: 'Cormorant Garamond', sans-serif;
     font-weight: bold;
-    background-color: white;
+    background-image: url('../../assets/result/result_background.jpg');
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-origin: content-box;
+    background-position: center;
+    overflow: hidden;
+    color: white;
 }

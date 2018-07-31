@@ -5,7 +5,9 @@ export const UPDATE_SLIDER_DESC = 'perf/landing/UPDATE_SLIDER_DESC';
 
 const INITIAL_STATE = {
     show_which: 0,
-    why_descs: ['','content for 0', 'content for 1', 'content for 2'],
+    why_descs: ['','Based on your response to our research-backed quiz, we identify raw materials and assemble them to discover a fragrance just for you.',
+    'From the romantic blend of a blossoming peony to the exotic scent of sandalwood, feel the burst of nature with our fragrances. It’s all in our bottle.',
+    'Your happiness is our #1 priority :) We love to talk about our product with you! Tell us your feedback, and we will get back to you!'],
     reviews: ['1','2','3','4','5','6','7'],
     currentSlider: 2,
 };
