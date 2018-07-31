@@ -37,7 +37,7 @@
     }
     .swiper {
         width: 30vw;
-        height: 50vw;
+        height: 100000vh;
         margin-bottom: 1rem;
         overflow: hidden;
     }
@@ -83,8 +83,9 @@
     }
 
     /*  */
-    .down {
+    #checkoutBody .down {
         margin-top: 12vh;
+        margin-left: 68vw;
     }
 
     /* checkout */
