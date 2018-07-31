@@ -8,6 +8,10 @@ import {
     OneLiner,
 } from '../../components';
 import './styles.css';
+import {
+    reset_id
+} from '../../ducks/checkout';
+
 import styles from './styles';
 const {
     quizButton,
@@ -17,6 +21,10 @@ class ThankYouComponent extends Component {
     componentDidMount() {
         window.scrollTo(0, 0);
     }
+    componentWillUnmount() {
+        this.props.reset_id();
+    }
+
 
     render() {
         return (
@@ -49,4 +57,5 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export const ThankYou = connect(mapStateToProps, {
+    reset_id,
 })(ThankYouComponent);

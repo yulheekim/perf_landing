@@ -20,6 +20,7 @@ import {
     check_promo,
     handle_order_response,
     load_bottles,
+    reset_checkout,
 } from '../../ducks/checkout';
 import {
     ScrollDown,
@@ -39,6 +40,11 @@ class CheckOutComponent extends Component {
         window.scrollTo(0, 0);
         this.props.load_bottles();
     }
+
+    componentWillUnmount() {
+        this.props.reset_checkout();
+    }
+
     populateImgs = () => {
         return _.map(this.props.bottle_imgs[this.props.current_bottle_index], (item, index)=> {
             return (
@@ -292,4 +298,5 @@ export const CheckOut = connect(mapStateToProps, {
     check_promo,
     handle_order_response,
     load_bottles,
+    reset_checkout,
 })(CheckOutComponent);
