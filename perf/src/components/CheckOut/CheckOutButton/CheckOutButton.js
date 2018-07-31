@@ -36,7 +36,7 @@ class CheckOutButtonComponent extends Component {
         email: token.email,
         shipping,
         billing,
-        price: (this.props.prices[this.props.current_bottle_index]) * 100, // need to get this from bottle
+        price: (this.props.prices[this.props.current_bottle_index] * 1.1 + this.props.shipping[this.props.current_bottle_index]) * 100, // need to get this from bottle
       }
       const sending_order = {
         name: this.props.taker_name,
@@ -94,7 +94,7 @@ class CheckOutButtonComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const { checkout, quiz } = state;
-  const { current_bottle_index, prices, amounts, types, message } = checkout;
+  const { current_bottle_index, prices, amounts, types, message, shipping } = checkout;
   const { taker_name, recipient_name, result_title, result_cards,
     recipient_relations, sexuality, recipient_options, quizresult_id } = quiz;
   return {
@@ -112,6 +112,7 @@ const mapStateToProps = (state, ownProps) => {
     types,
     quizresult_id,
     message,
+    shipping,
   };
 };
 

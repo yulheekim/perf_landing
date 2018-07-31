@@ -18,7 +18,12 @@ and (max-device-width: 4000px) {
         margin-top: 10vh !important;
         width: 90vw !important;
     }
-
+    #reviews .description {
+        width: 60vw;
+        font-size: 24px;
+        margin: 0vh auto auto auto;
+        height: 1vh;
+    }
 
     #reviews .backdrop {
         background-image: url(../../../assets/landing/review_landing.jpg);
@@ -42,27 +47,19 @@ and (max-device-width: 4000px) {
         height: 87vh !important;
     }
 
+    .getStarted2 {
+        margin-bottom: 7vh;
+    }
+    .coverflowConatiner {
+        margin-top: 2vh;
+    }
 }
 
 
-
-
-
-.description {
-    width: 100vw !important;
-}
-
-.getStarted2 {
-    margin-top: 6vh;
-    margin-bottom: 3vh;
-}
-.coverflowConatiner {
-    margin-top: 5vh;
-}
 
 /* phones in general  */
 @media only screen
-  and (min-device-width: 300px)
+  and (min-device-width: 376px)
   and (max-device-width: 800px)  {
     .reviewSection .oneliner {
         font-size: 8vw;
@@ -71,10 +68,6 @@ and (max-device-width: 4000px) {
         width: 70vw !important;
     }
 
-    #reviews .getStarted {
-        margin-top: 10vh;
-    }
-
     #reviews .backdrop {
         background-image: url(../../../assets/landing/review_landing.jpg);
         background-size: cover;
@@ -89,8 +82,24 @@ and (max-device-width: 4000px) {
 
     #reviews .reviewBody {
         z-index: 20;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         padding-top: 13vh !important;
-        height: 100vh !important;
+        height: 87vh !important;
+    }
+    #reviews .description {
+        width: 90vw;
+        font-size: 20px;
+        margin: 0vh auto auto auto;
+        height: 1vh;
+    }
+    .getStarted2 {
+        margin-bottom: 5vh;
+    }
+    .coverflowConatiner {
+        margin-top: 0vh;
     }
 }
 
@@ -99,12 +108,9 @@ and (max-device-width: 4000px) {
   and (max-device-width: 375px)  {
     .reviewSection .oneliner {
         font-size: 8vw;
-        margin-top: 10vh !important;
-    }
-
-    .getStarted {
-        margin-top: 9vh;
-        margin-bottom: 7vh !important;
+        margin-top: 5vh !important;
+        margin-bottom: 0vh !important;
+        width: 70vw !important;
     }
 
     #reviews .backdrop {
@@ -114,13 +120,30 @@ and (max-device-width: 4000px) {
         background-origin: content-box;
         background-position: center;
         overflow: hidden;
-        height: 87vh !important;
+        height: 100vh !important;
         margin-top: 0;
         z-index: 0;
     }
 
     #reviews .reviewBody {
         z-index: 20;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 13vh !important;
         height: 87vh !important;
+    }
+    #reviews .description {
+        width: 90vw;
+        font-size: 17px;
+        margin: 0vh auto auto auto;
+        height: 1vh;
+    }
+    .getStarted2 {
+        margin-bottom: 4vh;
+    }
+    .coverflowConatiner {
+        margin-top: 0vh;
     }
 }
