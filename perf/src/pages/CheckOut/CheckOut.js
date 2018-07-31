@@ -98,18 +98,8 @@ class CheckOutComponent extends Component {
     handlePromoChange = (event) => {
         this.props.change_promo(event.target.value);
     };
-    adjustPrice () {
-        return(
-            <td>${this.props.found_email&&this.props.current_bottle_index===0 ?
-                <span><s>{this.props.prices[this.props.current_bottle_index].toFixed(2)}</s> 0.00</span> :
-                this.props.prices[this.props.current_bottle_index].toFixed(2)}
-            </td>
-        )
-    }
+
     render() {
-        console.log(this.props.prices);
-        console.log(this.props.current_bottle_index);
-        const price = this.adjustPrice();
         if (this.props.quizresult_id < 1) {
             return (<Redirect to="quiz"/>)
         }
@@ -211,9 +201,14 @@ class CheckOutComponent extends Component {
                             <div className="orderSummary">
                                 <div className="description"><b>Order Summary</b></div><br/>
                                 <table><tbody>
-                                    <tr><td>Item: </td>{price}</tr>
-                                    <tr className="bordered"><td>Shipping & handling: </td><td>$0.00</td></tr>
-                                    <tr className="total"><td>Total: </td>{price}</tr>
+                                    <tr><td>Item: </td>${this.props.prices[this.props.current_bottle_index].toFixed(2)}</tr>
+                                    <tr><td>Tax: </td><td>${(this.props.prices[this.props.current_bottle_index]*0.1).toFixed(2)}</td></tr>
+                                    <tr className="bordered"><td>Shipping & handling: </td><td>${this.props.shipping[this.props.current_bottle_index].toFixed(2)}</td></tr>
+                                    <tr className="total"><td><b>Total: </b></td><b>
+                                        <td>${this.props.found_email && this.props.current_bottle_index===0 ?
+                                        <span> <s>{(this.props.prices[this.props.current_bottle_index]*1.1+this.props.shipping[this.props.current_bottle_index]).toFixed(2)}</s> 0.00 Promo Applied</span> :
+                                        (this.props.prices[this.props.current_bottle_index]*1.1+this.props.shipping[this.props.current_bottle_index]).toFixed(2)}
+                                    </td></b></tr>
                                 </tbody></table>
                                 {this.props.current_bottle_index === 0 &&
                                     <div className="promoContainer">
@@ -256,7 +251,7 @@ export { CheckOutComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
-    const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id, prices, promo, found_email } = checkout;
+    const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id, prices, promo, found_email, shipping } = checkout;
     const { answers, result_cards, result_title, recipient_options, recipient_relations, quizresult_id } = quiz;
     return {
         ...ownProps,
@@ -275,6 +270,7 @@ const mapStateToProps = (state, ownProps) => {
         result_cards,
         result_title,
         found_email,
+        shipping,
         quizresult_id,
     };
 };

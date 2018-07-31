@@ -12,6 +12,7 @@ import {
     change_address1,
     change_city,
     change_email,
+    change_shipping_name,
     change_state,
     change_zipcode,
     handle_order_error,
@@ -31,7 +32,7 @@ class SampleCheckOutButtonComponent extends Component {
     handleSubmit = () => {
         const paymenturl = `${APIConfig.apiroot}/order`;
         const shipping = {
-          name: (this.props.recipient_name==="") ? this.props.taker_name : this.props.recipient_name,
+          name: this.props.shipping_name,
           country: "US",
           zip: this.props.zipcode,
           state: this.props.state_abbrv,
@@ -110,6 +111,9 @@ class SampleCheckOutButtonComponent extends Component {
         this.props.change_email(event.target.value);
     };
 
+    handleShippingNameChange = (event) => {
+        this.props.change_shipping_name(event.target.value);
+    };
     handleAddress1Change = (event) => {
         this.props.change_address1(event.target.value)
     }
@@ -138,12 +142,20 @@ class SampleCheckOutButtonComponent extends Component {
                   onClose={this.toggleModal}
                   center
                   classNames={{ overlay: 'custom-overlay', modal: 'custom-modal' }}
+                  style={{padding: '2em'}}
                 >
                 <h2>Contact and Shipping Information:</h2>
                 Your Email Address: <TextField required
                   label="Email Address"
                   value={this.props.email}
                   onChange={this.handleEmailChange}
+                  margin="normal"
+                  autoFocus={true}
+                /><br/>
+                Shipping Name: <TextField required
+                  label="Shipping Name"
+                  value={this.props.shipping_name}
+                  onChange={this.handleShippingNameChange}
                   margin="normal"
                   autoFocus={true}
                 /><br/>
@@ -165,16 +177,19 @@ class SampleCheckOutButtonComponent extends Component {
                   style={stateDropdown}
                 >
                 {this.stateMenuItems()}
-                </Select>
+                </Select><br/>
                 Zipcode: <TextField required
                   label="Zipcode"
                   value={this.props.zipcode}
                   onChange={this.handleZipcodeChange}
                   margin="normal"
                 /><br/>
-                <Link to="thankyou" className="submitButton">
-                    <Button variant="contained" color="primary" onClick={()=>this.handleSubmit()} disabled={this.props.address1==="" || this.props.city==="" || this.props.email==="" || this.props.state_abbrv==="" || this.props.zipcode===""}>Submit</Button>
-                </Link>
+
+                <Button variant="contained" color="primary" onClick={()=>this.handleSubmit()} disabled={this.props.address1==="" || this.props.city==="" || this.props.email==="" || this.props.state_abbrv==="" || this.props.zipcode===""}>
+                    Submit
+                    <Link to="thankyou" className="submitButton"/>
+                </Button>
+
                 </Modal>
             </div>
         );
@@ -183,7 +198,7 @@ class SampleCheckOutButtonComponent extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const { checkout, quiz } = state;
-    const { address1, city, email, open, state_abbrv, zipcode, current_bottle_index,
+    const { address1, city, email, open, shipping_name, state_abbrv, zipcode, current_bottle_index,
         prices, amounts, types, message } = checkout;
     const { taker_name, recipient_name, result_title, result_cards,
       recipient_relations, sexuality, recipient_options, quizresult_id } = quiz;
@@ -200,6 +215,7 @@ const mapStateToProps = (state, ownProps) => {
         city,
         email,
         open,
+        shipping_name,
         state_abbrv,
         zipcode,
         current_bottle_index,
@@ -215,6 +231,7 @@ export const SampleCheckOutButton = connect(mapStateToProps, {
     change_address1,
     change_city,
     change_email,
+    change_shipping_name,
     change_state,
     change_zipcode,
     handle_order_error,

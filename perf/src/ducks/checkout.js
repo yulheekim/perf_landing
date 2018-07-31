@@ -10,6 +10,7 @@ export const CHANGE_EMAIL = 'perf/checkout/CHANGE_EMAIL';
 export const CHANGE_IMAGE = 'perf/checkout/CHANGE_IMAGE';
 export const CHANGE_MESSAGE = 'perf/checkout/CHANGE_MESSAGE';
 export const CHANGE_PROMO = 'perf/checkout/CHANGE_PROMO';
+export const CHANGE_SHIPPING_NAME = 'perf/checkout/CHANGE_SHIPPING_NAME';
 export const CHANGE_STATE = 'perf/checkout/CHANGE_STATE';
 export const CHANGE_ZIPCODE = 'perf/checkout/CHANGE_ZIPCODE';
 export const CHECK_PROMO = 'perf/checkout/CHECK_PROMO';
@@ -34,9 +35,11 @@ const INITIAL_STATE = {
     bottle_types: ['2mL Spray Sample', '10mL Roll On', '15mL Spray'],
     amounts: [2, 10, 15],
     types: ['spray', 'roll on', 'spray'],
-    prices: [5, 15, 25],
+    prices: [5, 20, 30],
+    shipping: [1.5, 3, 3],
     open: false,
     email:"",
+    shipping_name: "",
     address1:"",
     city:"",
     state_abbrv:"",
@@ -91,6 +94,11 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 state_abbrv: action.payload,
             }
+        case CHANGE_SHIPPING_NAME:
+            return {
+                ...state,
+                shipping_name: action.payload,
+            }
         case CHANGE_ZIPCODE:
             return {
                 ...state,
@@ -113,19 +121,19 @@ export default function reducer(state = INITIAL_STATE, action) {
                 promo: action.payload,
             }
         case CHECK_PROMO:
-            const loEmail = ['nicholewalker0123@gmail.com', 'Carlosarodriguez@protonmail.com', 'Katrinasaw2@gmail.vom', 'ba.peterson1321@gmail.com', 'Anaescal625@gmail.com', 'Tolliverdani28@gmail.com', 'Tx.jeremiah@icloud.com', 'shellyfrias83@gmail.com', 'Messica.cornelius@gmail.com', 'davispaul60@outlook.com', 'bacq50@hotmail.com', 'Luzyanez@ymail.com', '29goddess29@gmail.com', 'Stitchedheart22@gmail.com', 'Miwia.lil.pup@gmail.com', 'Brittanytoth59@gmail.com', 'missjuliarules@gmail.com',
-            'Krpresley@gmail.com', 'Hannah_hoj@icloud.com', 'sammi.brown38.sb@gmail.com', 'vickiharer6@gmail.com', 'donatovictoria@yahoo.com', 'Clarissamarina1995@gmail.com', 'brittanyejenks@gmail.com', 'Ladybughatley@fb.com', 'sierrahilyard@gmail.com', 'Cheyennejeremy@yahoo.com', 'Mrsschnell04@mac.com', 'lunarasolaris@gmail.com', 'Christina741carroll@gmail.com', 'michellegarcia4561@gmail.com', 'butterfly91ish@gmail.com', 'Vabluemice@hotmail.com', 'Jsause20@gmail.com',
-            'jennawilsonjenna42@gmail.com', 'Paigefaith74@gmail.com', 'gaby93ramirez@gmail.com', 'Batbscards@gmail.com', 'Anitabepolished@gmail.com', '8268overyou@gmail.com', 'Ridukhan@hotmail.com', 'Lilpinkbunny@gmail.com', 'quinonescrystal0308@gmail.com', 'jingersnap2000@gmail.com', 'Sandraandandrew2017@gmail.com', 'Calienicole.booking@gmail.com', 'earlbridget1@gmail.com', 'teneshawiss755@gmail.com', 'dustinsbabygirl21@gmail.com', 'jrosado2012@gmail.com', 'jstjohn7@kent.edu',
-            'Yamileth1265@hotmail.com', 'drgjuliee@yahoo.com', 'boasbeckey@gmail.com', 'Avierra933@gmail.com', 'CThomson8704@gmail.com', 'elisegatoo@gmail.com', 'urskar@rocketmail.com', 'humboldtcounty84@yahoo.com', 'fvwilson14@gmail.com', 'agomez.shamir@gmail.com', 'mion.michelle83@gmail.com', 'Kdking89@yahoo.com', 'kat_kris2001@yahoo.com', 'Noahtillinghast3419@gmail.com', 'palvarez850@gmail.com', 'chiquijuan1728@gmail.com', 'Rjbushard25@gmail.com', 'shanicekarim@gmail.com',
-            'Brieannaward2014@gmail.com', 'gretamarsden02@gmail.com', 'Mariahalvarez246@gmail.com', 'Erinfaithmarcum@gmail.com', 'dpgood01@gmail.com', 'Karalynkeith33477@gmail.com', 'R3vytw0h4nds@gmail.com', 'Kelsey.condrey@gmail.com', 'elliotdodobird@gmail.com', 'Breanneneely@gmail.com', 'Breanneneely@ymail.com', 'ivytuet@hotmail.com', 'eresendiz702@gmail.com', 'Lisathorley@rocketmail.com', 'Colleen.quinn.814@gmail.com', 'kimberlybchristmas@yahoo.com', 'pianosrule@live.com',
-            'genyajackson@yahoo.com', 'Smithkristin@hotmail.com', 'Evrybizy22@gmail.com', 'susiedetone2000@gmail.com', 'Sams_danielle88@yahoo.com', 'Alyccar@mail.regent.edu', 'Kassandraphinney@gmail.com', 'Amarakash@gmail.com', 'krutika.fender@gmail.com', 'Delilah1984@gmail.com', 'gayatrip36@gmail.com', 'Jessicamilwood@gmail.com', 'Nikkih4288@gmail.com', 'jessica.lizbette@gmail.com', 'spino.l@yahoo.com', 'rtillman0284@gmail.com', 'justiceclifton.jc@gmail.com',
-            'grettelmelissa2001@gmail.com', 'meloangie2324@gmail.com', 'paigeprez25@icloud.com', 'michellefinch93@gmail.com', 'Abrooksb2007@gmail.com', 'amanda.marie.kingg65@gmail.com', 'lckimbrough@hotmail.com', 'Passaarti@gmail.com', 'mmgriswells@gmail.com', 'saraniallrivera@gmail.com', 'jackiemann2017@gmail.com', 'Perez423@msn.com', 'Tastycakes987@gmail.com', 'Tarynrox1@gmail.com', 'Krystyn62383@gmail.com', 'Glitterblondie84@aol.com', 'cuautle1127@gmail.com', 'Shobi.v5@gmail.com',
-            'destiny_cheyenne@hotmail.com', 'Vcustode@yahoo.com', 'Afrothunder032@yahoo.com', 'emmaornelas17.eo@gmail.com', 'lisarush272@gmail.com', 'augustgsmith@gmail.com', 'Tessbernick@yahoo.com', 'xgalarza14@gmail.com', 'daniegreenlee@gmail.com', 'hooliha8154@gmail.com', 'itsemilybobby@yahoo.com', 'Savannateague1@gmail.com', 'Josievasquez1983@yahoo.com', 'Leslieu.1015@gmail.com', 'eddenck@gmail.com', 'Cydmarie.valentin@yahoo.com', 'Joanna.symon@yahoo.com',
-            'Leilani.overlander@gmail.com', 'Ashp2023@gmail.com', 'Cheesecake287@gmail.com', 'nicolemcourtney@icloud.com', 'Margarettearuiz17@gmail.com', 'Gtsli469@gmail.com', 'Kiglesias72@hotmail.com', 'Kaylameg.ks@gmail.com', 'wildcheroke91@gmail.com', 'Polkcounty06@yahoo.com', 'Hannahe0209@gmail.com', 'bama_princess06@hotmail.com', 'sarahy200389@gmail.com', 'yoga.girl432@gmail.com', 'Sb82756@gmail.com', 'Nainaanand_patel@yahoo.com', 'marcelinalopez19@gmail.com',
-            'Mdegrandchamp@marykay.com', 'Lillyowls@gmail.com', 'Chapinita_ivgv@hotmail.com', 'Mackenziemikula@gmail.com', 'Evangelinemihai@hotmail.com', 'annabelle.fisk@gmail.com', 'Emilybee4200@gmail.com', 'niesiaaa@wp.pl', 'lydamaehernandez@gmail.com', 'xwastelandxx@gmail.com', 'Shortyslilbit@yaho.com', 'Tawanda_86@yahoo.com', 'mrstiffanydavis4ever@gmail.com', 'lizzisully97@gmail.com', 'Seguinrds@icloud.com', 'Ranae.morrill@gmail.com', 'Cris4gla8@yahoo.com',
-            'Cloudking2985@gmail.com', 'Evilmommabich@gmail.com', 'Clarissa.pala07062016@gmail.com', 'Mikikoishikawa11@gmail.com', 'Proudmom2one@hotmail.com', 'Kaelynslayton2018@yahoo.com', 'alyissa_gillman@yahoo.com', 'andreawoods1228@gmail.com', 'Kcrawley1130@gmail.com', 'Softballlover142@yahoo.com', 'disturbed10_1991@aol.com', 'Ivaber289413@gmail.com', 'Ashleytitatender1@gmail.com', 'akbarkhan3273@gmail.com', 'summeredmonds87@gmail.com', 'saharapixx@gmail.com',
-            'Srbreadeseverino232009@gmail.com', 'Abbeyhawkins98@gmail.com', 'Peachysue3@gmail.com', 'Luzangelicaguillen@gmail.com', 'allisondonofrio94@aol.com', 'shawnee.v.garst19@gmail.com', 'Virginiacrooks@hotmail.com', 'marilynnvanriper@gmail.com', 'punkskeptic@gmail.com', 'natalie.kuchinski@gmail.com', 'lanetaylor20101213@gmail.com', 'Fangs6613@gmail.com', 'jackie12_46@yahoo.com'];
-            var found = (loEmail.indexOf(state.promo) === -1 ? false : true);
+            const loEmail = ['nicholewalker0123@gmail.com', 'carlosarodriguez@protonmail.com', 'katrinasaw2@gmail.vom', 'ba.peterson1321@gmail.com', 'anaescal625@gmail.com', 'tolliverdani28@gmail.com', 'tx.jeremiah@icloud.com', 'shellyfrias83@gmail.com', 'messica.cornelius@gmail.com', 'davispaul60@outlook.com', 'bacq50@hotmail.com', 'luzyanez@ymail.com', '29goddess29@gmail.com', 'stitchedheart22@gmail.com', 'miwia.lil.pup@gmail.com', 'brittanytoth59@gmail.com', 'missjuliarules@gmail.com',
+            'krpresley@gmail.com', 'hannah_hoj@icloud.com', 'sammi.brown38.sb@gmail.com', 'vickiharer6@gmail.com', 'donatovictoria@yahoo.com', 'clarissamarina1995@gmail.com', 'brittanyejenks@gmail.com', 'ladybughatley@fb.com', 'sierrahilyard@gmail.com', 'cheyennejeremy@yahoo.com', 'mrsschnell04@mac.com', 'lunarasolaris@gmail.com', 'christina741carroll@gmail.com', 'michellegarcia4561@gmail.com', 'butterfly91ish@gmail.com', 'vabluemice@hotmail.com', 'jsause20@gmail.com',
+            'jennawilsonjenna42@gmail.com', 'paigefaith74@gmail.com', 'gaby93ramirez@gmail.com', 'batbscards@gmail.com', 'anitabepolished@gmail.com', '8268overyou@gmail.com', 'ridukhan@hotmail.com', 'lilpinkbunny@gmail.com', 'quinonescrystal0308@gmail.com', 'jingersnap2000@gmail.com', 'sandraandandrew2017@gmail.com', 'calienicole.booking@gmail.com', 'earlbridget1@gmail.com', 'teneshawiss755@gmail.com', 'dustinsbabygirl21@gmail.com', 'jrosado2012@gmail.com', 'jstjohn7@kent.edu',
+            'yamileth1265@hotmail.com', 'drgjuliee@yahoo.com', 'boasbeckey@gmail.com', 'avierra933@gmail.com', 'cthomson8704@gmail.com', 'elisegatoo@gmail.com', 'urskar@rocketmail.com', 'humboldtcounty84@yahoo.com', 'fvwilson14@gmail.com', 'agomez.shamir@gmail.com', 'mion.michelle83@gmail.com', 'kdking89@yahoo.com', 'kat_kris2001@yahoo.com', 'noahtillinghast3419@gmail.com', 'palvarez850@gmail.com', 'chiquijuan1728@gmail.com', 'rjbushard25@gmail.com', 'shanicekarim@gmail.com',
+            'brieannaward2014@gmail.com', 'gretamarsden02@gmail.com', 'mariahalvarez246@gmail.com', 'erinfaithmarcum@gmail.com', 'dpgood01@gmail.com', 'karalynkeith33477@gmail.com', 'r3vytw0h4nds@gmail.com', 'kelsey.condrey@gmail.com', 'elliotdodobird@gmail.com', 'breanneneely@gmail.com', 'breanneneely@ymail.com', 'ivytuet@hotmail.com', 'eresendiz702@gmail.com', 'lisathorley@rocketmail.com', 'colleen.quinn.814@gmail.com', 'kimberlybchristmas@yahoo.com', 'pianosrule@live.com',
+            'genyajackson@yahoo.com', 'smithkristin@hotmail.com', 'evrybizy22@gmail.com', 'susiedetone2000@gmail.com', 'sams_danielle88@yahoo.com', 'alyccar@mail.regent.edu', 'kassandraphinney@gmail.com', 'amarakash@gmail.com', 'krutika.fender@gmail.com', 'delilah1984@gmail.com', 'gayatrip36@gmail.com', 'jessicamilwood@gmail.com', 'nikkih4288@gmail.com', 'jessica.lizbette@gmail.com', 'spino.l@yahoo.com', 'rtillman0284@gmail.com', 'justiceclifton.jc@gmail.com', 'grettelmelissa2001@gmail.com',
+            'meloangie2324@gmail.com', 'paigeprez25@icloud.com', 'michellefinch93@gmail.com', 'abrooksb2007@gmail.com', 'amanda.marie.kingg65@gmail.com', 'lckimbrough@hotmail.com', 'passaarti@gmail.com', 'mmgriswells@gmail.com', 'saraniallrivera@gmail.com', 'jackiemann2017@gmail.com', 'perez423@msn.com', 'tastycakes987@gmail.com', 'tarynrox1@gmail.com', 'krystyn62383@gmail.com', 'glitterblondie84@aol.com', 'cuautle1127@gmail.com', 'shobi.v5@gmail.com', 'destiny_cheyenne@hotmail.com',
+            'vcustode@yahoo.com', 'afrothunder032@yahoo.com', 'emmaornelas17.eo@gmail.com', 'lisarush272@gmail.com', 'augustgsmith@gmail.com', 'tessbernick@yahoo.com', 'xgalarza14@gmail.com', 'daniegreenlee@gmail.com', 'hooliha8154@gmail.com', 'itsemilybobby@yahoo.com', 'savannateague1@gmail.com', 'josievasquez1983@yahoo.com', 'leslieu.1015@gmail.com', 'eddenck@gmail.com', 'cydmarie.valentin@yahoo.com', 'joanna.symon@yahoo.com', 'leilani.overlander@gmail.com', 'ashp2023@gmail.com',
+            'cheesecake287@gmail.com', 'nicolemcourtney@icloud.com', 'margarettearuiz17@gmail.com', 'gtsli469@gmail.com', 'kiglesias72@hotmail.com', 'kaylameg.ks@gmail.com', 'wildcheroke91@gmail.com', 'polkcounty06@yahoo.com', 'hannahe0209@gmail.com', 'bama_princess06@hotmail.com', 'sarahy200389@gmail.com', 'yoga.girl432@gmail.com', 'sb82756@gmail.com', 'nainaanand_patel@yahoo.com', 'marcelinalopez19@gmail.com', 'mdegrandchamp@marykay.com', 'lillyowls@gmail.com', 'chapinita_ivgv@hotmail.com',
+            'mackenziemikula@gmail.com', 'evangelinemihai@hotmail.com', 'annabelle.fisk@gmail.com', 'emilybee4200@gmail.com', 'niesiaaa@wp.pl', 'lydamaehernandez@gmail.com', 'xwastelandxx@gmail.com', 'shortyslilbit@yaho.com', 'tawanda_86@yahoo.com', 'mrstiffanydavis4ever@gmail.com', 'lizzisully97@gmail.com', 'seguinrds@icloud.com', 'ranae.morrill@gmail.com', 'cris4gla8@yahoo.com', 'cloudking2985@gmail.com', 'evilmommabich@gmail.com', 'clarissa.pala07062016@gmail.com',
+            'mikikoishikawa11@gmail.com', 'proudmom2one@hotmail.com', 'kaelynslayton2018@yahoo.com', 'alyissa_gillman@yahoo.com', 'andreawoods1228@gmail.com', 'kcrawley1130@gmail.com', 'softballlover142@yahoo.com', 'disturbed10_1991@aol.com', 'ivaber289413@gmail.com', 'ashleytitatender1@gmail.com', 'akbarkhan3273@gmail.com', 'summeredmonds87@gmail.com', 'saharapixx@gmail.com', 'srbreadeseverino232009@gmail.com', 'abbeyhawkins98@gmail.com', 'peachysue3@gmail.com', 'luzangelicaguillen@gmail.com',
+            'allisondonofrio94@aol.com', 'shawnee.v.garst19@gmail.com', 'virginiacrooks@hotmail.com', 'marilynnvanriper@gmail.com', 'punkskeptic@gmail.com', 'natalie.kuchinski@gmail.com', 'lanetaylor20101213@gmail.com', 'fangs6613@gmail.com', 'jackie12_46@yahoo.com'];
+            var found = (loEmail.indexOf(state.promo.toLowerCase()) === -1 ? false : true);
             if (!found) {
                 alert("Please check your promo code.")
             }
@@ -262,6 +270,14 @@ export const change_city = (new_info) => {
     return (dispatch) => {
         dispatch({
             type: CHANGE_CITY,
+            payload: new_info,
+        })
+    }
+}
+export const change_shipping_name = (new_info) => {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_SHIPPING_NAME,
             payload: new_info,
         })
     }
