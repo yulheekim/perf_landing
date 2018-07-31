@@ -8,7 +8,10 @@ const INITIAL_STATE = {
     why_descs: ['','Based on your response to our research-backed quiz, we identify raw materials and assemble them to discover a fragrance just for you.',
     'From the romantic blend of a blossoming peony to the exotic scent of sandalwood, feel the burst of nature with our fragrances. It’s all in our bottle.',
     'Your happiness is our #1 priority :) We love to talk about our product with you! Tell us your feedback, and we will get back to you!'],
-    reviews: ['1','2','3','4','5','6','7'],
+    reviews: ["\"Unique scent.\"",
+    "\"I don’t usually wear perfume because I don’t often like the scents, but I loved this one! It was easier to just get one option catered to me rather than choose from a ton in the store.\"" ,
+    "\"It was so much fun to receive the sample and made me much more confident in purchasing the larger size!\"",
+    "\"I used to spend obscene amount of time trying different perfumes and figuring out the right one but with Perf, the girl is no longer - feels like Perf already knows what I want! Also, no need to come up with \“this is for my boyfriend\” excuse when purchasing rather masculine fragrance. This is great!\""],
     currentSlider: 2,
 };
 

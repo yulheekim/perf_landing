@@ -139,7 +139,7 @@
     .whyperfSection .oneliner {
         font-size: 8vw;
         margin-top: 5vh !important;
-        margin-bottom: 2vh !important;
+        margin-bottom: 0vh !important;
         width: 70vw !important;
     }
 
@@ -150,9 +150,6 @@
     .circleWrapper img {
         width: 30vw;
         height: 30vw;
-    }
-    .reason {
-        font-size: 17px;
     }
     #whyperf .circleRow {
         margin: 0 0;
@@ -171,29 +168,41 @@
 @media screen
   and (min-device-width: 321px)
   and (max-device-width: 375px)  {
+      #whyperf {
+          padding-top: 0;
+      }
 
-    .getStarted {
-        margin-top: 9vh;
-        margin-bottom: 9vh;
-    }
+      .whyperfSection {
+          padding-top: 13vh;
+      }
 
-    #whyperf .backdrop {
-        margin-top: -13vh !important;
-    }
+      .whyperfSection .oneliner {
+          font-size: 8vw;
+          margin-top: 5vh !important;
+          margin-bottom: 2vh !important;
+          width: 70vw !important;
+      }
 
-    #whyperf .whyperfSection {
-        width: 90vw;
-    }
+      #whyperf .whyperfSection {
+          width: 90vw;
+          padding-top: 13vh !important;
+      }
+      .circleWrapper img {
+          width: 30vw;
+          height: 30vw;
+      }
+      #whyperf .circleRow {
+          margin: 0 0;
+      }
 
-    #whyperf .circleRow {
-        margin: 0 auto;
-        width: 90vw;
-        height: 110vw;
-    }
-    .circleWrapper img {
-        width: 26vw;
-        height: 26vw;
-    }
+      #whyperf .getStarted {
+          margin-top: 10vh !important;
+          margin-bottom: 10vh !important;
+      }
+
+      #whyperf .backdrop {
+          margin-top: 0vh !important;
+      }
 
 }
 @media screen
@@ -279,7 +288,7 @@
   .circleRow {
       flex-direction: column;
       display: inline-block;
-      margin-top: 2%;
+      margin-top: 1%;
   }
 
   .circleWrapper {
@@ -305,7 +314,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 17px;
+      font-size: 18px;
   }
 
   .descHide {
@@ -345,7 +354,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 16px;
+      font-size: 17px;
   }
 
   .descHide {

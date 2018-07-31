@@ -18,11 +18,10 @@ const {
 } = styles
 
 var cats = [
-    'https://i.kym-cdn.com/entries/icons/square/000/002/232/bullet_cat.jpg',
-    'https://imgix.bustle.com/uploads/image/2018/4/18/5f312113-eaa8-4e71-9360-871e51084f4f-fotolia_125402501_subscription_monthly_m.jpg?w=970&h=582&fit=crop&crop=faces&auto=format&q=70',
-    'http://catsatthestudios.com/wp-content/uploads/2017/12/12920541_1345368955489850_5587934409579916708_n-2-960x410.jpg',
-    'https://www.telegraph.co.uk/content/dam/pets/2017/01/06/1-JS117202740-yana-two-face-cat-news_trans_NvBQzQNjv4BqJNqHJA5DVIMqgv_1zKR2kxRY9bnFVTp4QZlQjJfe6H0.jpg?imwidth=450',
-    'https://www.rd.com/wp-content/uploads/2016/04/01-cat-wants-to-tell-you-laptop.jpg',
+    'https://s3-us-west-2.amazonaws.com/quiz.tryperf.com/reviews/james.jpg',
+    'https://s3-us-west-2.amazonaws.com/quiz.tryperf.com/reviews/juno.jpg',
+    'https://s3-us-west-2.amazonaws.com/quiz.tryperf.com/reviews/michelle.jpg',
+    'https://s3-us-west-2.amazonaws.com/quiz.tryperf.com/reviews/yune.jpg',
 ]
 
 
@@ -53,7 +52,7 @@ class ReviewsComponent extends Component {
                     <OneLiner message="Proudly made by Perf" />
                         {this.slider()}
                     <div className="description">
-                        {this.props.currentSlider}
+                        {this.props.reviews[this.props.currentSlider]}
                     </div>
                     <div className="getStarted2">
                         <Link to="quiz" className="quizLink">
