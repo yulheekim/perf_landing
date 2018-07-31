@@ -62,7 +62,7 @@ and (max-device-width: 4000px) {
 
 /* phones in general  */
 @media only screen
-  and (min-device-width: 300px)
+  and (min-device-width: 376px)
   and (max-device-width: 800px)  {
     .reviewSection .oneliner {
         font-size: 8vw;
@@ -114,8 +114,8 @@ and (max-device-width: 4000px) {
         background-origin: content-box;
         background-position: center;
         overflow: hidden;
-        height: 87vh !important;
-        margin-top: 0;
+        height: 100vh !important;
+        margin-top: -13vh;
         z-index: 0;
     }
 

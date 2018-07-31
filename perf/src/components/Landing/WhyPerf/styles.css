@@ -126,7 +126,7 @@
 
 /* phones in general  */
 @media screen
-  and (min-device-width: 375px)
+  and (min-device-width: 376px)
   and (max-device-width: 800px)  {
     #whyperf {
         padding-top: 0;
@@ -169,12 +169,8 @@
 }
 
 @media screen
-  and (min-device-width: 300px)
+  and (min-device-width: 321px)
   and (max-device-width: 375px)  {
-    /* .sectionBody .j {
-        font-size: 8vw;
-        margin-top: 10vh !important;
-    } */
 
     .getStarted {
         margin-top: 9vh;
@@ -182,17 +178,17 @@
     }
 
     #whyperf .backdrop {
-        margin-top: 0vh !important;
+        margin-top: -13vh !important;
     }
 
     #whyperf .whyperfSection {
         width: 90vw;
-        padding-top: 13vh !important;
     }
 
     #whyperf .circleRow {
         margin: 0 auto;
         width: 90vw;
+        height: 110vw;
     }
     .circleWrapper img {
         width: 26vw;
@@ -200,7 +196,36 @@
     }
 
 }
+@media screen
+  and (min-device-width: 300px)
+  and (max-device-width: 320px)  {
 
+    .getStarted {
+        margin-top: 9vh;
+        margin-bottom: 9vh;
+    }
+
+    #whyperf .backdrop {
+        margin-top: -13vh !important;
+    }
+
+    #whyperf .whyperfSection {
+        width: 90vw;
+    }
+    #whyperf .oneliner {
+        margin-bottom: 0.5vh;
+    }
+    #whyperf .circleRow {
+        margin: 0 auto;
+        width: 90vw;
+        height: 110vw;
+    }
+    .circleWrapper img {
+        width: 26vw;
+        height: 26vw;
+    }
+
+}
 
 
 @media only screen and (max-device-width: 768px) {

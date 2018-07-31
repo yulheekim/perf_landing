@@ -127,7 +127,7 @@ font-family: 'Lora', sans-serif;    justify-content: center;
 
 /* phones in general  */
 @media only screen
-  and (min-device-width: 375px)
+  and (min-device-width: 376px)
   and (max-device-width: 667px)  {
     .basicinfo {
         margin-top: 25vh !important;
@@ -143,6 +143,8 @@ font-family: 'Lora', sans-serif;    justify-content: center;
         margin: 5vh auto 0vh auto!important;
         font-weight: normal !important;
         font-family: 'Cormorant Garamond', serif !important;
+        font-size: 2.7vh;
+        width: 80vw;
     }
     .showDown {
         margin: 0vh auto 0vh auto!important;
@@ -159,9 +161,11 @@ font-family: 'Lora', sans-serif;    justify-content: center;
         margin: 0vh auto 0vh auto!important;
     }
     .showDownYou a{
-        margin: 12vh auto 0vh auto!important;
+        margin: 16vh auto 0vh auto!important;
         font-weight: normal !important;
         font-family: 'Cormorant Garamond', serif !important;
+        font-size: 2.7vh;
+        width: 80vw;
     }
 
     .showDownBottom {
@@ -175,7 +179,10 @@ font-family: 'Lora', sans-serif;    justify-content: center;
     .basicinfo {
         margin-top: 22vh !important;
         line-height: 5vh;
-        font-size: 1.8vh;
+        font-size: 2.2vh;
+        width: 100vw;
+        margin-left: 0;
+
     }
     .showDown {
         margin: 6vh auto !important;
@@ -184,7 +191,7 @@ font-family: 'Lora', sans-serif;    justify-content: center;
         margin: 2vh auto 0vh auto!important;
         font-weight: normal !important;
         font-family: 'Cormorant Garamond', serif !important;
-        font-size: 2.5vh!important;
+        font-size: 2.8vh!important;
         width: 60vw;
     }
     .inputBox input {
@@ -200,7 +207,7 @@ font-family: 'Lora', sans-serif;    justify-content: center;
         margin: 18vh auto 0vh auto!important;
         font-weight: normal !important;
         font-family: 'Cormorant Garamond', serif !important;
-        font-size: 2.5vh!important;
+        font-size: 2.8vh!important;
         width: 60vw;
     }
 
