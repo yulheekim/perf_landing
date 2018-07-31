@@ -67,17 +67,17 @@ class SampleCheckOutButtonComponent extends Component {
           result_metadata: {
             primary: {
                 name: this.props.result_cards[0].name,
-                desc: this.props.result_cards[0].description,
+                desc: this.props.result_cards[0].description[0],
                 accord: this.props.result_cards[0].accord,
               },
               secondary: {
                 name: this.props.result_cards[1].name,
-                desc: this.props.result_cards[1].description,
+                desc: this.props.result_cards[1].description[0],
                 accord: this.props.result_cards[1].accord,
               },
               tertiary: {
                 name: this.props.result_cards[2].name,
-                desc: this.props.result_cards[2].description,
+                desc: this.props.result_cards[2].description[0],
                 accord: this.props.result_cards[2].accord,
               },
               quiz_result_id: this.props.quizresult_id
