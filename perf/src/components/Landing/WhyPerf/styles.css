@@ -26,17 +26,8 @@
     /* position: absolute; */
     display: flex;
     flex-direction: column;
-    /* width: 80vw; */
     margin: inherit 5vw;
 }
-
-/* .circle {
-    border-radius: 50%;
-    background-color: lightblue;
-    position: relative;
-    width: 15vw;
-    height: 15vw;
-} */
 
 @media screen
   and (min-device-width: 1200px)
@@ -126,46 +117,59 @@
 
 /* phones in general  */
 @media screen
-  and (min-device-width: 376px)
+  and (min-device-width: 300px)
   and (max-device-width: 800px)  {
     #whyperf {
         padding-top: 0;
     }
-
     .whyperfSection {
-        padding-top: 13vh;
+        padding-top: 5vh;
     }
-
     .whyperfSection .oneliner {
         font-size: 8vw;
-        margin-top: 5vh !important;
-        margin-bottom: 0vh !important;
+        padding-top: 2vh !important;
         width: 70vw !important;
+        margin-bottom: 2vh !important;
     }
-
     #whyperf .whyperfSection {
+        margin: auto;
         width: 90vw;
-        padding-top: 13vh !important;
+        padding-top: 5vh !important;
+    }
+    .circleWrapper {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 2vh;
+        justify-content: space-evenly;
     }
     .circleWrapper img {
         width: 30vw;
         height: 30vw;
     }
+    .circleWrapper .reason {
+        width: 50vw;
+    }
     #whyperf .circleRow {
         margin: 0 0;
+        flex-direction: column;
+        display: inline-block;
+        margin-top: 1%;
     }
-
     #whyperf .getStarted {
         margin-top: 10vh !important;
         margin-bottom: 10vh !important;
     }
-
     #whyperf .backdrop {
         margin-top: 0vh !important;
     }
+    #whyperf .down {
+        margin-top: 0vh !important;
+        padding-top: 0vh !important;
+    }
 }
 
-@media screen
+/* @media screen
   and (min-device-width: 321px)
   and (max-device-width: 375px)  {
       #whyperf {
@@ -203,9 +207,8 @@
       #whyperf .backdrop {
           margin-top: 0vh !important;
       }
-
-}
-@media screen
+} */
+/* @media screen
   and (min-device-width: 300px)
   and (max-device-width: 320px)  {
 
@@ -234,13 +237,11 @@
         height: 26vw;
     }
 
-}
+} */
 
 
-@media only screen and (max-device-width: 768px) {
-  /* iPad */
+/* @media only screen and (max-device-width: 768px) {
   .mobile {
-      /* height: 87vh; */
       overflow: hidden;
   }
 
@@ -281,21 +282,14 @@
   .descShow {
       display: none;
   }
-}
+} */
 
-@media only screen and (max-device-width: 480px) {
-  /* iPhone Plus, Pixel 2 (XL) */
-  .circleRow {
-      flex-direction: column;
-      display: inline-block;
-      margin-top: 1%;
-  }
-
+/* @media only screen and (max-device-width: 480px) {
   .circleWrapper {
       display: flex;
       width: 100%;
       align-items: center;
-      margin-bottom: 2.2%;
+      margin-bottom: -1vh;
       justify-content: space-evenly;
   }
 
@@ -323,10 +317,9 @@
   .descShow {
       display: none;
   }
-}
+} */
 
-@media only screen and (max-device-width: 375px) {
-  /* iPhone 6/7/8, iPhone X, */
+/* @media only screen and (max-device-width: 375px) {
   .circleRow {
       margin-top: 5%;
       flex-direction: column;
@@ -363,10 +356,9 @@
   .descShow {
     display: none;
   }
-}
+} */
 
-@media only screen and (max-device-width: 360px) {
-    /*damn galaxy*/
+/* @media only screen and (max-device-width: 360px) {
     .mobile {
         height: 87vh;
     }
@@ -409,10 +401,9 @@
     .descShow {
       display: none;
     }
-}
+} */
 
-@media only screen and (max-device-width: 320px) {
-    /*iPhone 5*/
+/* @media only screen and (max-device-width: 320px) {
     .mobile {
         height: 87vh;
         overflow: hidden;
@@ -459,4 +450,4 @@
     .descShow {
       display: none;
     }
-}
+} */
