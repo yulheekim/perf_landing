@@ -9,6 +9,7 @@ import styles from './styles';
 
 const {
   menuStyles,
+  menuMobileStyles,
 } = styles;
 
 class Header extends Component {
@@ -16,7 +17,7 @@ class Header extends Component {
   render() {
     return (
       <div className="header">
-        <Menu styles={menuStyles}>
+        <Menu styles={(window.innerWidth > 425) ? menuStyles : menuMobileStyles}>
           <Link to="" style={menuStyles.bmItem} className="menu-item">
               <Home />
               <span className="menuItemText">

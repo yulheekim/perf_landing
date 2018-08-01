@@ -26,7 +26,7 @@ and (max-device-width: 4000px) {
     }
 
     #reviews .backdrop {
-        background-image: url(../../../assets/landing/review_landing.jpg);
+        background-image: url(../../../assets/landing/reviews_background.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-origin: content-box;
@@ -69,7 +69,7 @@ and (max-device-width: 4000px) {
     }
 
     #reviews .backdrop {
-        background-image: url(../../../assets/landing/review_landing.jpg);
+        background-image: url(../../../assets/landing/reviews_background.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-origin: content-box;
@@ -114,7 +114,7 @@ and (max-device-width: 4000px) {
     }
 
     #reviews .backdrop {
-        background-image: url(../../../assets/landing/review_landing.jpg);
+        background-image: url(../../../assets/landing/reviews_background.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         background-origin: content-box;

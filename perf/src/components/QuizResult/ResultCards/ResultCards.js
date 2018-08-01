@@ -11,18 +11,25 @@ const ScentCard = (result_cards, reveal_cards, onClickCard) => {
             <div className="cardContainer" key={index}>
                 <ReactCardFlip isFlipped={reveal_cards[index]} >
                     <div key="front" className="front" onClick={()=> onClickCard(index)}>
-                        <div className="card">
-                            <img src={item['image_lnk']} alt="front"/>
-                            <div className="overlay"><div className="results">{item['name']}</div><div className="reveal">Click to Reveal</div><hr className="hrCard" /></div>
-                            <div className="results">{item['name']}</div>
-                            <div className="reveal">Click to Reveal</div>
-                            <hr className="hrCard" />
-                        </div>
+                        {(window.innerWidth > 768) ?
+                            <div className="card">
+                                <img src={item['image_lnk']} alt="front"/>
+                                <div className="overlay"><div className="results">{item['name']}</div><div className="reveal">Click to Reveal</div><hr className="hrCard" /></div>
+                                <div className="results">{item['name']}</div>
+                                <div className="reveal">Click to Reveal</div>
+                                <hr className="hrCard" />
+                            </div>
+                            :<div className="card">
+                                <img src={item['image_lnk']} alt="front"/>
+                                <div className="results">{item['name']}</div>
+                                <div className="reveal">Click to Reveal</div>
+                                <hr className="hrCard" />
+                            </div>
+                        }
                     </div>
                     <div key="back" className="back">
                         <div className="card">
                             <img src={item['image_lnk']} alt="back"/>
-                            <div className="overlayBack"></div>
                             <div className="resultsBack">{item['name']}</div>
                             <div className="resultDescription">{item['description'][0]}</div>
                         </div>
