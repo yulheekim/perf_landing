@@ -8,10 +8,12 @@ import APIConfig from '../../../config/api';
 import {
     handle_order_error,
     handle_order_response,
+    checkout_start
 } from '../../../ducks/checkout';
 import './styles.css';
 class CheckOutButtonComponent extends Component {
   onToken = (token, args) => {
+      this.props.checkout_start();
       const paymenturl = `${APIConfig.apiroot}/order`;
       const shipping = {
         name: args.shipping_name,
@@ -119,4 +121,5 @@ const mapStateToProps = (state, ownProps) => {
 export const CheckOutButton = injectStripe(connect(mapStateToProps, {
     handle_order_error,
     handle_order_response,
+    checkout_start,
 })(CheckOutButtonComponent));

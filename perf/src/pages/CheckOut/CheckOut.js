@@ -21,6 +21,7 @@ import {
     handle_order_response,
     load_bottles,
     reset_checkout,
+    CHECKOUT_LOADING,
 } from '../../ducks/checkout';
 import {
     ScrollDown,
@@ -32,7 +33,12 @@ import {
 } from '../../components';
 import './styles.css';
 import styles from './styles';
-const { promoText, promoButton} = styles
+const { 
+    promoText, 
+    promoButton,
+    circularProgress,
+} = styles
+
 
 
 class CheckOutComponent extends Component {
@@ -109,7 +115,7 @@ class CheckOutComponent extends Component {
         if (this.props.quizresult_id < 1) {
             return (<Redirect to="quiz"/>)
         }
-        else if (this.props.order_id !== 0) {
+        else if (this.props.checkout_status === CHECKOUT_LOADING) {
             return (<Redirect to="thankyou"/>)
         }
         else if (this.props.error_message) {
@@ -257,7 +263,8 @@ export { CheckOutComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
-    const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id, prices, promo, found_email, shipping } = checkout;
+    const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id,
+         prices, promo, found_email, shipping, checkout_status } = checkout;
     const { answers, result_cards, result_title, recipient_options, recipient_relations, quizresult_id } = quiz;
     return {
         ...ownProps,
@@ -278,6 +285,7 @@ const mapStateToProps = (state, ownProps) => {
         found_email,
         shipping,
         quizresult_id,
+        checkout_status,
     };
 };
 

@@ -18,6 +18,7 @@ import {
     handle_order_error,
     handle_order_response,
     toggle_modal,
+    checkout_start
 } from '../../../ducks/checkout';
 import './styles.css';
 import styles from './styles';
@@ -30,6 +31,7 @@ const {
 
 class SampleCheckOutButtonComponent extends Component {
     handleSubmit = () => {
+        this.props.checkout_start();
         const paymenturl = `${APIConfig.apiroot}/order`;
         const shipping = {
           name: this.props.shipping_name,
@@ -199,7 +201,7 @@ class SampleCheckOutButtonComponent extends Component {
 const mapStateToProps = (state, ownProps) => {
     const { checkout, quiz } = state;
     const { address1, city, email, open, shipping_name, state_abbrv, zipcode, current_bottle_index,
-        prices, amounts, types, message } = checkout;
+        prices, amounts, types, message, checkout_status } = checkout;
     const { taker_name, recipient_name, result_title, result_cards,
       recipient_relations, sexuality, recipient_options, quizresult_id } = quiz;
     return {
@@ -223,7 +225,8 @@ const mapStateToProps = (state, ownProps) => {
         amounts,
         types,
         quizresult_id,
-        message
+        message,
+        checkout_status
     };
 };
 
@@ -234,6 +237,7 @@ export const SampleCheckOutButton = connect(mapStateToProps, {
     change_shipping_name,
     change_state,
     change_zipcode,
+    checkout_start,
     handle_order_error,
     handle_order_response,
     toggle_modal,
