@@ -8,6 +8,7 @@ import {
   Question,
 } from '../../components';
 import {
+  clear_basicinfo,
   load_quiz,
   start_over,
 } from '../../ducks/quiz';
@@ -18,6 +19,7 @@ class QuizComponent extends Component {
     componentWillMount() {
         window.scrollTo(0, 0);
         this.props.load_quiz("dinner");
+        this.props.clear_basicinfo();
         this.props.start_over();
     }
     render() {
@@ -57,6 +59,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export const Quiz = connect(mapStateToProps, {
+    clear_basicinfo,
     load_quiz,
     start_over
 })(QuizComponent);

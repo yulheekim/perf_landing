@@ -14,6 +14,7 @@ export const CHANGE_SHIPPING_NAME = 'perf/checkout/CHANGE_SHIPPING_NAME';
 export const CHANGE_STATE = 'perf/checkout/CHANGE_STATE';
 export const CHANGE_ZIPCODE = 'perf/checkout/CHANGE_ZIPCODE';
 export const CHECK_PROMO = 'perf/checkout/CHECK_PROMO';
+export const CHECKOUT_START = 'perf/checkout/CHECKOUT_START';
 export const CLEAR_ERROR_CHECKOUT = 'perf/checkout/CLEAR_ERROR_CHECKOUT';
 export const GO_CHECKOUT = 'perf/checkout/GO_CHECKOUT';
 export const HANDLE_ORDER_ERROR = 'perf/checkout/HANDLE_ORDER_ERROR';
@@ -22,8 +23,12 @@ export const LOAD_BOTTLES = 'perf/checkout/LOAD_BOTTLES';
 export const LOAD_BOTTLES_ERROR = 'perf/checkout/LOAD_BOTTLES_ERROR';
 export const LOAD_BOTTLES_SUCCESS = 'perf/checkout/LOAD_BOTTLES_SUCCESS';
 export const RESET_CHECKOUT = 'perf/checkout/RESET_CHECKOUT';
-export const RESET_ID = 'perf/checkout/RESET_ID';
+export const RESET_THANKYOU = 'perf/checkout/RESET_THANKYOU';
 export const TOGGLE_MODAL = 'perf/checkout/TOGGLE_MODAL';
+
+// CONST FOR REPRESENTING STATE OF QUIZ RESULT
+export const CHECKOUT_LOADING = 'CHECKOUT_LOADING';
+export const CHECKOUT_LOADED = 'CHECKOUT_LOADED';
 
 
 const INITIAL_STATE = {
@@ -49,6 +54,7 @@ const INITIAL_STATE = {
     order_id: 0,
     promo:"",
     found_email: false,
+    checkout_status: "",
 }
 
 
@@ -106,16 +112,23 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 zipcode: action.payload,
             }
+        case CHECKOUT_START:
+            return {
+                ...state,
+                checkout_status: CHECKOUT_LOADING
+            }
         case HANDLE_ORDER_RESPONSE:
             return {
                 ...state,
                 order_id: action.payload,
                 error_message: "",
+                checkout_status: CHECKOUT_LOADED
             }
         case HANDLE_ORDER_ERROR:
             return {
                 ...state,
                 error_message: action.payload,
+                checkout_status: CHECKOUT_LOADED
             }
         case CHANGE_PROMO:
             return {
@@ -187,10 +200,11 @@ export default function reducer(state = INITIAL_STATE, action) {
                 ...state,
                 error_message: "Error loading bottle options"
             }
-        case RESET_ID:
+        case RESET_THANKYOU:
             return {
                 ...state,
-                order_id: 0
+                order_id: 0,
+                checkout_status: '',
             }
         case RESET_CHECKOUT:
             return {
@@ -358,10 +372,10 @@ export const clear_error_checkout = () => {
     }
 }
 
-export const reset_id = () => {
+export const reset_thankyou = () => {
     return (dispatch) => {
         dispatch({
-            type: RESET_ID
+            type: RESET_THANKYOU
         })
     }
 }
@@ -370,6 +384,14 @@ export const reset_checkout = () => {
     return (dispatch) => {
         dispatch({
             type: RESET_CHECKOUT
+        })
+    }
+}
+
+export const checkout_start = () => {
+    return (dispatch) => {
+        dispatch({
+            type: CHECKOUT_START
         })
     }
 }

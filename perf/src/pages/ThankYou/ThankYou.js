@@ -1,7 +1,8 @@
 import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import {
     Header,
@@ -9,12 +10,15 @@ import {
 } from '../../components';
 import './styles.css';
 import {
-    reset_id
+    reset_thankyou,
+    CHECKOUT_LOADING,
+    CHECKOUT_LOADED,
 } from '../../ducks/checkout';
 
 import styles from './styles';
 const {
     quizButton,
+    progressStyle
 } = styles
 
 class ThankYouComponent extends Component {
@@ -22,15 +26,25 @@ class ThankYouComponent extends Component {
         window.scrollTo(0, 0);
     }
     componentWillUnmount() {
-        this.props.reset_id();
+        this.props.reset_thankyou();
     }
 
 
     render() {
+        console.log(this.props.checkout_status);
+        console.log(this.props.checkout_status === CHECKOUT_LOADED);
+        if (this.props.checkout_status === '') {
+            return (
+                <Redirect to="" />
+            )
+        }
         return (
+            
             <section id="thankyou">
                 <Header />
                 <OneLiner message="THANK YOU!" />
+                {this.props.checkout_status === CHECKOUT_LOADED ? 
+                <div>
                 <div className="orderInfoContainer">
                     Order # {this.props.order_id}
                 </div>
@@ -39,9 +53,16 @@ class ThankYouComponent extends Component {
                 </div>
                 <Link to="quiz" className="quizLink">
                     <Button variant="contained" color="primary" style={quizButton}>Continue Shopping</Button>
-                </Link>
+                </Link> 
+                </div>:
+                <div className="loadingContainer">
+                    Whipping our monkeys
+                    <CircularProgress size = {window.innerHeight*0.21} thickness = {1} style={progressStyle} />
+                </div>
+            }
             </section>
         );
+        
     }
 }
 
@@ -49,13 +70,14 @@ export { ThankYouComponent };
 
 const mapStateToProps = (state, ownProps) => {
     const { checkout } = state;
-    const { order_id } = checkout;
+    const { order_id, checkout_status } = checkout;
     return {
         ...ownProps,
-        order_id
+        order_id,
+        checkout_status,
     };
 };
 
 export const ThankYou = connect(mapStateToProps, {
-    reset_id,
+    reset_thankyou,
 })(ThankYouComponent);

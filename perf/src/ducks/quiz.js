@@ -11,6 +11,7 @@ export const CHANGE_RELATIONS = "perf/quiz/CHANGE_RELATIONS";
 export const CHANGE_SEXUALITY = "perf/quiz/CHANGE_SEXUALITY";
 export const CHANGE_TAKER_NAME = "perf/quiz/CHANGE_TAKER_NAME";
 export const CLEAR_ERROR_QUIZ = "perf/quiz/CLEAR_ERROR_QUIZ";
+export const CLEAR_BASICINFO = "perf/quiz/CLEAR_BASICINFO";
 export const HANDLE_NEXT= 'perf/quiz/HANDLE_NEXT';
 export const HIDE_CARDS= 'perf/quiz/HIDE_CARDS';
 export const LOAD_QUIZ = "perf/quiz/LOAD_QUIZ";
@@ -64,11 +65,11 @@ const INITIAL_STATE = {
     },],
     result_cards: [{name:"Navigator",
                       accord: "",
-                      description: ["Enthusiasts are dramatic, creative, self-confident, dominant, and extremely difficult to resist, able to achieve nearly anything they want in any area of life they commit to.  Self-confident and attractive, Enthusiasts are capable of uniting different groups of people and leading them as one towards a shared cause.","Your fun, charming scent blends with other fragrances to make a complex and unique personal statement."],
+                      description: [""],
                       image_lnk: "https://i.pinimg.com/originals/05/4d/47/054d47a4e782a56bef5823d5ed186abc.jpg"},
                   {name:"Innovator",
                       accord: "",
-                      description: ["Achievers are continuously looking for dynamic, speed, and competition, and enjoy being the first in everything — from work to social gatherings.  It is in their nature to take action, sometimes before they think about it well.  You'll rarely meet an Achiever who isn't capable of finishing several things at once, but sometimes struggles to work well with others.","Your energizing fragrance is crisp and dynamic with blends of natural, fresh scents."],
+                      description: ["",""],
                       image_lnk: "https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/publications/pharmaceutical-science/in-pharmatechnologist.com/article/2018/05/16/experts-warn-if-europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries/8201005-1-eng-GB/Experts-warn-If-Europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries_wrbm_large.jpg"},
                   {name:"Architect",
                       accord: "",
@@ -85,6 +86,14 @@ const INITIAL_STATE = {
 //Reducers
 export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type){
+        case CLEAR_BASICINFO:
+            return {
+                ...state,
+                recipient_relations: 0,
+                taker_name: "",
+                recipient_name: "",
+                sexuality: "",
+            }
         case HANDLE_NEXT:
             state.answers[state.activeStep] = action.payload;
             return {
@@ -365,6 +374,14 @@ export const toggle_gif = (index) => {
         dispatch({
             type: TOGGLE_GIF,
             payload: index,
+        })
+    }
+}
+
+export const clear_basicinfo = () => {
+    return (dispatch) => {
+        dispatch({
+            type: CLEAR_BASICINFO,
         })
     }
 }
