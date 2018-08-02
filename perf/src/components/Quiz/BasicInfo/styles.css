@@ -73,7 +73,9 @@ font-family: 'Lora', sans-serif;    justify-content: center;
     font-size: 2.8vh;
     color: darkblue;
 }
-
+.basicinfo .hideDown {
+    display: none;
+}
 @media screen
   and (min-device-width: 1200px)
   and (max-device-width: 4000px) {

@@ -132,7 +132,7 @@ class BasicInfoComponent extends Component {
                     />
                 </div>
                 <div className="sexualityPicker">
-                    Which way do you want this scent lean to?
+                    Which way do you want this scent to lean?
                     <div className="sexualityItem">
                         {this.props.sexuality}
                     </div>

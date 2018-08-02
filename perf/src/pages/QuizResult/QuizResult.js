@@ -66,8 +66,8 @@ class QuizResultComponent extends Component {
                         reveal_cards={this.props.reveal_cards}
                         onClickCard={this.props.reveal_card}
                     />
-                    <div className={this.props.reveal_cards.every((x) => x===true) ? "showDownResult" : "hideDown"} >
-                        <ScrollDown message="Meet your fragrance" moveto="distilling"/>
+                <div className={this.props.reveal_cards.every((x) => x===true) ? "goDown" : "showDownResult"} >
+                        <ScrollDown message={this.props.reveal_cards.every((x) => x === true) ? "Meet your fragrance" : "Click on all three to start distilling your perfume!"} moveto={this.props.reveal_cards.every((x) => x === true) && "distilling"} />
                     </div>
                 </section>
                 </ScrollLock>

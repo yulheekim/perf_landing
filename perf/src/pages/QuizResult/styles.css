@@ -20,11 +20,11 @@ section {
     .showDownResult {
         margin-top: 1vh!important;
     }
-    /* .quizResultStyle .down {
-        margin-top: 5vh;
-    } */
-    .hideDown {
-        display: none;
+    .quizResultStyle .showDownResult a {
+        width: 25vw !important;
+    }
+    .goDown {
+        margin-top: 2vh!important;
     }
     #distilling {
         margin: 0%;
@@ -76,7 +76,13 @@ section {
         height: 30vh;
     }
     .showDownResult {
-        margin-top: 3vh !important;
+        margin-top: 0vh!important;
+    }
+    .quizResultStyle .showDownResult a {
+        width: 80vw !important;
+    }
+    .goDown {
+        margin-top: 0vh!important;
     }
 }
 @media only screen and (max-device-width: 480px) {
@@ -191,9 +197,6 @@ section {
 
 }
 
-.hideDown {
-    display: none;
-}
 #distilling {
     margin: 0%;
 }

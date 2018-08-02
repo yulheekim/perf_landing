@@ -11,6 +11,9 @@
 @media screen
 and (min-device-width: 1200px)
 and (max-device-width: 4000px) {
+    .reviewSection {
+        height: 100vh;
+    }
     #reviews {
         margin-top: -13vh;
     }
@@ -46,14 +49,14 @@ and (max-device-width: 4000px) {
         flex-direction: column;
         justify-content: center;
         height: 87vh !important;
-        padding-top: 10vh! important;
+        padding-top: 13vh! important;
     }
 
     .getStarted2 {
-        margin-bottom: 7vh;
+        margin-bottom: 5vh;
     }
     .coverflowConatiner {
-        margin-top: 2vh;
+        margin-top: 0vh;
     }
 }
 
@@ -66,9 +69,12 @@ and (max-device-width: 4000px) {
     /* #reviews {
         margin-left: -50vw;
     } */
+    .reviewSection {
+        height: 100vh;
+    }
     .reviewSection .oneliner {
         font-size: 8vw;
-        margin-top: -5vh !important;
+        /* margin-top: -5vh !important; */
         margin-bottom: 2vh !important;
         width: 70vw !important;
     }
@@ -96,11 +102,11 @@ and (max-device-width: 4000px) {
     #reviews .description {
         width: 90vw;
         font-size: 20px;
-        margin: 0vh auto 15vh auto;
+        margin: 0vh auto 19vh auto;
         height: 1vh;
     }
     .getStarted2 {
-        margin-bottom: 5vh;
+        margin-bottom: 4vh;
     }
     .coverflowConatiner {
         margin-top: 0vh;
