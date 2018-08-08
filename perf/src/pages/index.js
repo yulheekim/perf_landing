@@ -1,3 +1,4 @@
+export * from './About';
 export * from './CheckOut';
 export * from './ChooseQuiz';
 export * from './Landing';

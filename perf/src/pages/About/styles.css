@@ -1,0 +1,19 @@
+.App-header {
+    height: 150px;
+    padding: 20px;
+}
+
+.aboutTitleStyle {
+    font-size: 1.5em;
+    align: left;
+    margin-top: 20vh;
+    margin-left: 27.5vh;
+}
+
+.paragraph {
+    width: 140vh;
+    align: left;
+    margin: 10vh auto;
+    size: 20px;
+    
+}
