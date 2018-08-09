@@ -21,7 +21,7 @@ class WhyPerfComponent extends Component {
     }
     modalCircle = (id) => {
         const images = [whyperf1, whyperf2, whyperf3];
-        if (id % 2 == 0) {
+        if (id % 2 === 0) {
             return (
                  <div className="circleWrapper">
                      <div className="reason">{this.props.why_descs[id]}</div>
