@@ -4,6 +4,10 @@
 .quizStyle {
     justify-content: center;
     text-align: center;
+    background-color: 'white';
+    /* font-family: 'Cormorant Garamond', serif; */
+    /* font-family: 'Teko', sans-serif; */
+   
 }
 section {
   width: 100%;
@@ -30,10 +34,3 @@ section {
 
 }
 
-body {
-  background-color: #C3C9E9;
-  /* font-family: 'Cormorant Garamond', serif; */
-  /* font-family: 'Teko', sans-serif; */
-  font-family: 'Lora', sans-serif;
-  font-weight: lighter;
-}

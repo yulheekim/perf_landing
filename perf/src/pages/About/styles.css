@@ -3,17 +3,45 @@
     padding: 20px;
 }
 
-.aboutTitleStyle {
-    font-size: 1.5em;
-    align: left;
-    margin-top: 20vh;
-    margin-left: 27.5vh;
-}
+@media screen
+    and (max-device-width: 500px) {
+        .aboutTitleStyle {
+            font-size: 1.5em;
+            width: 90vw;
+            margin: 20vh auto 0 auto;
+        }
 
-.paragraph {
-    width: 140vh;
-    align: left;
-    margin: 10vh auto;
-    size: 20px;
-    
+        .paragraph {
+            width: 90vw;
+            margin: 10vw auto;
+            size: 20px;
+        }
+}
+@media screen 
+    and (min-device-width: 500px) {
+        .aboutFirstTitleStyle {
+            font-size: 1.5em;
+            width: 40vw;
+            margin: 20vh auto 0 auto;
+        }
+        .paragraph {
+            width: 40vw;
+            margin: 3vh auto 0vh;
+            line-height: 5vh;
+            font-size: 20px;
+            font-weight: 100;
+        }
+        .quote {
+            font-style: oblique;
+            width: 40vw;
+            margin: 3vh auto;
+            line-height: 5vh;
+            font-size: 20px;
+            font-weight: 100;
+        }
+        .aboutTitleStyle {
+            font-size: 1.5em;
+            width: 40vw;
+            margin: 10vh auto 0 auto;
+        }
 }
