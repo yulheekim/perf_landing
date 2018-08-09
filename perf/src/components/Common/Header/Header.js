@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../../../assets/logo/new_logo.png';
 import { Link } from 'react-router-dom'
-import { AccountCircle, Home } from '@material-ui/icons';
+import { AccountCircle, Home, LocalDining } from '@material-ui/icons';
 import { slide as Menu } from 'react-burger-menu';
 
 import './styles.css';
@@ -25,9 +25,15 @@ class Header extends Component {
               </span>
           </Link>
           <Link to="quiz" style={menuStyles.bmItem} className="menu-item">
-              <AccountCircle />
+              <LocalDining />
               <span className="menuItemText">
                 Quiz
+              </span>
+          </Link>
+          <Link to="about" style={menuStyles.bmItem} className="menu-item">
+              <AccountCircle />
+              <span className="menuItemText">
+                About Us
               </span>
           </Link>
         </Menu>
