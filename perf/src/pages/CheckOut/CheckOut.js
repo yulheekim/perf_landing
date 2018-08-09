@@ -174,9 +174,8 @@ class CheckOutComponent extends Component {
                                 </div>
                             }
                             <div className="priceContainer">
-                                <b>Price:</b>&nbsp;&nbsp;${this.props.prices[this.props.current_bottle_index].toFixed(2)}&nbsp;&nbsp;
-                                {(this.props.current_bottle_index === 0) ?
-                                    "(FREE to subscriptors)" : "+ Shipping Fee"}
+                                <b>Price:</b>&nbsp;&nbsp;${this.props.product_price}&nbsp;&nbsp;
+                                + Shipping Fee
                             </div>
                         </div>
                     </div>
@@ -213,44 +212,44 @@ class CheckOutComponent extends Component {
                             <div className="orderSummary">
                                 <div className="description"><b>Order Summary</b></div><br/>
                                 <table><tbody>
-                                    <tr><td>Item: </td>${this.props.prices[this.props.current_bottle_index].toFixed(2)}</tr>
-                                    <tr><td>Tax: </td><td>${(this.props.prices[this.props.current_bottle_index]*0.1).toFixed(2)}</td></tr>
-                                    <tr className="bordered"><td>Shipping & handling: </td><td>${this.props.shipping[this.props.current_bottle_index].toFixed(2)}</td></tr>
-                                    <tr className="total"><td><b>Total: </b></td><b>
-                                        <td>${this.props.found_email && this.props.current_bottle_index===0 ?
-                                        <span> <s>{(this.props.prices[this.props.current_bottle_index]*1.1+this.props.shipping[this.props.current_bottle_index]).toFixed(2)}</s> 0.00 Promo Applied</span> :
-                                        (this.props.prices[this.props.current_bottle_index]*1.1+this.props.shipping[this.props.current_bottle_index]).toFixed(2)}
-                                    </td></b></tr>
+                                    <tr><td>Item: </td>${this.props.product_price}</tr>
+                                    <tr><td>Tax: </td><td>${this.props.tax}</td></tr>
+                                    <tr className="bordered"><td>Shipping & handling: </td><td>${this.props.shipping_fee}</td></tr>
+                                    <tr className="total"><td><b>Total: </b></td>
+                                    <b>
+                                        <td>$<span>{this.props.full_price}</span><span> {this.props.found_promo ? "Promo Applied": ""}</span> 
+                                        
+                                        </td>
+                                    </b>
+                                    </tr>
                                 </tbody></table>
-                                {this.props.current_bottle_index === 0 &&
-                                    <div className="promoContainer">
-                                        Promo Code :&nbsp;<TextField
-                                            label={this.props.found_email ? "PROMO APPLIED!":"Enter your email"}
-                                            value={this.props.promo}
-                                            onChange={this.handlePromoChange}
-                                            style={promoText}
-                                            onKeyPress={(ev) => {
-                                                if (ev.key === 'Enter') {
-                                                    this.props.check_promo();
-                                                    ev.preventDefault();
-                                                }
-                                            }}
-                                        />&nbsp;
-                                    <Button variant="contained" onClick={()=>this.props.check_promo()} size='small' style={promoButton}>OK</Button>
-                                    </div>
-                                }
-                            </div>
-                            {(this.props.current_bottle_index === 0 && this.props.found_email) ?
-                                <SampleCheckOutButton />
-                                :
-                                <div className="checkOutButton">
-                                    <StripeProvider apiKey={APIConfig.stripe_key}>
-                                        <Elements>
-                                            <CheckOutButton />
-                                        </Elements>
-                                    </StripeProvider>
+                                {this.props.current_bottle_index !== 0 ? 
+                                <div className="promoContainer">
+                                    Promo Code :&nbsp;<TextField
+                                        label={this.props.found_promo ? "PROMO APPLIED!":"Enter your promo code"}
+                                        value={this.props.promo}
+                                        onChange={this.handlePromoChange}
+                                        style={promoText}
+                                        disabled={this.props.found_promo}
+                                        onKeyPress={(ev) => {
+                                            if (ev.key === 'Enter') {
+                                                this.props.check_promo(this.props.promo);
+                                                ev.preventDefault();
+                                            }
+                                        }}
+                                    />&nbsp;
+                                    <Button variant="contained" onClick={()=>this.props.check_promo(this.props.promo)} size='small' style={promoButton}>OK</Button>
+                                    </div>:<div/>}
                                 </div>
-                            }
+                            
+                            
+                            <div className="checkOutButton">
+                                <StripeProvider apiKey={APIConfig.stripe_key}>
+                                    <Elements>
+                                        <CheckOutButton />
+                                    </Elements>
+                                </StripeProvider>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -264,7 +263,7 @@ export { CheckOutComponent };
 const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
     const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id,
-         prices, promo, found_email, shipping, checkout_status } = checkout;
+         prices, promo, found_promo, shipping, checkout_status, discount, full_price, tax, shipping_fee, product_price } = checkout;
     const { answers, result_cards, result_title, recipient_options, recipient_relations, quizresult_id } = quiz;
     return {
         ...ownProps,
@@ -282,10 +281,15 @@ const mapStateToProps = (state, ownProps) => {
         recipient_relations,
         result_cards,
         result_title,
-        found_email,
+        found_promo,
         shipping,
         quizresult_id,
         checkout_status,
+        discount,
+        full_price,
+        tax,
+        shipping_fee,
+        product_price,
     };
 };
 

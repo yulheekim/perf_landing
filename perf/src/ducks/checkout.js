@@ -14,6 +14,8 @@ export const CHANGE_SHIPPING_NAME = 'perf/checkout/CHANGE_SHIPPING_NAME';
 export const CHANGE_STATE = 'perf/checkout/CHANGE_STATE';
 export const CHANGE_ZIPCODE = 'perf/checkout/CHANGE_ZIPCODE';
 export const CHECK_PROMO = 'perf/checkout/CHECK_PROMO';
+export const CHECK_PROMO_SUCCESS = 'perf/checkout/CHECK_PROMO_SUCCESS';
+export const CHECK_PROMO_ERROR = 'perf/checkout/CHECK_PROMO_ERROR'; 
 export const CHECKOUT_START = 'perf/checkout/CHECKOUT_START';
 export const CLEAR_ERROR_CHECKOUT = 'perf/checkout/CLEAR_ERROR_CHECKOUT';
 export const GO_CHECKOUT = 'perf/checkout/GO_CHECKOUT';
@@ -53,19 +55,49 @@ const INITIAL_STATE = {
     zipcode:"",
     order_id: 0,
     promo:"",
-    found_email: false,
+    found_promo: false,
     checkout_status: "",
+    product_price: 5,
+    tax: 0.5,
+    shipping_fee: 1.5,
+    discount: 100,
+    full_price: 7,
 }
 
+function untiltwo(x) {
+    return Number.parseFloat(x).toFixed(2);
+  }
+  
 
 //Reducers
 export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type) {
         case CHANGE_BOTTLE:
+            var new_discount = state.discount;
+            var new_found_promo = state.found_promo;
+            if (action.payload === 0) {
+                new_discount = 100;
+                new_found_promo = false;
+            }
+            const new_product_price = untiltwo(state.prices[action.payload] * (new_discount * 0.01));
+            const new_shipping_fee = state.shipping[action.payload];
+            const new_tax = untiltwo(new_product_price * 0.1);
+            console.log(new_product_price);
+            console.log(new_shipping_fee);
+            console.log(new_tax);
+            console.log(new_product_price + new_tax + new_shipping_fee);
+            const new_full_price = untiltwo(Number.parseFloat(new_product_price) + Number.parseFloat(new_tax) + Number.parseFloat(new_shipping_fee));
+            console.log(new_full_price);
             return {
                 ...state,
                 current_bottle_index: action.payload,
                 img_opt: 0,
+                product_price: new_product_price,
+                tax: new_tax,
+                shipping_fee: new_shipping_fee,
+                discount: new_discount,
+                full_price: new_full_price,
+                found_promo: new_found_promo
             }
         case CHANGE_IMAGE:
             return {
@@ -136,25 +168,32 @@ export default function reducer(state = INITIAL_STATE, action) {
                 promo: action.payload,
             }
         case CHECK_PROMO:
-            const loEmail = ['nicholewalker0123@gmail.com', 'carlosarodriguez@protonmail.com', 'katrinasaw2@gmail.vom', 'ba.peterson1321@gmail.com', 'anaescal625@gmail.com', 'tolliverdani28@gmail.com', 'tx.jeremiah@icloud.com', 'shellyfrias83@gmail.com', 'messica.cornelius@gmail.com', 'davispaul60@outlook.com', 'bacq50@hotmail.com', 'luzyanez@ymail.com', '29goddess29@gmail.com', 'stitchedheart22@gmail.com', 'miwia.lil.pup@gmail.com', 'brittanytoth59@gmail.com', 'missjuliarules@gmail.com',
-            'krpresley@gmail.com', 'hannah_hoj@icloud.com', 'sammi.brown38.sb@gmail.com', 'vickiharer6@gmail.com', 'donatovictoria@yahoo.com', 'clarissamarina1995@gmail.com', 'brittanyejenks@gmail.com', 'ladybughatley@fb.com', 'sierrahilyard@gmail.com', 'cheyennejeremy@yahoo.com', 'mrsschnell04@mac.com', 'lunarasolaris@gmail.com', 'christina741carroll@gmail.com', 'michellegarcia4561@gmail.com', 'butterfly91ish@gmail.com', 'vabluemice@hotmail.com', 'jsause20@gmail.com',
-            'jennawilsonjenna42@gmail.com', 'paigefaith74@gmail.com', 'gaby93ramirez@gmail.com', 'batbscards@gmail.com', 'anitabepolished@gmail.com', '8268overyou@gmail.com', 'ridukhan@hotmail.com', 'lilpinkbunny@gmail.com', 'quinonescrystal0308@gmail.com', 'jingersnap2000@gmail.com', 'sandraandandrew2017@gmail.com', 'calienicole.booking@gmail.com', 'earlbridget1@gmail.com', 'teneshawiss755@gmail.com', 'dustinsbabygirl21@gmail.com', 'jrosado2012@gmail.com', 'jstjohn7@kent.edu',
-            'yamileth1265@hotmail.com', 'drgjuliee@yahoo.com', 'boasbeckey@gmail.com', 'avierra933@gmail.com', 'cthomson8704@gmail.com', 'elisegatoo@gmail.com', 'urskar@rocketmail.com', 'humboldtcounty84@yahoo.com', 'fvwilson14@gmail.com', 'agomez.shamir@gmail.com', 'mion.michelle83@gmail.com', 'kdking89@yahoo.com', 'kat_kris2001@yahoo.com', 'noahtillinghast3419@gmail.com', 'palvarez850@gmail.com', 'chiquijuan1728@gmail.com', 'rjbushard25@gmail.com', 'shanicekarim@gmail.com',
-            'brieannaward2014@gmail.com', 'gretamarsden02@gmail.com', 'mariahalvarez246@gmail.com', 'erinfaithmarcum@gmail.com', 'dpgood01@gmail.com', 'karalynkeith33477@gmail.com', 'r3vytw0h4nds@gmail.com', 'kelsey.condrey@gmail.com', 'elliotdodobird@gmail.com', 'breanneneely@gmail.com', 'breanneneely@ymail.com', 'ivytuet@hotmail.com', 'eresendiz702@gmail.com', 'lisathorley@rocketmail.com', 'colleen.quinn.814@gmail.com', 'kimberlybchristmas@yahoo.com', 'pianosrule@live.com',
-            'genyajackson@yahoo.com', 'smithkristin@hotmail.com', 'evrybizy22@gmail.com', 'susiedetone2000@gmail.com', 'sams_danielle88@yahoo.com', 'alyccar@mail.regent.edu', 'kassandraphinney@gmail.com', 'amarakash@gmail.com', 'krutika.fender@gmail.com', 'delilah1984@gmail.com', 'gayatrip36@gmail.com', 'jessicamilwood@gmail.com', 'nikkih4288@gmail.com', 'jessica.lizbette@gmail.com', 'spino.l@yahoo.com', 'rtillman0284@gmail.com', 'justiceclifton.jc@gmail.com', 'grettelmelissa2001@gmail.com',
-            'meloangie2324@gmail.com', 'paigeprez25@icloud.com', 'michellefinch93@gmail.com', 'abrooksb2007@gmail.com', 'amanda.marie.kingg65@gmail.com', 'lckimbrough@hotmail.com', 'passaarti@gmail.com', 'mmgriswells@gmail.com', 'saraniallrivera@gmail.com', 'jackiemann2017@gmail.com', 'perez423@msn.com', 'tastycakes987@gmail.com', 'tarynrox1@gmail.com', 'krystyn62383@gmail.com', 'glitterblondie84@aol.com', 'cuautle1127@gmail.com', 'shobi.v5@gmail.com', 'destiny_cheyenne@hotmail.com',
-            'vcustode@yahoo.com', 'afrothunder032@yahoo.com', 'emmaornelas17.eo@gmail.com', 'lisarush272@gmail.com', 'augustgsmith@gmail.com', 'tessbernick@yahoo.com', 'xgalarza14@gmail.com', 'daniegreenlee@gmail.com', 'hooliha8154@gmail.com', 'itsemilybobby@yahoo.com', 'savannateague1@gmail.com', 'josievasquez1983@yahoo.com', 'leslieu.1015@gmail.com', 'eddenck@gmail.com', 'cydmarie.valentin@yahoo.com', 'joanna.symon@yahoo.com', 'leilani.overlander@gmail.com', 'ashp2023@gmail.com',
-            'cheesecake287@gmail.com', 'nicolemcourtney@icloud.com', 'margarettearuiz17@gmail.com', 'gtsli469@gmail.com', 'kiglesias72@hotmail.com', 'kaylameg.ks@gmail.com', 'wildcheroke91@gmail.com', 'polkcounty06@yahoo.com', 'hannahe0209@gmail.com', 'bama_princess06@hotmail.com', 'sarahy200389@gmail.com', 'yoga.girl432@gmail.com', 'sb82756@gmail.com', 'nainaanand_patel@yahoo.com', 'marcelinalopez19@gmail.com', 'mdegrandchamp@marykay.com', 'lillyowls@gmail.com', 'chapinita_ivgv@hotmail.com',
-            'mackenziemikula@gmail.com', 'evangelinemihai@hotmail.com', 'annabelle.fisk@gmail.com', 'emilybee4200@gmail.com', 'niesiaaa@wp.pl', 'lydamaehernandez@gmail.com', 'xwastelandxx@gmail.com', 'shortyslilbit@yaho.com', 'tawanda_86@yahoo.com', 'mrstiffanydavis4ever@gmail.com', 'lizzisully97@gmail.com', 'seguinrds@icloud.com', 'ranae.morrill@gmail.com', 'cris4gla8@yahoo.com', 'cloudking2985@gmail.com', 'evilmommabich@gmail.com', 'clarissa.pala07062016@gmail.com',
-            'mikikoishikawa11@gmail.com', 'proudmom2one@hotmail.com', 'kaelynslayton2018@yahoo.com', 'alyissa_gillman@yahoo.com', 'andreawoods1228@gmail.com', 'kcrawley1130@gmail.com', 'softballlover142@yahoo.com', 'disturbed10_1991@aol.com', 'ivaber289413@gmail.com', 'ashleytitatender1@gmail.com', 'akbarkhan3273@gmail.com', 'summeredmonds87@gmail.com', 'saharapixx@gmail.com', 'srbreadeseverino232009@gmail.com', 'abbeyhawkins98@gmail.com', 'peachysue3@gmail.com', 'luzangelicaguillen@gmail.com',
-            'allisondonofrio94@aol.com', 'shawnee.v.garst19@gmail.com', 'virginiacrooks@hotmail.com', 'marilynnvanriper@gmail.com', 'punkskeptic@gmail.com', 'natalie.kuchinski@gmail.com', 'lanetaylor20101213@gmail.com', 'fangs6613@gmail.com', 'jackie12_46@yahoo.com'];
-            var found = (loEmail.indexOf(state.promo.toLowerCase()) === -1 ? false : true);
-            if (!found) {
-                alert("Please check your promo code.")
+        case CHECK_PROMO_SUCCESS:
+            if (action.payload) {
+                var found = false;
+                const approved_discount = parseInt(action.payload);
+                if (approved_discount > 0) {
+                    found = true;
+                }
+                const new_price = untiltwo(state.product_price * ((100 - approved_discount) * 0.01));
+                const new_discount_tax = untiltwo(new_price * 0.1);
+                const new_full = untiltwo(new_price * 1.1 + state.shipping_fee + new_discount_tax);
+                return {
+                    ...state,
+                    found_promo: found,
+                    discount: 100 - approved_discount,
+                    product_price: new_price,
+                    tax: new_discount_tax,
+                    full_price: new_full,
+                }
+            } else {
+                return state;
             }
+            
+        case CHECK_PROMO_ERROR:
+            alert("Error while checking for promo code. Please check again.")
             return {
                 ...state,
-                found_email: found,
             }
         case CLEAR_ERROR_CHECKOUT:
             return {
@@ -217,8 +256,13 @@ export default function reducer(state = INITIAL_STATE, action) {
                 state_abbrv:"",
                 zipcode:"",
                 promo:"",
-                found_email: false,
                 open: false,
+                found_promo: false,
+                product_price: 5,
+                tax: 0.5,
+                shipping_fee: 1.5,
+                discount: 100,
+                full_price: 7,
             }
         default:
             return state
@@ -357,13 +401,34 @@ export const change_promo = (promo) => {
         })
     };
 }
-export const check_promo = () => {
+export const check_promo = (promo_code) => {
+    const url = APIConfig.apiroot + '/promo/check'
     return (dispatch) => {
         dispatch({
             type: CHECK_PROMO,
         })
+        axios.post(url, {
+            "promo_code": promo_code,
+        })
+          .then((response) => check_promo_success(dispatch, response))
+          .catch((error) => check_promo_error(dispatch, error))
     };
 }
+
+export const check_promo_success = (dispatch, response) => {
+    dispatch({
+        type: CHECK_PROMO_SUCCESS,
+        payload: response.data.discount
+    });
+}
+
+export const check_promo_error = (dispatch, error) => {
+    console.log(error);
+    dispatch({
+        type: CHECK_PROMO_ERROR,
+    });
+}
+
 export const clear_error_checkout = () => {
     return (dispatch) => {
         dispatch({
