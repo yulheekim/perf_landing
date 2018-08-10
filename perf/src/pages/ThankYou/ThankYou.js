@@ -31,8 +31,6 @@ class ThankYouComponent extends Component {
 
 
     render() {
-        console.log(this.props.checkout_status);
-        console.log(this.props.checkout_status === CHECKOUT_LOADED);
         if (this.props.checkout_status === '') {
             return (
                 <Redirect to="" />
@@ -56,7 +54,7 @@ class ThankYouComponent extends Component {
                 </Link> 
                 </div>:
                 <div className="loadingContainer">
-                    Whipping our monkeys
+                    Processing your payment...
                     <CircularProgress size = {window.innerHeight*0.21} thickness = {1} style={progressStyle} />
                 </div>
             }
