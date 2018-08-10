@@ -60,11 +60,11 @@ const INITIAL_STATE = {
     promo:"",
     found_promo: false,
     checkout_status: "",
-    product_price: 5.00,
-    tax: 0.00,
-    shipping_fee: 1.50,
+    product_price: untiltwo(5.00),
+    tax: untiltwo(0.00),
+    shipping_fee: untiltwo(1.50),
     discount: 100,
-    full_price: 6.50,
+    full_price: untiltwo(6.50),
 }
 
 
