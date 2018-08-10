@@ -32,6 +32,9 @@ export const TOGGLE_MODAL = 'perf/checkout/TOGGLE_MODAL';
 export const CHECKOUT_LOADING = 'CHECKOUT_LOADING';
 export const CHECKOUT_LOADED = 'CHECKOUT_LOADED';
 
+function untiltwo(x) {
+    return Number.parseFloat(x).toFixed(2);
+}
 
 const INITIAL_STATE = {
     error_message: "",
@@ -44,8 +47,8 @@ const INITIAL_STATE = {
     bottle_types: ['2mL Spray Sample', '10mL Roll On', '15mL Spray'],
     amounts: [2, 10, 15],
     types: ['spray', 'roll on', 'spray'],
-    prices: [5, 20, 30],
-    shipping: [1.5, 3, 3],
+    prices: [untiltwo(5), untiltwo(20), untiltwo(30)],
+    shipping: [untiltwo(1.5), untiltwo(3), untiltwo(3)],
     open: false,
     email:"",
     shipping_name: "",
@@ -57,16 +60,14 @@ const INITIAL_STATE = {
     promo:"",
     found_promo: false,
     checkout_status: "",
-    product_price: 5,
-    tax: 0.5,
-    shipping_fee: 1.5,
+    product_price: 5.00,
+    tax: 0.00,
+    shipping_fee: 1.50,
     discount: 100,
-    full_price: 7,
+    full_price: 6.50,
 }
 
-function untiltwo(x) {
-    return Number.parseFloat(x).toFixed(2);
-  }
+
   
 
 //Reducers
@@ -81,21 +82,16 @@ export default function reducer(state = INITIAL_STATE, action) {
             }
             const new_product_price = untiltwo(state.prices[action.payload] * (new_discount * 0.01));
             const new_shipping_fee = state.shipping[action.payload];
-            const new_tax = untiltwo(new_product_price * 0.1);
-            console.log(new_product_price);
-            console.log(new_shipping_fee);
-            console.log(new_tax);
-            console.log(new_product_price + new_tax + new_shipping_fee);
+            const new_tax = "0.00";
             const new_full_price = untiltwo(Number.parseFloat(new_product_price) + Number.parseFloat(new_tax) + Number.parseFloat(new_shipping_fee));
-            console.log(new_full_price);
             return {
                 ...state,
                 current_bottle_index: action.payload,
                 img_opt: 0,
                 product_price: new_product_price,
-                tax: new_tax,
                 shipping_fee: new_shipping_fee,
                 discount: new_discount,
+                tax: new_tax,
                 full_price: new_full_price,
                 found_promo: new_found_promo
             }
@@ -176,7 +172,7 @@ export default function reducer(state = INITIAL_STATE, action) {
                     found = true;
                 }
                 const new_price = untiltwo(state.product_price * ((100 - approved_discount) * 0.01));
-                const new_discount_tax = untiltwo(new_price * 0.1);
+                const new_discount_tax = untiltwo(0);
                 const new_full = untiltwo(new_price * 1.1 + state.shipping_fee + new_discount_tax);
                 return {
                     ...state,
@@ -258,11 +254,11 @@ export default function reducer(state = INITIAL_STATE, action) {
                 promo:"",
                 open: false,
                 found_promo: false,
-                product_price: 5,
-                tax: 0.5,
-                shipping_fee: 1.5,
+                product_price: 5.00,
+                tax: 0.00,
+                shipping_fee: 1.50,
                 discount: 100,
-                full_price: 7,
+                full_price: 6.50,
             }
         default:
             return state
