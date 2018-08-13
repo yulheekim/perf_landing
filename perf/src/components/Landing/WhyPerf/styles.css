@@ -29,6 +29,15 @@
     margin: inherit 5vw;
 }
 
+.circles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 60vh;
+    width: 90vw;
+    margin: auto;
+}
+
 @media screen
   and (min-device-width: 1200px)
   and (max-device-width: 4000px) {
@@ -47,20 +56,9 @@
         z-index: 10;
     }
 
-    .circleWrapper img {
-        width: 15vw;
-        height: 15vw;
-        margin-left: 2rem;
-        margin-right: 2rem;
-    }
-
     .circle:hover {
         opacity: 0.5;
         z-index: 10;
-    }
-
-    .reason {
-        display: none;
     }
 
     .circleRow {
@@ -73,9 +71,27 @@
         height: 13rem;
     }
 
+    .circleColumn {
+        justify-content: center;
+        width: 33vw;
+    }
+
+    .reason {
+        margin: 10vh auto 0 auto;
+        width: 27vw;
+        font-size: 18px;
+    }
+
     .circleWrapper {
         height: 13rem;
         padding-top: 4vh;
+    }
+    
+    .reasonImageStyle {
+        width: 15vw;
+        height: 15vw;
+        margin-left: 2rem;
+        margin-right: 2rem;
     }
 
     .descShow {
