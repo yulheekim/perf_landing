@@ -3,6 +3,14 @@
     padding: 20px;
 }
 
+.emphasis {
+    font-style: oblique;
+    font-weight: bold !important;
+    font-size: 25px;
+    margin: 2vw;
+
+}
+
 @media screen
     and (max-device-width: 500px) {
         .aboutTitleStyle {

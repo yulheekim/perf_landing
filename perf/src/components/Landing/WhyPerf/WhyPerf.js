@@ -5,11 +5,8 @@ import whyperf1 from '../../../assets/landing/whyperf1.png';
 import whyperf2 from '../../../assets/landing/whyperf2.png';
 import whyperf3 from '../../../assets/landing/whyperf3.png';
 import './styles.css';
+
 import {
-  toggle_modal,
-} from '../../../ducks/landing';
-import {
-  OneLiner,
   ScrollDown,
 } from '../../Common';
 
@@ -51,14 +48,12 @@ class WhyPerfComponent extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
   const { landing } = state;
-  const { why_descs, show_which } = landing;
+  const { why_descs } = landing;
   return {
     ...ownProps,
-    show_which,
     why_descs
   };
 }
 
 export const WhyPerf = connect(mapStateToProps, {
-  toggle_modal
 })(WhyPerfComponent);

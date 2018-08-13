@@ -17,11 +17,7 @@ const INITIAL_STATE = {
 //Reducers
 export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type){
-        case TOGGLE_MODAL:
-            return {
-                ...state,
-                show_which: action.payload,
-            };
+        
         case UPDATE_SLIDER_DESC:
             return {
                 ...state,
