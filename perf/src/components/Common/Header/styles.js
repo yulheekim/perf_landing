@@ -1,74 +1,56 @@
 export default {
     menuStyles: {
         bmBurgerButton: {
-            position: 'fixed',
-            width: '4.4vh',
-            height: '4vh',
-            left: '36px',
-            top: '5%',
+            display: 'none',
         },
         bmBurgerBars: {
-            background: '#bdd2f9'
+            display: 'none',
         },
         bmCrossButton: {
-            height: '24px',
-            width: '24px'
+            display: 'none',
         },
         bmCross: {
-            background: '#bdc3c7'
+            display: 'none',
         },
         bmMenu: {
-            background: '#36384c',
-            padding: '2.5em 1.5em 0',
-            fontSize: '1.15em',
-            overflow: 'hidden',
-            display: 'flex',
-            flexDirection: 'column',
+            display: 'none',
         },
         bmMorphShape: {
-            fill: '#373a47'
+            display: 'none',
         },
         bmItemList: {
-            padding: '0.8em',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'start',
+            display: 'none',
         },
         bmItem: {
-            display: 'table',
-            color: '#eaf2ff',
-            textDecoration: 'none',
-            fontSize: '1em',
-            float: 'left',
-            justifyContent: 'space-around',
-            fontFamily: 'Lora',
-            marginBottom: '0.5em'
         },
         bmOverlay: {
-            background: 'rgba(0, 0, 0, 0.3)'
+            display: 'none',
+        },
+        bmMenuWrap: {
+            display: 'none',
         }
     },
     menuMobileStyles: {
         bmBurgerButton: {
-            position: 'fixed',
-            width: '36px',
-            height: '30px',
-            left: '5vh',
-            top: '5vh',
+            position: 'absolute',
+            width: '24px',
+            height: '20px',
+            right: '3vh',
+            top: '40%',
         },
         bmBurgerBars: {
-            background: '#bdd2f9'
+            background: 'black'
         },
         bmCrossButton: {
             height: '24px',
             width: '24px'
         },
         bmCross: {
-            background: '#bdc3c7'
+            background: 'black',
         },
         bmMenu: {
-            background: '#36384c',
-            padding: '2.5em 1.5em 0',
+            background: 'white',
+            padding: '36px 36px',
             fontSize: '1.15em',
             overflow: 'hidden',
             display: 'flex',
@@ -78,20 +60,22 @@ export default {
             fill: '#373a47'
         },
         bmItemList: {
-            padding: '0.8em',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'start',
         },
         bmItem: {
             display: 'table',
-            color: '#eaf2ff',
+            color: 'black',
             textDecoration: 'none',
-            fontSize: '1em',
+            textTransform: 'uppercase',
+            letterSpacing: '.14em',
+            fontSize: '13px',
+            fontWeignt: '900',
+            lineHeight: '1.8em',
             float: 'left',
             justifyContent: 'space-around',
-            fontFamily: 'Lora',
-            marginBottom: '0.5em'
+            fontFamily: 'Lato',
         },
         bmOverlay: {
             background: 'rgba(0, 0, 0, 0.3)'
