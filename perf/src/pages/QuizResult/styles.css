@@ -40,7 +40,7 @@ section {
         margin: auto;
         text-align: center;
         font-size: 18px;
-        color: beige;
+        color: #001428;
         text-decoration: underline;
     }
     .quizResultStyle {
@@ -116,10 +116,13 @@ section {
     /* iPhone 6/7/8, iPhone X, */
     .textContainer {
         width: 95%;
-        font-size: 24px;
+        font-size: 22px;
         text-align: center;
-        padding-top: 2.2vh;
-        padding-bottom: 2.2vh;
+        padding-top: 4.5vh;
+        padding-bottom: 2vh;
+    }
+    .quizResultStyle .down {
+        font-size: 20px;
     }
     .textContainer2 {
         width: auto;
@@ -141,18 +144,24 @@ section {
     /*iPhone 5*/
     .textContainer {
         width: 95%;
-        font-size: 20px;
-        line-height: 4.3vh;
+        font-size: 18px;
         text-align: center;
-        padding-top: 1.5vh;
-        padding-bottom: 1.5vh;
+        padding-top: 7vh;
+        padding-bottom: 1vh;
         margin: auto;
+    }
+    .quizResultStyle .cardsContainer {
+        height: 58vh;
+    }
+    .quizResultStyle .down {
+        font-size: 18px;
     }
     .textContainer2 {
         width: auto;
         font-size: 22px;
         text-align: center;
-        padding: 4vh;
+        padding-top: 8vh;
+        padding-bottom: 0;
         font-family: 'Lora';
         font-weight: lighter;
     }
@@ -213,7 +222,7 @@ section {
     font-size: 16px;
     font-weight: lighter;
     font-family: sans-serif;
-    color: beige;
+    color: #001428;
     text-decoration: underline;
 }
 .quizResultStyle {
@@ -221,11 +230,15 @@ section {
     justify-content: center;
     font-family: 'Cormorant Garamond', sans-serif;
     font-weight: bold;
-    background-image: url('../../assets/result/result_background.jpg');
+    background-image: url('../../assets/result/40.png');
     background-size: cover;
     background-repeat: repeat-y;
     background-origin: content-box;
     background-position: center;
     overflow: hidden;
-    color: white;
+    color: #001428;
+}
+.quizResultStyle .down {
+    font-weight: 900;
+    color: black;
 }

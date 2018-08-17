@@ -83,8 +83,8 @@ class QuizResultComponent extends Component {
                     <TrackVisibility className="hideVis">
                         {({ isVisible }) => isVisible && setTimeout(this.props.start_distilling, 3000)}
                     </TrackVisibility>
-                    <div >
-                        <Link to="checkout" className="linkToCheckout">
+                    <div className="linkToCheckout">
+                        <Link to="checkout" >
                             <br/>Click here if the page does not automatically redirect in 3 seconds
                         </Link>
                     </div>
