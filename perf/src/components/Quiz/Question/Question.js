@@ -19,7 +19,7 @@ class QuestionComponent extends Component {
         return _.map(this.props.questions[this.props.activeStep].cards, (item, index)=> {
             return (
                 <div className="options" key={item.id}>
-                    <div className="option" 
+                    <div className="option"
                         onMouseEnter={()=> this.props.toggle_gif(index)}
                         onMouseLeave={()=> this.props.toggle_gif(-1)}
                         onClick={() => this.props.handle_next(item.id)} >
@@ -38,11 +38,12 @@ class QuestionComponent extends Component {
             this.props.load_result(this.props.recipient_relations, this.props.quiz_id, this.props.answers);
             return (
                 <Redirect to="result" />
-            ) 
+            )
         }
         const cards = this.props.questions[this.props.activeStep].cards
         return (
             <section id="questions">
+                <hr />
                 <div className="question">{this.props.questions[this.props.activeStep].question_text}</div>
                 <div className="optionsContainer">
                     {this.populateOptions()}

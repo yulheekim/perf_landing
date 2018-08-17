@@ -1,9 +1,14 @@
 #questions {
   padding-top: 13vh !important;
 }
-
+#questions hr {
+    width: 80%;
+    margin-top: 2.3em;
+    opacity: .5;
+    position: relative;
+}
 .question {
-    margin-top: 10vh;
+    margin-top: 6vh;
     font-size: 32px;
 }
 
@@ -58,18 +63,20 @@
   and (max-device-width: 800px)  {
     #questions {
       display: flex;
-      position: absolute;
       flex-direction: column;
       justify-content: center;
       padding-top: 13vh !important;
       margin-top: 0vh !important;
-      height: 67vh;
-      padding-bottom: 20vh;
+      height: 87vh;
     }
-
+    #questions hr {
+        width: 80%;
+        margin-top: -15vh;
+        opacity: 0;
+    }
     .question {
       font-size: 5vw;
-      width: 70vw;
+      width: 80vw;
       word-wrap: break-word;
       margin: 1vh auto;
     }
@@ -125,12 +132,15 @@
       justify-content: center;
       padding-top: 13vh !important;
       margin-top: 20vh !important;
-      margin-bottom: 28vh;
     }
-
+    #questions hr {
+        width: 80%;
+        margin-top: -13vh;
+        opacity: 0;
+    }
     .question {
       font-size: 5vw;
-      width: 70vw;
+      width: 80vw;
       word-wrap: break-word;
       margin: 1vh auto;
     }
