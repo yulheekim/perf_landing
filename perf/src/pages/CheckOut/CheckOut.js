@@ -33,8 +33,8 @@ import {
 } from '../../components';
 import './styles.css';
 import styles from './styles';
-const { 
-    promoText, 
+const {
+    promoText,
     promoButton,
     circularProgress,
 } = styles
@@ -157,6 +157,9 @@ class CheckOutComponent extends Component {
                                 </div>:
                                 <div className="perfumeInfo">
                                     <div className="title">{this.props.result_title}</div>
+                                    <div className="oneLineDescription">
+                                        <i>"A hint of {this.props.result_cards[1]['alias']}, surrounding {this.props.result_cards[0]['alias']}, topped with {this.props.result_cards[2]['alias']}."</i>
+                                    </div>
                                     {this.populateDescriptions()}
                                 </div>
                             }
@@ -217,13 +220,13 @@ class CheckOutComponent extends Component {
                                     <tr className="bordered"><td>Shipping & handling: </td><td>${this.props.shipping_fee}</td></tr>
                                     <tr className="total"><td><b>Total: </b></td>
                                     <b>
-                                        <td>$<span>{this.props.full_price}</span><span> {this.props.found_promo ? "Promo Applied": ""}</span> 
-                                        
+                                        <td>$<span>{this.props.full_price}</span><span> {this.props.found_promo ? "Promo Applied": ""}</span>
+
                                         </td>
                                     </b>
                                     </tr>
                                 </tbody></table>
-                                {this.props.current_bottle_index !== 0 ? 
+                                {this.props.current_bottle_index !== 0 ?
                                 <div className="promoContainer">
                                     Promo Code :&nbsp;<TextField
                                         label={this.props.found_promo ? "PROMO APPLIED!":"Enter your promo code"}
@@ -241,8 +244,8 @@ class CheckOutComponent extends Component {
                                     <Button variant="contained" onClick={()=>this.props.check_promo(this.props.promo)} size='small' style={promoButton}>OK</Button>
                                     </div>:<div/>}
                                 </div>
-                            
-                            
+
+
                             <div className="checkOutButton">
                                 <StripeProvider apiKey={APIConfig.stripe_key}>
                                     <Elements>

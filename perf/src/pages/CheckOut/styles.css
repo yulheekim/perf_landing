@@ -79,9 +79,19 @@
     }
     #checkoutBody .description {
         width: 40vw !important;
+        margin-top: 2vh;
+        font-size: 1.7vh;
         word-wrap: break-word;
+        line-height: 3vh;
     }
-
+    #checkoutBody .oneLineDescription {
+        width: 30vw !important;
+        margin: 2vh auto 0 auto;
+        font-size: 2.3vh;
+        word-wrap: break-word;
+        line-height: 4vh;
+        text-align: center;
+    }
     /*  */
     #checkoutBody .down {
         margin-top: 12vh;
@@ -175,7 +185,6 @@
   and (max-device-width: 800px)  {
     #checkoutBody .boxes {
         flex-direction: column;
-        margin-top: 4vh;
         height: 70vh;
         justify-content: center;
     }
