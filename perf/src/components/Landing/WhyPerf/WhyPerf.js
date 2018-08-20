@@ -25,14 +25,14 @@ class WhyPerfComponent extends Component {
             return (
                  <div className="circleWrapper">
                      <div className="reason">{this.props.why_descs[id]}</div>
-                    <img src={images[id-1]} onClick={()=>this.toggleModal(id)} onMouseEnter={()=>this.toggleModal(id)}
+                    <img src={images[id-1]} alt={images[id-1]} onClick={()=>this.toggleModal(id)} onMouseEnter={()=>this.toggleModal(id)}
                     onMouseLeave={()=>this.toggleModal(0)}></img>
                 </div>
             );
-        } else 
+        } else
             return (
                 <div className="circleWrapper">
-                    <img src={images[id-1]} onClick={()=>this.toggleModal(id)} onMouseEnter={()=>this.toggleModal(id)}
+                    <img src={images[id-1]} alt={images[id-1]} onClick={()=>this.toggleModal(id)} onMouseEnter={()=>this.toggleModal(id)}
                     onMouseLeave={()=>this.toggleModal(0)}></img>
                     <div className="reason">{this.props.why_descs[id]}</div>
 

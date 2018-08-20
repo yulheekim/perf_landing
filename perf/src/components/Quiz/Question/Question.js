@@ -40,7 +40,6 @@ class QuestionComponent extends Component {
                 <Redirect to="result" />
             )
         }
-        const cards = this.props.questions[this.props.activeStep].cards
         return (
             <section id="questions">
                 <hr />
