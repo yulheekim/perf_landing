@@ -7,6 +7,7 @@ var namer = require('color-namer');
 
 //Action Types
 export const CHANGE_RECIPIENT_NAME = "perf/quiz/CHANGE_RECIPIENT_NAME";
+export const CHANGE_RESULT_TITLE = "perf/quiz/CHANGE_RESULT_TITLE";
 export const CHANGE_RELATIONS = "perf/quiz/CHANGE_RELATIONS";
 export const CHANGE_SEXUALITY = "perf/quiz/CHANGE_SEXUALITY";
 export const CHANGE_TAKER_NAME = "perf/quiz/CHANGE_TAKER_NAME";
@@ -24,6 +25,7 @@ export const REVEAL_CARD = "perf/quiz/REVEAL_CARD";
 export const START_DISTILLING = 'perf/quiz/START_DISTILLING';
 export const START_OVER = 'perf/quiz/START_OVER';
 export const TOGGLE_GIF = 'perf/quiz/TOGGLE_GIF';
+export const TOGGLE_RESULT_TITLE = "perf/quiz/TOGGLE_RESULT_TITLE";
 
 
 // CONST FOR REPRESENTING STATE OF QUIZ RESULT
@@ -83,11 +85,22 @@ const INITIAL_STATE = {
     isDistilling: false,
     quizresult_id: -1,
     gifme: -1,
+    editing: false,
 };
 
 //Reducers
 export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type){
+        case CHANGE_RESULT_TITLE:
+            return {
+                ...state,
+                result_title: action.payload,
+            }
+        case TOGGLE_RESULT_TITLE:
+            return {
+                ...state,
+                editing: !state.editing,
+            }
         case CLEAR_BASICINFO:
             return {
                 ...state,
@@ -121,7 +134,8 @@ export default function reducer(state = INITIAL_STATE, action) {
                     error_message: "",
                     quiz_name: action.payload.quiz_name,
                     questions: action.payload.questions,
-                    quiz_result_status: QUIZ_RESULT_LOADED
+                    quiz_result_status: QUIZ_RESULT_LOADED,
+                    editing: false,
                 }
             }
             return {
@@ -224,6 +238,15 @@ export default function reducer(state = INITIAL_STATE, action) {
 
 
 //Action Creators
+export const change_result_title = (value) => {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_RESULT_TITLE,
+            payload: value,
+        });
+    };
+};
+
 export const handle_next = (opt_selected) => {
     return (dispatch) => {
         dispatch({
@@ -379,6 +402,14 @@ export const toggle_gif = (index) => {
         })
     }
 }
+
+export const toggle_result_title = () => {
+    return (dispatch) => {
+        dispatch({
+            type: TOGGLE_RESULT_TITLE,
+        });
+    };
+};
 
 export const clear_basicinfo = () => {
     return (dispatch) => {
