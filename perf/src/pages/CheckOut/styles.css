@@ -4,6 +4,10 @@
     font-family: 'Merriweather', serif;
 }
 
+.perfumeTitle {
+    display: flex;
+}
+
 @media screen
   and (min-device-width: 1200px)
   and (max-device-width: 4000px)
@@ -291,7 +295,8 @@
     }
     .perfumeInfo .title {
         font-size: 5vw;
-        width: 55vw;
+        width: 35vw;
+        line-height: 6vh;
     }
     .perfumeInfo .description {
         font-size: 4vw;

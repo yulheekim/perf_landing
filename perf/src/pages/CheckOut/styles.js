@@ -9,4 +9,8 @@ export default {
         marginTop: '5vh',
         color: '#C3C9E9',
     },
+    titleMobile: {
+        width: '30vw',
+        marginRight: '5vw',
+    }
 }
