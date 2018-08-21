@@ -74,7 +74,7 @@ class CheckOutComponent extends Component {
         return (
             <div className="showMessage">
                 <div>
-                    Write a message to <i>{this.props.recipient_relations === 0 ? "yourself " : this.props.recipient_options[this.props.recipient_relations]}</i> ({char_limit} characters max):
+                    Write a message to <i>{this.props.recipient_relations === 0 ? "yourself " : this.props.recipient_options[this.props.recipient_relations]}</i>&nbsp;({char_limit} characters max):
                     <TextField
                         label="Write a message here"
                         value={this.props.message}
@@ -198,8 +198,7 @@ class CheckOutComponent extends Component {
                                 </div>
                             }
                             <div className="priceContainer">
-                                <b>Price:</b>&nbsp;&nbsp;${this.props.product_price}&nbsp;&nbsp;
-                                + Shipping Fee
+                                <b>Price:</b>&nbsp;&nbsp;${this.props.product_price}&nbsp;+ Shipping Fee
                             </div>
                         </div>
                     </div>
