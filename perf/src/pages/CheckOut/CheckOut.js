@@ -23,20 +23,25 @@ import {
     reset_checkout,
     CHECKOUT_LOADING,
 } from '../../ducks/checkout';
+
+import {
+    change_result_title,
+    toggle_result_title,
+} from '../../ducks/quiz';
+
 import {
     ScrollDown,
 } from '../../components/Common';
 import {
     CheckOutButton,
     Header,
-    SampleCheckOutButton,
 } from '../../components';
 import './styles.css';
 import styles from './styles';
-const { 
-    promoText, 
+const {
+    promoText,
     promoButton,
-    circularProgress,
+    titleMobile,
 } = styles
 
 
@@ -69,7 +74,7 @@ class CheckOutComponent extends Component {
         return (
             <div className="showMessage">
                 <div>
-                    Write a message to <i>{this.props.recipient_relations === 0 ? "yourself " : this.props.recipient_options[this.props.recipient_relations]}</i> ({char_limit} characters max):
+                    Write a message to <i>{this.props.recipient_relations === 0 ? "yourself " : this.props.recipient_options[this.props.recipient_relations]}</i>&nbsp;({char_limit} characters max):
                     <TextField
                         label="Write a message here"
                         value={this.props.message}
@@ -110,6 +115,10 @@ class CheckOutComponent extends Component {
     handlePromoChange = (event) => {
         this.props.change_promo(event.target.value);
     };
+
+    handleTitleChange = (event) => {
+        this.props.change_result_title(event.target.value);
+    }
 
     render() {
         if (this.props.quizresult_id < 1) {
@@ -156,7 +165,22 @@ class CheckOutComponent extends Component {
                                     </Select>
                                 </div>:
                                 <div className="perfumeInfo">
-                                    <div className="title">{this.props.result_title}</div>
+                                    <div className="perfumeTitle">
+                                    {this.props.editing ? 
+                                    <TextField value={this.props.result_title} onChange={this.handleTitleChange} /> :
+                                    <div className="title">{this.props.result_title}</div> 
+                                    }
+                                    <Button onClick={this.props.toggle_result_title}> 
+                                        {this.props.editing ? 
+                                        "Save" :
+                                        "Edit" 
+                                        }
+                                    </Button>
+                                    </div>
+
+                                    <div className="oneLineDescription">
+                                        <i>"A hint of {this.props.result_cards[1]['alias']}, surrounding {this.props.result_cards[0]['alias']}, topped with {this.props.result_cards[2]['alias']}."</i>
+                                    </div>
                                     {this.populateDescriptions()}
                                 </div>
                             }
@@ -174,8 +198,7 @@ class CheckOutComponent extends Component {
                                 </div>
                             }
                             <div className="priceContainer">
-                                <b>Price:</b>&nbsp;&nbsp;${this.props.product_price}&nbsp;&nbsp;
-                                + Shipping Fee
+                                <b>Price:</b>&nbsp;&nbsp;${this.props.product_price}&nbsp;+ Shipping Fee
                             </div>
                         </div>
                     </div>
@@ -200,7 +223,18 @@ class CheckOutComponent extends Component {
                                         <img src={this.props.bottle_imgs[this.props.current_bottle_index][0]} alt={this.props.current_bottle_index} />
                                     </div>
                                     <div className="itemInfo">
-                                        <div className="title">{this.props.result_title}</div>
+                                        <div className="perfumeTitle">
+                                            {this.props.editing ? 
+                                            <TextField style={titleMobile} value={this.props.result_title} onChange={this.handleTitleChange} /> :
+                                            <div className="title">{this.props.result_title}</div> 
+                                            }
+                                            <Button onClick={this.props.toggle_result_title}> 
+                                                {this.props.editing ? 
+                                                "Save" :
+                                                "Edit" 
+                                                }
+                                            </Button>
+                                        </div>
                                         <div className="description">Item: {this.props.bottle_types[this.props.current_bottle_index]}</div>
                                     </div>
                                 </div>
@@ -217,13 +251,13 @@ class CheckOutComponent extends Component {
                                     <tr className="bordered"><td>Shipping & handling: </td><td>${this.props.shipping_fee}</td></tr>
                                     <tr className="total"><td><b>Total: </b></td>
                                     <b>
-                                        <td>$<span>{this.props.full_price}</span><span> {this.props.found_promo ? "Promo Applied": ""}</span> 
-                                        
+                                        <td>$<span>{this.props.full_price}</span><span> {this.props.found_promo ? "Promo Applied": ""}</span>
+
                                         </td>
                                     </b>
                                     </tr>
                                 </tbody></table>
-                                {this.props.current_bottle_index !== 0 ? 
+                                {this.props.current_bottle_index !== 0 ?
                                 <div className="promoContainer">
                                     Promo Code :&nbsp;<TextField
                                         label={this.props.found_promo ? "PROMO APPLIED!":"Enter your promo code"}
@@ -241,8 +275,8 @@ class CheckOutComponent extends Component {
                                     <Button variant="contained" onClick={()=>this.props.check_promo(this.props.promo)} size='small' style={promoButton}>OK</Button>
                                     </div>:<div/>}
                                 </div>
-                            
-                            
+
+
                             <div className="checkOutButton">
                                 <StripeProvider apiKey={APIConfig.stripe_key}>
                                     <Elements>
@@ -264,7 +298,7 @@ const mapStateToProps = (state, ownProps) => {
     const { quiz, checkout } = state;
     const { bottle_imgs, bottle_types, current_bottle_index, error_message, img_opt, message, order_id,
          prices, promo, found_promo, shipping, checkout_status, discount, full_price, tax, shipping_fee, product_price } = checkout;
-    const { answers, result_cards, result_title, recipient_options, recipient_relations, quizresult_id } = quiz;
+    const { answers, result_cards, result_title, recipient_options, recipient_relations, quizresult_id, editing } = quiz;
     return {
         ...ownProps,
         answers,
@@ -290,6 +324,7 @@ const mapStateToProps = (state, ownProps) => {
         tax,
         shipping_fee,
         product_price,
+        editing,
     };
 };
 
@@ -301,10 +336,12 @@ export const CheckOut = connect(mapStateToProps, {
     change_image,
     change_message,
     change_promo,
+    change_result_title,
     change_state,
     change_zipcode,
     check_promo,
     handle_order_response,
     load_bottles,
     reset_checkout,
+    toggle_result_title,
 })(CheckOutComponent);

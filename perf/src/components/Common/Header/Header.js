@@ -42,6 +42,11 @@ class Header extends Component {
                         Reviews
                     </span>
                 </a>
+                <a href={"https://quiz.yourperf.com/quiz"} style={menuStyles.bmItem} className={window.innerWidth > 425 ? "menu-item" : "menu-mobile-item"}>
+                    <span className="topRightLink">
+                        Quiz
+                    </span>
+                </a>
                 <a href={landingUrl+"subscribe/"} style={menuStyles.bmItem} className={window.innerWidth > 425 ? "menu-item" : "menu-mobile-item"}>
                     <span className="topRightLink2">
                         Subscribe
@@ -66,6 +71,9 @@ class Header extends Component {
                     </a>
                     <a href={landingUrl+"reviews/"} className="topRightLink">
                         Reviews
+                    </a>
+                    <a href={"https://quiz.yourperf.com/quiz"} className="topRightLink">
+                        Quiz
                     </a>
                     <a href={landingUrl+"subscribe/"} className="topRightLink2">
                         Subscribe

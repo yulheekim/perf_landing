@@ -4,6 +4,10 @@
     font-family: 'Merriweather', serif;
 }
 
+.perfumeTitle {
+    display: flex;
+}
+
 @media screen
   and (min-device-width: 1200px)
   and (max-device-width: 4000px)
@@ -66,9 +70,6 @@
     .perfumeInfo .title {
         font-size: 2.1vw;
     }
-    .perfumeInfo .description {
-        font-size: 1.7vh;
-    }
     .selectContainer {
         margin-top: 5vh;
         font-size: 2vw;
@@ -79,12 +80,22 @@
     }
     #checkoutBody .description {
         width: 40vw !important;
+        margin-top: 2vh;
+        font-size: 1.8vh;
         word-wrap: break-word;
+        line-height: 3vh;
     }
-
+    #checkoutBody .oneLineDescription {
+        width: 30vw !important;
+        margin: 2vh auto 0 auto;
+        font-size: 2.3vh;
+        word-wrap: break-word;
+        line-height: 4vh;
+        text-align: center;
+    }
     /*  */
     #checkoutBody .down {
-        margin-top: 12vh;
+        margin-top: 11vh;
         margin-left: 68vw;
     }
 
@@ -175,9 +186,9 @@
   and (max-device-width: 800px)  {
     #checkoutBody .boxes {
         flex-direction: column;
-        margin-top: 4vh;
         height: 70vh;
         justify-content: center;
+        margin-top: 4vh;
     }
     /* LeftBox */
     .leftBox {
@@ -238,7 +249,7 @@
         width: 100vw;
         flex-direction: column;
         margin: auto;
-        margin-top: 3vh;
+        margin-top: 4vh;
         justify-content: center;
         align-self: flex-start;
     }
@@ -282,11 +293,13 @@
     }
     .perfumeInfo .title {
         font-size: 5vw;
-        width: 55vw;
+        width: 35vw;
+        line-height: 6vh;
     }
     .perfumeInfo .description {
         font-size: 4vw;
         width: 55vw !important;
+        margin-top: 1vh;
     }
     .showMessage textarea {
         font-family: 'Lora', serif!important;

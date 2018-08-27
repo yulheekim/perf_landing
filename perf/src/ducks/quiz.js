@@ -7,6 +7,7 @@ var namer = require('color-namer');
 
 //Action Types
 export const CHANGE_RECIPIENT_NAME = "perf/quiz/CHANGE_RECIPIENT_NAME";
+export const CHANGE_RESULT_TITLE = "perf/quiz/CHANGE_RESULT_TITLE";
 export const CHANGE_RELATIONS = "perf/quiz/CHANGE_RELATIONS";
 export const CHANGE_SEXUALITY = "perf/quiz/CHANGE_SEXUALITY";
 export const CHANGE_TAKER_NAME = "perf/quiz/CHANGE_TAKER_NAME";
@@ -24,6 +25,7 @@ export const REVEAL_CARD = "perf/quiz/REVEAL_CARD";
 export const START_DISTILLING = 'perf/quiz/START_DISTILLING';
 export const START_OVER = 'perf/quiz/START_OVER';
 export const TOGGLE_GIF = 'perf/quiz/TOGGLE_GIF';
+export const TOGGLE_RESULT_TITLE = "perf/quiz/TOGGLE_RESULT_TITLE";
 
 
 // CONST FOR REPRESENTING STATE OF QUIZ RESULT
@@ -31,7 +33,6 @@ export const QUIZ_RESULT_UNSTARTED = 'QUIZ_RESULT_UNSTARTED';
 export const QUIZ_RESULT_LOADING = 'QUIZ_RESULT_LOADING';
 export const QUIZ_RESULT_LOADED = 'QUIZ_RESULT_LOADED';
 
-// The options and results are hardcoded for now but will be from the server as soon as server supports them
 const INITIAL_STATE = {
     activeStep: 0,
     answers: [-1, -1, -1, -1, -1, -1, -1],
@@ -65,27 +66,41 @@ const INITIAL_STATE = {
     },],
     result_cards: [{name:"Navigator",
                       accord: "",
-                      description: [""],
-                      image_lnk: "https://i.pinimg.com/originals/05/4d/47/054d47a4e782a56bef5823d5ed186abc.jpg"},
+                      description: ["",""],
+                      image_lnk: "https://i.pinimg.com/originals/05/4d/47/054d47a4e782a56bef5823d5ed186abc.jpg",
+                      alias: "prim_alias"},
                   {name:"Innovator",
                       accord: "",
                       description: ["",""],
-                      image_lnk: "https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/publications/pharmaceutical-science/in-pharmatechnologist.com/article/2018/05/16/experts-warn-if-europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries/8201005-1-eng-GB/Experts-warn-If-Europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries_wrbm_large.jpg"},
+                      image_lnk: "https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/publications/pharmaceutical-science/in-pharmatechnologist.com/article/2018/05/16/experts-warn-if-europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries/8201005-1-eng-GB/Experts-warn-If-Europe-doesn-t-innovate-it-will-lose-manufacturing-to-pharmerging-countries_wrbm_large.jpg",
+                      alias: "sec_alias"},
                   {name:"Architect",
                       accord: "",
-                      description: ["Architects are responsible, traditional, and often very serious by nature.  They are masters of self-control and have the ability to lead the way, make solid and realistic plans, and manage many people who work for them.  They will learn from their mistakes and get to the top based on their experience and expertise.","Your natural, breezy, clean fragrance will support and add complexity to any other scent."],
-                      image_lnk: "https://i.greatbigstory.com/uploads/story/keyframe_image/1809/web_Rock_Balancing_Site.jpg"},
+                      description: ["",""],
+                      image_lnk: "https://i.greatbigstory.com/uploads/story/keyframe_image/1809/web_Rock_Balancing_Site.jpg",
+                      alias: "ter_alias"},
                   ],
     reveal_cards: [false, false, false],
     result_title: "",
     isDistilling: false,
     quizresult_id: -1,
     gifme: -1,
+    editing: false,
 };
 
 //Reducers
 export default function reducer(state = INITIAL_STATE, action) {
     switch (action.type){
+        case CHANGE_RESULT_TITLE:
+            return {
+                ...state,
+                result_title: action.payload,
+            }
+        case TOGGLE_RESULT_TITLE:
+            return {
+                ...state,
+                editing: !state.editing,
+            }
         case CLEAR_BASICINFO:
             return {
                 ...state,
@@ -119,7 +134,8 @@ export default function reducer(state = INITIAL_STATE, action) {
                     error_message: "",
                     quiz_name: action.payload.quiz_name,
                     questions: action.payload.questions,
-                    quiz_result_status: QUIZ_RESULT_LOADED
+                    quiz_result_status: QUIZ_RESULT_LOADED,
+                    editing: false,
                 }
             }
             return {
@@ -222,6 +238,15 @@ export default function reducer(state = INITIAL_STATE, action) {
 
 
 //Action Creators
+export const change_result_title = (value) => {
+    return (dispatch) => {
+        dispatch({
+            type: CHANGE_RESULT_TITLE,
+            payload: value,
+        });
+    };
+};
+
 export const handle_next = (opt_selected) => {
     return (dispatch) => {
         dispatch({
@@ -377,6 +402,14 @@ export const toggle_gif = (index) => {
         })
     }
 }
+
+export const toggle_result_title = () => {
+    return (dispatch) => {
+        dispatch({
+            type: TOGGLE_RESULT_TITLE,
+        });
+    };
+};
 
 export const clear_basicinfo = () => {
     return (dispatch) => {

@@ -17,8 +17,8 @@ const aboutQuote = (text) => {
     );
 };
 
-const About = ({}) => {
-    
+const About = () => {
+
     return (
         <div style={{"backgroundColor": "white"}}>
             <Header />

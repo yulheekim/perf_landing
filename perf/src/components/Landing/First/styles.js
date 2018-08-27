@@ -6,7 +6,6 @@ export default {
         backgroundColor: 'transparent',
         border: '2px solid white',
         borderRadius: '0',
-        color: 'charcoal',
         color: 'white',
     },
 }
