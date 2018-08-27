@@ -49,7 +49,7 @@ class QuizResultComponent extends Component {
         }
         else if (this.props.quiz_result_status === QUIZ_RESULT_UNSTARTED) {
             return (
-                <Redirect to="quiz" />
+                <Redirect to="" />
             )
         }
         return (

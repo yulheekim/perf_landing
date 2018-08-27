@@ -49,7 +49,7 @@ class ThankYouComponent extends Component {
                 <div className="guide">
                     You're all set! You should be receiving an order confirmation email shortly.<br/>If you have any questions, please feel free to email <i>tryperf@gmail.com</i>.
                 </div>
-                <Link to="quiz" className="quizLink">
+                <Link to="" className="quizLink">
                     <Button variant="contained" color="primary" style={quizButton}>Continue Shopping</Button>
                 </Link> 
                 </div>:

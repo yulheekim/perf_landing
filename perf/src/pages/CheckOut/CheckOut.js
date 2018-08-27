@@ -122,7 +122,7 @@ class CheckOutComponent extends Component {
 
     render() {
         if (this.props.quizresult_id < 1) {
-            return (<Redirect to="quiz"/>)
+            return (<Redirect to=""/>)
         }
         else if (this.props.checkout_status === CHECKOUT_LOADING) {
             return (<Redirect to="thankyou"/>)

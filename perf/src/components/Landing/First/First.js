@@ -20,7 +20,7 @@ const First = () => {
                 <OneLiner className="firstLiner" message="Personalized Fragrance Designed by You" />
                 <hr className="hr" />
                 <div className="getStartedFirst">
-                    <Link to="quiz" className="quizLink" >
+                    <Link to="" className="quizLink" >
                         <Button className="quizButton" variant="contained" size="large" style={buttonStyle}>
                             Get Started!
                         </Button>

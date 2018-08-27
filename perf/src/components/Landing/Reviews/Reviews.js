@@ -55,7 +55,7 @@ class ReviewsComponent extends Component {
                         {this.props.reviews[this.props.currentSlider]}
                     </div>
                     <div className="getStarted2">
-                        <Link to="quiz" className="quizLink">
+                        <Link to="" className="quizLink">
                             <Button className="quizButton" variant="contained" size="large" style={buttonStyle}>
                                 Get Started!
                             </Button>

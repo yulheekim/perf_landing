@@ -13,7 +13,6 @@ const AppNavigator = () => (
     <Router>
       <Switch>
         <Route exact path='/' component={Quiz} />
-        <Route exact path="/quiz" component={Quiz} />
         <Route exact path="/checkout" component={CheckOut} />
         <Route exact path="/result" component={QuizResult} />
         <Route exact path="/error" component={ServerError} />

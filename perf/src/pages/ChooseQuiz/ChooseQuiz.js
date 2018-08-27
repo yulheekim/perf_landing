@@ -23,7 +23,7 @@ class ChooseQuizComponent extends Component {
     }
     if(this.props.quiz_name !== "") {
       return (
-        <Redirect to="quiz" />
+        <Redirect to="" />
       )
     }
 
